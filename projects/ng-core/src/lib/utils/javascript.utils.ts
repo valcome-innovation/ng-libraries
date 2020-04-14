@@ -82,6 +82,6 @@ export class JavascriptUtils {
       }
     }
 
-    return clone;
+    return clone as T;
   }
 }
