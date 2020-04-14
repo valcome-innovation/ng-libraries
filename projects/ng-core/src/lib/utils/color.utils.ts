@@ -3,6 +3,18 @@
 //@ts-nocheck
 export class ColorUtils {
 
+  public static rgbToHex(rgb: number[]) {
+    return '#' + this.componentToHex(rgb[0]) + this.componentToHex(rgb[1]) + this.componentToHex(rgb[2]);
+  }
+
+  public static mixColors(color1: number[], color2: number[], weight: number): number[] {
+    let w1: number = weight;
+    let w2: number = 1 - w1;
+    return [Math.round(color1[0] * w1 + color2[0] * w2),
+      Math.round(color1[1] * w1 + color2[1] * w2),
+      Math.round(color1[2] * w1 + color2[2] * w2)];
+  }
+
   public static getTrafficColorScale(value: number,
                                      red: number[] = [229, 53, 68],
                                      yellow: number[] = [255, 226, 28],
@@ -11,28 +23,16 @@ export class ColorUtils {
     let result: number[];
 
     if (value < .5) {
-      result = ColorUtils.pickHex(yellow, red, value + value);
+      result = ColorUtils.mixColors(yellow, red, value + value);
     } else {
-      result = ColorUtils.pickHex(green, yellow, (value - 0.5) * 2);
+      result = ColorUtils.mixColors(green, yellow, (value - 0.5) * 2);
     }
 
-    return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
+    return ColorUtils.rgbToHex(result);
   }
 
-  public static pickHex(color1, color2, weight): number[] {
-    let w1 = weight;
-    let w2 = 1 - w1;
-    return [Math.round(color1[0] * w1 + color2[0] * w2),
-      Math.round(color1[1] * w1 + color2[1] * w2),
-      Math.round(color1[2] * w1 + color2[2] * w2)];
-  }
-
-  public static rgbToHex(rgb: number[]) {
-    return '#' + this.componentToHex(rgb[0]) + this.componentToHex(rgb[1]) + this.componentToHex(rgb[2]);
-  }
-
-  // Version 4.0
-  public static pSBC(p, c0, c1 = null, l = null) {
+  // pSBC Version 4.0
+  public static shadeBlendConvert(p, c0, c1 = null, l = null) {
     let r, g, b, P, f, t, h, i = parseInt, m = Math.round, a = typeof (c1) == 'string';
     if (typeof (p) != 'number' || p < -1 || p > 1 || typeof (c0) != 'string' || (c0[0] != 'r' && c0[0] != '#') || (c1 && !a)) {
       return null;
