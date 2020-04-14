@@ -1,4 +1,4 @@
-import { JavascriptUtils } from '..';
+import { JavascriptUtils } from '../utils/javascript.utils';
 
 export abstract class BaseMapper<T> {
 

@@ -1,4 +1,4 @@
-import { ShareData } from '..';
+import { ShareData } from '../model/share-data';
 
 export class ShareUtils {
 
@@ -6,13 +6,13 @@ export class ShareUtils {
 
   public static shareData(data: ShareData): Promise<void> {
     if (this.isShareSupported()) {
-      return this.nav.share(data);
+      return ShareUtils.nav?.share(data);
     } else {
       return Promise.reject("Share not supported");
     }
   }
 
   public static isShareSupported(): boolean {
-    return this.nav?.share;
+    return ShareUtils.nav?.share;
   }
 }

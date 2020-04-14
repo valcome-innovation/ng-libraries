@@ -1,6 +1,17 @@
 {
-  "name": "ng-core",
-  "version": "0.0.1",
+  "name": "@valcome/ng-core",
+  "version": "0.2.0",
+  "description": "Angular core utils and base classes",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-core"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-core#ngcore",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
