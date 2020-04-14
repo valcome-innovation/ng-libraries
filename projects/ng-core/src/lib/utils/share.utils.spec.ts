@@ -16,4 +16,15 @@ describe('ShareUtils', () => {
         expect(error).toEqual('Share not supported');
       });
   });
+
+  it('should share data', async () => {
+    const navMock: any = {
+      share(data: ShareData): Promise<void> { return Promise.resolve(); }
+    };
+    Object.defineProperty(ShareUtils, 'nav', navMock);
+    // expect(ShareUtils.isShareSupported()).toBeTruthy();
+    // await ShareUtils.shareData(new ShareData('title', 'text', 'url')).then(() => {
+    //   expect(true).toBeFalsy();
+    // });
+  });
 });
