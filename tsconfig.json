@@ -26,6 +26,10 @@
       "ng-animations": [
         "dist/ng-animations/ng-animations",
         "dist/ng-animations"
+      ],
+      "ng-elements": [
+        "dist/ng-elements/ng-elements",
+        "dist/ng-elements"
       ]
     }
   },
