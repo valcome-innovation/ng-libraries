@@ -1,7 +1,3 @@
-/*
- * Public API Surface of ng-elements
- */
-
-export * from './lib/ng-elements.service';
-export * from './lib/ng-elements.component';
-export * from './lib/ng-elements.module';
+export * from './lib/unsaved-changes/unsaved-changes.module.js';
+export * from './lib/modals/modal.module';
+export * from './lib/wizards/wizard.module';
