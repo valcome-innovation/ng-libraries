@@ -2,6 +2,10 @@
   "name": "@valcome/ng-core",
   "version": "0.2.1",
   "description": "Angular core utils and base classes",
+  "scripts": {
+    "pre-publish": "ng test && ng build --prod",
+    "publish:patch": "npm run pre-publish && npm version:patch && cd ../../dist/ng-core && npm publish && git push"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-core"
