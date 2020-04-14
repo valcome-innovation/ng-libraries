@@ -27,7 +27,7 @@ describe('ShareUtils', () => {
   });
 
   it('should share data', async () => {
-    const navSpy = createSpyObj('nav', {share: Promise.resolve()});
+    const navSpy = createSpyObj('nav', { share: Promise.resolve() });
     Object.assign(ShareUtils, { nav: navSpy});
     expect(ShareUtils.isShareSupported()).toBeTruthy();
 
