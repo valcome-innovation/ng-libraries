@@ -8,13 +8,13 @@ export class SoundUtils {
   }
 
   public static createAndLoadAudio(src: string, volume: number = this.FULL_VOLUME, loop: boolean = false): HTMLAudioElement {
-    let audio = this.createAudio(src, volume, loop);
+    const audio = this.createAudio(src, volume, loop);
     audio.load();
     return audio;
   }
 
   public static createAudio(src: string, volume: number = this.FULL_VOLUME, loop: boolean = false): HTMLAudioElement {
-    let audio = new Audio(src);
+    const audio = new Audio(src);
     audio.loop = loop;
     audio.volume = volume;
     return audio;
