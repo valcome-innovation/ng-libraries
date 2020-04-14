@@ -22,6 +22,10 @@
       "ng-core": [
         "dist/ng-core/ng-core",
         "dist/ng-core"
+      ],
+      "ng-animations": [
+        "dist/ng-animations/ng-animations",
+        "dist/ng-animations"
       ]
     }
   },
