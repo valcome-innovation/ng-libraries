@@ -1,9 +1,9 @@
 {
   "name": "@valcome/ng-animations",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "description": "Angular animations",
   "scripts": {
-    "version": "ng build --prod",
+    "version": "ng build ng-animations --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-animations && npm publish"
   },
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-animations#nganimations",
   "peerDependencies": {
+    "@angular/animations": "^9.0.7",
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
     "tslib": "^1.10.0"
