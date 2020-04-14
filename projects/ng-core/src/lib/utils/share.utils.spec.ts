@@ -8,7 +8,6 @@ describe('ShareUtils', () => {
 
   beforeEach(() => {
     nav = ShareUtils['nav'];
-    Object.assign(ShareUtils, { nav: window.navigator });
   });
 
   afterEach(() => {
