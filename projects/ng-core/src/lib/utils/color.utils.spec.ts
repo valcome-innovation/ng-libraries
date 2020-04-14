@@ -107,5 +107,8 @@ describe('ColorUtils', () => {
 
     actual = ColorUtils.shadeBlendConvert(0.42, "#FFBAA");
     expect(actual).toBeNull();
+
+    actual = ColorUtils.shadeBlendConvert(42, color1, color5);
+    expect(actual).toBeNull();
   });
 })
