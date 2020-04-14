@@ -3,7 +3,7 @@ import { JavascriptUtils } from './javascript.utils';
 class Basic {
   public value: number;
   public text: string;
-  public nested: object;
+  public nested: any;
 
    public constructor(value: number = 0, text: string = null, nested: object = null) {
      this.value = value;
@@ -65,23 +65,23 @@ describe('JavascriptUtils', () => {
 
     expect(result.nested).toBeInstanceOf(Basic);
     expect(result.nested).not.toBe(nested);
-    expect(result.nested['value']).toEqual(20);
-    expect(result.nested['text']).toEqual('Nested');
-    expect(result.nested['nested']).toBeNull();
+    expect(result.nested.value).toEqual(20);
+    expect(result.nested.text).toEqual('Nested');
+    expect(result.nested.nested).toBeNull();
   });
 
   it('should clone source object with nested arrays', () => {
     let basic = new Basic(10, 'Text', [1, 2 , 3]);
     let result = JavascriptUtils.clone<Basic>(basic);
     expect(result.nested).toBeInstanceOf(Array);
-    expect(result.nested['length']).toEqual(3);
+    expect(result.nested.length).toEqual(3);
 
     const nested = new Basic(20, 'Nested', [1, 2 , 3]);
     basic = new Basic(10, 'Text', nested);
     result = JavascriptUtils.clone<Basic>(basic);
     expect(result.nested).not.toBe(nested);
-    expect(result.nested['nested']).toBeInstanceOf(Array);
-    expect(result.nested['nested'].length).toEqual(3);
+    expect(result.nested.nested).toBeInstanceOf(Array);
+    expect(result.nested.nested.length).toEqual(3);
   });
 
   it('should clone source object with nested Date', () => {
@@ -93,7 +93,7 @@ describe('JavascriptUtils', () => {
     basic = new Basic(10, 'Text', nested);
     result = JavascriptUtils.clone<Basic>(basic);
     expect(result.nested).not.toBe(nested);
-    expect(result.nested['nested']).toBeInstanceOf(Date);
+    expect(result.nested.nested).toBeInstanceOf(Date);
   });
 
   it('should return same instance', () => {
