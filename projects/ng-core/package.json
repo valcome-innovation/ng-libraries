@@ -1,10 +1,11 @@
 {
   "name": "@valcome/ng-core",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "description": "Angular core utils and base classes",
   "scripts": {
-    "pre-publish": "ng test && ng build --prod",
-    "publish:patch": "npm run pre-publish && npm version:patch && cd ../../dist/ng-core && npm publish && git push"
+    "pre-publish": "ng test --watch=false",
+    "pre-publish-and-patch": "npm run pre-publish && npm version patch && ng build --prod",
+    "publish:patch": "npm run pre-publish-and-patch && cd ../../dist/ng-core && npm publish"
   },
   "repository": {
     "type": "git",
