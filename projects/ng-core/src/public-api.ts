@@ -1,7 +1,3 @@
-/*
- * Public API Surface of ng-core
- */
-
 export * from './lib/utils/array.utils';
 export * from './lib/utils/color.utils';
 export * from './lib/utils/dom.utils';

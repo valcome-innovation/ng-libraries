@@ -1,9 +1,17 @@
-import { AnimationEasing } from './animation-easing';
+import { AnimationEasing } from './enum/animation-easing';
 
-export class AnimationConfig {
-  public inTime: number = 500;
-  public outTime: number = 500;
-  public inDelay: number = 0;
-  public outDelay: number = 0;
-  public easing: AnimationEasing = AnimationEasing.LINEAR;
+export interface AnimationConfig {
+  inTime?: number;
+  outTime?: number;
+  inDelay?: number;
+  outDelay?: number;
+  easing?: AnimationEasing | string;
+}
+
+export const animationConfigDefault: AnimationConfig = {
+  inTime: 500,
+  outTime: 500,
+  inDelay: 0,
+  outDelay: 0,
+  easing: AnimationEasing.LINEAR
 }
