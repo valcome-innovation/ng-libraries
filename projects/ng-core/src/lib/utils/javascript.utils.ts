@@ -42,13 +42,9 @@ export class JavascriptUtils {
 
     if (object instanceof Date) {
       return this.cloneDate(object) as any;
-    }
-
-    if (object instanceof Array) {
+    } else if (object instanceof Array) {
       return this.cloneArray(object) as any;
-    }
-
-    if (object instanceof Object) {
+    } else if (object instanceof Object) {
       return this.cloneObject(object);
     }
 
