@@ -6,7 +6,7 @@ export class ImageUtils {
   }
 
   public static preloadImage(src: string): void {
-    let image = new Image();
+    const image: HTMLImageElement = new Image();
     image.src = src;
     this.preloadedImages[src] = image;
   }
