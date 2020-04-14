@@ -44,14 +44,14 @@ describe('JavascriptUtils', () => {
     expect(result.text).toEqual(basic.text);
   });
 
-  it('should clone source object', () => {
-    let result = JavascriptUtils.clone(null);
-    expect(result).toBeNull();
-
-    const basic = new Basic(10, 'Text');
-    result = JavascriptUtils.clone<Basic>(basic);
-    expect(result).toBeInstanceOf(Basic);
-  });
+  // it('should clone source object', () => {
+  //   let result = JavascriptUtils.clone(null);
+  //   expect(result).toBeNull();
+  //
+  //   const basic = new Basic(10, 'Text');
+  //   result = JavascriptUtils.clone<Basic>(basic);
+  //   expect(result).toBeInstanceOf(Basic);
+  // });
 
   it('should map native types from json', () => {
     const json = { value: 1, text: 'some text', array: [1, 2, 3] };

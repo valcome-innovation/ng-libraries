@@ -27,7 +27,8 @@
             "main": "projects/ng-core/src/test.ts",
             "tsConfig": "projects/ng-core/tsconfig.spec.json",
             "karmaConfig": "projects/ng-core/karma.conf.js",
-            "codeCoverage": true
+            "codeCoverage": true,
+            "codeCoverageExclude": ["**/lib/model/**"]
           }
         },
         "lint": {
