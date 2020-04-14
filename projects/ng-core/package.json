@@ -1,11 +1,11 @@
 {
   "name": "@valcome/ng-core",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Angular core utils and base classes",
   "scripts": {
     "preversion": "ng test --watch=false",
     "version": "ng build --prod",
-    "postversion": "git add . && git commit -m \"update npm version\" && git push ",
+    "postversion": "git add . && git commit -m \"Upgrade to %s\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-core && npm publish"
   },
   "repository": {
