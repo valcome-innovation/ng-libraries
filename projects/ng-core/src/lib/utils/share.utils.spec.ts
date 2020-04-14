@@ -4,8 +4,15 @@ import createSpyObj = jasmine.createSpyObj;
 
 describe('ShareUtils', () => {
 
+  let nav: any;
+
   beforeEach(() => {
+    nav = ShareUtils['nav'];
     Object.assign(ShareUtils, { nav: window.navigator });
+  });
+
+  afterEach(() => {
+    Object.assign(ShareUtils, { nav });
   });
 
   it('should not support share as browser by default', () => {
