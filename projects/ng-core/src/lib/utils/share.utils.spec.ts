@@ -1,10 +1,12 @@
 import { ShareUtils } from './share.utils';
 import { ShareData } from '../model/share-data';
-import createSpy = jasmine.createSpy;
 import createSpyObj = jasmine.createSpyObj;
-import { PromiseType } from 'protractor/built/plugins';
 
 describe('ShareUtils', () => {
+
+  beforeEach(() => {
+    Object.assign(ShareUtils, { nav: window.navigator });
+  });
 
   it('should not support share as browser by default', () => {
     expect(ShareUtils.isShareSupported()).toBeFalsy();
@@ -18,13 +20,12 @@ describe('ShareUtils', () => {
   });
 
   it('should share data', async () => {
-    const navMock: any = {
-      share(data: ShareData): Promise<void> { return Promise.resolve(); }
-    };
-    Object.defineProperty(ShareUtils, 'nav', navMock);
-    // expect(ShareUtils.isShareSupported()).toBeTruthy();
-    // await ShareUtils.shareData(new ShareData('title', 'text', 'url')).then(() => {
-    //   expect(true).toBeFalsy();
-    // });
+    const navSpy = createSpyObj('nav', {share: Promise.resolve()});
+    Object.assign(ShareUtils, { nav: navSpy});
+    expect(ShareUtils.isShareSupported()).toBeTruthy();
+
+    await ShareUtils.shareData(new ShareData('title', 'text', 'url')).then(() => {
+      expect(navSpy.share).toHaveBeenCalled();
+    });
   });
 });
