@@ -42,13 +42,9 @@ export class JavascriptUtils {
 
     if (object instanceof Date) {
       return this.cloneDate(object) as any;
-    }
-
-    if (object instanceof Array) {
+    } else if (object instanceof Array) {
       return this.cloneArray(object) as any;
-    }
-
-    if (object instanceof Object) {
+    } else if (object instanceof Object) {
       return this.cloneObject(object);
     }
 
@@ -74,14 +70,18 @@ export class JavascriptUtils {
   }
 
   private static cloneObject<T extends object>(object: T): T {
-    let clone: any = {};
+    const clone = Object.create(object);
 
     for (const attr in object) {
-      if (object.hasOwnProperty(attr)) {
-        clone[attr] = this.clone(object[attr]);
+      if (object.hasOwnProperty(attr) && this.isCloneable(object[attr])) {
+        clone[attr] = this.clone<any>(object[attr]);
       }
     }
 
-    return clone as T;
+    return clone;
+  }
+
+  private static isCloneable(value: any) {
+    return value instanceof Date || value instanceof Array || value instanceof Object;
   }
 }
