@@ -25,12 +25,12 @@ export class FullScreenService {
 
   public async toggleFullScreen(): Promise<void> {
     if (fullScreen?.isEnabled) {
-      return fullScreen.toggle();
+      return fullScreen.toggle().catch();
     }
   }
 
   public async goFullScreenIfMobile(): Promise<void> {
-    if ((this.deviceService.isMobileOrTablet())) {
+    if (this.deviceService.isMobileOrTablet()) {
       return this.goFullScreen();
     }
   }

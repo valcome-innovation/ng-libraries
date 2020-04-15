@@ -18,4 +18,12 @@ describe('OrientationService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should not throw error on landscape lock', () => {
+    expect(service.lockToLandscape).not.toThrow();
+  });
+
+  it('should get landscape as true', () => {
+    expect(service.isLandscape.getValue()).toBeTrue()
+  });
 });

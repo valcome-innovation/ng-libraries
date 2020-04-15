@@ -272,6 +272,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ng-screens/src/test.ts",
+            "codeCoverage": true,
             "tsConfig": "projects/ng-screens/tsconfig.spec.json",
             "karmaConfig": "projects/ng-screens/karma.conf.js"
           }
