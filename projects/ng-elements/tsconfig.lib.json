@@ -9,7 +9,13 @@
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "paths": {
+      "@valcome/ng-core": [
+        "dist/ng-core/ng-core",
+        "dist/ng-core"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
