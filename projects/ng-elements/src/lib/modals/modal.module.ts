@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { BaseModalComponent } from './components/base-modal/base-modal.component';
+import { ModalFrameComponent } from './components/modal-frame/modal-frame.component';
 import { SimpleModalComponent } from './components/simple-modal/simple-modal.component';
 
 @NgModule({
   declarations: [
-    BaseModalComponent,
+    ModalFrameComponent,
     SimpleModalComponent
   ],
   imports: [],
