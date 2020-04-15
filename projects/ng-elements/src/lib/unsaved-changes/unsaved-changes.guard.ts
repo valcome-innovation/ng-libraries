@@ -11,10 +11,8 @@ export class UnsavedChangesGuard implements CanDeactivate<BaseUnsavedChangesComp
                        currentRoute: ActivatedRouteSnapshot,
                        currentState: RouterStateSnapshot,
                        nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (component.doUnsavedChangesExist()) {
-      return confirm('Willst du das Spiel wirklich verlassen? Dein Fortschritt wird nicht gespeichert.');
-    } else {
-      return true;
-    }
+    return component.doUnsavedChangesExist()
+      ? confirm('You have unsaved changes that may be lost. Do you really want to continue?')
+      : true;
   }
 }

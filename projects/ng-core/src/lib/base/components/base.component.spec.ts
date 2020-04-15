@@ -6,11 +6,11 @@ describe('BaseComponent', () => {
   let baseComponent: BaseComponent;
 
   beforeEach(() => {
-    baseComponent = new BaseComponent()
+    baseComponent = new BaseComponent();
   });
 
   it('should inherit all base components', () => {
     expect(baseComponent instanceof BaseBehaviorSubjectComponent).toBeTruthy();
     expect(baseComponent instanceof BaseSubscriptionComponent).toBeTruthy();
   });
-})
+});
