@@ -1,7 +1,9 @@
-import { AnimationValueConfig } from '../model/animation-value-config';
+import { AnimationValueConfig, animationValueConfigDefault } from '../model/animation-value-config';
 import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
 
 export function slideOpen(animationConfig: AnimationValueConfig = {}, key: string = 'slideOpen'): AnimationTriggerMetadata {
+  animationConfig = {...animationValueConfigDefault, ...animationConfig};
+
   return trigger(key, [
     transition(':enter', [
       style({ transform: `scaleY(${animationConfig.startValue})` }),
