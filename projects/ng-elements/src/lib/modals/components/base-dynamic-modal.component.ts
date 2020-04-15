@@ -1,7 +1,7 @@
 import { EventEmitter, HostListener, Output } from '@angular/core';
-import { BaseComponent } from '../../../../../ng-core/src/lib/base/components/base.component';
+import { BaseComponent } from 'ng-core';
 
-export class BaseDynamicModalComponent extends BaseComponent {
+export abstract class BaseDynamicModalComponent extends BaseComponent {
 
   @Output()
   public modalClose: EventEmitter<any> = new EventEmitter<any>();

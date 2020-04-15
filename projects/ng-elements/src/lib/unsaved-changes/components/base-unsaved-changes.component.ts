@@ -1,5 +1,5 @@
 import { HostListener } from '@angular/core';
-import { BaseComponent } from '../../../../../ng-core/src/lib/base/components/base.component';
+import { BaseComponent } from 'ng-core';
 
 export class BaseUnsavedChangesComponent extends BaseComponent {
 

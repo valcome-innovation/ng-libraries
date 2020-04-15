@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import { BaseUnsavedChangesComponent } from './components/base-unsaved-changes.component';
 
 @NgModule({
   declarations: [],
   imports: [],
-  exports: [BaseUnsavedChangesComponent]
+  exports: []
 })
-export class UnsavedChangesModule {}
+export class UnsavedChangesModule {
+}
+
+export * from './components/base-unsaved-changes.component';

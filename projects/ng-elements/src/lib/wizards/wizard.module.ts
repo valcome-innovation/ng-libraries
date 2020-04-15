@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BaseWizardComponent } from './components/base-wizard.component';
 
 @NgModule({
   declarations: [],
   imports: [],
-  exports: [BaseWizardComponent]
+  exports: []
 })
 export class WizardModule {
 }
+
+export * from './models/wizard-step';
+export * from './components/base-wizard.component';
