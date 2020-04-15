@@ -12,5 +12,3 @@ import { SimpleModalComponent } from './components/simple-modal/simple-modal.com
 })
 export class ModalModule {
 }
-
-export * from './components/base-dynamic-modal.component';
