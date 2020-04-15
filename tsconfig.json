@@ -30,6 +30,10 @@
       "ng-elements": [
         "dist/ng-elements/ng-elements",
         "dist/ng-elements"
+      ],
+      "ng-screens": [
+        "dist/ng-screens/ng-screens",
+        "dist/ng-screens"
       ]
     }
   },
