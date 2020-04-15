@@ -7,6 +7,3 @@ import { NgModule } from '@angular/core';
 })
 export class WizardModule {
 }
-
-export * from './models/wizard-step';
-export * from './components/base-wizard.component';

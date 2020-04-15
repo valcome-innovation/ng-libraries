@@ -7,5 +7,3 @@ import { NgModule } from '@angular/core';
 })
 export class UnsavedChangesModule {
 }
-
-export * from './components/base-unsaved-changes.component';

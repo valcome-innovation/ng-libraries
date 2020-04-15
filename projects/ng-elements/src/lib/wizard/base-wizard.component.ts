@@ -1,5 +1,5 @@
 import { AfterViewInit, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { WizardStep } from '../model/wizard-step';
+import { WizardStep } from './wizard-step';
 
 export class BaseWizardComponent implements OnInit, AfterViewInit {
 
