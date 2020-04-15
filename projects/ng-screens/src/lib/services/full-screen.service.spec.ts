@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 
 import { FullScreenService } from './full-screen.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { OrientationService } from './orientation.service';
 import { ScreensModule } from '../screens.module';
 
 /**
@@ -15,7 +14,7 @@ describe('FullScreenService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ScreensModule],
-      providers: [DeviceDetectorService, FullScreenService, OrientationService]
+      providers: [DeviceDetectorService, FullScreenService]
     });
     service = TestBed.inject(FullScreenService);
   });
