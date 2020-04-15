@@ -3,13 +3,14 @@ import { BehaviorSubject } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { ScreensModule } from '../screens.module';
 import { JavascriptUtils } from 'ng-core';
+import { DeviceService } from './device.service';
 
 @Injectable({ providedIn: ScreensModule })
 export class OrientationService {
 
   public isLandscape: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
-  public constructor(private deviceDetectorService: DeviceDetectorService) {
+  public constructor(private deviceService: DeviceService) {
     this.listenToOrientationChange();
   }
 
@@ -35,7 +36,7 @@ export class OrientationService {
   }
 
   private getIsLandscapeFromBrowser(): boolean {
-    if (this.deviceDetectorService.isMobile() || this.deviceDetectorService.isTablet()) {
+    if (this.deviceService.isMobileOrTablet()) {
       if (this.hasOrientationProperty() && screen.orientation.type) {
         return this.getIsLandscapeFromType();
       } else if (this.hasOrientationProperty() && screen.orientation.angle) {

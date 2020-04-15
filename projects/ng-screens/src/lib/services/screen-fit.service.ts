@@ -15,7 +15,7 @@ export class ScreenFitService {
     let innerHeight: number = getInnerHeight();
     let addition: number = 0;
 
-    if (this.deviceService.isIOS.getValue() && this.deviceService.getIsSafari()) {
+    if (this.deviceService.isIOS() && this.deviceService.isSafari()) {
       addition = 1;
     }
 

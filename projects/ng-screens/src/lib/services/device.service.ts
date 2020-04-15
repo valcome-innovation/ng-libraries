@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { ScreensModule } from 'ng-screens';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: ScreensModule })
-export class DeviceService {
+export class DeviceService extends DeviceDetectorService {
 
-  public constructor(private deviceDetectorService: DeviceDetectorService) {
+  public constructor(@Inject(PLATFORM_ID) platformId: Object) {
+    super(platformId);
   }
 
+  public isMobileOrTablet(): boolean {
+    return this.isMobile() || this.isMobileOrTablet();
+  }
 
   public isIOS(): boolean {
     let ua = window.navigator.userAgent;
