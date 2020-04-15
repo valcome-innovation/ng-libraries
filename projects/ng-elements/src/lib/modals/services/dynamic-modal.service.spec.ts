@@ -1,5 +1,29 @@
+import { TestBed } from '@angular/core/testing';
+import { DynamicModalService } from './dynamic-modal.service';
+import { ModalModule } from '../modal.module';
+import { SimpleModalComponent } from '../components/simple-modal/simple-modal.component';
+
 describe('DynamicModalService', () => {
-  it('should pass', () => {
-    expect(true).toBeTrue();
+
+  let service: DynamicModalService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ModalModule],
+      providers: [DynamicModalService]
+    });
+    service = TestBed.inject(DynamicModalService);
+  });
+
+  it('should inject service', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should show modal ', async () => {
+    let resolved = false;
+    const result: Promise<any> = service.showModal(SimpleModalComponent);
+    document.querySelector('button.btn').dispatchEvent(new MouseEvent('click'));
+    await result.then(() => resolved = true);
+    expect(resolved).toBeTrue();
   });
 });

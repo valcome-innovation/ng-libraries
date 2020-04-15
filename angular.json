@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "ng-core": {
@@ -28,7 +28,9 @@
             "tsConfig": "projects/ng-core/tsconfig.spec.json",
             "karmaConfig": "projects/ng-core/karma.conf.js",
             "codeCoverage": true,
-            "codeCoverageExclude": ["**/lib/model/**"]
+            "codeCoverageExclude": [
+              "**/lib/model/**"
+            ]
           }
         },
         "lint": {
@@ -67,6 +69,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ng-animations/src/test.ts",
+            "codeCoverage": true,
             "tsConfig": "projects/ng-animations/tsconfig.spec.json",
             "karmaConfig": "projects/ng-animations/karma.conf.js"
           }
@@ -107,6 +110,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ng-elements/src/test.ts",
+            "codeCoverage": true,
             "tsConfig": "projects/ng-elements/tsconfig.spec.json",
             "karmaConfig": "projects/ng-elements/karma.conf.js"
           }
@@ -285,6 +289,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ng-core"
 }
