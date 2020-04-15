@@ -1,6 +1,6 @@
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { ScreensModule } from 'ng-screens';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { ScreensModule } from '../screens.module';
 
 @Injectable({ providedIn: ScreensModule })
 export class DeviceService extends DeviceDetectorService {

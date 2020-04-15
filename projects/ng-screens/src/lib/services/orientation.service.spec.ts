@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { OrientationService } from './orientation.service';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import { ScreensModule } from '../screens.module';
 import { DeviceService } from './device.service';
 

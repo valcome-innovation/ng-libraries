@@ -4,6 +4,16 @@
     "outDir": "../../out-tsc/app",
     "types": []
   },
+  "paths": {
+    "@valcome/ng-core": [
+      "dist/ng-core/ng-core",
+      "dist/ng-core"
+    ],
+    "@valcome/ng-elements": [
+      "dist/ng-elements/ng-elements",
+      "dist/ng-elements"
+    ]
+  },
   "files": [
     "src/main.ts",
     "src/polyfills.ts"

@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DynamicModalService } from '../../../ng-elements/src/lib/modals/services/dynamic-modal.service';
-import { ModalModule } from '../../../ng-elements/src/lib/modals/modal.module';
 import { CoreAnimationsModule } from 'ng-animations';
+import { ScreensModule } from 'ng-screens';
+import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
 
 @NgModule({
   declarations: [
@@ -14,11 +14,11 @@ import { CoreAnimationsModule } from 'ng-animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ModalModule,
     AppRoutingModule,
-    CoreAnimationsModule
+    CoreAnimationsModule,
+    ScreensModule
   ],
-  providers: [DynamicModalService],
+  providers: [DeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

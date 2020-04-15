@@ -1,6 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { DynamicModalService } from '../../../ng-elements/src/lib/modals/services/dynamic-modal.service';
-import { SimpleModalComponent } from '../../../ng-elements/src/lib/modals/components/simple-modal/simple-modal.component';
+import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +9,9 @@ import { SimpleModalComponent } from '../../../ng-elements/src/lib/modals/compon
 export class AppComponent implements AfterViewInit {
   title = 'playground';
 
-  public constructor(private dynamicModalService: DynamicModalService) {
+  public constructor(public deviceService: DeviceService) {
   }
 
-  async ngAfterViewInit(): Promise<void> {
-    await this.dynamicModalService.showModal(SimpleModalComponent);
+  public async ngAfterViewInit(): Promise<void> {
   }
 }

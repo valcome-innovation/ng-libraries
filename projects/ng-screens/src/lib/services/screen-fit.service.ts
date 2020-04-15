@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { ScreensModule } from '../screens.module';
-import * as getInnerHeight_ from 'ios-inner-height';
 import { DeviceService } from './device.service';
+
+import * as getInnerHeight_ from 'ios-inner-height';
 const getInnerHeight = getInnerHeight_;
 
 @Injectable({ providedIn: ScreensModule })

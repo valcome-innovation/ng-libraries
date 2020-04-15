@@ -12,6 +12,5 @@ describe('DeviceService', () => {
       providers: [DeviceService, DeviceDetectorService]
     });
     service = TestBed.inject(DeviceService);
-  })
-
-})
+  });
+});
