@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { JavascriptUtils } from 'ng-core';
-import { ScreensModule } from './screens.module';
+import { ScreensModule } from '../screens.module';
 
 @Injectable({ providedIn: ScreensModule })
 export class OrientationService {
