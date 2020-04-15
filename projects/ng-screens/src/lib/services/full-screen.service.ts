@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { OrientationService } from './orientation.service';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { ScreensModule } from './screens.module';
+import { ScreensModule } from '../screens.module';
 import screenfull, { Screenfull } from 'screenfull';
 
 const fullScreen = (screenfull.isEnabled) ? screenfull as Screenfull : undefined;

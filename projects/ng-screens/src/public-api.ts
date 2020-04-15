@@ -1,4 +1,4 @@
 export * from './lib/screens.module';
-export * from './lib/full-screen.service';
-export * from './lib/orientation.service';
-export * from './lib/screen-fit.service';
+export * from './lib/services/full-screen.service';
+export * from './lib/services/orientation.service';
+export * from './lib/services/screen-fit.service';

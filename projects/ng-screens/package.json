@@ -1,15 +1,30 @@
 {
-  "name": "ng-screens",
-  "version": "0.0.1",
-  "dependencies": {
-    "screenfull": "^5.0.2",
-    "ios-inner-height": "^1.1.1"
+  "name": "@valcome/ng-screens",
+  "version": "0.0.2",
+  "description": "A collection of handy services regarding screen orientation, screen size and fullscreen mode.",
+  "scripts": {
+    "preversion": "ng test ng-screens --watch=false",
+    "version": "ng build ng-screens --prod",
+    "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
+    "publish:patch": "npm version patch && cd ../../dist/ng-screens && npm publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-screens"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-screens#ngscreens",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
     "@valcome/ng-core": "^1.0.0",
     "ngx-device-detector": "^1.4.2",
+    "ios-inner-height": "^1.1.1",
+    "screenfull": "^5.0.2",
     "tslib": "^1.10.0"
   }
 }
