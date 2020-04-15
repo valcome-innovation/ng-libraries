@@ -6,7 +6,7 @@
     "preversion": "ng test ng-core --watch=false",
     "version": "ng build ng-core --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/ng-core && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/@valcome/ng-core && npm publish"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@
   "scripts": {
     "version": "ng build ng-animations --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/ng-animations && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/@valcome/ng-animations && npm publish"
   },
   "repository": {
     "type": "git",
