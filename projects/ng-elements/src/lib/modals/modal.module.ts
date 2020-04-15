@@ -11,5 +11,4 @@ import { BaseModalComponent } from './components/base-modal/base-modal.component
 export class ModalModule {
 }
 
-export * from './services/dynamic-modal.service';
 export * from './components/base-dynamic-modal.component';
