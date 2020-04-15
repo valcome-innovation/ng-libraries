@@ -34,6 +34,10 @@
       "ng-screens": [
         "dist/ng-screens/ng-screens",
         "dist/ng-screens"
+      ],
+      "ng-styles": [
+        "dist/ng-styles/ng-styles",
+        "dist/ng-styles"
       ]
     }
   },
