@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-screens",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A collection of handy services regarding screen orientation, screen size and fullscreen mode.",
   "scripts": {
     "preversion": "ng test ng-screens --watch=false",
