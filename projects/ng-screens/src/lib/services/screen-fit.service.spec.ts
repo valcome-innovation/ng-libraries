@@ -17,4 +17,8 @@ describe('ScreenFitService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should not throw errors', () => {
+    expect(service.fitPage.bind(service)).not.toThrow();
+  });
 });

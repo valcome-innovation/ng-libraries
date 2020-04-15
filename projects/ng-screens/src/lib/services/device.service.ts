@@ -13,13 +13,16 @@ export class DeviceService extends DeviceDetectorService {
     return this.isMobile() || this.isTablet();
   }
 
+  public isSafari(): boolean {
+    return this.browser.toLowerCase().indexOf('safari') !== -1;
+  }
+
   public isIOS(): boolean {
-    let ua = window.navigator.userAgent;
+    let ua = this.getUserAgent();
     return !!ua?.match(/iPad/i) || !!ua?.match(/iPhone/i);
   }
 
-  public isSafari(): boolean {
-    let ua = window.navigator.userAgent;
-    return ua.toLowerCase().indexOf('safari') !== -1;
+  public getUserAgent(): string {
+    return window?.navigator?.userAgent;
   }
 }
