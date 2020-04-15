@@ -1,7 +1,7 @@
 import { animate, AnimationTriggerMetadata, keyframes, style, transition, trigger } from '@angular/animations';
 import { AnimationConfig, animationConfigDefault } from '../model/animation-config';
 
-export function bubble(animationConfig: AnimationConfig, key: string = 'bubble'): AnimationTriggerMetadata {
+export function bubble(animationConfig: AnimationConfig = {}, key: string = 'bubble'): AnimationTriggerMetadata {
   animationConfig = {...animationConfigDefault, ...animationConfig};
 
   return trigger(key, [
