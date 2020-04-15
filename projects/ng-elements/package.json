@@ -6,7 +6,7 @@
     "preversion": "ng test ng-elements --watch=false",
     "version": "ng build ng-elements --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/@valcome/ng-elements && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/ng-elements && npm publish"
   },
   "repository": {
     "type": "git",
