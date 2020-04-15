@@ -5,6 +5,7 @@ import { AnimationEasing } from '../model/enum/animation-easing';
 export function bubble(animationConfig: AnimationConfig = {},
                        outEasing: AnimationEasing = AnimationEasing.EASE_OUT_QUINT,
                        key: string = 'bubble'): AnimationTriggerMetadata {
+
   animationConfig = {...animationConfigDefault, ...animationConfig};
 
   return trigger(key, [
