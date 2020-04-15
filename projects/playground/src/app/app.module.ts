@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreAnimationsModule } from 'ng-animations';
 import { ModalModule } from 'ng-elements';
+import { DynamicModalService } from '../../../ng-elements/src/lib/modals/services/dynamic-modal.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ModalModule } from 'ng-elements';
     AppRoutingModule,
     CoreAnimationsModule
   ],
-  providers: [],
+  providers: [DynamicModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

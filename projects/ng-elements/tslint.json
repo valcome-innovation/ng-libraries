@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "lib",
+      "val",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "lib",
+      "val",
       "kebab-case"
     ],
     "no-inferrable-types": false
