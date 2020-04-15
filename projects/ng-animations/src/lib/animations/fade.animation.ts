@@ -1,7 +1,7 @@
 import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
 import { AnimationValueConfig, animationValueConfigDefault } from '../model/animation-value-config';
 
-export function fade(animationConfig: AnimationValueConfig, key: string = 'fade'): AnimationTriggerMetadata {
+export function fade(animationConfig: AnimationValueConfig = {}, key: string = 'fade'): AnimationTriggerMetadata {
   animationConfig = {...animationValueConfigDefault, ...animationConfig};
 
   console.log(JSON.stringify(animationConfig));

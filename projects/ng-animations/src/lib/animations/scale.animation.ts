@@ -1,7 +1,9 @@
 import { animate, AnimationTriggerMetadata, style, transition, trigger } from '@angular/animations';
-import { AnimationValueConfig } from '../model/animation-value-config';
+import { AnimationValueConfig, animationValueConfigDefault } from '../model/animation-value-config';
 
-export function scale(animationConfig: AnimationValueConfig, key: string = 'scale'): AnimationTriggerMetadata {
+export function scale(animationConfig: AnimationValueConfig = {}, key: string = 'scale'): AnimationTriggerMetadata {
+  animationConfig = {...animationValueConfigDefault, ...animationConfig};
+
   return trigger(key, [
     transition(':enter', [
       style({ transform: `scale(${animationConfig.startValue})` }),
