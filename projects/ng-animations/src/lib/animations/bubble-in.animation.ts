@@ -7,9 +7,9 @@ export function bubble(animationConfig: AnimationConfig = {}, key: string = 'bub
   return trigger(key, [
     transition(':enter', [
       animate(
-        `${animationConfig.inTime}ms ${animationConfig.outTime}ms ${animationConfig.easing}`,
+        `${animationConfig.inTime}ms ${animationConfig.inDelay}ms ${animationConfig.easing}`,
         keyframes([
-          style({ transform: 'scale(.5)', offset: 0 }),
+          style({ transform: 'scale(0)', offset: 0 }),
           style({ transform: 'scale(1.5)', offset: .5 }),
           style({ transform: 'scale(1)', offset: 1 })
         ])
