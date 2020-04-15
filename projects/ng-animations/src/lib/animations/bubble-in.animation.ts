@@ -1,7 +1,10 @@
 import { animate, AnimationTriggerMetadata, keyframes, style, transition, trigger } from '@angular/animations';
 import { AnimationConfig, animationConfigDefault } from '../model/animation-config';
+import { AnimationEasing } from '../model/enum/animation-easing';
 
-export function bubble(animationConfig: AnimationConfig = {}, key: string = 'bubble'): AnimationTriggerMetadata {
+export function bubble(animationConfig: AnimationConfig = {},
+                       outEasing: AnimationEasing = AnimationEasing.EASE_OUT_QUINT,
+                       key: string = 'bubble'): AnimationTriggerMetadata {
   animationConfig = {...animationConfigDefault, ...animationConfig};
 
   return trigger(key, [
@@ -19,7 +22,7 @@ export function bubble(animationConfig: AnimationConfig = {}, key: string = 'bub
     transition(':leave', [
       style({ transform: 'scale(1)' }),
       animate(
-        `${animationConfig.outTime}ms ${animationConfig.outDelay}ms ${animationConfig.easing}`,
+        `${animationConfig.outTime}ms ${animationConfig.outDelay}ms ${outEasing}`,
         style({ transform: 'scale(0)' })
       )
     ])
