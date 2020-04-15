@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { ScreensModule } from '../screens.module';
+import { DeviceService } from './device.service';
+
 import * as getInnerHeight_ from 'ios-inner-height';
 const getInnerHeight = getInnerHeight_;
 
 @Injectable({ providedIn: ScreensModule })
 export class ScreenFitService {
 
-  public isIOS: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-  public constructor() {
-    this.isIOS.next(this.getIsIOS());
+  public constructor(private deviceService: DeviceService) {
   }
 
   public fitPage(): void {
     let innerHeight: number = getInnerHeight();
     let addition: number = 0;
 
-    if (this.isIOS.getValue() && this.getIsSafari()) {
+    if (this.deviceService.isIOS() && this.deviceService.isSafari()) {
       addition = 1;
     }
 
@@ -27,15 +25,5 @@ export class ScreenFitService {
 
   public resetPageFit(): void {
     document.body.style.height = '100%';
-  }
-
-  public getIsIOS(): boolean {
-    let ua = window.navigator.userAgent;
-    return !!ua?.match(/iPad/i) || !!ua?.match(/iPhone/i);
-  }
-
-  public getIsSafari(): boolean {
-    let ua = window.navigator.userAgent;
-    return ua.toLowerCase().indexOf('safari') !== -1;
   }
 }

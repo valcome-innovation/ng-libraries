@@ -1,10 +1,9 @@
 // @ts-ignore
 import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { OrientationService } from './orientation.service';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import { ScreensModule } from '../screens.module';
 import screenfull, { Screenfull } from 'screenfull';
+import { DeviceService } from './device.service';
 
 const fullScreen = (screenfull.isEnabled) ? screenfull as Screenfull : undefined;
 
@@ -13,8 +12,7 @@ export class FullScreenService {
 
   public isFullScreen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  public constructor(private orientationService: OrientationService,
-                     private deviceDetectorService: DeviceDetectorService) {
+  public constructor(private deviceService: DeviceService) {
     this.setupFullScreenOnErrorListener();
     this.listenToFullScreenChange();
   }
@@ -32,7 +30,7 @@ export class FullScreenService {
   }
 
   public async goFullScreenIfMobile(): Promise<void> {
-    if ((this.deviceDetectorService.isMobile() || this.deviceDetectorService.isTablet())) {
+    if ((this.deviceService.isMobileOrTablet())) {
       return this.goFullScreen();
     }
   }
@@ -41,14 +39,7 @@ export class FullScreenService {
     if (fullScreen?.isEnabled) {
       fullScreen.on('change', () => {
         this.isFullScreen.next(fullScreen.isFullscreen);
-        this.lockOrientationIfFullScreen(fullScreen.isFullscreen);
       });
-    }
-  }
-
-  private lockOrientationIfFullScreen(isFullScreen: boolean): void {
-    if (isFullScreen) {
-      this.orientationService.lockToLandscape();
     }
   }
 

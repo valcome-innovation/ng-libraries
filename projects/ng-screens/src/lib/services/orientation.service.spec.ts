@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { OrientationService } from './orientation.service';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import { ScreensModule } from '../screens.module';
+import { DeviceService } from './device.service';
 
 describe('OrientationService', () => {
   let service: OrientationService;
@@ -10,7 +10,7 @@ describe('OrientationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ScreensModule],
-      providers: [DeviceDetectorService, OrientationService]
+      providers: [OrientationService, DeviceService]
     });
     service = TestBed.inject(OrientationService);
   });
