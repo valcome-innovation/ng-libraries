@@ -1,6 +1,23 @@
 {
-  "name": "ng-elements",
+  "name": "@valcome/ng-elements",
   "version": "0.0.1",
+  "description": "A collection of angular components, directives, services and more, which we use in our projects\n",
+  "scripts": {
+    "preversion": "ng test ng-elements --watch=false",
+    "version": "ng build ng-elements --prod",
+    "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
+    "publish:patch": "npm version patch && cd ../../dist/ng-elements && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-elements"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-elements#ngelements",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
     "@angular/core": "^9.0.7",
