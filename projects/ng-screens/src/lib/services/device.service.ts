@@ -10,7 +10,7 @@ export class DeviceService extends DeviceDetectorService {
   }
 
   public isMobileOrTablet(): boolean {
-    return this.isMobile() || this.isMobileOrTablet();
+    return this.isMobile() || this.isTablet();
   }
 
   public isIOS(): boolean {
