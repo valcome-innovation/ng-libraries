@@ -1,0 +1,9 @@
+@function font-color-mixed($color, $factor) {
+  @return if(red($color) * 0.299 + green($color) * 0.587 + blue($color) * 0.114 > 186,
+          mix(#000000, $color, $factor), mix(#ffffff, $color, $factor)
+  );
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}

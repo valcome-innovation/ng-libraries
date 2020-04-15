@@ -1,5 +1,20 @@
 {
-  "name": "ng-styles",
+  "name": "@valcome/ng-styles",
   "version": "0.0.1",
+  "description": "Some scss files for easier development",
+  "scripts": {
+    "build": "cp -r ./src/lib/* ./dist/",
+    "publish:patch": "npm run build && npm version patch && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-styles"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-styles#ngstyles",
   "peerDependencies": {}
 }

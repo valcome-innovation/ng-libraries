@@ -1,0 +1,11 @@
+@import '../tools';
+
+.btn {
+  background-color: $light-grey-bg;
+  font-family: $neutral-font;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  cursor: pointer;
+}

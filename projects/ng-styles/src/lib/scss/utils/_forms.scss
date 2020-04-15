@@ -1,0 +1,17 @@
+@import '../tools';
+
+.form-invalid {
+  border-color: $red !important;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-error {
+  position: absolute;
+  font-size: .75em;
+  width: 100%;
+  top: 100%;
+  color: $red;
+}
