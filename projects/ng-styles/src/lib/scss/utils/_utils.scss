@@ -1,5 +1,59 @@
 @import "../tools";
 
+.absolute-middle {
+  position: absolute;
+  top: 50%;
+  height: 0;
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: 0;
+  height: 0;
+}
+
+.absolute-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.absolute-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.fixed-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.fixed-centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-centered-full {
+  @extend .flex-centered;
+  height: 100%;
+  width: 100%;
+}
+
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -852,7 +906,7 @@
 }
 
 .bg-light {
-  background-color: $light-grey-bg !important;
+  background-color: $light-bg !important;
 }
 
 .bg-dark {

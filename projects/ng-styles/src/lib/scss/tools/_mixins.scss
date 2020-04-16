@@ -1,74 +1,14 @@
 @import 'variables';
 
-@mixin absoluteMiddle() {
-  position: absolute;
-  top: 50%;
-  height: 0;
-}
-
-@mixin absoluteBottom() {
-  position: absolute;
-  bottom: 0;
-  height: 0;
-}
-
-@mixin absoluteFull() {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@mixin absoluteCenter() {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin fixedFull() {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@mixin fixedCenter() {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin flexCenter() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
 @mixin improvedImageRendering() {
   -webkit-backface-visibility: hidden;
-  -ms-transform: translateZ(0); /* IE 9 */
-  -webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
   transform: translateZ(0);
 }
 
 @mixin placeholderColor($color: #000000) {
-  &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  &::placeholder {
     color: $color !important;
     opacity: 1;
-  }
-
-  &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: $color !important;
-  }
-
-  &::-ms-input-placeholder { /* Microsoft Edge */
-    color: $color !important;
   }
 }
 
