@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { ArrayUtils } from '@valcome/ng-core';
 
 @Component({
   selector: 'lib-skeleton-loader',
   templateUrl: './skeleton-loader.component.html',
-  styleUrls: ['./skeleton-loader.component.css']
+  styleUrls: ['./skeleton-loader.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SkeletonLoaderComponent implements OnInit {
 
@@ -13,8 +15,6 @@ export class SkeletonLoaderComponent implements OnInit {
   public skeletons: number[] = [];
 
   public ngOnInit(): void {
-    this.skeletons = Array.from(new Array(this.amount), (x,i) => i+1)
+    this.skeletons = ArrayUtils.createArrayFromNumber(this.amount);
   }
-
-
 }

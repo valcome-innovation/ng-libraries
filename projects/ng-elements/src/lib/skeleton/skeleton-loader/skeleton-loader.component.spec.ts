@@ -22,4 +22,8 @@ describe('SkeletonLoaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create with valid skeleton list', () => {
+    expect(component.skeletons.length).toBe(component.amount);
+  });
 });

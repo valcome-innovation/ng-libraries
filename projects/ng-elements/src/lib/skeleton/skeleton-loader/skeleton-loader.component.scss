@@ -1,0 +1,36 @@
+.skeleton {
+    max-height: 100%;
+    overflow: hidden;
+
+    .skeleton-bg {
+        background-color: #c1c1c1;
+        background-image: linear-gradient(90deg, #e4e4e4 0px, rgba(206, 206, 206, 0.8) 40px, #e4e4e4 80px);
+        background-size: 600px;
+
+        &.line {
+            animation: shine-lines 2s infinite ease-out;
+        }
+
+        &.square {
+            animation: shine-square 2s infinite ease-out;
+        }
+    }
+}
+
+@keyframes shine-lines {
+    0% {
+        background-position: -100px;
+    }
+    40%, 100% {
+        background-position: 140px;
+    }
+}
+
+@keyframes shine-square {
+    0% {
+        background-position: -32px;
+    }
+    40%, 100% {
+        background-position: 208px;
+    }
+}
