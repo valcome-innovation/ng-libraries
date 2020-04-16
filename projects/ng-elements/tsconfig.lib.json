@@ -12,7 +12,6 @@
     ],
     "paths": {
       "@valcome/ng-core": [
-        "dist/ng-core/ng-core",
         "dist/ng-core"
       ]
     }
