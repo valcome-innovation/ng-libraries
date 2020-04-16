@@ -44,4 +44,12 @@ describe('ArrayUtils', () => {
     expect(mappedValues).toEqual([1, 2, 3]);
   });
 
+  it('should generate array from number', () => {
+    let actual = ArrayUtils.createArrayFromNumber(10);
+    expect(actual.length).toBe(10);
+    expect(actual[4]).toBe(5);
+
+    actual = ArrayUtils.createArrayFromNumber(-2);
+    expect(actual.length).toBe(0);
+  });
 });

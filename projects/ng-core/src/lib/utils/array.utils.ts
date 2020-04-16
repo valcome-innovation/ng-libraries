@@ -44,4 +44,12 @@ export class ArrayUtils {
 
     return result;
   }
+
+  public static createArrayFromNumber(amount: number): number [] {
+    if (amount != null && amount > 0) {
+      return Array.from(new Array(amount), (x, i: number) => i+1)
+    } else {
+      return [];
+    }
+  }
 }
