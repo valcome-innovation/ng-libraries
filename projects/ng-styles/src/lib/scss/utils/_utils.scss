@@ -9,7 +9,6 @@
 .absolute-bottom {
   position: absolute;
   bottom: 0;
-  height: 0;
 }
 
 .absolute-full {
@@ -52,6 +51,11 @@
   @extend .flex-centered;
   height: 100%;
   width: 100%;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
 }
 
 .align-baseline {
