@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ArrayUtils } from '@valcome/ng-core';
 
 @Component({
-  selector: 'lib-skeleton-loader',
+  selector: 'val-skeleton-loader',
   templateUrl: './skeleton-loader.component.html',
   styleUrls: ['./skeleton-loader.component.scss'],
   encapsulation: ViewEncapsulation.None

@@ -1,3 +1,5 @@
 <div class="skeleton">
-    <ng-content></ng-content>
+    <ng-template *ngFor="let skeletons of skeletons">
+        <ng-content></ng-content>
+    </ng-template>
 </div>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-skeleton-line',
+  selector: 'val-skeleton-line',
   templateUrl: './skeleton-line.component.html',
   styleUrls: ['./skeleton-line.component.scss']
 })
