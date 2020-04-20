@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-styles",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Some scss files for easier development",
   "main": "dist/scss/styles.scss",
   "scripts": {
