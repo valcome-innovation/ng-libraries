@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkeletonLoaderComponent } from './skeleton-loader.component';
+import { CommonModule } from '@angular/common';
 
 describe('SkeletonLoaderComponent', () => {
   let component: SkeletonLoaderComponent;
@@ -8,7 +9,8 @@ describe('SkeletonLoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SkeletonLoaderComponent ]
+      declarations: [ SkeletonLoaderComponent ],
+      imports: [CommonModule]
     })
     .compileComponents();
   }));
