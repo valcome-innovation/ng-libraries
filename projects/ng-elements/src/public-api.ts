@@ -18,3 +18,7 @@ export * from './lib/wizard/wizard-step';
 export * from './lib/wizard/base-wizard.component';
 
 export * from './lib/form/base-form-component';
+
+export * from './lib/skeleton/skeleton.module';
+export * from './lib/skeleton/skeleton-loader/skeleton-loader.component';
+export * from './lib/skeleton/skeleton-loader/skeleton-line/skeleton-line.component';
