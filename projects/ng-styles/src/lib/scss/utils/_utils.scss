@@ -1,5 +1,19 @@
 @import "../tools";
 
+.scroll-parent-height {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.scroll-parent-flex {
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+  flex: 1;
+}
+
 .absolute-middle {
   position: absolute;
   top: 50%;
