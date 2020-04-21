@@ -8,11 +8,11 @@
         background-size: 1000px;
 
         &.line {
-            animation: shine-lines 3s infinite ease-out;
+            animation: shine-lines 5s infinite ease-out;
         }
 
         &.square {
-            animation: shine-square 3s infinite ease-out;
+            animation: shine-square 5s infinite ease-out;
         }
     }
 }
@@ -21,8 +21,8 @@
     0% {
         background-position: -100px;
     }
-    40%, 100% {
-        background-position: 300px;
+    100% {
+        background-position: 1300px;
     }
 }
 
@@ -30,7 +30,7 @@
     0% {
         background-position: -32px;
     }
-    40%, 100% {
-        background-position: 400px;
+    100% {
+        background-position: 1400px;
     }
 }
