@@ -4,8 +4,6 @@ import { AnimationValueConfig, animationValueConfigDefault } from '../model/anim
 export function fade(animationConfig: AnimationValueConfig = {}, key: string = 'fade'): AnimationTriggerMetadata {
   animationConfig = {...animationValueConfigDefault, ...animationConfig};
 
-  console.log(JSON.stringify(animationConfig));
-
   return trigger(key, [
     transition(':enter', [
       style({ opacity: animationConfig.startValue }),
