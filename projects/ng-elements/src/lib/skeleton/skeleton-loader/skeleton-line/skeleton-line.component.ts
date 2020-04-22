@@ -11,7 +11,7 @@ export class SkeletonLineComponent implements OnInit {
   public widthInterval: number[] = [];
 
   @Input()
-  public widthUnit: string = 'px';
+  public unit: string = 'px';
 
   public width: string = '100%';
 
@@ -30,7 +30,6 @@ export class SkeletonLineComponent implements OnInit {
   }
 
   private generateWidthString(width: number): string {
-    return width + this.widthUnit;
+    return width + this.unit;
   }
-
 }

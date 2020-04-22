@@ -51,7 +51,7 @@
       "projectType": "library",
       "root": "projects/ng-animations",
       "sourceRoot": "projects/ng-animations/src",
-      "prefix": "lib",
+      "prefix": "val",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -92,7 +92,7 @@
       "projectType": "library",
       "root": "projects/ng-elements",
       "sourceRoot": "projects/ng-elements/src",
-      "prefix": "lib",
+      "prefix": "val",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -112,7 +112,10 @@
             "main": "projects/ng-elements/src/test.ts",
             "codeCoverage": true,
             "tsConfig": "projects/ng-elements/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-elements/karma.conf.js"
+            "karmaConfig": "projects/ng-elements/karma.conf.js",
+            "codeCoverageExclude": [
+              "**/lib/file-picker/**"
+            ]
           }
         },
         "lint": {
@@ -133,7 +136,7 @@
       "projectType": "library",
       "root": "projects/ng-screens",
       "sourceRoot": "projects/ng-screens/src",
-      "prefix": "lib",
+      "prefix": "val",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

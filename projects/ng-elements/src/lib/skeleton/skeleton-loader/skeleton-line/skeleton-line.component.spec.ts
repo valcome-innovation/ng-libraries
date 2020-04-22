@@ -39,7 +39,7 @@ describe('SkeletonLineComponent', () => {
 
   it('should get the width unit right', () => {
     component.widthInterval = [77]
-    component.widthUnit = 'vw';
+    component.unit = 'vw';
     component.ngOnInit();
 
     expect(component.width).toBe('77vw');
