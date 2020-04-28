@@ -2,7 +2,7 @@ import { ShareData } from '../model/share-data';
 
 export class ShareUtils {
 
-  private static readonly nav: any =  window.navigator;
+  private static readonly nav: any =  window?.navigator;
 
   public static shareData(data: ShareData): Promise<void> {
     if (this.isShareSupported()) {
