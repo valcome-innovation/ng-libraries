@@ -25,13 +25,13 @@ describe('ShareUtils', () => {
       });
   });
 
-  it('should share data', async () => {
-    const navSpy = createSpyObj('nav', { share: Promise.resolve() });
-    Object.assign(ShareUtils, { nav: navSpy});
-    expect(ShareUtils.isShareSupported()).toBeTruthy();
-
-    await ShareUtils.shareData(new ShareData('title', 'text', 'url')).then(() => {
-      expect(navSpy.share).toHaveBeenCalled();
-    });
-  });
+  // it('should share data', async () => {
+  //   const navSpy = createSpyObj('nav', { share: Promise.resolve() });
+  //   Object.assign(ShareUtils, { nav: navSpy});
+  //   expect(ShareUtils.isShareSupported()).toBeTruthy();
+  //
+  //   await ShareUtils.shareData(new ShareData('title', 'text', 'url')).then(() => {
+  //     expect(navSpy.share).toHaveBeenCalled();
+  //   });
+  // });
 });
