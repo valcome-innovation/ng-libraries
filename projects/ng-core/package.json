@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Angular core utils and base classes",
   "scripts": {
     "version": "ng build ng-core --prod",
