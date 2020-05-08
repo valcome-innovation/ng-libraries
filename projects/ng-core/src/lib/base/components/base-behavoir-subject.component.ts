@@ -1,11 +1,14 @@
 import { BehaviorSubject } from 'rxjs';
 import { BaseSubscriptionComponent } from './base-subscription.component';
-import { JavascriptUtils } from '../../utils/javascript.utils';
 
 export class BaseBehaviorSubjectComponent extends BaseSubscriptionComponent {
   protected listen<T>(behaviorSubject: BehaviorSubject<T>, onChange: (value: T) => void): void {
-    let newInstance: any = JavascriptUtils.clone<T>(behaviorSubject?.getValue());
-    onChange(newInstance);
+    onChange({... behaviorSubject?.getValue()});
+    this.addSub(behaviorSubject?.subscribe(onChange));
+  }
+
+  protected listenTyped<T>(behaviorSubject: BehaviorSubject<T>, type: any, onChange: (value: T) => void): void {
+    onChange(Object.assign(new type, { ...behaviorSubject?.getValue() }));
     this.addSub(behaviorSubject?.subscribe(onChange));
   }
 }
