@@ -1,4 +1,4 @@
-export class JavascriptUtils {
+export class JsUtils {
   public static callAfterStackResolved(callback: () => any): void {
     setTimeout(() => callback(), 0);
   }
@@ -7,7 +7,16 @@ export class JavascriptUtils {
     return JSON.parse(JSON.stringify(customObject));
   }
 
-  public static getInstantiatedObject<T>(object: T, constructor: new() => T): T {
+
+  public static immute(object: any): any {
+    return { ...object };
+  }
+
+  public static immuteTyped<T>(object: T, constructor: new() => T): T {
+    return Object.assign(new constructor(), { ...object });
+  }
+
+  public static getInstantiatedObject<T>(object: T, constructor): T {
     if (object == null) {
       return new constructor();
     } else {

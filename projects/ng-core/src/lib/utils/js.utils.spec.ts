@@ -1,4 +1,4 @@
-import { JavascriptUtils } from './javascript.utils';
+import { JsUtils } from './js.utils';
 
 class Basic {
   public value: number;
@@ -12,15 +12,15 @@ class Basic {
   }
 }
 
-describe('JavascriptUtils', () => {
+describe('JsUtils', () => {
   it('should return instantiated object', () => {
-    let result = JavascriptUtils.getInstantiatedObject<Basic>(null, Basic);
+    let result = JsUtils.getInstantiatedObject<Basic>(null, Basic);
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(0);
     expect(result.text).toEqual(null);
 
     const basic = new Basic(10, 'Text');
-    result = JavascriptUtils.getInstantiatedObject(basic, Basic);
+    result = JsUtils.getInstantiatedObject(basic, Basic);
     expect(result).toEqual(basic);
     expect(result.value).toEqual(basic.value);
     expect(result.text).toEqual(basic.text);
@@ -32,25 +32,25 @@ describe('JavascriptUtils', () => {
     };
 
     spyOn(printer, 'print');
-    JavascriptUtils.callAfterStackResolved(() => printer.print());
+    JsUtils.callAfterStackResolved(() => printer.print());
 
     expect(printer.print).toHaveBeenCalledTimes(0);
   });
 
   it('should map to plain javascript object', () => {
     const basic = new Basic(10, 'Text');
-    const result = JavascriptUtils.mapToPlainJavascriptObject(basic);
+    const result = JsUtils.mapToPlainJavascriptObject(basic);
     expect(result).not.toBeInstanceOf(Basic);
     expect(result.value).toEqual(basic.value);
     expect(result.text).toEqual(basic.text);
   });
 
   it('should clone source object', () => {
-    let result: any = JavascriptUtils.clone(null);
+    let result: any = JsUtils.clone(null);
     expect(result).toBeNull();
 
     const basic = new Basic(10, 'Text');
-    result = JavascriptUtils.clone<Basic>(basic);
+    result = JsUtils.clone<Basic>(basic);
     expect(result).not.toBe(basic);
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(10);
@@ -61,7 +61,7 @@ describe('JavascriptUtils', () => {
   it('should clone source object and nested object', () => {
     const nested: Basic = new Basic(20, 'Nested', null);
     const basic = new Basic(10, 'Text', nested);
-    const result = JavascriptUtils.clone<Basic>(basic);
+    const result = JsUtils.clone<Basic>(basic);
 
     expect(result.nested).toBeInstanceOf(Basic);
     expect(result.nested).not.toBe(nested);
@@ -72,13 +72,13 @@ describe('JavascriptUtils', () => {
 
   it('should clone source object with nested arrays', () => {
     let basic = new Basic(10, 'Text', [1, 2 , 3]);
-    let result = JavascriptUtils.clone<Basic>(basic);
+    let result = JsUtils.clone<Basic>(basic);
     expect(result.nested).toBeInstanceOf(Array);
     expect(result.nested.length).toEqual(3);
 
     const nested = new Basic(20, 'Nested', [1, 2 , 3]);
     basic = new Basic(10, 'Text', nested);
-    result = JavascriptUtils.clone<Basic>(basic);
+    result = JsUtils.clone<Basic>(basic);
     expect(result.nested).not.toBe(nested);
     expect(result.nested.nested).toBeInstanceOf(Array);
     expect(result.nested.nested.length).toEqual(3);
@@ -86,28 +86,47 @@ describe('JavascriptUtils', () => {
 
   it('should clone source object with nested Date', () => {
     let basic = new Basic(10, 'Text', new Date());
-    let result = JavascriptUtils.clone<Basic>(basic);
+    let result = JsUtils.clone<Basic>(basic);
     expect(result.nested).toBeInstanceOf(Date);
 
     const nested = new Basic(20, 'Nested', new Date());
     basic = new Basic(10, 'Text', nested);
-    result = JavascriptUtils.clone<Basic>(basic);
+    result = JsUtils.clone<Basic>(basic);
     expect(result.nested).not.toBe(nested);
     expect(result.nested.nested).toBeInstanceOf(Date);
   });
 
   it('should return same instance', () => {
     const input = 1;
-    const result = JavascriptUtils.clone(input);
+    const result = JsUtils.clone(input);
     expect(result).toBe(input);
   });
 
   it('should map native types from json', () => {
     const json = { value: 1, text: 'some text', array: [1, 2, 3] };
-    const result: Basic = JavascriptUtils.fromJson(json, Basic);
+    const result: Basic = JsUtils.fromJson(json, Basic);
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(1);
     expect(result.text).toEqual('some text');
     expect(result['array']).toBeUndefined();
+  });
+
+  it('should immute object', () => {
+    let object: any = { value: 20 }
+    let copy: any = JsUtils.immute(object);
+
+    object.value = 10;
+
+    expect(copy.value).toBe(20);
+  });
+
+  it('should immute object with type', () => {
+    let object: Basic = new Basic(20);
+    let copy: Basic = JsUtils.immuteTyped<Basic>(object, Basic);
+
+    object.value = 10;
+
+    expect(copy.value).toBe(20);
+    expect(copy).toBeInstanceOf(Basic);
   });
 });

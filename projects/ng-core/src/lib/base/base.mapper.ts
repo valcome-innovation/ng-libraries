@@ -1,4 +1,4 @@
-import { JavascriptUtils } from '../utils/javascript.utils';
+import { JsUtils } from '../utils/js.utils';
 
 export abstract class BaseMapper<T> {
 
@@ -6,11 +6,11 @@ export abstract class BaseMapper<T> {
   }
 
   public toJson(instance: T | T[]): any {
-    return JavascriptUtils.clone<T>(instance);
+    return JsUtils.clone<T>(instance);
   }
 
   public fromJson(json: any | any[]): T {
-    return JavascriptUtils.fromJson<T>(json, this.type);
+    return JsUtils.fromJson<T>(json, this.type);
   }
 
   public fromJsonArray(jsonArray: any[]): T[] {
