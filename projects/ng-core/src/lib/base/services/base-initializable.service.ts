@@ -4,7 +4,7 @@ export abstract class BaseInitializableService {
   
   protected isInitialized$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  protected initialize(): void {
+  protected setAsInitialize(): void {
     this.isInitialized$.next(true);
   }
 

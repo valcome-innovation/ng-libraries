@@ -17,19 +17,19 @@ describe('BaseInitializableService', () => {
   });
 
   it('should initialize after calling', () => {
-    service.initialize();
+    service.setAsInitialize();
     expect(service.isInitialized()).toBeTruthy();
   });
 
   it('should wait for initialization', async () => {
-    setTimeout(() => service.initialize(), 250);
+    setTimeout(() => service.setAsInitialize(), 250);
 
     await service.waitUntilInitialized();
     expect(service.isInitialized()).toBeTruthy();
   });
 
   it('should pass if preInitialised', async () => {
-    service.initialize();
+    service.setAsInitialize();
     await service.waitUntilInitialized();
     expect(service.isInitialized()).toBeTruthy();
   });
@@ -44,8 +44,8 @@ describe('BaseInitializableService', () => {
 })
 
 class BaseInitializableServiceSpec extends BaseInitializableService {
-  public initialize(): void {
-    super.initialize();
+  public setAsInitialize(): void {
+    super.setAsInitialize();
   }
 
   public createError(): void {
