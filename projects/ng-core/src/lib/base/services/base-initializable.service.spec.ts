@@ -45,7 +45,7 @@ describe('BaseInitializableService', () => {
 
 class BaseInitializableServiceSpec extends BaseInitializableService {
   public initialize(): void {
-    this.isInitialized$.next(true);
+    super.initialize();
   }
 
   public createError(): void {

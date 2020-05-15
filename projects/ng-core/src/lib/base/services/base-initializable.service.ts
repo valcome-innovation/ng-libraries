@@ -4,6 +4,10 @@ export abstract class BaseInitializableService {
   
   protected isInitialized$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  protected initialize(): void {
+    this.isInitialized$.next(true);
+  }
+
   public isInitialized(): boolean {
     return this.isInitialized$.getValue();
   }
