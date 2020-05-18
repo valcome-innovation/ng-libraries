@@ -7,9 +7,8 @@ export class JsUtils {
     return JSON.parse(JSON.stringify(customObject));
   }
 
-
   public static immute(object: any): any {
-    return { ...object };
+    return Object.assign({}, { ...object });
   }
 
   public static immuteTyped<T>(object: T, type: new() => T): T {
