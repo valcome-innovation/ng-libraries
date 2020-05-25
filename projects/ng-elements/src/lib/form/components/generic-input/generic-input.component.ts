@@ -48,7 +48,7 @@ export class GenericInputComponent extends BaseComponent implements OnInit {
 
   private hideOrDisplayErrorMessages(): void {
     this.errorMessages.forEach((errorMessage: FormErrorMessageDirective) => {
-      if (this.formControl.hasError(errorMessage.errorType)) {
+      if (this.formControl.touched && this.formControl.hasError(errorMessage.errorType)) {
         errorMessage.showError();
       } else {
         errorMessage.hideError();

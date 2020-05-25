@@ -1,5 +1,5 @@
 <!--suppress ALL -->
-<div [formGroup]="form" class="form-group">
+<div [formGroup]="form" class="input-group">
     <label *ngIf="label != null"
            [for]="id">
         {{label}}
@@ -9,5 +9,7 @@
            [placeholder]="placeholder"
            [formControlName]="formName"
            [ngClass]="{'invalid': isValid}">
-    <ng-content></ng-content>
+    <div class="input-errors">
+        <ng-content></ng-content>
+    </div>
 </div>

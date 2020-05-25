@@ -10,8 +10,9 @@ describe('GenericInputComponent', () => {
 
   let formControlSpy: any = {
     valueChanges: valueChange.asObservable(),
+    hasError: createSpy('hasError').and.returnValue(false),
     valid: false,
-    hasError: createSpy('hasError').and.returnValue(false)
+    touched: true
   };
 
   beforeEach(() => {
