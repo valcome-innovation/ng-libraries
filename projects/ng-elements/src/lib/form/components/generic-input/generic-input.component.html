@@ -1,0 +1,13 @@
+<!--suppress ALL -->
+<div class="form-group">
+    <label *ngIf="label != null"
+           [for]="id">
+        {{label}}
+    </label>
+    <input [id]="id"
+           [type]="type"
+           [placeholder]="placeholder"
+           [formControlName]="formName"
+           [ngClass]="{'invalid': isValid}">
+    <ng-content></ng-content>
+</div>

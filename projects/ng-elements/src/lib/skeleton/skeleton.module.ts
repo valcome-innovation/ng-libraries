@@ -13,7 +13,8 @@ import { SkeletonSquareComponent } from './skeleton-loader/skeleton-square/skele
   ],
   exports: [
     SkeletonLoaderComponent,
-    SkeletonLineComponent
+    SkeletonLineComponent,
+    SkeletonSquareComponent
   ]
 })
 export class SkeletonModule {

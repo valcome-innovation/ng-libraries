@@ -17,8 +17,12 @@ export * from './lib/wizard/wizard.module';
 export * from './lib/wizard/wizard-step';
 export * from './lib/wizard/base-wizard.component';
 
-export * from './lib/form/base-form.component';
+export * from './lib/form/generic-forms.module';
+export * from './lib/form/components/generic-input/generic-input.component';
+export * from './lib/form/directives/form-error-message/form-error-message.directive';
+export * from './lib/form/model/form-error-type';
 
 export * from './lib/skeleton/skeleton.module';
 export * from './lib/skeleton/skeleton-loader/skeleton-loader.component';
 export * from './lib/skeleton/skeleton-loader/skeleton-line/skeleton-line.component';
+export * from './lib/skeleton/skeleton-loader/skeleton-square/skeleton-square.component';
