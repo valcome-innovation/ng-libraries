@@ -8,6 +8,7 @@ export class FormErrorMessageDirective {
   public errorType: FormErrorType | string;
 
   public constructor(private elementRef: ElementRef) {
+    this.hideError();
   }
 
   public hideError(): void {
