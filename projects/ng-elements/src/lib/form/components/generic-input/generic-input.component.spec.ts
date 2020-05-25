@@ -11,8 +11,7 @@ describe('GenericInputComponent', () => {
   let formControlSpy: any = {
     valueChanges: valueChange.asObservable(),
     hasError: createSpy('hasError').and.returnValue(false),
-    valid: false,
-    touched: true
+    valid: false
   };
 
   beforeEach(() => {
@@ -34,6 +33,15 @@ describe('GenericInputComponent', () => {
     component.ngOnInit();
     expect(component.id).toEqual('textInput');
     expect(component.isValid).toBeFalsy();
+  });
+
+  it('should validate form if submitted', () => {
+    formControlSpy.valid = true;
+    component.ngOnInit();
+
+    component.ngOnChanges({ isFormSubmitted: { currentValue: true } } as any);
+
+    expect(component.isValid).toBeTruthy();
   });
 
   it('should listen on changes and validate control', () => {

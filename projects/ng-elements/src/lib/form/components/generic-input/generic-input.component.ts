@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { Component, ContentChildren, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { FormErrorMessageDirective } from '../../directives/form-error-message/form-error-message.directive';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { BaseComponent } from '@valcome/ng-core';
@@ -7,7 +7,7 @@ import { BaseComponent } from '@valcome/ng-core';
   selector: 'val-generic-input',
   templateUrl: './generic-input.component.html'
 })
-export class GenericInputComponent extends BaseComponent implements OnInit {
+export class GenericInputComponent extends BaseComponent implements OnInit, OnChanges {
 
   @ContentChildren(FormErrorMessageDirective)
   public errorMessages: QueryList<FormErrorMessageDirective>;
@@ -27,10 +27,19 @@ export class GenericInputComponent extends BaseComponent implements OnInit {
   @Input()
   public type: string = 'text';
 
+  @Input()
+  public isFormSubmitted: boolean = false;
+
   public id: string;
   public isValid: boolean = false;
 
   private formControl: AbstractControl;
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue) {
+      this.handleFormValidation();
+    }
+  }
 
   public ngOnInit(): void {
     this.id = `${this.formName}Input`;

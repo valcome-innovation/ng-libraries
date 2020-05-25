@@ -21,7 +21,6 @@ export * from './lib/form/generic-forms.module';
 export * from './lib/form/components/generic-input/generic-input.component';
 export * from './lib/form/directives/form-error-message/form-error-message.directive';
 export * from './lib/form/model/form-error-type';
-export * from './lib/form/helper/form.helper';
 
 export * from './lib/skeleton/skeleton.module';
 export * from './lib/skeleton/skeleton-loader/skeleton-loader.component';
