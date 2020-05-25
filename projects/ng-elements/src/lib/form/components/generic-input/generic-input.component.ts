@@ -41,14 +41,18 @@ export class GenericInputComponent extends BaseComponent implements OnInit {
 
   private listenOnValueChanges(): void {
     this.addSub(this.formControl.valueChanges.subscribe(() => {
-      this.isValid = this.formControl.valid;
-      this.hideOrDisplayErrorMessages();
+      this.handleFormValidation()
     }));
+  }
+
+  private handleFormValidation(): void {
+    this.isValid = this.formControl.valid;
+    this.hideOrDisplayErrorMessages();
   }
 
   private hideOrDisplayErrorMessages(): void {
     this.errorMessages.forEach((errorMessage: FormErrorMessageDirective) => {
-      if (this.formControl.touched && this.formControl.hasError(errorMessage.errorType)) {
+      if (this.formControl.hasError(errorMessage.errorType)) {
         errorMessage.showError();
       } else {
         errorMessage.hideError();
