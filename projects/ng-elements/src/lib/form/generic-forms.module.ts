@@ -14,7 +14,8 @@ import { CommonModule } from '@angular/common';
     FormErrorMessageDirective],
   exports: [
     GenericInputComponent,
-    FormErrorMessageDirective
+    FormErrorMessageDirective,
+    ReactiveFormsModule
   ]
 })
 export class GenericFormsModule {
