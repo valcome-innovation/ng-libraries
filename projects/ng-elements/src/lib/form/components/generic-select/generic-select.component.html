@@ -1,5 +1,7 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<div [formGroup]="form" class="input-group select">
+<div [formGroup]="form" class="input-group select"
+     [ngClass]="{'invalid': !isValid}">
+
     <label *ngIf="label != null"
            [for]="id">
         {{label}}
@@ -7,9 +9,9 @@
 
     <select [id]="id"
             [formControlName]="formName"
-            [ngClass]="{'invalid': isValid}">
+            [ngClass]="{'empty': formControl?.value == null}">
 
-        <option hidden [selected]="placeholder != null">
+        <option hidden [value]="null">
             {{placeholder}}
         </option>
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ScreensModule } from '../screens.module';
 import { DeviceService } from './device.service';
-import { JavascriptUtils } from 'ng-core';
+import { JsUtils } from 'ng-core';
 
 @Injectable({ providedIn: ScreensModule })
 export class OrientationService {
@@ -22,7 +22,7 @@ export class OrientationService {
 
   private listenToOrientationChange(): void {
     window.addEventListener('orientationchange', () => {
-      JavascriptUtils.callAfterStackResolved(
+      JsUtils.callAfterStackResolved(
         this.emitScreenOrientation.bind(this)
       );
     });

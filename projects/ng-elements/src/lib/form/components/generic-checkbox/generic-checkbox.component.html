@@ -1,5 +1,7 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<div [formGroup]="form" class="input-group checkbox">
+<div [formGroup]="form" class="input-group checkbox"
+     [ngClass]="{'invalid': !isValid}">
+
     <label>
         <input type="checkbox"
                [formControlName]="formName">

@@ -20,7 +20,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   public id: string;
   public isValid: boolean = false;
 
-  protected formControl: AbstractControl;
+  public formControl: AbstractControl;
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue) {

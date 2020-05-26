@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreAnimationsModule } from 'ng-animations';
-import { ScreensModule } from 'ng-screens';
 import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
+import { GenericFormsModule } from 'projects/ng-elements/src/lib/form/generic-forms.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { DeviceService } from '../../../ng-screens/src/lib/services/device.servi
     AppRoutingModule,
     AppRoutingModule,
     CoreAnimationsModule,
-    ScreensModule
+    GenericFormsModule
   ],
   providers: [DeviceService],
   bootstrap: [AppComponent]

@@ -11,7 +11,4 @@ export class GenericRadioComponent extends BaseGenericFieldComponent {
   @Input()
   public options: DisplayValue[] = [];
 
-  @Input()
-  public checkedIndex: number = 0;
-
 }

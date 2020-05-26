@@ -1,5 +1,7 @@
 <!--suppress HtmlFormInputWithoutLabel -->
-<div [formGroup]="form" class="input-group text">
+<div [formGroup]="form" class="input-group text"
+     [ngClass]="{'invalid': !isValid}">
+
     <label *ngIf="label != null"
            [for]="id">
         {{label}}
@@ -8,8 +10,7 @@
     <input [id]="id"
            [type]="type"
            [placeholder]="placeholder"
-           [formControlName]="formName"
-           [ngClass]="{'invalid': isValid}">
+           [formControlName]="formName">
 
     <div class="input-errors">
         <ng-content></ng-content>
