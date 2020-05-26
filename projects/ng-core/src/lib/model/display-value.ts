@@ -1,8 +1,8 @@
 export class DisplayValue {
   public display: string;
-  public value: number;
+  public value: any;
 
-  public constructor(display: string, value: number) {
+  public constructor(display: string, value: any) {
     this.display = display;
     this.value = value;
   }

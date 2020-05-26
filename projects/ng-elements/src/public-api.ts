@@ -18,7 +18,10 @@ export * from './lib/wizard/wizard-step';
 export * from './lib/wizard/base-wizard.component';
 
 export * from './lib/form/generic-forms.module';
+export * from './lib/form/components/generic-radio/generic-radio.component';
 export * from './lib/form/components/generic-input/generic-input.component';
+export * from './lib/form/components/generic-select/generic-select.component';
+export * from './lib/form/components/generic-checkbox/generic-checkbox.component';
 export * from './lib/form/directives/form-error-message/form-error-message.directive';
 export * from './lib/form/model/form-error-type';
 

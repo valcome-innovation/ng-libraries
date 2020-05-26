@@ -1,11 +1,11 @@
-import { GenericInputComponent } from './generic-input.component';
+import { GenericSelectComponent } from './generic-select.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GenericFormsModule } from '../../generic-forms.module';
 
-describe('GenericInputComponent', () => {
+describe('GenericSelectComponent', () => {
 
-  let component: GenericInputComponent;
-  let fixture: ComponentFixture<GenericInputComponent>;
+  let component: GenericSelectComponent;
+  let fixture: ComponentFixture<GenericSelectComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ describe('GenericInputComponent', () => {
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GenericInputComponent);
+    fixture = TestBed.createComponent(GenericSelectComponent);
     component = fixture.componentInstance;
   });
 

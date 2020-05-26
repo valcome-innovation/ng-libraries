@@ -1,0 +1,12 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div [formGroup]="form" class="input-group checkbox">
+    <label>
+        <input type="checkbox"
+               [formControlName]="formName">
+        {{label}}
+    </label>
+
+    <div class="input-errors">
+        <ng-content></ng-content>
+    </div>
+</div>

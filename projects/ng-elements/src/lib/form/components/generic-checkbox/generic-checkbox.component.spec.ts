@@ -1,11 +1,11 @@
-import { GenericInputComponent } from './generic-input.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GenericFormsModule } from '../../generic-forms.module';
+import { GenericCheckboxComponent } from './generic-checkbox.component';
 
-describe('GenericInputComponent', () => {
+describe('GenericCheckboxComponent', () => {
 
-  let component: GenericInputComponent;
-  let fixture: ComponentFixture<GenericInputComponent>;
+  let component: GenericCheckboxComponent;
+  let fixture: ComponentFixture<GenericCheckboxComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ describe('GenericInputComponent', () => {
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GenericInputComponent);
+    fixture = TestBed.createComponent(GenericCheckboxComponent);
     component = fixture.componentInstance;
   });
 

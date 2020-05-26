@@ -1,0 +1,25 @@
+<!--suppress HtmlFormInputWithoutLabel -->
+<div [formGroup]="form" class="input-group select">
+    <label *ngIf="label != null"
+           [for]="id">
+        {{label}}
+    </label>
+
+    <select [id]="id"
+            [formControlName]="formName"
+            [ngClass]="{'invalid': isValid}">
+
+        <option hidden [selected]="placeholder != null">
+            {{placeholder}}
+        </option>
+
+        <option *ngFor="let item of options"
+                [value]="item.value">
+            {{item.display}}
+        </option>
+    </select>
+
+    <div class="input-errors">
+        <ng-content></ng-content>
+    </div>
+</div>

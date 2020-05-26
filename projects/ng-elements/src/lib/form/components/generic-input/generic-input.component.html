@@ -1,14 +1,16 @@
-<!--suppress ALL -->
-<div [formGroup]="form" class="input-group">
+<!--suppress HtmlFormInputWithoutLabel -->
+<div [formGroup]="form" class="input-group text">
     <label *ngIf="label != null"
            [for]="id">
         {{label}}
     </label>
+
     <input [id]="id"
            [type]="type"
            [placeholder]="placeholder"
            [formControlName]="formName"
            [ngClass]="{'invalid': isValid}">
+
     <div class="input-errors">
         <ng-content></ng-content>
     </div>
