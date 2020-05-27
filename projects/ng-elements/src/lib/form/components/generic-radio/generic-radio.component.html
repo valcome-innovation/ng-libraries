@@ -11,6 +11,7 @@
             {{item.display}}
         </label>
     </div>
+    <span *ngIf="markAsRequired">*</span>
 
     <div class="input-errors">
         <ng-content></ng-content>

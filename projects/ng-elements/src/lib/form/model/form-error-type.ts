@@ -5,5 +5,6 @@ export enum FormErrorType {
   REQUIRED = 'required',
   STEP = 'step',
   MIN_LENGTH = 'minLength',
-  MAX_LENGTH = 'maxLength'
+  MAX_LENGTH = 'maxLength',
+  EMAIL = 'email'
 }

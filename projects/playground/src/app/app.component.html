@@ -12,6 +12,7 @@
 <val-generic-checkbox [form]="shippingForm"
                       [label]="'Gleiche Rechnungsadresse'"
                       [formName]="'useDifferentBilling'"
+                      [markAsRequired]="true"
                       [isFormSubmitted]="isSubmitted">
     <div val-input-error-message [errorType]="FormErrorType.REQUIRED">
         Field is required

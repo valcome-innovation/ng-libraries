@@ -17,6 +17,9 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   @Input()
   public isFormSubmitted: boolean = false;
 
+  @Input()
+  public markAsRequired: boolean = false;
+
   public id: string;
   public isValid: boolean = false;
 

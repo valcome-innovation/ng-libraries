@@ -5,7 +5,7 @@
     <label>
         <input type="checkbox"
                [formControlName]="formName">
-        {{label}}
+        {{label}}<span *ngIf="markAsRequired">*</span>
     </label>
 
     <div class="input-errors">
