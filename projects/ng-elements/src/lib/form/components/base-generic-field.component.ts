@@ -21,7 +21,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   public markAsRequired: boolean = false;
 
   public id: string;
-  public isValid: boolean = false;
+  public isValid: boolean = true;
 
   public formControl: AbstractControl;
 
