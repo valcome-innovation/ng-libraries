@@ -1,9 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { BaseGenericFieldComponent } from '../base-generic-field.component';
 
 @Component({
   selector: 'val-generic-input',
-  templateUrl: './generic-input.component.html'
+  templateUrl: './generic-input.component.html',
+  styleUrls: ['../base-styles.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GenericInputComponent extends BaseGenericFieldComponent {
 

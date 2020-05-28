@@ -1,0 +1,19 @@
+.input-group {
+  .text label, .select label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input:not([type=checkbox]):not([type=radio]), select {
+    width: 100%;
+  }
+
+  .input-errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 15px;
+    font-size: 12px;
+  }
+}
