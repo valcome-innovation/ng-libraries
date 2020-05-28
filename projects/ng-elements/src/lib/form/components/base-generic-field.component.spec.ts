@@ -32,7 +32,7 @@ describe('BaseGenericFieldComponent', () => {
   it('should init with id and formControl', () => {
     component.ngOnInit();
     expect(component.id).toEqual('fieldInput');
-    expect(component.isValid).toBeFalsy();
+    expect(component.isValid).toBeTruthy();
   });
 
   it('should validate form if submitted', () => {
