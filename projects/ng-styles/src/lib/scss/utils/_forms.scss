@@ -1,5 +1,9 @@
 @import '../tools';
 
+input, select {
+  box-sizing: border-box;
+}
+
 .form-invalid {
   border-color: $red !important;
 }
