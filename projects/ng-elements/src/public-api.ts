@@ -24,6 +24,7 @@ export * from './lib/form/components/generic-select/generic-select.component';
 export * from './lib/form/components/generic-checkbox/generic-checkbox.component';
 export * from './lib/form/directives/form-error-message/form-error-message.directive';
 export * from './lib/form/model/form-error-type';
+export * from './lib/form/helpers/form.helper';
 
 export * from './lib/skeleton/skeleton.module';
 export * from './lib/skeleton/skeleton-loader/skeleton-loader.component';

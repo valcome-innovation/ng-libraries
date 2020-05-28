@@ -1,6 +1,7 @@
 import { BaseGenericFieldComponent } from './base-generic-field.component';
 import { Subject } from 'rxjs';
 import { FormErrorType } from '../model/form-error-type';
+import { FormControl, FormGroup } from '@angular/forms';
 import createSpy = jasmine.createSpy;
 
 describe('BaseGenericFieldComponent', () => {
@@ -64,6 +65,20 @@ describe('BaseGenericFieldComponent', () => {
 
     expect(showMessageSpy).toHaveBeenCalledTimes(1);
     expect(hideMessageSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should generate valid id with parent form', () => {
+    let form: FormGroup = new FormGroup({
+      shipping: new FormGroup({
+        firstName: new FormControl('')
+      })
+    })
+    component.form = form.get('shipping') as FormGroup;
+    component.formName = 'firstName';
+
+    component.ngOnInit();
+
+    expect(component.id).toEqual('shipping_firstNameInput');
   });
 
   function getMockedFormGroup(): any {

@@ -2,6 +2,7 @@ import { ContentChildren, Input, OnChanges, OnInit, QueryList, SimpleChanges } f
 import { FormErrorMessageDirective } from '../directives/form-error-message/form-error-message.directive';
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { BaseComponent } from '@valcome/ng-core';
+import { FormHelper } from '../helpers/form.helper';
 
 export class BaseGenericFieldComponent extends BaseComponent implements OnInit, OnChanges {
 
@@ -32,10 +33,18 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   }
 
   public ngOnInit(): void {
-    this.id = `${this.formName}Input`;
     this.formControl = this.form.get(this.formName);
-
+    this.id = this.generateId(this.formControl, this.formName);
     this.listenOnValueChanges();
+  }
+
+  private generateId(control: AbstractControl, name: string): string {
+    if (control.parent?.parent != null) {
+      let parentName = FormHelper.getControlName(control.parent);
+      return `${parentName}_${name}Input`;
+    } else {
+      return `${name}Input`;
+    }
   }
 
   private listenOnValueChanges(): void {
