@@ -1,12 +1,14 @@
-<div val-input-error-message [errorType]="FormErrorType.REQUIRED">
-    Dieses Feld darf nicht leer sein.
-</div>
-<div val-input-error-message [errorType]="FormErrorType.MAX_LENGTH">
-    Ihre Eingabe überschreitet die maximal zulässige Zeichenanzahl.
-</div>
-<div val-input-error-message [errorType]="FormErrorType.MIN_LENGTH">
-    Ihre Eingabe ist zu kurz.
-</div>
-<div val-input-error-message [errorType]="FormErrorType.EMAIL">
-    Ungültige E-Mail Adresse.
-</div>
+<ng-template>
+    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">
+        Dieses Feld darf nicht leer sein.
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.MAX_LENGTH">
+        Ihre Eingabe überschreitet die maximal zulässige Zeichenanzahl.
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.MIN_LENGTH">
+        Ihre Eingabe ist zu kurz.
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.EMAIL">
+        Ungültige E-Mail Adresse.
+    </div>
+</ng-template>

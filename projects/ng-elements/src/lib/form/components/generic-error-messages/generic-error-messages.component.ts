@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormErrorType } from '../../model/form-error-type';
+import { NoRootTagComponent } from '@valcome/ng-core';
 
 @Component({
   selector: 'val-generic-error-messages',
