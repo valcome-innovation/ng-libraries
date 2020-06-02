@@ -1,5 +1,5 @@
 import { OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { BaseComponent } from 'ng-core';
+import { BaseComponent } from './base.component';
 
 export class NoRootTagComponent extends BaseComponent implements OnInit {
 
