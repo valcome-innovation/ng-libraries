@@ -1,6 +1,6 @@
 import { ContentChildren, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { FormErrorMessageDirective } from '../directives/form-error-message/form-error-message.directive';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { BaseComponent } from '@valcome/ng-core';
 import { FormHelper } from '../helpers/form.helper';
 
@@ -27,7 +27,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   public id: string;
   public isValid: boolean = true;
 
-  public formControl: AbstractControl;
+  public formControl: FormControl;
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue && this.formControl) {
@@ -36,7 +36,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   }
 
   public ngOnInit(): void {
-    this.formControl = this.form.get(this.formName);
+    this.formControl = this.form.get(this.formName) as FormControl;
     this.id = this.generateId(this.formControl, this.formName);
     this.listenOnValueChanges();
   }
@@ -51,9 +51,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   }
 
   private listenOnValueChanges(): void {
-    this.addSub(this.formControl.valueChanges.subscribe(() => {
-      this.handleFormValidation();
-    }));
+    this.formControl.registerOnChange(this.handleFormValidation.bind(this));
   }
 
   private handleFormValidation(): void {
