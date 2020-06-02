@@ -18,14 +18,15 @@ import { GenericErrorMessageComponent } from './components/generic-error-message
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,
-    FormErrorMessageDirective,
-    GenericErrorMessageComponent
+    GenericErrorMessageComponent,
+    FormErrorMessageDirective
   ],
   exports: [
     GenericInputComponent,
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,
+    GenericErrorMessageComponent,
     FormErrorMessageDirective,
     ReactiveFormsModule
   ]
