@@ -1,5 +1,12 @@
 @import "../tools";
 
+fieldset {
+  display: block;
+  margin: unset;
+  padding: unset;
+  border: unset;
+}
+
 .scroll-parent-height {
   display: flex;
   flex-direction: column;

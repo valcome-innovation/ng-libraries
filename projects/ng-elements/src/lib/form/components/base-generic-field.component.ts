@@ -52,7 +52,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
 
   private listenOnValueChanges(): void {
     this.addSub(this.formControl.valueChanges.subscribe(() => {
-      this.handleFormValidation()
+      this.handleFormValidation();
     }));
   }
 
