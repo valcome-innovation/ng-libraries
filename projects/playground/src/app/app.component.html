@@ -1,3 +1,11 @@
+<val-generic-input [formName]="'firstName'"
+                   [form]="shippingForm"
+                   [label]="'Name'"
+                   [placeholder]="'Land wählen'"
+                   [isFormSubmitted]="isSubmitted"
+                   [useDefaultErrorMessages]="true">
+</val-generic-input>
+
 <val-generic-select [formName]="'country'"
                     [form]="shippingForm"
                     [label]="'Land'"
@@ -6,6 +14,8 @@
                     [isFormSubmitted]="isSubmitted"
                     [useDefaultErrorMessages]="true">
 </val-generic-select>
+
+<div>{{shippingForm?.get('country')?.hasError('server')}}</div>
 
 <val-generic-checkbox [form]="shippingForm"
                       [label]="'Gleiche Rechnungsadresse'"
@@ -24,5 +34,7 @@
 </val-generic-radio>
 
 <input type="submit" value="submit form" (click)="submit($event)">
+
+<button (click)="setError()">sdfasdf</button>
 
 <pre>{{this.shippingForm.value | json}}</pre>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'ng-elements';
@@ -8,7 +8,7 @@ import { FormErrorType } from 'ng-elements';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public FormErrorType = FormErrorType;
 
@@ -29,6 +29,11 @@ export class AppComponent {
 
   public constructor(private fb: FormBuilder) {
     this.initForm();
+  }
+
+  public ngOnInit(): void {
+    let control = this.shippingForm.get('country');
+    control.statusChanges.subscribe((s) => console.log(s));
   }
 
   private initForm(): void {
@@ -55,5 +60,10 @@ export class AppComponent {
     } else {
       event.preventDefault();
     }
+  }
+
+  public setError(): void {
+    let control = this.shippingForm.get('country');
+    control.setErrors({ server: true });
   }
 }

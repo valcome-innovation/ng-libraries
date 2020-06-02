@@ -51,7 +51,9 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
   }
 
   private listenOnValueChanges(): void {
-    this.formControl.registerOnChange(this.handleFormValidation.bind(this));
+    this.addSub(this.formControl.statusChanges.subscribe(() => {
+      this.handleFormValidation();
+    }));
   }
 
   private handleFormValidation(): void {
