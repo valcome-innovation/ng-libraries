@@ -6,7 +6,7 @@ import { FormHelper } from '../helpers/form.helper';
 
 export class BaseGenericFieldComponent extends BaseComponent implements OnInit, OnChanges {
 
-  @ContentChildren(FormErrorMessageDirective)
+  @ContentChildren(FormErrorMessageDirective, { descendants: true })
   public errorMessages: QueryList<FormErrorMessageDirective>;
 
   @Input()

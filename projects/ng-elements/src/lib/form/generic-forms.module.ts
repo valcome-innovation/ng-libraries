@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { GenericSelectComponent } from './components/generic-select/generic-select.component';
 import { GenericRadioComponent } from './components/generic-radio/generic-radio.component';
 import { GenericCheckboxComponent } from './components/generic-checkbox/generic-checkbox.component';
-import { GenericErrorMessageComponent } from './components/generic-error-message/generic-error-message.component';
+import { GenericErrorMessagesComponent } from './components/generic-error-messages/generic-error-messages.component';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { GenericErrorMessageComponent } from './components/generic-error-message
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,
-    GenericErrorMessageComponent,
+    GenericErrorMessagesComponent,
     FormErrorMessageDirective
   ],
   exports: [
@@ -26,7 +26,7 @@ import { GenericErrorMessageComponent } from './components/generic-error-message
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,
-    GenericErrorMessageComponent,
+    GenericErrorMessagesComponent,
     FormErrorMessageDirective,
     ReactiveFormsModule
   ]

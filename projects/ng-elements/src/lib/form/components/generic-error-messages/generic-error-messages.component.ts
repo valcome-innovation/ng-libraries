@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormErrorType } from '../../model/form-error-type';
 
 @Component({
-  selector: 'val-generic-error-message',
-  templateUrl: './generic-error-message.component.html'
+  selector: 'val-generic-error-messages',
+  templateUrl: './generic-error-messages.component.html'
 })
-export class GenericErrorMessageComponent {
+export class GenericErrorMessagesComponent {
   public FormErrorType = FormErrorType;
 }
