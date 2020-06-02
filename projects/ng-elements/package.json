@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-elements",
-  "version": "1.1.11",
+  "version": "1.1.12",
   "description": "A collection of angular components, directives, services and more, which we use in our projects\n",
   "scripts": {
     "preversion": "ng test ng-elements --watch=false",
