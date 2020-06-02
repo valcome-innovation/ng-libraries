@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { FormErrorType } from '../../model/form-error-type';
 import { NoRootTagComponent } from '@valcome/ng-core';
 
@@ -8,4 +8,8 @@ import { NoRootTagComponent } from '@valcome/ng-core';
 })
 export class GenericErrorMessagesComponent extends NoRootTagComponent {
   public FormErrorType = FormErrorType;
+
+  public constructor(vcRef: ViewContainerRef) {
+    super(vcRef);
+  }
 }
