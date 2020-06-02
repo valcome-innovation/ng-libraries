@@ -3,10 +3,8 @@
                     [label]="'Land'"
                     [placeholder]="'Land wählen'"
                     [options]="countries"
-                    [isFormSubmitted]="isSubmitted">
-    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">
-        Field is required
-    </div>
+                    [isFormSubmitted]="isSubmitted"
+                    [useDefaultErrorMessages]="true">
 </val-generic-select>
 
 <val-generic-checkbox [form]="shippingForm"

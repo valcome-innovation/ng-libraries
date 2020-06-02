@@ -15,5 +15,8 @@
 
     <div class="input-errors">
         <ng-content></ng-content>
+        <val-generic-error-messages *ngIf="useDefaultErrorMessages"
+                                    (errorMessages)="addDefaultErrorMessages($event)">
+        </val-generic-error-messages>
     </div>
 </div>

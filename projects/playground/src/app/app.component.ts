@@ -36,7 +36,7 @@ export class AppComponent {
       eMail: ['', this.fbOptions([Validators.required])],
       firstName: ['', this.fbOptions([Validators.required])],
       lastName: ['', this.fbOptions([Validators.required])],
-      country: [null, this.fbOptions([Validators.required], 'change')],
+      country: [null, this.fbOptions([Validators.required, Validators.email], 'change')],
       useDifferentBilling: [false, this.fbOptions([Validators.requiredTrue], 'change')],
       beer: [1, this.fbOptions([Validators.required], 'change')]
     });

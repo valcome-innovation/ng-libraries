@@ -6,7 +6,7 @@ import { FormHelper } from '../helpers/form.helper';
 
 export class BaseGenericFieldComponent extends BaseComponent implements OnInit, OnChanges {
 
-  @ContentChildren(FormErrorMessageDirective, { descendants: true })
+  @ContentChildren(FormErrorMessageDirective)
   public errorMessages: QueryList<FormErrorMessageDirective>;
 
   @Input()
@@ -20,6 +20,9 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
 
   @Input()
   public markAsRequired: boolean = false;
+
+  @Input()
+  public useDefaultErrorMessages: boolean = false;
 
   public id: string;
   public isValid: boolean = true;
@@ -66,5 +69,14 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
         errorMessage.hideError();
       }
     })
+  }
+
+  public addDefaultErrorMessages(defaultErrorMessages: QueryList<FormErrorMessageDirective>): void {
+    if (this.useDefaultErrorMessages) {
+      this.errorMessages.reset([
+        ...this.errorMessages.toArray(),
+        ...defaultErrorMessages.toArray()
+      ]);
+    }
   }
 }
