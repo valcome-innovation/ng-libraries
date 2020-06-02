@@ -4,14 +4,6 @@ input, select {
   box-sizing: border-box;
 }
 
-.form-invalid {
-  border-color: $red !important;
-}
-
-.input-error {
-  position: absolute;
-  font-size: .75em;
-  width: 100%;
-  top: 100%;
+.input-errors {
   color: $red;
 }
