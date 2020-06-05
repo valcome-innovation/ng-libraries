@@ -13,6 +13,7 @@ export class BaseFormComponent extends BaseComponent {
 
   public submit(event: Event): Promise<boolean> {
     this.isSubmitted = true;
+    this.validateAllFields();
     this.form.markAllAsTouched();
 
     if (this.isFormValid()) {
@@ -21,6 +22,12 @@ export class BaseFormComponent extends BaseComponent {
       event.preventDefault();
       return Promise.resolve(false);
     }
+  }
+
+  private validateAllFields(): void {
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.get(key).updateValueAndValidity();
+    });
   }
 
   public isFormValid(): boolean {
