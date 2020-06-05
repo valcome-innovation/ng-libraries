@@ -26,6 +26,7 @@ export * from './lib/form/components/generic-error-messages/generic-error-messag
 export * from './lib/form/components/base-form.component';
 export * from './lib/form/directives/form-error-message/form-error-message.directive';
 export * from './lib/form/model/form-error-type';
+export * from './lib/form/model/input-autofill';
 export * from './lib/form/helpers/form.helper';
 
 export * from './lib/skeleton/skeleton.module';
