@@ -18,6 +18,7 @@ export class BaseFormComponent extends BaseComponent {
 
   public submit(event: Event): Promise<boolean> {
     this.isSubmitted = true;
+    this.focusSubmitButton(event);
     this.validateAllFields();
     this.form.markAllAsTouched();
 
@@ -26,6 +27,14 @@ export class BaseFormComponent extends BaseComponent {
     } else {
       event.preventDefault();
       return Promise.resolve(false);
+    }
+  }
+
+  private focusSubmitButton(event: Event): void {
+    let target: HTMLElement = event?.target as HTMLElement;
+
+    if (target) {
+      target.focus();
     }
   }
 
