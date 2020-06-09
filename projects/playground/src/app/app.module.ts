@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CoreAnimationsModule } from 'ng-animations';
 import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
 import { GenericFormsModule } from 'projects/ng-elements/src/lib/form/generic-forms.module';
+import { RangeSliderModule } from '../../../ng-elements/src/lib/range-slider/range-slider.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { GenericFormsModule } from 'projects/ng-elements/src/lib/form/generic-fo
     AppRoutingModule,
     AppRoutingModule,
     CoreAnimationsModule,
-    GenericFormsModule
+    GenericFormsModule,
+    RangeSliderModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DeviceService],
   bootstrap: [AppComponent]

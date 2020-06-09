@@ -16,16 +16,32 @@ export class BaseFormComponent extends BaseComponent {
     this.isSubmitted = false;
   }
 
-  public submit(event: Event): Promise<boolean> {
+  public submit(event: Event): Promise<any> | boolean {
     this.isSubmitted = true;
+    this.focusSubmitButton(event);
+    this.validateAllFields();
     this.form.markAllAsTouched();
 
     if (this.isFormValid()) {
-      return Promise.resolve(true);
+      return true;
     } else {
       event.preventDefault();
-      return Promise.resolve(false);
+      return false;
     }
+  }
+
+  private focusSubmitButton(event: Event): void {
+    let target: HTMLElement = event?.target as HTMLElement;
+
+    if (target) {
+      target.focus();
+    }
+  }
+
+  private validateAllFields(): void {
+    Object.keys(this.form.controls).forEach(key => {
+      this.form.get(key).updateValueAndValidity();
+    });
   }
 
   public isFormValid(): boolean {
