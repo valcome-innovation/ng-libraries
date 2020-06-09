@@ -10,6 +10,8 @@ import { FormErrorType } from 'ng-elements';
 })
 export class AppComponent implements OnInit {
 
+  public priceRange: [number, number] = [0, 0];
+
   public FormErrorType = FormErrorType;
 
   public shippingForm: FormGroup;
