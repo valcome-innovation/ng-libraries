@@ -22,6 +22,7 @@ export * from './lib/wizard/base-wizard.component';
 
 export * from './lib/image-gallery/base-product-image-gallery.component';
 export * from './lib/image-gallery/image-gallery.component';
+export * from './lib/image-gallery/image-gallery.module';
 
 export * from './lib/form/generic-forms.module';
 export * from './lib/form/components/generic-radio/generic-radio.component';

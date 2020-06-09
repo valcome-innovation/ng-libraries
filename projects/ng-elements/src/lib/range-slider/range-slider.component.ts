@@ -35,7 +35,8 @@ const noop = () => {
 })
 export class RangeSliderComponent implements ControlValueAccessor {
 
-  public constructor(private elementRef: ElementRef, private renderer: Renderer2,
+  public constructor(private elementRef: ElementRef,
+                     private renderer: Renderer2,
                      private iterableDiffers: IterableDiffers) {
     this.iterableDiffer = this.iterableDiffers.find([]).create(null);
   }
@@ -91,7 +92,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
   @ViewChild('sliderHilight') sliderHilight: ElementRef;
 
   @HostListener('window:resize', ['$event'])
-  public onResize() {
+  public onResize(event) {
     if (this.range) {
       this.getWidth();
     }
@@ -147,6 +148,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
           }
         }
       }
+
       value = this.getRangeInsideBounds(value);
       this.update(value);
     }
