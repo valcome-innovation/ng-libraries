@@ -1,0 +1,21 @@
+<div class="image-gallery">
+    <div class="active-image-container" style="position:relative">
+        <img class="active-image"
+             [attr.src]="activeImage?.url"
+             [attr.alt]="activeImage?.alt"
+             [attr.data-zoom]="activeImage?.url"
+        />
+        <div class="zoom-panel"
+             [ngClass]="{'zooming' : isZooming}"
+             [style.background]="isZooming ? 'white': 'transparent'">
+        </div>
+    </div>
+    <div class="image-item-container d-flex">
+        <div *ngFor="let image of images">
+            <img class="image-item"
+                 [attr.src]="image.url"
+                 [attr.alt]="image.alt"
+                 (click)="selectImage(image)"/>
+        </div>
+    </div>
+</div>
