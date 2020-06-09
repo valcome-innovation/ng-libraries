@@ -35,12 +35,12 @@ const noop = () => {
 })
 export class RangeSliderComponent implements ControlValueAccessor {
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2,
-              private iterableDiffers: IterableDiffers) {
+  public constructor(private elementRef: ElementRef, private renderer: Renderer2,
+                     private iterableDiffers: IterableDiffers) {
     this.iterableDiffer = this.iterableDiffers.find([]).create(null);
   }
 
-  ngDoCheck() {
+  public ngDoCheck(): void {
     let changes = this.iterableDiffer.diff(this.range);
     if (changes) {
       this.onChangeCallback(this.range);
@@ -71,30 +71,27 @@ export class RangeSliderComponent implements ControlValueAccessor {
   rangeInPixels: number;
   highlightLeft: number;
   highlightWidth: number;
-  minSliderTouched = false;
   sliderHeight: number;
   toolTipTop: number;
   combineToolTipLeft: number;
   minToolTipWidth: number;
   combineToolTipWidth: number;
-  toolTipLeft: number;
   private onTouchedCallback: (_: any) => void = noop;
   private onChangeCallback: (_: any) => void = noop;
   @Input() min: number;
   @Input() max: number;
   @Input() toolTips = [true, true];
-  range: number[];
-  rangeCache: number[];
+  range: [number, number];
+  rangeCache: [number, number];
   @Input() step: number;
   @Output() onRangeChange: EventEmitter<number[]> = new EventEmitter<number[]>();
   @ViewChild('bar') bar: ElementRef;
   @ViewChild('minSlider') minSlider: ElementRef;
   @ViewChild('maxSlider') maxSlider: ElementRef;
   @ViewChild('sliderHilight') sliderHilight: ElementRef;
-  numWidth: number;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  public onResize() {
     if (this.range) {
       this.getWidth();
     }
@@ -102,7 +99,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   @Input() highlightClass: string;
 
-  sethighlightClass(clas: string) {
+  public sethighlightClass(clas: string) {
     if (clas && this.sliderHilight) {
       this.renderer.removeClass(this.sliderHilight.nativeElement, 'dhighlightClass');
       this.renderer.addClass(this.sliderHilight.nativeElement, clas);
@@ -111,7 +108,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   @Input() barClass: string;
 
-  setBarClass(clas: string) {
+  public setBarClass(clas: string) {
     if (clas && this.bar) {
       this.renderer.removeClass(this.bar.nativeElement, 'dbarClass');
       this.renderer.addClass(this.bar.nativeElement, clas);
@@ -121,7 +118,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
 
   @Input() sliderClass: string;
 
-  setSliderClass(clas: string) {
+  public setSliderClass(clas: string) {
     if (clas && this.minSlider && this.maxSlider) {
       this.renderer.removeClass(this.minSlider.nativeElement, 'dsliderClass');
       this.renderer.removeClass(this.maxSlider.nativeElement, 'dsliderClass');
@@ -130,7 +127,7 @@ export class RangeSliderComponent implements ControlValueAccessor {
     }
   }
 
-  writeValue(value: number[]): void {
+  public writeValue(value: [number, number]): void {
     if (value) {
       if (value[0] === null) {
         value[0] = this.min;
@@ -150,15 +147,20 @@ export class RangeSliderComponent implements ControlValueAccessor {
           }
         }
       }
+      value = this.getRangeInsideBounds(value);
       this.update(value);
     }
-
   }
 
+  private getRangeInsideBounds(range: [number, number]): [number, number] {
+    range[0] = Math.max(this.min, range[0]);
+    range[1] = Math.min(this.max, range[1]);
 
-  update(range: number[]) {
+    return range;
+  }
 
-    this.range = [...range];
+  update(range: [number, number]) {
+    this.range = range;
     this.rangeCache = (JSON.parse(JSON.stringify(range)));
     this.setBarClass(this.barClass);
     this.setSliderClass(this.sliderClass);
