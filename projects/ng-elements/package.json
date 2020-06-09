@@ -23,5 +23,8 @@
     "@angular/core": "^9.0.7",
     "@valcome/ng-core": "^0.2.10",
     "tslib": "^1.10.0"
+  },
+  "dependencies": {
+    "drift-zoom": "^1.4.0"
   }
 }

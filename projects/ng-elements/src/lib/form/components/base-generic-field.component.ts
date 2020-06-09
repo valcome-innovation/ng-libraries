@@ -68,7 +68,7 @@ export class BaseGenericFieldComponent extends BaseComponent implements OnInit, 
       } else {
         errorMessage.hideError();
       }
-    })
+    });
   }
 
   public addDefaultErrorMessages(defaultErrorMessages: QueryList<FormErrorMessageDirective>): void {
