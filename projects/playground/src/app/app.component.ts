@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DisplayValue } from 'ng-core';
-import { FormErrorType } from 'ng-elements';
+import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
+import { Image } from '../../../ng-elements/src/lib/form/model/image';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,52 @@ import { FormErrorType } from 'ng-elements';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  public lessImages: Image[] = [
+    {
+      url: 'https://weinfreunde.de/magazin/wp-content/uploads/2018/12/1-1-Bild_1500x800px_4-1.jpg',
+      alt: '',
+      sortOrder: 1
+    },
+    {
+      url: 'https://www.falstaff.at/fileadmin/_processed_/b/1/csm_Wein-c-Shutterstock-2640_a451dbe1fa.jpg',
+      alt: '',
+      sortOrder: 2
+    }
+  ];
+
+  public images: Image[] = [
+    {
+      url: 'https://weinfreunde.de/magazin/wp-content/uploads/2018/12/1-1-Bild_1500x800px_4-1.jpg',
+      alt: '',
+      sortOrder: 1
+    },
+    {
+      url: 'https://www.falstaff.at/fileadmin/_processed_/b/1/csm_Wein-c-Shutterstock-2640_a451dbe1fa.jpg',
+      alt: '',
+      sortOrder: 2
+    },
+    {
+      url: 'https://weinfreunde.de/magazin/wp-content/uploads/2018/12/1-1-Bild_1500x800px_4-1.jpg',
+      alt: '',
+      sortOrder: 3
+    },
+    {
+      url: 'https://www.falstaff.at/fileadmin/_processed_/b/1/csm_Wein-c-Shutterstock-2640_a451dbe1fa.jpg',
+      alt: '',
+      sortOrder: 4
+    },
+    {
+      url: 'https://weinfreunde.de/magazin/wp-content/uploads/2018/12/1-1-Bild_1500x800px_4-1.jpg',
+      alt: '',
+      sortOrder: 5
+    },
+    {
+      url: 'https://www.falstaff.at/fileadmin/_processed_/b/1/csm_Wein-c-Shutterstock-2640_a451dbe1fa.jpg',
+      alt: '',
+      sortOrder: 6
+    }
+  ];
 
   public priceRange: [number, number] = [0, 0];
 
