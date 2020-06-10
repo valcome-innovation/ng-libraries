@@ -10,7 +10,7 @@
              [style.background]="isZooming ? 'white': 'transparent'">
         </div>
     </div>
-    <div class="image-item-container d-flex">
+    <div class="image-item-container">
         <div *ngFor="let image of images">
             <img class="image-item"
                  [attr.src]="image.url"
