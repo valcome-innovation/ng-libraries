@@ -24,6 +24,7 @@
     .zoom-panel {
       width: 100%;
       height: 100%;
+      background-color: transparent;
 
       position: absolute;
       left: 0;
@@ -34,6 +35,7 @@
 
       &.zooming {
         opacity: 1;
+        background-color: white;
       }
     }
   }
