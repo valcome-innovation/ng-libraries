@@ -1,5 +1,10 @@
 @import "../tools";
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 fieldset {
   display: block;
   margin: unset;
