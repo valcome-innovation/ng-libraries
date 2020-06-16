@@ -10,11 +10,14 @@
         </div>
     </div>
     <div class="image-item-container">
-        <div *ngFor="let image of images">
+        <div class="image-item-wrapper"
+             *ngFor="let image of images">
+            <div class="image-item-overlay"
+                 [ngClass]="{ 'active': image === activeImage }"
+                 (click)="selectImage(image)"></div>
             <img class="image-item"
                  [attr.src]="image.url"
-                 [attr.alt]="image.alt"
-                 (click)="selectImage(image)"/>
+                 [attr.alt]="image.alt"/>
         </div>
     </div>
 </div>
