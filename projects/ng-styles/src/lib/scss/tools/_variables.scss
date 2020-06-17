@@ -1,40 +1,40 @@
-$neutral-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+$neutral-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !default;
 
-$dark-text-color: #111111;
-$text-color: #313131;
-$light-text-color: #737373;
+$dark-text-color: #111111 !default;
+$text-color: #313131 !default;
+$light-text-color: #737373 !default;
 
-$dark-bg: #001d2f;
-$light-bg: #f4f6fa;
-$border-color: #ebebeb;
+$dark-bg: #001d2f !default;
+$light-bg: #f4f6fa !default;
+$border-color: #ebebeb !default;
 
-$blue: #1ca0ff;
-$darkblue: #1b5fcc;
-$highlight-blue: lighten($blue, 40%);
+$blue: #1ca0ff !default;
+$darkblue: #1b5fcc !default;
+$highlight-blue: lighten($blue, 40%) !default;
 
-$green: rgb(86, 171, 47);
-$light-green: rgb(168, 224, 99);
-$neon-green: rgb(73, 251, 53);
+$green: rgb(86, 171, 47) !default;
+$light-green: rgb(168, 224, 99) !default;
+$neon-green: rgb(73, 251, 53) !default;
 
-$red: #f73646;
-$dark-red: #cc0018;
+$red: #f73646 !default;
+$dark-red: #cc0018 !default;
 
-$orange: #ffbd00;
+$orange: #ffbd00 !default;
 
-$green-gradient: linear-gradient(to right, rgb(86, 171, 47), $light-green);
-$grey-gradient: linear-gradient(to right, #c1c1c1, #cfcfcf);
-$dark-gradient: linear-gradient(to right, #2f2f2f, #111111);
-$red-gradient: linear-gradient(to right, #ff0024, #b70017);
-$blue-gradient: linear-gradient(to right, #1c70ff, $blue);
+$green-gradient: linear-gradient(to right, rgb(86, 171, 47), $light-green) !default;
+$grey-gradient: linear-gradient(to right, #c1c1c1, #cfcfcf) !default;
+$dark-gradient: linear-gradient(to right, #2f2f2f, #111111) !default;
+$red-gradient: linear-gradient(to right, #ff0024, #b70017) !default;
+$blue-gradient: linear-gradient(to right, #1c70ff, $blue) !default;
 
-$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
-$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
-$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
-$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
-$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1) !default;
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1) !default;
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1) !default;
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22) !default;
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035) !default;
 
-$sm-width: 576px;
-$md-width: 768px;
-$lg-width: 992px;
-$xl-width: 1200px;
-$xxl-width: 1500px;
+$sm-width: 576px !default;
+$md-width: 768px !default;
+$lg-width: 992px !default;
+$xl-width: 1200px !default;
+$xxl-width: 1500px !default;
