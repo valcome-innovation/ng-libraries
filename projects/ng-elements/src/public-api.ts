@@ -15,6 +15,7 @@ export * from './lib/unsaved-changes/base-unsaved-changes.component';
 
 export * from './lib/range-slider/range-slider.module';
 export * from './lib/range-slider/range-slider.component';
+export * from './lib/range-slider/click-outside.directive';
 
 export * from './lib/wizard/wizard.module';
 export * from './lib/wizard/wizard-step';
