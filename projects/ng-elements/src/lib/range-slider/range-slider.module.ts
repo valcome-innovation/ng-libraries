@@ -1,22 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RangeSliderComponent } from './range-slider.component';
-import { ClickOutsideDirective } from './click-outside.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClickOutsideModule } from '../click-outside/click-outside.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClickOutsideModule
   ],
   declarations: [
-    RangeSliderComponent,
-    ClickOutsideDirective
+    RangeSliderComponent
   ],
   exports: [
-    RangeSliderComponent,
-    ClickOutsideDirective
+    RangeSliderComponent
   ]
 })
 export class RangeSliderModule {
