@@ -25,7 +25,7 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
   }
 
   private initializeZooming(): Drift {
-    return new Drift(document.querySelector('img'), {
+    return new Drift(document.querySelector('div.image-gallery > div.active-image-container > img.active-image'), {
       paneContainer: document.querySelector('.zoom-panel'),
       zoomFactor: this.zoomLevel,
       touchDelay: this.touchDelay,
