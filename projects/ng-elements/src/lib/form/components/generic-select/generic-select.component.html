@@ -16,7 +16,8 @@
         </option>
 
         <option *ngFor="let item of options"
-                [value]="item.value">
+                [value]="item.value"
+                [disabled]="item.disabled">
             {{item.display}}
         </option>
     </select>
