@@ -43,3 +43,4 @@ export * from './lib/skeleton/skeleton.module';
 export * from './lib/skeleton/skeleton-loader/skeleton-loader.component';
 export * from './lib/skeleton/skeleton-loader/skeleton-line/skeleton-line.component';
 export * from './lib/skeleton/skeleton-loader/skeleton-square/skeleton-square.component';
+export * from './lib/skeleton/skeleton-loader/skeleton-rect/skeleton-rect.component';
