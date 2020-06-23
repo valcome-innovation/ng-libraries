@@ -1,6 +1,27 @@
 .image-gallery {
-  width: 400px;
+  display: flex;
+  width: 450px;
   height: auto;
+
+  .image-nav-container {
+    display: flex;
+    cursor: pointer;
+
+    &:hover {
+      .image-nav-svg {
+        fill: rgba(0, 0, 0, .75);
+      }
+    }
+
+    .image-nav-svg {
+      transition: fill 200ms ease-out;
+
+      width: 24px;
+      height: 24px;
+      margin: auto .5em;
+      fill: black;
+    }
+  }
 
   img {
     width: 100%;
