@@ -1,14 +1,17 @@
 <div class="image-gallery">
-    <div class="image-nav-container" (click)="previousImage()">
-        <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
-    </div>
     <div>
         <div class="active-image-container">
+            <div class="image-nav-container left" (click)="previousImage()">
+                <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
+            </div>
             <img id="{{internalId}}" class="active-image"
                  [attr.src]="activeImage?.url"
                  [attr.alt]="activeImage?.alt"
                  [attr.data-zoom]="activeImage?.url"
             />
+            <div class="image-nav-container right" (click)="nextImage()">
+                <ng-container *ngTemplateOutlet="chevronRight"></ng-container>
+            </div>
             <div class="zoom-panel"
                  [ngClass]="{'zooming' : isZooming}">
             </div>
@@ -24,9 +27,6 @@
                      [attr.alt]="image.alt"/>
             </div>
         </div>
-    </div>
-    <div class="image-nav-container" (click)="nextImage()">
-        <ng-container *ngTemplateOutlet="chevronRight"></ng-container>
     </div>
 </div>
 

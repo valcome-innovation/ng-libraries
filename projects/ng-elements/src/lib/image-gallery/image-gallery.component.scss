@@ -1,11 +1,24 @@
 .image-gallery {
-  display: flex;
+  $imageNavWidth: 24px;
+
   width: 450px;
   height: auto;
+  margin: 0 $imageNavWidth;
 
   .image-nav-container {
     display: flex;
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    &.left {
+      left: -$imageNavWidth;
+    }
+
+    &.right {
+      right: -$imageNavWidth;
+    }
 
     &:hover {
       .image-nav-svg {
@@ -16,8 +29,8 @@
     .image-nav-svg {
       transition: fill 200ms ease-out;
 
-      width: 24px;
-      height: 24px;
+      width: $imageNavWidth;
+      height: $imageNavWidth;
       margin: auto 0;
       fill: black;
     }
