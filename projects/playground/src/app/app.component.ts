@@ -65,15 +65,15 @@ export class AppComponent implements OnInit {
   public isSubmitted: boolean = false;
 
   public countries: DisplayValue[] = [
-    { display: 'Österreich', value: 'AT' },
-    { display: 'Deutschland', value: 'DE' },
-    { display: 'United Kingdom', value: 'UK' }
+    new DisplayValue('Österreich', 'AT'),
+    new DisplayValue('Deutschland', 'DE', true),
+    new DisplayValue('United Kingdom', 'UK')
   ];
 
   public beers: DisplayValue[] = [
-    { display: 'Schwechater', value: 0 },
-    { display: 'Ottakringer', value: 1 },
-    { display: 'Wieselburger', value: 2 }
+    new DisplayValue('Schwechater', 0),
+    new DisplayValue('Ottakringer', 1),
+    new DisplayValue('Wieselburger', 2)
   ];
 
   public constructor(private fb: FormBuilder) {

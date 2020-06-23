@@ -43,15 +43,15 @@ describe('BaseProductImageGalleryComponent', () => {
     expect(component.activeImage.sortOrder).toBe(0);
   });
 
-  it('should do nothing when calling prev() out of bounds', () => {
+  it('should jumpt to last when calling prev() out of bounds', () => {
     component.ngOnChanges(null);
     expect(component.activeImage.sortOrder).toBe(0);
 
     component.previousImage();
-    expect(component.activeImage.sortOrder).toBe(0);
+    expect(component.isLast).toBeTrue();
   });
 
-  it('should do nothing when calling next() out of bounds', () => {
+  it('should jump to first when calling next() out of bounds', () => {
     component.ngOnChanges(null);
 
     for (let i = 0; i < component.images.length * 2; i++) {
@@ -59,7 +59,7 @@ describe('BaseProductImageGalleryComponent', () => {
     }
 
     expect(component.activeImage).toBeDefined();
-    expect(component.isLast).toBeTruthy();
+    expect(component.isLast).toBeFalse();
   });
 
   it('should throw no errors if empty list is passed', () => {

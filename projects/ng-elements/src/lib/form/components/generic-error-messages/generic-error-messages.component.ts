@@ -9,7 +9,7 @@ import { FormErrorMessageDirective } from '../../directives/form-error-message/f
 export class GenericErrorMessagesComponent implements AfterViewInit {
 
   @ViewChildren(FormErrorMessageDirective)
-  private _defaultErrorMessages: QueryList<FormErrorMessageDirective>
+  private _defaultErrorMessages: QueryList<FormErrorMessageDirective>;
 
   @Output()
   public errorMessages: EventEmitter<QueryList<FormErrorMessageDirective>> = new EventEmitter<QueryList<FormErrorMessageDirective>>();

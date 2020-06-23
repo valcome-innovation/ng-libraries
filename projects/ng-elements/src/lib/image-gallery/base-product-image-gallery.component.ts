@@ -1,4 +1,4 @@
-import { BaseComponent } from '@valcome/ng-core';
+import { BaseComponent, StringUtils } from '@valcome/ng-core';
 import { AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import Drift from 'drift-zoom';
 import { Image } from '../form/model/image';
@@ -20,12 +20,14 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
 
   public isZooming: boolean = false;
 
+  public internalId: string = StringUtils.getUniqueString();
+
   public ngAfterViewInit() {
     this.initializeZooming();
   }
 
   private initializeZooming(): Drift {
-    return new Drift(document.querySelector('div.image-gallery > div.active-image-container > img.active-image'), {
+    return new Drift(document.getElementById(this.internalId), {
       paneContainer: document.querySelector('.zoom-panel'),
       zoomFactor: this.zoomLevel,
       touchDelay: this.touchDelay,
@@ -78,6 +80,8 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
       let activeIndex: number = this.getActiveImageIndex();
       let nextImage: Image = this.images[activeIndex + 1];
       this.selectImage(nextImage);
+    } else {
+      this.setFirstImageAsActive();
     }
   }
 
@@ -86,6 +90,14 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
       let activeIndex: number = this.getActiveImageIndex();
       let prevImage: Image = this.images[activeIndex - 1];
       this.selectImage(prevImage);
+    } else {
+      this.setLastImageAsActive();
+    }
+  }
+
+  private setLastImageAsActive(): void {
+    if (this.hasImages()) {
+      this.selectImage(this.images[this.images.length - 1]);
     }
   }
 
