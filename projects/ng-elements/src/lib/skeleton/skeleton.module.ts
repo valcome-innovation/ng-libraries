@@ -16,7 +16,8 @@ import { SkeletonRectComponent } from './skeleton-loader/skeleton-rect/skeleton-
   exports: [
     SkeletonLoaderComponent,
     SkeletonLineComponent,
-    SkeletonSquareComponent
+    SkeletonSquareComponent,
+    SkeletonRectComponent
   ]
 })
 export class SkeletonModule {
