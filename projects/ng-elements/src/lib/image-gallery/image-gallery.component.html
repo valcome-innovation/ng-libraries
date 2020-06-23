@@ -1,9 +1,9 @@
 <div class="image-gallery">
-    <div>
-        <div class="active-image-container">
-            <div class="image-nav-container left" (click)="previousImage()">
-                <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
-            </div>
+    <div class="active-image-container">
+        <div class="image-nav-container left" (click)="previousImage()">
+            <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
+        </div>
+        <div class="overflow-hidden">
             <img id="{{internalId}}" class="active-image"
                  [attr.src]="activeImage?.url"
                  [attr.alt]="activeImage?.alt"
@@ -12,20 +12,20 @@
             <div class="image-nav-container right" (click)="nextImage()">
                 <ng-container *ngTemplateOutlet="chevronRight"></ng-container>
             </div>
-            <div class="zoom-panel"
-                 [ngClass]="{'zooming' : isZooming}">
-            </div>
         </div>
-        <div class="image-item-container">
-            <div class="image-item-wrapper"
-                 *ngFor="let image of images">
-                <div class="image-item-overlay"
-                     [ngClass]="{ 'active': image === activeImage }"
-                     (click)="selectImage(image)"></div>
-                <img class="image-item"
-                     [attr.src]="image.url"
-                     [attr.alt]="image.alt"/>
-            </div>
+        <div class="zoom-panel"
+             [ngClass]="{'zooming' : isZooming}">
+        </div>
+    </div>
+    <div class="image-item-container">
+        <div class="image-item-wrapper"
+             *ngFor="let image of images">
+            <div class="image-item-overlay"
+                 [ngClass]="{ 'active': image === activeImage }"
+                 (click)="selectImage(image)"></div>
+            <img class="image-item"
+                 [attr.src]="image.url"
+                 [attr.alt]="image.alt"/>
         </div>
     </div>
 </div>
