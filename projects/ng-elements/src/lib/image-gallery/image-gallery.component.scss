@@ -16,11 +16,11 @@
       bottom: 0;
 
       &.left {
-        left: -$imageNavWidth;
+        left: -($imageNavWidth + 5px);
       }
 
       &.right {
-        right: -$imageNavWidth;
+        right: -($imageNavWidth + 5px);
       }
 
       &:hover {
