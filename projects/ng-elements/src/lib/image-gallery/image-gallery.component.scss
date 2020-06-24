@@ -1,25 +1,42 @@
 .image-gallery {
-  display: flex;
-  width: 450px;
+  $imageNavWidth: 24px;
+
+  //width: 380px;
   height: auto;
+  margin: 0 $imageNavWidth;
 
-  .image-nav-container {
-    display: flex;
-    cursor: pointer;
+  .image-nav-wrapper {
+    position: relative;
 
-    &:hover {
-      .image-nav-svg {
-        fill: rgba(0, 0, 0, .75);
+    .image-nav-container {
+      display: flex;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      &.left {
+        left: -$imageNavWidth;
       }
-    }
 
-    .image-nav-svg {
-      transition: fill 200ms ease-out;
+      &.right {
+        right: -$imageNavWidth;
+      }
 
-      width: 24px;
-      height: 24px;
-      margin: auto 0;
-      fill: black;
+      &:hover {
+        .image-nav-svg {
+          fill: rgba(0, 0, 0, .75);
+        }
+      }
+
+      .image-nav-svg {
+        transition: fill 200ms ease-out;
+
+        width: $imageNavWidth;
+        height: $imageNavWidth;
+        margin: auto 0;
+        fill: black;
+      }
     }
   }
 
@@ -36,8 +53,10 @@
     position: relative;
     text-align: center;
     margin-bottom: 1em;
+    overflow: hidden;
 
     .active-image {
+      vertical-align: top;
       width: 100%;
       height: auto;
       max-height: 600px;

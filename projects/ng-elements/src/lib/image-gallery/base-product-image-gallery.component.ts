@@ -29,6 +29,7 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
   private initializeZooming(): Drift {
     return new Drift(document.getElementById(this.internalId), {
       paneContainer: document.querySelector('.zoom-panel'),
+      inlinePane: 1,
       zoomFactor: this.zoomLevel,
       touchDelay: this.touchDelay,
       onShow: () => this.startZooming(),

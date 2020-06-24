@@ -1,31 +1,29 @@
 <div class="image-gallery">
-    <div class="image-nav-container" (click)="previousImage()">
-        <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
-    </div>
-    <div>
+    <div class="image-nav-wrapper">
+        <div class="image-nav-container left" (click)="previousImage()">
+            <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
+        </div>
         <div class="active-image-container">
             <img id="{{internalId}}" class="active-image"
                  [attr.src]="activeImage?.url"
                  [attr.alt]="activeImage?.alt"
                  [attr.data-zoom]="activeImage?.url"/>
-            <div class="zoom-panel"
-                 [ngClass]="{'zooming' : isZooming}">
-            </div>
+            <div class="zoom-panel" [ngClass]="{'zooming' : isZooming}"></div>
         </div>
-        <div class="image-item-container">
-            <div class="image-item-wrapper"
-                 *ngFor="let image of images">
-                <div class="image-item-overlay"
-                     [ngClass]="{ 'active': image === activeImage }"
-                     (click)="selectImage(image)"></div>
-                <img class="image-item"
-                     [attr.src]="image.url"
-                     [attr.alt]="image.alt"/>
-            </div>
+        <div class="image-nav-container right" (click)="nextImage()">
+            <ng-container *ngTemplateOutlet="chevronRight"></ng-container>
         </div>
     </div>
-    <div class="image-nav-container" (click)="nextImage()">
-        <ng-container *ngTemplateOutlet="chevronRight"></ng-container>
+    <div class="image-item-container">
+        <div class="image-item-wrapper"
+             *ngFor="let image of images">
+            <div class="image-item-overlay"
+                 [ngClass]="{ 'active': image === activeImage }"
+                 (click)="selectImage(image)"></div>
+            <img class="image-item"
+                 [attr.src]="image.url"
+                 [attr.alt]="image.alt"/>
+        </div>
     </div>
 </div>
 
