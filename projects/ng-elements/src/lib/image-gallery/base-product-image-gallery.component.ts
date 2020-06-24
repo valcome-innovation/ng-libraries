@@ -1,6 +1,6 @@
 import { BaseComponent, StringUtils } from '@valcome/ng-core';
 import { AfterViewInit, Inject, Input, OnChanges, PLATFORM_ID, SimpleChanges } from '@angular/core';
-import Drift from 'drift-zoom';
+
 import { Image } from '../form/model/image';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -31,15 +31,17 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
     this.initializeZooming();
   }
 
-  private initializeZooming(): Drift {
+  private initializeZooming(): any {
     if (isPlatformBrowser(this.platformId)) {
-      return new Drift(document.getElementById(this.internalId), {
-        paneContainer: document.querySelector('.zoom-panel'),
-        inlinePane: 1,
-        zoomFactor: this.zoomLevel,
-        touchDelay: this.touchDelay,
-        onShow: () => this.startZooming(),
-        onHide: () => this.endZooming()
+      import('drift-zoom').then(Drift => {
+        return new Drift.default(document.getElementById(this.internalId), {
+          paneContainer: document.querySelector('.zoom-panel'),
+          inlinePane: 1,
+          zoomFactor: this.zoomLevel,
+          touchDelay: this.touchDelay,
+          onShow: () => this.startZooming(),
+          onHide: () => this.endZooming()
+        });
       });
     }
   }
