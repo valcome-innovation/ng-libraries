@@ -6,7 +6,7 @@ describe('BaseProductImageGalleryComponent', () => {
   let component: BaseProductImageGalleryComponent;
 
   beforeEach(() => {
-    component = new BaseProductImageGalleryComponent();
+    component = new BaseProductImageGalleryComponent(null);
     component.images = getTestImages();
   });
 
