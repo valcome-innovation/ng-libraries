@@ -1,5 +1,5 @@
 .image-gallery {
-  $imageNavWidth: 24px;
+  $imageNavWidth: 15px;
 
   //width: 380px;
   height: auto;
@@ -33,7 +33,7 @@
         transition: fill 200ms ease-out;
 
         width: $imageNavWidth;
-        height: $imageNavWidth;
+        height: 24px;
         margin: auto 0;
         fill: black;
       }
@@ -105,9 +105,6 @@
           opacity: 0;
           cursor: pointer;
         }
-      }
-
-      .image-item {
       }
     }
   }
