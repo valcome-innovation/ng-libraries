@@ -7,8 +7,7 @@
             <img id="{{internalId}}" class="active-image"
                  [attr.src]="activeImage?.url"
                  [attr.alt]="activeImage?.alt"
-                 [attr.data-zoom]="activeImage?.url"
-            />
+                 [attr.data-zoom]="activeImage?.url"/>
             <div class="zoom-panel"
                  [ngClass]="{'zooming' : isZooming}">
             </div>
@@ -31,15 +30,15 @@
 </div>
 
 <ng-template #chevronLeft>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="image-nav-svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+    <svg width="15" height="24" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.211 3.39551V1.13086C14.211 0.934571 13.9854 0.826173 13.833 0.94629L0.626019 11.2617C0.513807 11.349 0.423009 11.4607 0.360551 11.5884C0.298093 11.7161 0.265625 11.8564 0.265625 11.9985C0.265625 12.1407 0.298093 12.281 0.360551 12.4087C0.423009 12.5363 0.513807 12.6481 0.626019 12.7354L13.833 23.0508C13.9883 23.1709 14.211 23.0625 14.211 22.8662V20.6016C14.211 20.458 14.1436 20.3203 14.0323 20.2324L3.48539 12L14.0323 3.76465C14.1436 3.67676 14.211 3.53906 14.211 3.39551Z"
+              fill="white" fill-opacity="0.4"/>
     </svg>
 </ng-template>
 
 <ng-template #chevronRight>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="image-nav-svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+    <svg width="15" height="24" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.789021 20.6045V22.8691C0.789021 23.0654 1.01461 23.1738 1.16695 23.0537L14.374 12.7383C14.4862 12.651 14.577 12.5393 14.6394 12.4116C14.7019 12.2839 14.7344 12.1436 14.7344 12.0015C14.7344 11.8593 14.7019 11.719 14.6394 11.5913C14.577 11.4637 14.4862 11.3519 14.374 11.2646L1.16695 0.949217C1.01168 0.8291 0.789021 0.937496 0.789021 1.13379L0.789021 3.39844C0.789021 3.54199 0.856402 3.67969 0.967731 3.76758L11.5146 12L0.967731 20.2354C0.856402 20.3232 0.789021 20.4609 0.789021 20.6045Z"
+              fill="white" fill-opacity="0.4"/>
     </svg>
 </ng-template>
