@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { BaseProductImageGalleryComponent } from './base-product-image-gallery.component';
-import { RenderService } from '../universal/render.service';
+import { RenderService } from '@valcome/ng-core';
 
 @Component({
   selector: 'val-product-image-gallery',

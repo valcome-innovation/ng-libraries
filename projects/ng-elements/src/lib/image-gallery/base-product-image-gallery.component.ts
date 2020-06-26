@@ -1,8 +1,7 @@
-import { BaseComponent, StringUtils } from '@valcome/ng-core';
+import { BaseComponent, RenderService, StringUtils } from '@valcome/ng-core';
 import { AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Image } from '../form/model/image';
-import { RenderService } from '../universal/render.service';
 
 export class BaseProductImageGalleryComponent extends BaseComponent implements OnChanges, AfterViewInit {
 

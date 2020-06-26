@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ImageGalleryComponent } from './image-gallery.component';
-import { UniversalModule } from '../universal/universal.module';
+import { UniversalModule } from '../../../../ng-core/src/lib/universal/universal.module';
 
 describe('ProductImageGalleryComponent', () => {
   let component: ImageGalleryComponent;

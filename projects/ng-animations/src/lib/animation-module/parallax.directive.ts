@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
-import { RenderService } from 'ng-elements';
+import { RenderService } from '@valcome/ng-core';
 
 @Directive({
   selector: '[valParallax]'

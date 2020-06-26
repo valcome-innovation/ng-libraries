@@ -1,8 +1,8 @@
 import { BaseProductImageGalleryComponent } from './base-product-image-gallery.component';
 import { Image } from '../form/model/image';
 import { TestBed } from '@angular/core/testing';
-import { RenderService } from '../universal/render.service';
-import { UniversalModule } from '../universal/universal.module';
+import { RenderService } from '../../../../ng-core/src/lib/universal/render.service';
+import { UniversalModule } from '../../../../ng-core/src/lib/universal/universal.module';
 
 describe('BaseProductImageGalleryComponent', () => {
 
