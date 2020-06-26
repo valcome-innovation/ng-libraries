@@ -1,0 +1,51 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@valcome/ng-core": [
+        "dist/ng-core"
+      ],
+      "ng-core": [
+        "dist/ng-core/ng-core",
+        "dist/ng-core"
+      ],
+      "ng-animations": [
+        "dist/ng-animations/ng-animations",
+        "dist/ng-animations"
+      ],
+      "ng-elements": [
+        "dist/ng-elements/ng-elements",
+        "dist/ng-elements"
+      ],
+      "ng-screens": [
+        "dist/ng-screens/ng-screens",
+        "dist/ng-screens"
+      ],
+      "ng-styles": [
+        "dist/ng-styles/ng-styles",
+        "dist/ng-styles"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

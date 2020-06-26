@@ -24,7 +24,9 @@
     "@valcome/ng-core": "^1.0.0",
     "ngx-device-detector": "^1.4.2",
     "ios-inner-height": "^1.1.1",
-    "screenfull": "^5.0.2",
-    "tslib": "^1.10.0"
+    "screenfull": "^5.0.2"
+},
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

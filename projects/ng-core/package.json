@@ -20,7 +20,9 @@
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-core#ngcore",
   "peerDependencies": {
     "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "tslib": "^1.10.0"
+    "@angular/core": "^9.0.7"
+},
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }
