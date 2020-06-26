@@ -1,4 +1,5 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { RenderService } from 'ng-elements';
 
 @Directive({
   selector: '[valParallax]'
@@ -11,13 +12,16 @@ export class ParallaxDirective implements OnInit {
   @Input()
   public parallaxTop: number = 0;
 
-  public constructor(private eleRef: ElementRef) {
+  public constructor(private eleRef: ElementRef,
+                     private renderService: RenderService) {
   }
 
   public ngOnInit(): void {
-    this.createRelativeWrapper();
-    this.makeElementAbsolute();
-    this.onWindowScroll();
+    if (this.renderService.isBrowser()) {
+      this.createRelativeWrapper();
+      this.makeElementAbsolute();
+      this.onWindowScroll();
+    }
   }
 
   @HostListener('window:scroll', ['$event'])
