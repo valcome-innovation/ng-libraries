@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-screens#ngscreens",
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "@valcome/ng-core": "^1.0.0",
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@valcome/ng-core": "^1.2.0",
     "ngx-device-detector": "^1.4.2",
     "ios-inner-height": "^1.1.1",
     "screenfull": "^5.0.2"

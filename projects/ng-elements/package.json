@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-elements#ngelements",
   "peerDependencies": {
-    "@angular/common": "^9.0.7",
-    "@angular/core": "^9.0.7",
-    "@valcome/ng-core": "^0.2.10"
+    "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
+    "@valcome/ng-core": "^1.2.0"
   },
   "dependencies": {
     "drift-zoom": "^1.4.0",
