@@ -9,7 +9,8 @@ describe('BaseProductImageGalleryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [UniversalModule]
+      imports: [UniversalModule],
+      providers: [RenderService]
     })
 
     component = new BaseProductImageGalleryComponent(TestBed.inject(RenderService));
