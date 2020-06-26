@@ -1,8 +1,8 @@
 import { BaseComponent, StringUtils } from '@valcome/ng-core';
-import { AfterViewInit, Inject, Input, OnChanges, PLATFORM_ID, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Image } from '../form/model/image';
-import { isPlatformBrowser } from '@angular/common';
+import { RenderService } from '../universal/render.service';
 
 export class BaseProductImageGalleryComponent extends BaseComponent implements OnChanges, AfterViewInit {
 
@@ -23,7 +23,7 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
 
   public internalId: string = StringUtils.getUniqueString();
 
-  public constructor(@Inject(PLATFORM_ID) private platformId: any) {
+  public constructor(private renderService: RenderService) {
     super();
   }
 
@@ -32,7 +32,7 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
   }
 
   private initializeZooming(): any {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.renderService.isBrowser()) {
       import('drift-zoom').then(Drift => {
         return new Drift.default(document.getElementById(this.internalId), {
           paneContainer: document.querySelector('.zoom-panel'),

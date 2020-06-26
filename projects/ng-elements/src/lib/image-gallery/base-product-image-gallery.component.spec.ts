@@ -1,12 +1,19 @@
 import { BaseProductImageGalleryComponent } from './base-product-image-gallery.component';
 import { Image } from '../form/model/image';
+import { TestBed } from '@angular/core/testing';
+import { RenderService } from '../universal/render.service';
+import { UniversalModule } from '../universal/universal.module';
 
 describe('BaseProductImageGalleryComponent', () => {
 
   let component: BaseProductImageGalleryComponent;
 
   beforeEach(() => {
-    component = new BaseProductImageGalleryComponent(null);
+    TestBed.configureTestingModule({
+      imports: [UniversalModule]
+    })
+
+    component = new BaseProductImageGalleryComponent(TestBed.inject(RenderService));
     component.images = getTestImages();
   });
 

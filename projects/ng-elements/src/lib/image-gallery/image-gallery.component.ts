@@ -1,5 +1,6 @@
-import { Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { BaseProductImageGalleryComponent } from './base-product-image-gallery.component';
+import { RenderService } from '../universal/render.service';
 
 @Component({
   selector: 'val-product-image-gallery',
@@ -8,8 +9,7 @@ import { BaseProductImageGalleryComponent } from './base-product-image-gallery.c
   encapsulation: ViewEncapsulation.None
 })
 export class ImageGalleryComponent extends BaseProductImageGalleryComponent {
-
-  public constructor(@Inject(PLATFORM_ID)  platformId: any) {
-    super(platformId);
+  public constructor(renderService: RenderService) {
+    super(renderService);
   }
 }
