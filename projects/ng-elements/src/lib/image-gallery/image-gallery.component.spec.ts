@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ImageGalleryComponent } from './image-gallery.component';
 import { UniversalModule } from '../../../../ng-core/src/lib/universal/universal.module';
+import { RenderService } from '@valcome/ng-core';
 
 describe('ProductImageGalleryComponent', () => {
   let component: ImageGalleryComponent;
@@ -9,6 +10,7 @@ describe('ProductImageGalleryComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [UniversalModule],
+      providers: [RenderService],
       declarations: [ImageGalleryComponent]
     }).compileComponents();
   }));
