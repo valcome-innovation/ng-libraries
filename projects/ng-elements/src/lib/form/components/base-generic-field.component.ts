@@ -1,9 +1,10 @@
-import { ContentChildren, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
+import { ContentChildren, Directive, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { FormErrorMessageDirective } from '../directives/form-error-message/form-error-message.directive';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { BaseComponent } from '@valcome/ng-core';
 import { FormHelper } from '../helpers/form.helper';
 
+@Directive()
 export class BaseGenericFieldComponent extends BaseComponent implements OnInit, OnChanges {
 
   @ContentChildren(FormErrorMessageDirective)
