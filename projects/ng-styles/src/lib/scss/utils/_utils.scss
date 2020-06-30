@@ -1112,6 +1112,18 @@ fieldset {
   visibility: hidden !important;
 }
 
+@media (min-width: 993px) {
+  .d-lg-none {
+    display: none !important;
+  }
+  .d-lg-block {
+    display: block !important;
+  }
+  .d-lg-flex {
+    display: flex !important;
+  }
+}
+
 @media (min-width: 769px) {
   .float-md-left {
     float: left !important;
