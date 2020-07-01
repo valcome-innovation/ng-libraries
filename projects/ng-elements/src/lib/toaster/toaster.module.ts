@@ -3,7 +3,11 @@ import { INotyfOptions } from 'notyf';
 
 export const TOASTER_OPTIONS = new InjectionToken<Partial<INotyfOptions>>('TOASTER_OPTIONS');
 
-@NgModule({})
+@NgModule({
+  providers: [
+    { provide: TOASTER_OPTIONS, useValue: {} }
+  ]
+})
 export class ToasterModule {
 
   public static forRoot(options: Partial<INotyfOptions>): ModuleWithProviders<ToasterModule> {
