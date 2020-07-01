@@ -1,23 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ToastComponent } from './toast/toast.component';
-import { ToastContainerComponent } from './toast-container/toast-container.component';
-import { ToasterService } from './shared/toaster.service';
-import { DomService } from './shared/dom.service';
+import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
+import { INotyfOptions } from 'notyf';
 
-export { DomService } from './shared/dom.service';
-export { ToasterService } from './shared/toaster.service';
-export { ToastComponent } from './toast/toast.component';
-export { ToastContainerComponent } from './toast-container/toast-container.component';
+export const TOASTER_OPTIONS = new InjectionToken<Partial<INotyfOptions>>('TOASTER_OPTIONS');
 
-@NgModule({
-  imports: [
-    CommonModule,
-  ],
-  declarations: [ToastComponent, ToastContainerComponent],
-  exports: [],
-  entryComponents: [ToastComponent, ToastContainerComponent],
-  providers: [ToasterService, DomService]
-})
+@NgModule({})
 export class ToasterModule {
+
+  public static forRoot(options: Partial<INotyfOptions>): ModuleWithProviders<ToasterModule> {
+    return {
+      ngModule: ToasterModule,
+      providers: [
+        { provide: TOASTER_OPTIONS, useValue: options }
+      ]
+    }
+  }
+
+  public static forChild(): ModuleWithProviders<ToasterModule> {
+    return {
+      ngModule: ToasterModule,
+    }
+  }
 }

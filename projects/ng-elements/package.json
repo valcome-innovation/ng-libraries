@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "drift-zoom": "^1.4.0",
+    "notyf": "^3.7.0",
     "tslib": "^2.0.0"
   }
 }
