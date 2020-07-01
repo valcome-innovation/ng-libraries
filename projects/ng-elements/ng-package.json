@@ -9,6 +9,7 @@
     }
   },
   "whitelistedNonPeerDependencies": [
-    "drift-zoom"
+    "drift-zoom",
+    "notyf"
   ]
 }
