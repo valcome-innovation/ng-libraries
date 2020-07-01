@@ -1,0 +1,69 @@
+  :host {
+  background: #323232;
+  display: block;
+  color: white;
+  padding: 1rem 1rem;
+  margin: 1rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.34);
+  transform-origin: right;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+:host(.notyf--error) {
+  background: #d43f3a;
+}
+
+:host(.notyf--success) {
+  background: #4cae4c;
+}
+
+:host(.notyf--warning) {
+  background: #f89406;
+}
+
+:host(.notyf--info) {
+  background: #2f96b4;
+}
+
+@media (max-width: 1024px) {
+    :host {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 800px) {
+    :host {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 500px) {
+    :host {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
+    :host {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+  :host {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  :host {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  :host {
+    font-size: 1.3rem;
+  }
+}
