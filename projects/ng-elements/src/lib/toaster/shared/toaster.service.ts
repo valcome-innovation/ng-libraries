@@ -5,7 +5,7 @@ import { ToastComponent, ToastType } from '../toast/toast.component';
 import { ToastContainerComponent } from '../toast-container/toast-container.component';
 
 @Injectable()
-export class NotyfService {
+export class ToasterService {
 
   private _toastDelay = 5000;
   private _toastStyle: INotyfStyle = {};
