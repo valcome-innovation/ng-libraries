@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastComponent } from './toast/toast.component';
 import { ToastContainerComponent } from './toast-container/toast-container.component';
 import { ToasterService } from './shared/toaster.service';
@@ -15,8 +13,6 @@ export { ToastContainerComponent } from './toast-container/toast-container.compo
 @NgModule({
   imports: [
     CommonModule,
-    BrowserModule,
-    BrowserAnimationsModule
   ],
   declarations: [ToastComponent, ToastContainerComponent],
   exports: [],
