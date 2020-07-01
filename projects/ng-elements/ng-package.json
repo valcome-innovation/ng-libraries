@@ -5,7 +5,8 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
       "ng-core": "@valcome/ng-core",
-      "@valcome/ng-core": "@valcome/ng-core"
+      "@valcome/ng-core": "@valcome/ng-core",
+      "notyf": "notyf"
     }
   },
   "whitelistedNonPeerDependencies": [
