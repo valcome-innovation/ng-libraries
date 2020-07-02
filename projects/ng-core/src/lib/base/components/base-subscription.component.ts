@@ -1,13 +1,14 @@
 import { Subscription } from 'rxjs';
-import { OnDestroy } from '@angular/core';
+import { Directive, OnDestroy } from '@angular/core';
 
+@Directive()
 export class BaseSubscriptionComponent implements OnDestroy {
   protected subscriptions: Subscription[] = [];
 
   public ngOnDestroy(): void {
     this.subscriptions.forEach(s => {
-        s?.unsubscribe();
-        s = null;
+      s?.unsubscribe();
+      s = null;
     });
     this.subscriptions = [];
   }
