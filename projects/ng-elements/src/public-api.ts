@@ -1,4 +1,5 @@
 export * from './lib/file-picker/file-picker.module';
+export * from './lib/file-picker/file-picker.directive';
 export * from './lib/file-picker/file-picker-error';
 export * from './lib/file-picker/picked-file';
 export * from './lib/file-picker/file-dropzone.directive';
@@ -30,6 +31,7 @@ export * from './lib/image-gallery/image-gallery.module';
 export * from './lib/form/generic-forms.module';
 export * from './lib/form/components/generic-radio/generic-radio.component';
 export * from './lib/form/components/generic-input/generic-input.component';
+export * from './lib/form/components/generic-password/generic-password.component';
 export * from './lib/form/components/generic-select/generic-select.component';
 export * from './lib/form/components/generic-checkbox/generic-checkbox.component';
 export * from './lib/form/components/generic-error-messages/generic-error-messages.component';
