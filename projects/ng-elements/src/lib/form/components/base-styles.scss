@@ -8,6 +8,18 @@
     width: 100%;
   }
 
+  .password-input {
+    position: relative;
+
+    .show-password,
+    .hide-password {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+
   .input-errors {
     display: flex;
     flex-direction: column;
