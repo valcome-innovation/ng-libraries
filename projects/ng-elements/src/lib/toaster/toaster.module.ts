@@ -1,9 +1,11 @@
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { INotyfOptions } from 'notyf';
+import { UniversalModule } from '@valcome/ng-core';
 
 export const TOASTER_OPTIONS = new InjectionToken<Partial<INotyfOptions>>('TOASTER_OPTIONS');
 
 @NgModule({
+  imports: [UniversalModule],
   providers: [
     { provide: TOASTER_OPTIONS, useValue: {} }
   ]
