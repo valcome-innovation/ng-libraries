@@ -7,6 +7,7 @@ import { GenericSelectComponent } from './components/generic-select/generic-sele
 import { GenericRadioComponent } from './components/generic-radio/generic-radio.component';
 import { GenericCheckboxComponent } from './components/generic-checkbox/generic-checkbox.component';
 import { GenericErrorMessagesComponent } from './components/generic-error-messages/generic-error-messages.component';
+import { GenericPasswordComponent } from './components/generic-password/generic-password.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { GenericErrorMessagesComponent } from './components/generic-error-messag
   ],
   declarations: [
     GenericInputComponent,
+    GenericPasswordComponent,
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,
@@ -23,6 +25,7 @@ import { GenericErrorMessagesComponent } from './components/generic-error-messag
   ],
   exports: [
     GenericInputComponent,
+    GenericPasswordComponent,
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,

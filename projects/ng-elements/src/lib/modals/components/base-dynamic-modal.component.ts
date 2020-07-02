@@ -1,6 +1,7 @@
-import { EventEmitter, HostListener, Output } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 import { BaseComponent } from '@valcome/ng-core';
 
+@Directive()
 export abstract class BaseDynamicModalComponent extends BaseComponent {
 
   @Output()

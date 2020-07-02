@@ -1,6 +1,7 @@
-import { HostListener } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 import { BaseComponent } from '@valcome/ng-core';
 
+@Directive()
 export class BaseUnsavedChangesComponent extends BaseComponent {
 
   protected unsavedChangesExist: boolean;
