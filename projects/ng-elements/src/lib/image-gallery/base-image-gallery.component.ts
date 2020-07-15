@@ -13,7 +13,7 @@ export class BaseImageGalleryComponent extends BaseComponent implements OnChange
   public touchDelay = 0;
 
   @Input('images')
-  set setImages(images: Image[] | null) {
+  set setImages(images: Image[] | undefined) {
     if (images) {
       this.images = images;
     } else {
