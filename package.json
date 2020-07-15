@@ -24,8 +24,10 @@
     "ngx-device-detector": "^1.4.2",
     "rxjs": "~6.5.4",
     "screenfull": "^5.0.2",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "drift-zoom": "^1.4.0",
+    "notyf": "^3.7.0",
+    "tslib": "^2.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.0",

@@ -51,7 +51,7 @@ describe('BaseImageGalleryComponent', () => {
     expect(component.activeImage.sortOrder).toBe(0);
   });
 
-  it('should jumpt to last when calling prev() out of bounds', () => {
+  it('should jump to last when calling prev() out of bounds', () => {
     component.ngOnChanges(null);
     expect(component.activeImage.sortOrder).toBe(0);
 

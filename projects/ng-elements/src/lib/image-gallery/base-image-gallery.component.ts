@@ -55,7 +55,7 @@ export class BaseImageGalleryComponent extends BaseComponent implements OnChange
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    let isLoading = changes.isLoading;
+    let isLoading = changes?.isLoading;
 
     if (!this.isInitialized && isLoading && !isLoading.currentValue) {
       this.initializeZooming();
