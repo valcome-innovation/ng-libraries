@@ -12,8 +12,16 @@ export class BaseImageGalleryComponent extends BaseComponent implements OnChange
   @Input()
   public touchDelay = 0;
 
-  @Input()
-  public images: Image[];
+  @Input('images')
+  set setImages(images: Image[] | null) {
+    if (images) {
+      this.images = images;
+    } else {
+      this.images = [];
+    }
+  }
+
+  public images: Image[] = [];
 
   @Input()
   public isLoading = true;
@@ -67,7 +75,7 @@ export class BaseImageGalleryComponent extends BaseComponent implements OnChange
   }
 
   private setFirstImageAsActive(): void {
-    if (this.hasImages()) {
+    if (this.images && this.hasImages()) {
       this.selectImage(this.images[0]);
     }
   }
