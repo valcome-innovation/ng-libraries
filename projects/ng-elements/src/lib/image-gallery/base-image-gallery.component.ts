@@ -1,34 +1,34 @@
 import { BaseComponent, RenderService, StringUtils } from '@valcome/ng-core';
-import { AfterViewInit, Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 import { Image } from '../form/model/image';
 
 @Directive()
-export class BaseProductImageGalleryComponent extends BaseComponent implements OnChanges, AfterViewInit {
+export class BaseImageGalleryComponent extends BaseComponent implements OnChanges {
 
   @Input()
-  public zoomLevel: number = 3;
+  public zoomLevel = 3;
 
   @Input()
-  public touchDelay: number = 0;
+  public touchDelay = 0;
 
   @Input()
   public images: Image[];
+
+  @Input()
+  public isLoading = true;
 
   public activeImage: Image;
   public isFirst: boolean;
   public isLast: boolean;
 
-  public isZooming: boolean = false;
+  public isZooming = false;
+  public isInitialized = false;
 
   public internalId: string = StringUtils.getUniqueString();
 
   public constructor(private renderService: RenderService) {
     super();
-  }
-
-  public ngAfterViewInit() {
-    this.initializeZooming();
   }
 
   private initializeZooming(): any {
@@ -55,6 +55,12 @@ export class BaseProductImageGalleryComponent extends BaseComponent implements O
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
+    let isLoading = changes.isLoading;
+
+    if (!this.isInitialized && isLoading && !isLoading.currentValue) {
+      this.initializeZooming();
+    }
+
     if (this.activeImage == null) {
       this.setFirstImageAsActive();
     }
