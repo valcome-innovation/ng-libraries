@@ -64,13 +64,13 @@
 
     .skeleton {
       min-height: 400px;
-      max-height: 450px;
       display: flex;
 
       val-skeleton-rect {
         min-width: 100%;
         min-height: 100%;
         margin-bottom: 1em;
+        max-height: 450px;
       }
     }
 
