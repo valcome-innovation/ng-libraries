@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { ScrollTopService } from './scroll-to-top.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RenderService, UniversalModule } from 'ng-core';
 import { Subject } from 'rxjs';
 import { Event, NavigationEnd } from '@angular/router';
 import { JsUtils } from '../utils/js.utils';
+import { UniversalModule } from '../universal/universal.module';
+import { RenderService } from '../universal/render.service';
 
 describe('ScrollToTopService', () => {
 
