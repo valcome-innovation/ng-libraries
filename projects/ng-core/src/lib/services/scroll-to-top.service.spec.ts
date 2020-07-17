@@ -1,15 +1,15 @@
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { ScrollTopService } from './scroll-to-top.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RenderService, UniversalModule } from 'ng-core';
 import { Subject } from 'rxjs';
 import { Event, NavigationEnd } from '@angular/router';
+import { JsUtils } from '../utils/js.utils';
 
 describe('ScrollToTopService', () => {
 
-  const routeEventEmitter = new Subject<Event>();
-
   let service: ScrollTopService;
+  let routeEventEmitter: Subject<Event>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -22,6 +22,8 @@ describe('ScrollToTopService', () => {
       ]
     });
 
+    routeEventEmitter = new Subject<Event>()
+
     const router = {
       events: routeEventEmitter.asObservable()
     } as any
@@ -33,25 +35,27 @@ describe('ScrollToTopService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should enableScrollToTop', fakeAsync(() => {
+  it('should enableScrollToTop', done => {
     spyOn(window, 'scroll');
 
     service.enableScrollToTop(false);
     routeEventEmitter.next(new NavigationEnd(1, '', ''))
 
-    tick(1000);
+    JsUtils.callAfterStackResolved(() => {
+      expect(window.scroll).toHaveBeenCalled();
+      done();
+    })
+  });
 
-    expect(window.scroll).toHaveBeenCalled();
-  }));
-
-  it('should enableScrollToTop and skip first', fakeAsync(() => {
+  it('should enableScrollToTop and skip first', done => {
     spyOn(window, 'scroll');
 
     service.enableScrollToTop(true);
     routeEventEmitter.next(new NavigationEnd(1, '', ''))
 
-    tick(1000);
-
-    expect(window.scroll).not.toHaveBeenCalled();
-  }));
+    JsUtils.callAfterStackResolved(() => {
+      expect(window.scroll).not.toHaveBeenCalled();
+      done();
+    })
+  });
 })
