@@ -24,7 +24,7 @@ export * from './lib/wizard/wizard.module';
 export * from './lib/wizard/wizard-step';
 export * from './lib/wizard/base-wizard.component';
 
-export * from './lib/image-gallery/base-product-image-gallery.component';
+export * from './lib/image-gallery/base-image-gallery.component';
 export * from './lib/image-gallery/image-gallery.component';
 export * from './lib/image-gallery/image-gallery.module';
 

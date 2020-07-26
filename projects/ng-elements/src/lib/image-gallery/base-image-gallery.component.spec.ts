@@ -1,19 +1,20 @@
-import { BaseProductImageGalleryComponent } from './base-product-image-gallery.component';
 import { Image } from '../form/model/image';
 import { TestBed } from '@angular/core/testing';
 import { RenderService, UniversalModule } from '@valcome/ng-core';
+import { BaseImageGalleryComponent } from './base-image-gallery.component';
+import { SkeletonModule } from 'ng-elements';
 
-describe('BaseProductImageGalleryComponent', () => {
+describe('BaseImageGalleryComponent', () => {
 
-  let component: BaseProductImageGalleryComponent;
+  let component: BaseImageGalleryComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [UniversalModule],
+      imports: [UniversalModule, SkeletonModule],
       providers: [RenderService]
     })
 
-    component = new BaseProductImageGalleryComponent(TestBed.inject(RenderService));
+    component = new BaseImageGalleryComponent(TestBed.inject(RenderService));
     component.images = getTestImages();
   });
 
@@ -50,7 +51,7 @@ describe('BaseProductImageGalleryComponent', () => {
     expect(component.activeImage.sortOrder).toBe(0);
   });
 
-  it('should jumpt to last when calling prev() out of bounds', () => {
+  it('should jump to last when calling prev() out of bounds', () => {
     component.ngOnChanges(null);
     expect(component.activeImage.sortOrder).toBe(0);
 

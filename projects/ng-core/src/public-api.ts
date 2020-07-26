@@ -19,6 +19,8 @@ export * from './lib/base/components/base-subscription.component';
 
 export * from './lib/base/services/base-initializable.service';
 
+export * from './lib/services/scroll-to-top.service';
+
 export * from './lib/base/base.mapper';
 
 export * from './lib/universal/universal.module';

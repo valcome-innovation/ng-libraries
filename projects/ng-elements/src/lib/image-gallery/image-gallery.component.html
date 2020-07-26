@@ -3,7 +3,7 @@
         <div class="image-nav-container left" (click)="previousImage()">
             <ng-container *ngTemplateOutlet="chevronLeft"></ng-container>
         </div>
-        <div class="active-image-container">
+        <div *ngIf="!isLoading; else imageLoader" class="active-image-container">
             <img id="{{internalId}}" class="active-image"
                  [attr.src]="activeImage?.url"
                  [attr.alt]="activeImage?.alt"
@@ -14,9 +14,8 @@
             <ng-container *ngTemplateOutlet="chevronRight"></ng-container>
         </div>
     </div>
-    <div class="image-item-container">
-        <div class="image-item-wrapper"
-             *ngFor="let image of images">
+    <div *ngIf="!isLoading; else previewLoader" class="image-item-container">
+        <div *ngFor="let image of images" class="image-item-wrapper">
             <div class="image-item-overlay"
                  [ngClass]="{ 'active': image === activeImage }"
                  (click)="selectImage(image)"></div>
@@ -39,4 +38,21 @@
         <path d="M0.789021 20.6045V22.8691C0.789021 23.0654 1.01461 23.1738 1.16695 23.0537L14.374 12.7383C14.4862 12.651 14.577 12.5393 14.6394 12.4116C14.7019 12.2839 14.7344 12.1436 14.7344 12.0015C14.7344 11.8593 14.7019 11.719 14.6394 11.5913C14.577 11.4637 14.4862 11.3519 14.374 11.2646L1.16695 0.949217C1.01168 0.8291 0.789021 0.937496 0.789021 1.13379L0.789021 3.39844C0.789021 3.54199 0.856402 3.67969 0.967731 3.76758L11.5146 12L0.967731 20.2354C0.856402 20.3232 0.789021 20.4609 0.789021 20.6045Z"
               fill="white" fill-opacity="0.4"/>
     </svg>
+</ng-template>
+
+<ng-template #imageLoader>
+    <val-skeleton-loader class="active-image-container">
+        <val-skeleton-rect [heightWithUnit]="'100%'"
+                           [widthWithUnit]="'100%'">
+        </val-skeleton-rect>
+    </val-skeleton-loader>
+</ng-template>
+
+<ng-template #previewLoader>
+    <val-skeleton-loader #model [amount]="3" class="preview-loader">
+        <val-skeleton-rect *ngFor="let item of model.skeletons"
+                           [heightWithUnit]="'75px'"
+                           [widthWithUnit]="'100%'">
+        </val-skeleton-rect>
+    </val-skeleton-loader>
 </ng-template>
