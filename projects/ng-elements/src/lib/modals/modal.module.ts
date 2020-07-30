@@ -8,7 +8,9 @@ import { SimpleModalComponent } from './components/simple-modal/simple-modal.com
     SimpleModalComponent
   ],
   imports: [],
-  exports: []
+  exports: [
+    ModalFrameComponent
+  ]
 })
 export class ModalModule {
 }
