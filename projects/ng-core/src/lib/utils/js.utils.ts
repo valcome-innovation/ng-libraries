@@ -7,7 +7,7 @@ export class JsUtils {
     return JSON.parse(JSON.stringify(customObject));
   }
 
-  public static immute(object: any | null): any | null {
+  public static immute(object: any | undefined): any | undefined {
     if (object) {
       return Object.assign({}, { ...object });
     } else {
@@ -15,11 +15,11 @@ export class JsUtils {
     }
   }
 
-  public static immuteTyped<T>(object: T | null, type: new() => T): T | null {
+  public static immuteTyped<T>(object: T | undefined, type: new() => T): T | undefined {
     if (object) {
       return Object.assign(new type, { ...object });
     } else {
-      return null;
+      return undefined;
     }
   }
 
