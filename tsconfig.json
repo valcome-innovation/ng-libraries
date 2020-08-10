@@ -42,6 +42,12 @@
     },
     {
       "path": "./projects/ts-core/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/node-core/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/node-core/tsconfig.spec.json"
     }
   ]
 }

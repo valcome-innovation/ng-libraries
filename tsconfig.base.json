@@ -48,6 +48,10 @@
       "ts-core": [
         "dist/ts-core/ts-core",
         "dist/ts-core"
+      ],
+      "node-core": [
+        "dist/node-core/node-core",
+        "dist/node-core"
       ]
     }
   },
