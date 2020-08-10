@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-screens",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A collection of handy services regarding screen orientation, screen size and fullscreen mode.",
   "scripts": {
     "preversion": "ng test ng-screens --watch=false",
@@ -22,7 +22,7 @@
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
     "@valcome/ng-core": "^1.2.0",
-    "@valcome/ts-core": "^0.0.1",
+    "@valcome/ts-core": "^1.0.0",
     "ngx-device-detector": "^1.4.2",
     "ios-inner-height": "^1.1.1",
     "screenfull": "^5.0.2"
