@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ScreensModule } from '../screens.module';
 import { DeviceService } from './device.service';
-import { JsUtils } from 'ng-core';
+import { JsUtils } from '@valcome/ts-core';
 
 @Injectable({ providedIn: ScreensModule })
 export class OrientationService {
