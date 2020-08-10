@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths": {
+      "@valcome/ts-core": [
+        "dist/ts-core"
+      ],
       "@valcome/ng-core": [
         "dist/ng-core"
       ],

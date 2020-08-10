@@ -1,6 +1,5 @@
 import { ShareUtils } from './share.utils';
 import { ShareData } from '../model/share-data';
-import createSpyObj = jasmine.createSpyObj;
 
 describe('ShareUtils', () => {
 

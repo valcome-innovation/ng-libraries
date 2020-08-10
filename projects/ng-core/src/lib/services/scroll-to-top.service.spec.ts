@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { Event, NavigationEnd } from '@angular/router';
 import { UniversalModule } from '../universal/universal.module';
 import { RenderService } from '../universal/render.service';
-import { JsUtils } from 'ts-core';
+import { JsUtils } from '@valcome/ts-core';
 
 describe('ScrollToTopService', () => {
 

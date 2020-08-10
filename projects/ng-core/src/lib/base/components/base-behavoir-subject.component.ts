@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 import { BaseSubscriptionComponent } from './base-subscription.component';
 import { Directive } from '@angular/core';
-import { JsUtils } from 'ts-core';
+import { JsUtils } from '@valcome/ts-core';
 
 @Directive()
 export class BaseBehaviorSubjectComponent extends BaseSubscriptionComponent {
