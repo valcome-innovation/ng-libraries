@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { ArrayUtils } from '@valcome/ng-core';
+import { ArrayUtils } from '@valcome/ts-core';
 
 @Component({
   selector: 'val-skeleton-loader',
