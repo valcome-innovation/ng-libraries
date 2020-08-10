@@ -21,7 +21,8 @@
   "peerDependencies": {
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
-    "@valcome/ng-core": "^1.2.0"
+    "@valcome/ng-core": "^1.2.0",
+    "@valcome/ng-ts": "^0.0.1"
   },
   "dependencies": {
     "drift-zoom": "^1.4.0",

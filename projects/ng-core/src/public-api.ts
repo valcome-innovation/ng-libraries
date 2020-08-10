@@ -1,11 +1,7 @@
-export * from './lib/utils/array.utils';
 export * from './lib/utils/color.utils';
 export * from './lib/utils/dom.utils';
-export * from './lib/utils/string-utils';
-export * from './lib/utils/js.utils';
 export * from './lib/utils/image.utils';
 export * from './lib/utils/math.utils';
-export * from './lib/utils/performance.utils';
 export * from './lib/utils/share.utils';
 export * from './lib/utils/sound.utils';
 

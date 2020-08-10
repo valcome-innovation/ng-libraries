@@ -1,6 +1,5 @@
-import { BaseComponent, RenderService, StringUtils } from '@valcome/ng-core';
+import { BaseComponent, RenderService } from '@valcome/ng-core';
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
-
 import { Image } from '../form/model/image';
 
 @Directive()

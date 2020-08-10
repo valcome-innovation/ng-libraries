@@ -36,6 +36,12 @@
     },
     {
       "path": "./projects/playground/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ts-core/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ts-core/tsconfig.spec.json"
     }
   ]
 }

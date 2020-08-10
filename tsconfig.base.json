@@ -41,6 +41,10 @@
       "ng-styles": [
         "dist/ng-styles/ng-styles",
         "dist/ng-styles"
+      ],
+      "ts-core": [
+        "dist/ts-core/ts-core",
+        "dist/ts-core"
       ]
     }
   },
