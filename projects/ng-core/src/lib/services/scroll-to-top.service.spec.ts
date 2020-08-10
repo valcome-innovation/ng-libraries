@@ -3,9 +3,9 @@ import { ScrollTopService } from './scroll-to-top.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Subject } from 'rxjs';
 import { Event, NavigationEnd } from '@angular/router';
-import { JsUtils } from '../utils/js.utils';
 import { UniversalModule } from '../universal/universal.module';
 import { RenderService } from '../universal/render.service';
+import { JsUtils } from 'ts-core';
 
 describe('ScrollToTopService', () => {
 
