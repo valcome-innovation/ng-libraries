@@ -1,6 +1,6 @@
 import { JsUtils } from '@valcome/ts-core';
 
-export class GenericMapper {
+export class GenericMapper<T> {
 
   public static toJson<T>(instance: T | T[]): any {
     return JsUtils.clone(instance);
