@@ -14,6 +14,6 @@ export abstract class BaseMapper<T> {
   }
 
   public fromJsonArray(jsonArray: any[]): T[] {
-    return GenericMapper.fromJsonArray<T>(jsonArray, this.type);
+    return GenericMapper.fromJsonArray(jsonArray, this.type);
   }
 }
