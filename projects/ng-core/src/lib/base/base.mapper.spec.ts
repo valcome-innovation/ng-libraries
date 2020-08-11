@@ -16,7 +16,7 @@ describe('BaseMapper', () => {
   });
 
   it('should create instance from json', () => {
-    const json: any = {name: 'John Doe'};
+    const json: any = { name: 'John Doe' };
     const actual: Human = humanMapper.fromJson(json);
 
     expect(actual.name).toBe(json.name);
@@ -24,11 +24,12 @@ describe('BaseMapper', () => {
   });
 
   it('should map every entry in list individual', () => {
-    spyOn(humanMapper, 'fromJson');
-    const jsonArray: any[] = [{name: 'John Doe'}, {name: 'John Lennon'}];
-    humanMapper.fromJsonArray(jsonArray);
+    const jsonArray: any[] = [{ name: 'John Doe' }, { name: 'John Lennon' }];
+    const result: Human[] = humanMapper.fromJsonArray(jsonArray);
 
-    expect(humanMapper.fromJson).toHaveBeenCalledTimes(2);
+    expect(result.length).toEqual(2);
+    expect(result[0].name).toEqual('John Doe');
+    expect(result[1].name).toEqual('John Lennon');
   });
 });
 

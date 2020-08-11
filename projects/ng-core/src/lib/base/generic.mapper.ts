@@ -1,5 +1,6 @@
-import { JsUtils } from '../utils/js.utils';
+import { JsUtils } from '@valcome/ts-core';
 
+// @dynamic
 export class GenericMapper {
 
   public static toJson<T>(instance: T | T[]): any {

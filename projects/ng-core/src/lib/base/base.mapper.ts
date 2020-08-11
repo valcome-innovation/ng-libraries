@@ -1,4 +1,4 @@
-import { JsUtils } from '@valcome/ts-core';
+import { GenericMapper } from './generic.mapper';
 
 export abstract class BaseMapper<T> {
 
@@ -6,14 +6,14 @@ export abstract class BaseMapper<T> {
   }
 
   public toJson(instance: T | T[]): any {
-    return JsUtils.clone<T>(instance);
+    return GenericMapper.toJson<T>(instance);
   }
 
   public fromJson(json: any | any[]): T {
-    return JsUtils.fromJson<T>(json, this.type);
+    return GenericMapper.fromJson<T>(json, this.type);
   }
 
   public fromJsonArray(jsonArray: any[]): T[] {
-    return jsonArray.map(j => this.fromJson(j));
+    return GenericMapper.fromJsonArray<T>(jsonArray, this.type);
   }
 }

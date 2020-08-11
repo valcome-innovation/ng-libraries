@@ -27,7 +27,7 @@ describe('GenericMapper', () => {
     const jsonArray: any[] = [{ name: 'John Doe' }, { name: 'John Lennon' }];
     const result: Human[] = GenericMapper.fromJsonArray<Human>(jsonArray, Human);
 
-    console.log(result);
+    expect(result.length).toEqual(2);
     expect(result[0].name).toEqual('John Doe');
     expect(result[1].name).toEqual('John Lennon');
   });
