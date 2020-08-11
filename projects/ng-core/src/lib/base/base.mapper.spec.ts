@@ -28,6 +28,8 @@ describe('BaseMapper', () => {
     const result: Human[] = humanMapper.fromJsonArray(jsonArray);
 
     expect(result.length).toEqual(2);
+    expect(result[0]).toBeInstanceOf(Human);
+    expect(result[1]).toBeInstanceOf(Human);
     expect(result[0].name).toEqual('John Doe');
     expect(result[1].name).toEqual('John Lennon');
   });
