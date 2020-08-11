@@ -1,4 +1,4 @@
-import { JsUtils } from '../utils/js.utils';
+import { JsUtils } from '@valcome/ts-core';
 
 export abstract class BaseMapper<T> {
 

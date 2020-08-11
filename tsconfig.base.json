@@ -19,6 +19,9 @@
       "dom"
     ],
     "paths": {
+      "@valcome/ts-core": [
+        "dist/ts-core"
+      ],
       "@valcome/ng-core": [
         "dist/ng-core"
       ],
@@ -41,6 +44,10 @@
       "ng-styles": [
         "dist/ng-styles/ng-styles",
         "dist/ng-styles"
+      ],
+      "ts-core": [
+        "dist/ts-core/ts-core",
+        "dist/ts-core"
       ]
     }
   },

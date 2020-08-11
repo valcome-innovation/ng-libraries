@@ -1,5 +1,4 @@
 import { ColorUtils } from './color.utils';
-import { tick } from '@angular/core/testing';
 
 describe('ColorUtils', () => {
 

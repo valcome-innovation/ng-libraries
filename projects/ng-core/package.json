@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-core",
-  "version": "1.2.6",
+  "version": "1.2.9",
   "description": "Angular core utils and base classes",
   "scripts": {
     "preversion": "ng test ng-core --watch=false",
@@ -20,7 +20,8 @@
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-core#ngcore",
   "peerDependencies": {
     "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0"
+    "@angular/core": "^10.0.0",
+    "@valcome/ts-core": "^1.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

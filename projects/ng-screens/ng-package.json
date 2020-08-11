@@ -5,6 +5,7 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
       "ng-core": "@valcome/ng-core",
+      "ts-core": "@valcome/ts-core",
       "ngx-device-detector": "ngx-device-detector",
       "screenfull": "screenfull",
       "ios-inner-height": "ios-inner-height"

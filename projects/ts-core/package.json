@@ -1,0 +1,23 @@
+{
+  "name": "@valcome/ts-core",
+  "version": "1.0.0",
+  "scripts": {
+    "preversion": "ng test ts-core --watch=false",
+    "version": "ng build ts-core --prod",
+    "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
+    "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-core"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-core#tscore",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
