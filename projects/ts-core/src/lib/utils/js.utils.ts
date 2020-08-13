@@ -44,10 +44,21 @@ export class JsUtils {
     return instance;
   }
 
+  public static nullToUndefined(obj: any): any {
+    if (obj === null) {
+      return undefined;
+    }
+    if (typeof obj === 'object') {
+      for (let key in obj) {
+        obj[key] = JsUtils.nullToUndefined(obj[key]);
+      }
+    }
+    return obj;
+  }
+
 
   /**
-   * Generic clone in typescript
-   * https://stackoverflow.com/questions/28150967/typescript-cloning-object
+   * @deprecated Doesn't work quite well. Use immute instead
    */
   public static clone<T>(object: any): T {
 

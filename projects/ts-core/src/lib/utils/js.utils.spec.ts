@@ -5,10 +5,10 @@ class Basic {
   public text: string;
   public nested: any;
 
-   public constructor(value: number = 0, text: string = null, nested: object = null) {
-     this.value = value;
-     this.text = text;
-     this.nested = nested;
+  public constructor(value: number = 0, text: string = null, nested: object = null) {
+    this.value = value;
+    this.text = text;
+    this.nested = nested;
   }
 }
 
@@ -28,7 +28,8 @@ describe('JsUtils', () => {
 
   it('should call after stack resolved', () => {
     const printer = {
-      print(): void {}
+      print(): void {
+      }
     };
 
     spyOn(printer, 'print');
@@ -71,12 +72,12 @@ describe('JsUtils', () => {
   });
 
   it('should clone source object with nested arrays', () => {
-    let basic = new Basic(10, 'Text', [1, 2 , 3]);
+    let basic = new Basic(10, 'Text', [1, 2, 3]);
     let result = JsUtils.clone<Basic>(basic);
     expect(result.nested).toBeInstanceOf(Array);
     expect(result.nested.length).toEqual(3);
 
-    const nested = new Basic(20, 'Nested', [1, 2 , 3]);
+    const nested = new Basic(20, 'Nested', [1, 2, 3]);
     basic = new Basic(10, 'Text', nested);
     result = JsUtils.clone<Basic>(basic);
     expect(result.nested).not.toBe(nested);
@@ -128,5 +129,21 @@ describe('JsUtils', () => {
 
     expect(copy.value).toBe(20);
     expect(copy).toBeInstanceOf(Basic);
+  });
+
+  it('should convert null to undeefined', () => {
+    const result = JsUtils.nullToUndefined({
+      test: null,
+      yeah: {
+        prop1: '2',
+        prop2: undefined,
+        prop3: null
+      }
+    })
+
+    expect(result.test).toEqual(undefined);
+    expect(result.yeah.prop1).toEqual('2');
+    expect(result.yeah.prop2).toEqual(undefined);
+    expect(result.yeah.prop3).toEqual(undefined);
   });
 });
