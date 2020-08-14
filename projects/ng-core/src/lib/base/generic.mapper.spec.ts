@@ -10,6 +10,8 @@ describe('GenericMapper', () => {
     const json: any = GenericMapper.toJson(testHuman);
 
     expect(json.name).toBe(testHuman.name);
+    expect(json.nested.value).toBe(testHuman.nested.value);
+    expect(json.nestedNested.nested.value).toBe(testHuman.nestedNested.nested.value);
     expect(json).not.toBe(testHuman);
   });
 
@@ -37,9 +39,13 @@ describe('GenericMapper', () => {
 function getTestHuman(name: string = 'John Doe'): Human {
   const testHuman: Human = new Human();
   testHuman.name = name;
+  testHuman.nested = { value: 1 };
+  testHuman.nestedNested = { nested: { value: 1 } };
   return testHuman;
 }
 
 class Human {
   public name: string;
+  public nested: { value: number };
+  public nestedNested: { nested: { value: number } };
 }
