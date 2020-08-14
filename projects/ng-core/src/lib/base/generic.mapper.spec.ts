@@ -9,7 +9,6 @@ describe('GenericMapper', () => {
     const testHuman: Human = getTestHuman();
     const json: any = GenericMapper.toJson(testHuman);
 
-    expect(json).toBeInstanceOf(Human);
     expect(json.name).toBe(testHuman.name);
     expect(json).not.toBe(testHuman);
   });
