@@ -7,12 +7,21 @@ describe('BaseMapper', () => {
     humanMapper = new HumanMapper();
   });
 
-  it('should map instance to json clone', () => {
+  it('should map instance to json', () => {
     const testHuman: Human = getTestHuman();
     const json: any = humanMapper.toJson(testHuman);
 
     expect(json.name).toBe(testHuman.name);
     expect(json).not.toBe(testHuman);
+  });
+
+  it('should map array to json', () => {
+    const array = [getTestHuman(), getTestHuman(), getTestHuman()];
+
+    const json: any = humanMapper.toJson(array);
+
+    expect(json.length).toBe(3);
+    expect(json[0].name).toEqual(getTestHuman().name);
   });
 
   it('should create instance from json', () => {

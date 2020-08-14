@@ -6,7 +6,11 @@ export abstract class BaseMapper<T> {
   }
 
   public toJson(instance: T | T[]): any {
-    return GenericMapper.toJson<T>(instance);
+    if (Array.isArray(instance)) {
+      return instance.map(i => this.toJson(i));
+    } else {
+      return GenericMapper.toJson<T>(instance);
+    }
   }
 
   public fromJson(json: any | any[]): T {
