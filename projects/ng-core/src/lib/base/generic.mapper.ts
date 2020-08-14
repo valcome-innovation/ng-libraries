@@ -3,7 +3,7 @@ import { JsUtils } from '@valcome/ts-core';
 export class GenericMapper<T> {
 
   public static toJson<T>(instance: T | T[]): any {
-    return JsUtils.clone(instance);
+    return JsUtils.immute(instance);
   }
 
   public static fromJson<T>(json: any | any[], type: any): T {
