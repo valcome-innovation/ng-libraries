@@ -12,7 +12,7 @@ describe('BaseImageGalleryComponent', () => {
     TestBed.configureTestingModule({
       imports: [UniversalModule, SkeletonModule],
       providers: [RenderService]
-    })
+    });
 
     component = new BaseImageGalleryComponent(TestBed.inject(RenderService));
     component.images = getTestImages();
