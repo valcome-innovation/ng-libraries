@@ -29,6 +29,8 @@ export * from './lib/image-gallery/image-gallery.component';
 export * from './lib/image-gallery/image-gallery.module';
 
 export * from './lib/form/generic-forms.module';
+export * from './lib/form/components/base-form.component';
+export * from './lib/form/components/base-generic-field.component';
 export * from './lib/form/components/generic-radio/generic-radio.component';
 export * from './lib/form/components/generic-input/generic-input.component';
 export * from './lib/form/components/generic-password/generic-password.component';
