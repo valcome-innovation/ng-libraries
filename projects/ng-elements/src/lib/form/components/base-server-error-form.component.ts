@@ -38,7 +38,7 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError> extends 
     return errors && !errors.isFirstChange();
   }
 
-  private addServerErrors(formGroup: FormGroup, errors: E[]): void {
+  protected addServerErrors(formGroup: FormGroup, errors: E[]): void {
     this.clearAllServerErrors(formGroup);
     for (const error of errors) {
       const field: FormControl = formGroup.get(error.field) as FormControl;
