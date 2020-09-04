@@ -1,18 +1,18 @@
 import { BehaviorSubject } from 'rxjs';
-import { BaseBehaviorSubjectComponent } from './base-behavoir-subject.component';
+import { BaseBehaviorComponent } from './base-behavoir.component';
 
-describe('BaseBehaviorSubjectComponent', () => {
+describe('BaseBehaviorComponent', () => {
   let behaviorSubject: BehaviorSubject<number>
   let typedBehaviorSubject: BehaviorSubject<Date>
-  let baseBehaviorSubjectComponent: BaseBehaviorSubjectComponentSpec;
-  let baseTypedBehaviorSubjectComponent: BaseTypedBehaviorSubjectComponentSpec;
+  let baseBehaviorSubjectComponent: BaseBehaviorComponentSpec;
+  let baseTypedBehaviorSubjectComponent: BaseTypedBehaviorComponentSpec;
 
   beforeEach(() => {
     behaviorSubject = new BehaviorSubject<number>(10);
-    baseBehaviorSubjectComponent = new BaseBehaviorSubjectComponentSpec(behaviorSubject);
+    baseBehaviorSubjectComponent = new BaseBehaviorComponentSpec(behaviorSubject);
 
     typedBehaviorSubject = new BehaviorSubject<Date>(new Date());
-    baseTypedBehaviorSubjectComponent = new BaseTypedBehaviorSubjectComponentSpec(typedBehaviorSubject);
+    baseTypedBehaviorSubjectComponent = new BaseTypedBehaviorComponentSpec(typedBehaviorSubject);
   });
 
   it('should update initial value', () => {
@@ -37,7 +37,7 @@ describe('BaseBehaviorSubjectComponent', () => {
 
   it('should handle invalid inputs', () => {
     expect(() => {
-      baseBehaviorSubjectComponent = new BaseBehaviorSubjectComponentSpec(null);
+      baseBehaviorSubjectComponent = new BaseBehaviorComponentSpec(null);
     }).not.toThrow();
   });
 
@@ -47,7 +47,7 @@ describe('BaseBehaviorSubjectComponent', () => {
   });
 })
 
-class BaseBehaviorSubjectComponentSpec extends BaseBehaviorSubjectComponent {
+class BaseBehaviorComponentSpec extends BaseBehaviorComponent {
   public value: number;
   public changeCounter: number = 0;
 
@@ -62,7 +62,7 @@ class BaseBehaviorSubjectComponentSpec extends BaseBehaviorSubjectComponent {
   }
 }
 
-class BaseTypedBehaviorSubjectComponentSpec extends BaseBehaviorSubjectComponent {
+class BaseTypedBehaviorComponentSpec extends BaseBehaviorComponent {
   public value: Date;
   public changeCounter: number = 0;
 

@@ -4,7 +4,7 @@ import { Directive } from '@angular/core';
 import { JsUtils } from '@valcome/ts-core';
 
 @Directive()
-export class BaseBehaviorSubjectComponent extends BaseSubscriptionComponent {
+export class BaseBehaviorComponent extends BaseSubscriptionComponent {
   protected listen<T>(behaviorSubject: BehaviorSubject<T>, onChange: (value: T) => void): void {
     onChange(JsUtils.immute(behaviorSubject?.getValue()));
     this.addSub(behaviorSubject?.subscribe(onChange));
