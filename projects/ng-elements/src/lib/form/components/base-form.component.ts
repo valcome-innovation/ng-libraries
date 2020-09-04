@@ -1,9 +1,9 @@
-import { BaseComponent } from '@valcome/ng-core';
+import { BaseBehaviorComponent } from '@valcome/ng-core';
 import { FormGroup } from '@angular/forms';
 import { FormErrorType } from '../model/form-error-type';
 import { InputAutofill } from '../model/input-autofill';
 
-export class BaseFormComponent extends BaseComponent {
+export class BaseFormComponent extends BaseBehaviorComponent {
 
   public form: FormGroup;
   public isLoading: boolean;

@@ -1,8 +1,8 @@
 import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
-import { BaseComponent } from '@valcome/ng-core';
+import { BaseBehaviorComponent } from '@valcome/ng-core';
 
 @Directive()
-export abstract class BaseDynamicModalComponent extends BaseComponent {
+export abstract class BaseDynamicModalComponent extends BaseBehaviorComponent {
 
   @Output()
   public modalClose: EventEmitter<any> = new EventEmitter<any>();

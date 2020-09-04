@@ -1,10 +1,10 @@
-import { BaseComponent, RenderService } from '@valcome/ng-core';
+import { BaseBehaviorComponent, RenderService } from '@valcome/ng-core';
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Image } from '../form/model/image';
 import { StringUtils } from '@valcome/ts-core';
 
 @Directive()
-export class BaseImageGalleryComponent extends BaseComponent implements OnChanges {
+export class BaseImageGalleryComponent extends BaseBehaviorComponent implements OnChanges {
 
   @Input()
   public zoomLevel = 3;
