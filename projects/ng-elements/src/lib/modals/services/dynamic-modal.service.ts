@@ -18,7 +18,7 @@ export class DynamicModalService {
                      private injector: Injector) {
   }
 
-  public async showModal(dynamicModalType: Type<BaseDynamicModalComponent>, config?: any): Promise<any> {
+  public async showModal<T>(dynamicModalType: Type<BaseDynamicModalComponent>, config?: T): Promise<any> {
     const componentRef = this.createModal(dynamicModalType, config);
     return this.onCloseModal(componentRef);
   }
