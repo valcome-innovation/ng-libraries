@@ -1,4 +1,12 @@
-import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector, Type } from '@angular/core';
+import {
+  ApplicationRef,
+  ComponentFactoryResolver,
+  ComponentRef,
+  EmbeddedViewRef,
+  Injectable,
+  Injector,
+  Type
+} from '@angular/core';
 import { BaseDynamicModalComponent } from '../components/base-dynamic-modal.component';
 import { ModalModule } from '../modal.module';
 
@@ -10,8 +18,8 @@ export class DynamicModalService {
                      private injector: Injector) {
   }
 
-  public async showModal(dynamicModalType: Type<BaseDynamicModalComponent>): Promise<any> {
-    const componentRef = this.createModal(dynamicModalType);
+  public async showModal(dynamicModalType: Type<BaseDynamicModalComponent>, config?: any): Promise<any> {
+    const componentRef = this.createModal(dynamicModalType, config);
     return this.onCloseModal(componentRef);
   }
 
@@ -24,9 +32,10 @@ export class DynamicModalService {
     });
   }
 
-  private createModal(dynamicModalType: Type<BaseDynamicModalComponent>): ComponentRef<BaseDynamicModalComponent> {
+  private createModal(dynamicModalType: Type<BaseDynamicModalComponent>, config?: any): ComponentRef<BaseDynamicModalComponent> {
     const factory = this.componentFactoryResolver.resolveComponentFactory(dynamicModalType);
     const componentRef = factory.create(this.injector);
+    componentRef.instance.config = config;
     this.appRef.attachView(componentRef.hostView);
 
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
