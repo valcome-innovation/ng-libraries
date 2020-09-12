@@ -32,4 +32,24 @@ export class DomUtils {
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   }
+
+  public static loadScriptAsync(src: string): Promise<HTMLScriptElement> {
+    const headTag = document.getElementsByTagName('head')[0];
+
+    return new Promise((resolve, reject) => {
+      const scriptHTML = document.createElement('script');
+
+      scriptHTML.type = 'text/javascript';
+      scriptHTML.src = src;
+
+      scriptHTML.onload = () => resolve(scriptHTML);
+      scriptHTML.onerror = () => reject();
+
+      if (headTag) {
+        headTag.appendChild(scriptHTML);
+      } else {
+        reject();
+      }
+    });
+  }
 }

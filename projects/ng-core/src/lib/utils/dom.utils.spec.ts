@@ -46,4 +46,10 @@ describe('DomUtils', () => {
     expect(DomUtils.isVisibleInViewport(div)).toBeFalse();
     expect(DomUtils.isFullyVisibleInViewport(div)).toBeFalse();
   });
+
+  it('should add script async', async () => {
+    const element = await DomUtils.loadScriptAsync('https://code.jquery.com/jquery-3.5.1.slim.min.js');
+    
+    expect(element).toBeDefined();
+  });
 })
