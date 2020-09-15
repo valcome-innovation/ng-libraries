@@ -56,6 +56,16 @@ export class JsUtils {
     return obj;
   }
 
+  public static flatClean<T>(obj: T): T {
+    for (const propName in obj) {
+      if (obj[propName] === null || obj[propName] === undefined) {
+        delete obj[propName];
+      }
+    }
+
+    return obj;
+  }
+
 
   /**
    * @deprecated Doesn't work quite well. Use immute instead

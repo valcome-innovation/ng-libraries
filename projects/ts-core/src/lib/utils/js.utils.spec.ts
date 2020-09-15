@@ -146,4 +146,22 @@ describe('JsUtils', () => {
     expect(result.yeah.prop2).toEqual(undefined);
     expect(result.yeah.prop3).toEqual(undefined);
   });
+
+  it('flat clean object', () => {
+    let result: any = {
+      test: null,
+      hey: '123',
+      yeah: {
+        prop1: '2',
+        prop2: null
+      }
+    };
+
+    const isValid = !('test' in result)
+      && 'hey' in result
+      && 'yeah' in result
+      && 'prop2' in result.yeah;
+
+    expect(isValid).toBe(true);
+  });
 });
