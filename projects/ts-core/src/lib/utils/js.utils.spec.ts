@@ -157,6 +157,8 @@ describe('JsUtils', () => {
       }
     };
 
+    result = JsUtils.flatClean(result);
+
     const isValid = !('test' in result)
       && 'hey' in result
       && 'yeah' in result
