@@ -63,7 +63,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   }
 
   private hideOrDisplayErrorMessages(): void {
-    this.errorMessages.forEach((errorMessage: FormErrorMessageDirective) => {
+    this.errorMessages?.forEach((errorMessage: FormErrorMessageDirective) => {
       if (this.formControl.hasError(errorMessage.errorType)) {
         errorMessage.showError();
       } else {
