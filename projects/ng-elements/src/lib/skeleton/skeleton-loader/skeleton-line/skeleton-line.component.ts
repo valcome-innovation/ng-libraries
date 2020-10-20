@@ -11,9 +11,9 @@ export class SkeletonLineComponent implements OnInit {
   public widthInterval: number[] = [];
 
   @Input()
-  public unit: string = 'px';
+  public unit = 'px';
 
-  public width: string = '100%';
+  public width = '100%';
 
   public ngOnInit(): void {
     if (this.widthInterval?.length == 2) {

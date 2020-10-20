@@ -10,11 +10,11 @@ import { BaseDynamicModalComponent } from '../base-dynamic-modal.component';
 export class SimpleModalComponent extends BaseDynamicModalComponent {
 
   @Input()
-  public title: string = 'Title';
+  public title = 'Title';
 
   @Input()
-  public text: string = 'Place for content';
+  public text = 'Place for content';
 
   @Input()
-  public close: string = 'Close';
+  public close = 'Close';
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
-import { Image } from '../../../ng-elements/src/lib/form/model/image';
+import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
 
 @Component({
   selector: 'app-root',
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
 
   public FormErrorType = FormErrorType;
 
-  public shippingForm: FormGroup;
+  public shippingForm!: FormGroup;
   public isSubmitted: boolean = false;
 
   public countries: DisplayValue[] = [
@@ -82,7 +82,10 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     let control = this.shippingForm.get('country');
-    control.statusChanges.subscribe((s) => console.log(s));
+
+    if (control) {
+      control.statusChanges.subscribe((s) => console.log(s));
+    }
   }
 
   private initForm(): void {
@@ -113,6 +116,9 @@ export class AppComponent implements OnInit {
 
   public setError(): void {
     let control = this.shippingForm.get('country');
-    control.setErrors({ server: true });
+
+    if (control) {
+      control.setErrors({ server: true });
+    }
   }
 }

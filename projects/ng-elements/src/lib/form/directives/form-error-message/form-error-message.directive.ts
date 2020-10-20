@@ -5,7 +5,7 @@ import { FormErrorType } from '../../model/form-error-type';
 export class FormErrorMessageDirective {
 
   @Input()
-  public errorType: FormErrorType | string;
+  public errorType!: FormErrorType | string;
 
   public constructor(private elementRef: ElementRef) {
     this.hideError();

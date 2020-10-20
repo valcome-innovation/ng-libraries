@@ -14,9 +14,9 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
   public options: DisplayValue[] = [];
 
   @Input()
-  public label: string;
+  public label!: string;
 
   @Input()
-  public placeholder: string;
+  public placeholder!: string;
 
 }

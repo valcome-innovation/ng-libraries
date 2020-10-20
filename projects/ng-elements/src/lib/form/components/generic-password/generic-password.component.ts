@@ -12,13 +12,13 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
   public type: 'password' | 'text' = 'password';
 
   @Input()
-  public label: string;
+  public label!: string;
 
   @Input()
-  public placeholder: string;
+  public placeholder!: string;
 
   @Input()
-  public autocomplete: string;
+  public autocomplete!: string;
 
   public togglePassword() {
     if (this.type === 'password') {

@@ -8,9 +8,9 @@ describe('SkeletonLineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SkeletonLineComponent ]
+      declarations: [SkeletonLineComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -46,7 +46,7 @@ describe('SkeletonLineComponent', () => {
   });
 
   it('should accept an invalid width interval', () => {
-    component.widthInterval = null;
+    component.widthInterval = null!;
     component.ngOnInit();
 
     expect(component.width).toBe('100%');

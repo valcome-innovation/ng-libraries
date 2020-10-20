@@ -37,5 +37,4 @@ describe('SoundUtils', () => {
     expect(loopedAudio.loop).toBeTrue();
     expect(loopedAudio.volume).toEqual(volume);
   });
-
 });

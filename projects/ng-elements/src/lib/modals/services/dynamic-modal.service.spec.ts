@@ -22,9 +22,8 @@ describe('DynamicModalService', () => {
   it('should show modal and hide on click', async () => {
     let resolved = false;
     const result: Promise<any> = service.showModal(SimpleModalComponent);
-    document.querySelector('button.btn-close').dispatchEvent(new MouseEvent('click'));
+    document.querySelector('button.btn-close')?.dispatchEvent(new MouseEvent('click'));
     await result.then(() => resolved = true);
     expect(resolved).toBeTrue();
   });
-
 });

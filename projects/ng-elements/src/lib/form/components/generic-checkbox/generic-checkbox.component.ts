@@ -8,8 +8,6 @@ import { BaseGenericFieldComponent } from '../base-generic-field.component';
   encapsulation: ViewEncapsulation.None
 })
 export class GenericCheckboxComponent extends BaseGenericFieldComponent {
-
   @Input()
-  public label: string;
-
+  public label!: string;
 }

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FilePickerDirective } from './file-picker.directive';
 import { Component } from '@angular/core';
 import { FileDropzoneDirective } from './file-dropzone.directive';
 import { By } from '@angular/platform-browser';

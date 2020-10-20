@@ -13,8 +13,8 @@ export class SkeletonSquareComponent implements OnInit {
   @Input()
   public unit: string = 'px';
 
-  public width: string;
-  public height: string;
+  public width!: string;
+  public height!: string;
 
   public ngOnInit(): void {
     this.width = this.dimensions + this.unit;

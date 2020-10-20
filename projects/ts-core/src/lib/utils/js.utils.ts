@@ -23,7 +23,7 @@ export class JsUtils {
     }
   }
 
-  public static getInstantiatedObject<T>(object: T, constructor): T {
+  public static getInstantiatedObject<T>(object: T, constructor: any): T {
     if (object == null) {
       return new constructor();
     } else {

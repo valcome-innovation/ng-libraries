@@ -25,7 +25,7 @@ export class DynamicModalService {
 
   private onCloseModal(modalRef: ComponentRef<BaseDynamicModalComponent>): Promise<any> {
     return new Promise((resolve) => {
-      modalRef.instance.modalClose.subscribe((value) => {
+      modalRef.instance.modalClose.subscribe((value: any) => {
         this.destroyModal(modalRef);
         resolve(value);
       });

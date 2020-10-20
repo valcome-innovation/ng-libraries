@@ -2,9 +2,9 @@ import { BaseWizardComponent } from './base-wizard.component';
 import { WizardStep } from './wizard-step';
 
 describe('BaseWizardComponent', () => {
-  const firstStep: WizardStep = new WizardStep({});
-  const middleStep: WizardStep = new WizardStep({});
-  const lastStep: WizardStep = new WizardStep({});
+  const firstStep: WizardStep = new WizardStep();
+  const middleStep: WizardStep = new WizardStep();
+  const lastStep: WizardStep = new WizardStep();
 
   let wizard: BaseWizardComponent;
 

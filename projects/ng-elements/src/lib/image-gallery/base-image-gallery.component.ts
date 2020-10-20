@@ -1,6 +1,6 @@
 import { BaseBehaviorComponent, RenderService } from '@valcome/ng-core';
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Image } from '../form/model/image';
+import { Image } from './image';
 import { StringUtils } from '@valcome/ts-core';
 
 @Directive()
@@ -26,9 +26,9 @@ export class BaseImageGalleryComponent extends BaseBehaviorComponent implements 
   @Input()
   public isLoading = true;
 
-  public activeImage: Image;
-  public isFirst: boolean;
-  public isLast: boolean;
+  public activeImage!: Image;
+  public isFirst = false;
+  public isLast = false;
 
   public isZooming = false;
   public isInitialized = false;
@@ -41,6 +41,7 @@ export class BaseImageGalleryComponent extends BaseBehaviorComponent implements 
 
   private initializeZooming(): any {
     if (this.renderService.isBrowser()) {
+      // @ts-ignore
       import('drift-zoom').then(Drift => {
         return new Drift.default(document.getElementById(this.internalId), {
           paneContainer: document.querySelector('.zoom-panel'),

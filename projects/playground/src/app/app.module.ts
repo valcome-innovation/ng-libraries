@@ -9,10 +9,12 @@ import { GenericFormsModule } from 'projects/ng-elements/src/lib/form/generic-fo
 import { RangeSliderModule } from '../../../ng-elements/src/lib/range-slider/range-slider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageGalleryModule } from '../../../ng-elements/src/lib/image-gallery/image-gallery.module';
+import { SocialDemoComponent } from './social-demo/social-demo.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SocialDemoComponent
   ],
   imports: [
     BrowserModule,

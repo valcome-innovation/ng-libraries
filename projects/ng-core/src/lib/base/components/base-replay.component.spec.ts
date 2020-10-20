@@ -43,14 +43,14 @@ describe('BaseReplaySubjectComponent', () => {
 
   it('should handle invalid inputs', () => {
     expect(() => {
-      component = new BaseReplaySubjectComponentSpec(null);
+      component = new BaseReplaySubjectComponentSpec(null!);
     }).not.toThrow();
   });
 })
 
 class BaseReplaySubjectComponentSpec extends BaseReplayComponent {
-  public value: number;
-  public changeCounter: number = 0;
+  public value = 0;
+  public changeCounter = 0;
 
   public constructor(private subject: ReplaySubject<number>) {
     super();

@@ -8,11 +8,11 @@ import { Component, Input } from '@angular/core';
 export class SkeletonRectComponent {
 
   @Input()
-  public maxWidthWithUnit: string = '100%';
+  public maxWidthWithUnit = '100%';
 
   @Input()
-  public widthWithUnit: string = '100px';
+  public widthWithUnit = '100px';
 
   @Input()
-  public heightWithUnit: string = '100px';
+  public heightWithUnit = '100px';
 }

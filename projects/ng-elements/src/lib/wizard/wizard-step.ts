@@ -1,13 +1,13 @@
 export class WizardStep {
-  public title: string;
-  public content: string;
-  public image: HTMLImageElement;
+  public title?: string;
+  public content?: string;
+  public image?: HTMLImageElement;
 
-  public constructor(fields: {
-    title?: string,
-    content?: string,
-    image?: HTMLImageElement
-  }) {
-    Object.assign(this, fields);
+  public constructor(title?: string,
+                     content?: string,
+                     image?: HTMLImageElement) {
+    this.title = title;
+    this.content = content;
+    this.image = image;
   }
 }

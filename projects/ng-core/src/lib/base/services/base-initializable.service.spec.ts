@@ -49,6 +49,6 @@ class BaseInitializableServiceSpec extends BaseInitializableService {
   }
 
   public createError(): void {
-    this.isInitialized$ = null;
+    this.isInitialized$ = null!;
   }
 }

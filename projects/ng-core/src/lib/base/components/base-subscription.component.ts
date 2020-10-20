@@ -8,7 +8,6 @@ export class BaseSubscriptionComponent implements OnDestroy {
   public ngOnDestroy(): void {
     this.subscriptions.forEach(s => {
       s?.unsubscribe();
-      s = null;
     });
     this.subscriptions = [];
   }

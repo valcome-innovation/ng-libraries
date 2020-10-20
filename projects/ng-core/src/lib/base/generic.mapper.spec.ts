@@ -7,13 +7,13 @@ describe('GenericMapper', () => {
 
   it('should map instance to json clone', () => {
     const testHuman: Human = getTestHuman();
-    const nestedValue = testHuman.nested.value;
+    const nestedValue = testHuman.nested?.value;
     const json: any = GenericMapper.toJson(testHuman);
-    testHuman.nested = null;
+    testHuman.nested = undefined;
 
     expect(json.name).toBe(testHuman.name);
     expect(json.nested.value).toBe(nestedValue);
-    expect(json.nestedNested.nested.value).toBe(testHuman.nestedNested.nested.value);
+    expect(json.nestedNested.nested.value).toBe(testHuman.nestedNested?.nested.value);
     expect(json).not.toBe(testHuman);
   });
 
@@ -47,7 +47,7 @@ function getTestHuman(name: string = 'John Doe'): Human {
 }
 
 class Human {
-  public name: string;
-  public nested: { value: number };
-  public nestedNested: { nested: { value: number } };
+  public name?: string;
+  public nested?: { value: number };
+  public nestedNested?: { nested: { value: number } };
 }

@@ -2,10 +2,10 @@ import { JsUtils } from './js.utils';
 
 class Basic {
   public value: number;
-  public text: string;
   public nested: any;
+  public text?: string;
 
-  public constructor(value: number = 0, text: string = null, nested: object = null) {
+  public constructor(value: number = 0, text?: string, nested?: any) {
     this.value = value;
     this.text = text;
     this.nested = nested;
@@ -14,10 +14,10 @@ class Basic {
 
 describe('JsUtils', () => {
   it('should return instantiated object', () => {
-    let result = JsUtils.getInstantiatedObject<Basic>(null, Basic);
+    let result = JsUtils.getInstantiatedObject<Basic>(undefined!, Basic);
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(0);
-    expect(result.text).toEqual(null);
+    expect(result.text).toEqual(undefined);
 
     const basic = new Basic(10, 'Text');
     result = JsUtils.getInstantiatedObject(basic, Basic);
@@ -56,11 +56,11 @@ describe('JsUtils', () => {
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(10);
     expect(result.text).toEqual('Text');
-    expect(result.nested).toBeNull();
+    expect(result.nested).toBeUndefined();
   });
 
   it('should clone source object and nested object', () => {
-    const nested: Basic = new Basic(20, 'Nested', null);
+    const nested: Basic = new Basic(20, 'Nested', null!);
     const basic = new Basic(10, 'Text', nested);
     const result = JsUtils.clone<Basic>(basic);
 
@@ -109,7 +109,7 @@ describe('JsUtils', () => {
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(1);
     expect(result.text).toEqual('some text');
-    expect(result['array']).toBeUndefined();
+    expect((<any>result)['array']).toBeUndefined();
   });
 
   it('should immute object', () => {
@@ -123,11 +123,11 @@ describe('JsUtils', () => {
 
   it('should immute object with type', () => {
     let object: Basic = new Basic(20);
-    let copy: Basic = JsUtils.immuteTyped<Basic>(object, Basic);
+    let copy = JsUtils.immuteTyped<Basic>(object, Basic);
 
     object.value = 10;
 
-    expect(copy.value).toBe(20);
+    expect(copy?.value).toBe(20);
     expect(copy).toBeInstanceOf(Basic);
   });
 

@@ -1,4 +1,4 @@
-import { Image } from '../form/model/image';
+import { Image } from './image';
 import { TestBed } from '@angular/core/testing';
 import { RenderService, UniversalModule } from '@valcome/ng-core';
 import { BaseImageGalleryComponent } from './base-image-gallery.component';
@@ -19,7 +19,7 @@ describe('BaseImageGalleryComponent', () => {
   });
 
   it('should create and initialize with active image', () => {
-    component.ngOnChanges(null);
+    component.ngOnChanges(null!);
 
     expect(component.activeImage).toBeDefined();
     expect(component.isFirst).toBeTruthy();
@@ -28,14 +28,14 @@ describe('BaseImageGalleryComponent', () => {
 
   it('should should set isLast and isFirst true if only there is only one', () => {
     component.images = [createImage(1)];
-    component.ngOnChanges(null);
+    component.ngOnChanges(null!);
 
     expect(component.isFirst).toBeTruthy();
     expect(component.isLast).toBeTruthy();
   });
 
   it('should select next image', () => {
-    component.ngOnChanges(null);
+    component.ngOnChanges(null!);
     expect(component.activeImage.sortOrder).toBe(0);
 
     component.nextImage();
@@ -43,7 +43,7 @@ describe('BaseImageGalleryComponent', () => {
   });
 
   it('should select prev image', () => {
-    component.ngOnChanges(null);
+    component.ngOnChanges(null!);
     component.nextImage();
     expect(component.activeImage.sortOrder).toBe(1);
 
@@ -52,7 +52,7 @@ describe('BaseImageGalleryComponent', () => {
   });
 
   it('should jump to last when calling prev() out of bounds', () => {
-    component.ngOnChanges(null);
+    component.ngOnChanges(null!);
     expect(component.activeImage.sortOrder).toBe(0);
 
     component.previousImage();
@@ -60,7 +60,7 @@ describe('BaseImageGalleryComponent', () => {
   });
 
   it('should jump to first when calling next() out of bounds', () => {
-    component.ngOnChanges(null);
+    component.ngOnChanges(null!);
 
     for (let i = 0; i < component.images.length * 2; i++) {
       component.nextImage();
@@ -71,21 +71,21 @@ describe('BaseImageGalleryComponent', () => {
   });
 
   it('should throw no errors if empty list is passed', () => {
-    component.images = null;
+    component.images = null!;
 
-    expect(() => component.ngOnChanges(null)).not.toThrow();
+    expect(() => component.ngOnChanges(null!)).not.toThrow();
   });
 
   it('should throw no errors if empty set on empty list is used', () => {
-    component.images = null;
-    component.ngOnChanges(null);
+    component.images = null!;
+    component.ngOnChanges(null!);
 
     expect(() => component.selectImage(createImage(1))).not.toThrow();
   });
 
   it('should throw no errors if empty image is set', () => {
-    component.ngOnChanges(null);
-    expect(() => component.selectImage(null)).not.toThrow();
+    component.ngOnChanges(null!);
+    expect(() => component.selectImage(null!)).not.toThrow();
   });
 });
 

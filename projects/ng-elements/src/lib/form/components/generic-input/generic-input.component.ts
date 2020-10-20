@@ -10,14 +10,14 @@ import { BaseGenericFieldComponent } from '../base-generic-field.component';
 export class GenericInputComponent extends BaseGenericFieldComponent {
 
   @Input()
-  public type: string = 'text';
+  public type = 'text';
 
   @Input()
-  public label: string;
+  public label!: string;
 
   @Input()
-  public placeholder: string;
+  public placeholder!: string;
 
   @Input()
-  public autocomplete: string;
+  public autocomplete!: string;
 }

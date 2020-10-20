@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { FilePickerError } from './file-picker-error';
+import { PickedFile } from './picked-file';
 
 describe('FilePickerDirective', () => {
   let component: TestComponent;
@@ -39,9 +40,9 @@ describe('FilePickerDirective', () => {
     directive.accept = 'text/json';
     directive.ngOnInit();
     const componentElement = document.getElementById('testFilePicker');
-    expect(componentElement.children.length).toEqual(1);
+    expect(componentElement?.children?.length).toEqual(1);
 
-    const child = componentElement.children[0];
+    const child = componentElement?.children[0];
     const input: HTMLInputElement = directive['input'];
 
     expect(input.type).toEqual('file');
@@ -75,7 +76,7 @@ describe('FilePickerDirective', () => {
 
     spyOn(inputElement, 'click');
     const componentElement = document.getElementById('testFilePicker');
-    componentElement.click();
+    componentElement?.click();
     expect(inputElement.click).toHaveBeenCalled();
   });
 
@@ -90,14 +91,14 @@ describe('FilePickerDirective', () => {
 
     spyOn(directive.filePick, 'emit').and.callThrough();
     await new Promise(resolve => {
-      directive.filePick.subscribe(file => {
+      directive.filePick.subscribe((file: PickedFile) => {
         expect(directive.filePick.emit).toHaveBeenCalledWith(file);
         expect(file.name).toEqual(dummyFile.name);
         expect(file.size).toEqual(dummyFile.size);
         expect(file.type).toEqual(dummyFile.type);
         resolve();
       });
-      inputElement.dispatchEvent(event);
+      inputElement?.dispatchEvent(event);
     });
   });
 
@@ -111,7 +112,7 @@ describe('FilePickerDirective', () => {
     Object.defineProperty(event, 'target', { writable: false, value: { files: [dummyFile] } });
 
     spyOn(directive.filePick, 'emit');
-    inputElement.dispatchEvent(event);
+    inputElement?.dispatchEvent(event);
     expect(directive.filePick.emit).toHaveBeenCalledWith(FilePickerError.FileTooBig);
   });
 });

@@ -36,9 +36,11 @@ export class FileDropzoneDirective implements OnInit {
       event.preventDefault();
 
       let dt = event.dataTransfer;
-      let files = dt.files;
 
-      this.handleFiles(files);
+      if (dt) {
+        let files = dt.files;
+        this.handleFiles(files);
+      }
     });
   }
 
@@ -62,7 +64,7 @@ export class FileDropzoneDirective implements OnInit {
           new Date(file.lastModified),
           file.name, file.size,
           file.type,
-          fileReader.result,
+          fileReader.result!,
           file
         );
 

@@ -6,7 +6,7 @@ describe('ShareUtils', () => {
   let nav: any;
 
   beforeEach(() => {
-    nav = ShareUtils['nav'];
+    nav = (<any>ShareUtils)['nav'];
   });
 
   afterEach(() => {

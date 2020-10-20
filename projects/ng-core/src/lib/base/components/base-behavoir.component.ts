@@ -11,7 +11,7 @@ export class BaseBehaviorComponent extends BaseSubscriptionComponent {
   }
 
   protected listenTyped<T>(behaviorSubject: BehaviorSubject<T>, type: any, onChange: (value: T) => void): void {
-    onChange(JsUtils.immuteTyped<T>(behaviorSubject?.getValue(), type));
+    onChange(JsUtils.immuteTyped<T>(behaviorSubject?.getValue(), type)!);
     this.addSub(behaviorSubject?.subscribe(onChange));
   }
 }

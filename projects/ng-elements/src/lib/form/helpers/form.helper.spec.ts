@@ -5,7 +5,7 @@ describe('FormHelper', () => {
   it('should get form name', () => {
     let form = getTestForm();
 
-    let name: string = FormHelper.getControlName(form.get('address'));
+    let name = FormHelper.getControlName(form.get('address')!);
 
     expect(name).toEqual('address');
   });
@@ -13,7 +13,7 @@ describe('FormHelper', () => {
   it('should return empty string if no name', () => {
     let form = getTestForm();
 
-    let name: string = FormHelper.getControlName(form);
+    let name = FormHelper.getControlName(form);
 
     expect(name).toEqual('');
   });

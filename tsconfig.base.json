@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -48,6 +49,9 @@
       "ts-core": [
         "dist/ts-core/ts-core",
         "dist/ts-core"
+      ],
+      "@valcome/ng-social-login": [
+        "projects/ng-social-login/src/public-api.ts"
       ]
     }
   },

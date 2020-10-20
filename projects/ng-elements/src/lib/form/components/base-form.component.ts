@@ -5,8 +5,8 @@ import { InputAutofill } from '../model/input-autofill';
 
 export class BaseFormComponent extends BaseBehaviorComponent {
 
-  public form: FormGroup;
-  public isLoading: boolean;
+  public form!: FormGroup;
+  public isLoading = false;
   public isSubmitted: boolean = false;
 
   public FormErrorType = FormErrorType;
@@ -40,7 +40,7 @@ export class BaseFormComponent extends BaseBehaviorComponent {
 
   private validateAllFields(): void {
     Object.keys(this.form.controls).forEach(key => {
-      this.form.get(key).updateValueAndValidity();
+      this.form.get(key)?.updateValueAndValidity();
     });
   }
 

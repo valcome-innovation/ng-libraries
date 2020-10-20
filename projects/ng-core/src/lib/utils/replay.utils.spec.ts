@@ -3,7 +3,7 @@ import { ReplayUtils } from './replay.utils';
 
 describe('ReplayUtils', () => {
 
-  let replaySubject;
+  let replaySubject: ReplaySubject<string>;
 
   beforeEach(() => {
     replaySubject = new ReplaySubject<string>(1);
@@ -22,7 +22,7 @@ describe('ReplayUtils', () => {
       expect(value).toEqual('test');
       done();
     });
-    
+
     replaySubject.next('test');
   });
 })

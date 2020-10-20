@@ -5,7 +5,7 @@ import { WizardStep } from './wizard-step';
 export class BaseWizardComponent implements OnInit, AfterViewInit {
 
   @Input()
-  public closeText: string;
+  public closeText!: string;
 
   @Input()
   public steps: WizardStep[] = [];
@@ -13,8 +13,8 @@ export class BaseWizardComponent implements OnInit, AfterViewInit {
   @Output()
   public finish: EventEmitter<void> = new EventEmitter<void>();
 
-  public currentStep: WizardStep;
-  private stepIndex: number;
+  public currentStep!: WizardStep;
+  private stepIndex = 0;
 
   public ngOnInit(): void {
     this.setStep(0);

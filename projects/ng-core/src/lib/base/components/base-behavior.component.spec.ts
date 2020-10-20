@@ -37,7 +37,7 @@ describe('BaseBehaviorComponent', () => {
 
   it('should handle invalid inputs', () => {
     expect(() => {
-      baseBehaviorSubjectComponent = new BaseBehaviorComponentSpec(null);
+      baseBehaviorSubjectComponent = new BaseBehaviorComponentSpec(null!);
     }).not.toThrow();
   });
 
@@ -48,7 +48,7 @@ describe('BaseBehaviorComponent', () => {
 })
 
 class BaseBehaviorComponentSpec extends BaseBehaviorComponent {
-  public value: number;
+  public value = 0;
   public changeCounter: number = 0;
 
   public constructor(value: BehaviorSubject<number>) {
@@ -63,7 +63,7 @@ class BaseBehaviorComponentSpec extends BaseBehaviorComponent {
 }
 
 class BaseTypedBehaviorComponentSpec extends BaseBehaviorComponent {
-  public value: Date;
+  public value?: Date;
   public changeCounter: number = 0;
 
   public constructor(value: BehaviorSubject<Date>) {

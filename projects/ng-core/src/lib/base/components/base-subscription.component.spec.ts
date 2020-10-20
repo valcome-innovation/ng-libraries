@@ -44,7 +44,7 @@ describe('BaseSubscriptionComponent', () => {
 
   it('should handle null values', () => {
     expect(() => {
-      baseSubscriptionComponent.subscribe(null);
+      baseSubscriptionComponent.subscribe(null!);
       baseSubscriptionComponent.ngOnDestroy();
     }).not.toThrow();
   });

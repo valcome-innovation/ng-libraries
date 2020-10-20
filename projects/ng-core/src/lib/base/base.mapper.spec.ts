@@ -57,5 +57,5 @@ class HumanMapper extends BaseMapper<Human> {
 }
 
 class Human {
-  public name: string;
+  public name?: string;
 }

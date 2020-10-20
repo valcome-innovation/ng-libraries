@@ -20,7 +20,7 @@ describe('BaseUnsavedChangesGuard', () => {
   });
 
   it('should can deactivate by default', () => {
-    expect(guard.canDeactivate(component, null, null)).toBeTrue();
+    expect(guard.canDeactivate(component, null!, null!)).toBeTrue();
   });
 
   it('should open confirm alert with unsaved changes', () => {
@@ -29,8 +29,7 @@ describe('BaseUnsavedChangesGuard', () => {
     component = new BaseUnsavedChangesComponent(true);
     expect(component.doUnsavedChangesExist()).toBeTrue();
 
-    guard.canDeactivate(component, null, null);
+    guard.canDeactivate(component, null!, null!);
     expect(window.confirm).toHaveBeenCalled();
   });
-
 });

@@ -8,27 +8,27 @@ import { FormHelper } from '../helpers/form.helper';
 export class BaseGenericFieldComponent extends BaseBehaviorComponent implements OnInit, OnChanges {
 
   @ContentChildren(FormErrorMessageDirective)
-  public errorMessages: QueryList<FormErrorMessageDirective>;
+  public errorMessages!: QueryList<FormErrorMessageDirective>;
 
   @Input()
-  public form: FormGroup;
+  public form!: FormGroup;
 
   @Input()
-  public formName: string;
+  public formName!: string;
 
   @Input()
-  public isFormSubmitted: boolean = false;
+  public isFormSubmitted = false;
 
   @Input()
-  public markAsRequired: boolean = false;
+  public markAsRequired = false;
 
   @Input()
-  public useDefaultErrorMessages: boolean = false;
+  public useDefaultErrorMessages = false;
 
-  public id: string;
+  public id!: string;
   public isValid: boolean = true;
 
-  public formControl: FormControl;
+  public formControl!: FormControl;
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue && this.formControl) {
