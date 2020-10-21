@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { AsyncSubject, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './entities/login-provider';
 import { SocialProvider, SocialUser } from './entities/social-user';
+import { BaseInitializableService } from '@valcome/ng-core';
 
 export interface SocialAuthServiceConfig {
   autoLogin?: boolean;
@@ -12,7 +13,7 @@ export interface SocialAuthServiceConfig {
 
 /** @dynamic */
 @Injectable()
-export class SocialAuthService {
+export class SocialAuthService extends BaseInitializableService {
   private static readonly ERR_LOGIN_PROVIDER_NOT_FOUND = 'Login provider not found';
   private static readonly ERR_NOT_LOGGED_IN = 'Not logged in';
   private static readonly ERR_NOT_INITIALIZED = 'Login providers not ready yet. Are there errors on your console?';
@@ -35,10 +36,9 @@ export class SocialAuthService {
   }
 
   public constructor(@Inject('SocialAuthServiceConfig') config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig>) {
+    super();
     if (config instanceof Promise) {
-      config.then((config) => {
-        this.initialize(config);
-      });
+      config.then((config) => this.initialize(config));
     } else {
       this.initialize(config);
     }
@@ -49,9 +49,8 @@ export class SocialAuthService {
     config.providers.forEach(item => this.providers.set(item.id, item.provider));
 
     try {
-      await Promise.all(Array.from(this.providers.values()).map(provider =>
-        provider.initialize(),
-      ));
+      await Promise.all(Array.from(this.providers.values())
+        .map(provider => provider.initialize().catch(console.error)));
 
       this.initialized = true;
       this._initState.next(this.initialized);
@@ -66,26 +65,26 @@ export class SocialAuthService {
         config.onError(error);
       }
     }
+
+    super.markAsInitialized();
   }
 
   public async signIn(providerId: SocialProvider, signInOptions?: SignInOptions): Promise<SocialUser> {
-    if (!this.initialized) {
-      throw new Error(SocialAuthService.ERR_NOT_INITIALIZED);
-    } else {
-      let loginProvider = this.providers.get(providerId);
+    await super.waitUntilInitialized();
 
-      if (loginProvider) {
-        return this.signInFromProvider(loginProvider, providerId, signInOptions);
-      } else {
-        throw new Error(SocialAuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
-      }
+    let loginProvider = this.providers.get(providerId);
+
+    if (loginProvider) {
+      return this.signInFromProvider(loginProvider, providerId, signInOptions);
+    } else {
+      throw new Error(SocialAuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
     }
   }
 
-  public signOut(revoke: boolean = false): Promise<void> {
-    if (!this.initialized) {
-      throw new Error(SocialAuthService.ERR_NOT_INITIALIZED);
-    } else if (!this._user) {
+  public async signOut(revoke: boolean = false): Promise<void> {
+    await super.markAsInitialized();
+
+    if (!this._user) {
       throw new Error(SocialAuthService.ERR_NOT_LOGGED_IN);
     } else {
       let providerId = this._user.provider;
