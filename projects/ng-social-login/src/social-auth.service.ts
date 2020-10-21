@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
+import { BaseInitializableService } from '@valcome/ng-core';
 import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './entities/login-provider';
 import { SocialProvider, SocialUser } from './entities/social-user';
-import { BaseInitializableService } from '@valcome/ng-core';
 
 export interface SocialAuthServiceConfig {
   autoLogin?: boolean;

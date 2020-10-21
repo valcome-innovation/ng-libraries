@@ -5,10 +5,6 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
-    "typeRoots": [
-      "./typings",
-      "../../node_modules/@types"
-    ],
     "types": [
       "gapi",
       "gapi.auth2"
