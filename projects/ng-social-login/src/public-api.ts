@@ -1,5 +1,5 @@
-export { SocialAuthService, SocialAuthServiceConfig, } from './socialauth.service';
-export { SocialLoginModule } from './sociallogin.module';
+export { SocialAuthService, SocialAuthServiceConfig, } from './social-auth.service';
+export { SocialLoginModule } from './social-login.module';
 export { SocialUser } from './entities/social-user';
 export { LoginProvider } from './entities/login-provider';
 export { GoogleLoginProvider } from './providers/google-login-provider';
