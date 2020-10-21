@@ -1,11 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { AsyncSubject, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider } from './entities/login-provider';
-import { SocialUser } from './entities/social-user';
+import { SocialProvider, SocialUser } from './entities/social-user';
 
 export interface SocialAuthServiceConfig {
   autoLogin?: boolean;
-  providers: { id: string; provider: LoginProvider }[];
+  providers: { id: SocialProvider; provider: LoginProvider }[];
+
   onError?(error: any): void;
 }
 
@@ -17,10 +18,10 @@ export class SocialAuthService {
   private static readonly ERR_NOT_LOGGED_IN = 'Not logged in';
   private static readonly ERR_NOT_INITIALIZED = 'Login providers not ready yet. Are there errors on your console?';
 
-  private providers: Map<string, LoginProvider> = new Map();
+  private providers: Map<SocialProvider, LoginProvider> = new Map();
   private autoLogin = false;
 
-  private _user: SocialUser = null;
+  private _user?: SocialUser;
   private _authState: ReplaySubject<SocialUser> = new ReplaySubject(1);
 
   private initialized = false;
@@ -65,10 +66,10 @@ export class SocialAuthService {
         this._initState.complete();
 
         if (this.autoLogin) {
-          const loginStatusPromises = [];
+          const loginStatusPromises: Promise<SocialUser>[] = [];
           let loggedIn = false;
 
-          this.providers.forEach((provider: LoginProvider, key: string) => {
+          this.providers.forEach((provider: LoginProvider, key: SocialProvider) => {
             let promise = provider.getLoginStatus();
             loginStatusPromises.push(promise);
             promise
@@ -83,8 +84,8 @@ export class SocialAuthService {
           });
           Promise.all(loginStatusPromises).catch(() => {
             if (!loggedIn) {
-              this._user = null;
-              this._authState.next(null);
+              this._user = undefined;
+              this._authState.next(undefined);
             }
           });
         }
@@ -97,7 +98,7 @@ export class SocialAuthService {
       });
   }
 
-  signIn(providerId: string, signInOptions?: any): Promise<SocialUser> {
+  signIn(providerId: SocialProvider, signInOptions?: any): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
       if (!this.initialized) {
         reject(SocialAuthService.ERR_NOT_INITIALIZED);
@@ -138,8 +139,8 @@ export class SocialAuthService {
             .then(() => {
               resolve();
 
-              this._user = null;
-              this._authState.next(null);
+              this._user = undefined;
+              this._authState.next(undefined);
             })
             .catch((err) => {
               reject(err);

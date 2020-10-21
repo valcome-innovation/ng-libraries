@@ -10,6 +10,12 @@ import { RangeSliderModule } from '../../../ng-elements/src/lib/range-slider/ran
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageGalleryModule } from '../../../ng-elements/src/lib/image-gallery/image-gallery.module';
 import { SocialDemoComponent } from './social-demo/social-demo.component';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from '@valcome/ng-social-login';
 
 @NgModule({
   declarations: [
@@ -25,9 +31,28 @@ import { SocialDemoComponent } from './social-demo/social-demo.component';
     RangeSliderModule,
     FormsModule,
     ReactiveFormsModule,
-    ImageGalleryModule
+    ImageGalleryModule,
+    SocialLoginModule
   ],
-  providers: [DeviceService],
+  providers: [
+    DeviceService,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('738096225314-bf85u305r2bhosi9jpi7bek8m2jsnkqa.apps.googleusercontent.com')
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('570472933755093')
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

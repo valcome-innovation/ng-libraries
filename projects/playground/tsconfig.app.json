@@ -2,7 +2,13 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": []
+    "typeRoots": [
+      "../../node_modules/@types"
+    ],
+    "types": [
+      "gapi",
+      "gapi.auth2"
+    ]
   },
   "paths": {
     "@valcome/ng-core": [

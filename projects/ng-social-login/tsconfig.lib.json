@@ -5,7 +5,14 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
-    "types": [],
+    "typeRoots": [
+      "./typings",
+      "../../node_modules/@types"
+    ],
+    "types": [
+      "gapi",
+      "gapi.auth2"
+    ],
     "lib": [
       "dom",
       "es2018"

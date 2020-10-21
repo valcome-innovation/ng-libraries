@@ -10,6 +10,12 @@
         "statements"
       ]
     },
+    "cyclomatic-complexity": true,
+    "restrict-plus-operands": true,
+    "no-invalid-template-strings": true,
+    "no-sparse-arrays": true,
+    "no-conditional-assignment": true,
+    "prefer-const": true,
     "array-type": false,
     "arrow-parens": false,
     "arrow-return-shorthand": true,
@@ -121,8 +127,8 @@
       ]
     },
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
-  ,    "variable-name": {
+    "use-pipe-transform-interface": true,
+    "variable-name": {
       "options": [
         "ban-keywords",
         "check-format",
@@ -139,5 +145,5 @@
         "check-typecast"
       ]
     }
-}
+  }
 }

@@ -39,7 +39,7 @@ speed-measure-plugin*.json
 npm-debug.log
 yarn-error.log
 testem.log
-/typings
+/projects/ng-social-login/typings
 
 # System Files
 .DS_Store
@@ -71,7 +71,7 @@ coverage/
 libpeerconnection.log/
 npm-debug.log
 testem.log
-typings/
+projects/ng-social-login/typings/
 
 # e2e
 e2e/*.js

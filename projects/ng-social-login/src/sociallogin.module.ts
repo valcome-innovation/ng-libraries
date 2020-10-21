@@ -1,9 +1,4 @@
-import {
-  NgModule,
-  Optional,
-  SkipSelf,
-  ModuleWithProviders
-} from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SocialAuthService, SocialAuthServiceConfig } from './socialauth.service';
@@ -30,10 +25,9 @@ export class SocialLoginModule {
     };
   }
 
-  constructor(@Optional() @SkipSelf() parentModule: SocialLoginModule) {
+  public constructor(@Optional() @SkipSelf() parentModule: SocialLoginModule) {
     if (parentModule) {
-      throw new Error(
-        'SocialLoginModule is already loaded. Import it in the AppModule only');
+      throw new Error('SocialLoginModule is already loaded. Import it in the AppModule only');
     }
   }
 }

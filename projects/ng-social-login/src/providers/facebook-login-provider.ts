@@ -1,64 +1,45 @@
-import { BaseLoginProvider } from '../entities/base-login-provider';
-import { SocialUser } from '../entities/social-user';
+import { FbUser, SocialProvider, SocialUser } from '../entities/social-user';
+import { DomUtils } from '@valcome/ng-core';
+import { LoginProvider } from '../entities/login-provider';
+import { FacebookStatic, LoginOptions, StatusResponse } from '../types/facebook';
 
-declare let FB: any;
+const defaultInitOptions = {
+  scope: 'email,public_profile',
+  locale: 'en_US',
+  fields: 'name,email,picture,first_name,last_name',
+  version: 'v4.0',
+};
 
-export class FacebookLoginProvider extends BaseLoginProvider {
-  public static readonly PROVIDER_ID: string = 'FACEBOOK';
+declare let FB: FacebookStatic;
+export type LoginOptionsWithFields = LoginOptions & { fields: string };
 
-  constructor(
-    private clientId: string,
-    private initOptions: any = {
-      scope: 'email,public_profile',
-      locale: 'en_US',
-      fields: 'name,email,picture,first_name,last_name',
-      version: 'v4.0',
-    }
-  ) {
-    super();
+export class FacebookLoginProvider implements LoginProvider {
+
+  public static readonly PROVIDER_ID: SocialProvider = 'FACEBOOK';
+
+  public constructor(private clientId: string,
+                     private initOptions: typeof defaultInitOptions = defaultInitOptions) {
   }
 
-  initialize(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      this.loadScript(
-        FacebookLoginProvider.PROVIDER_ID,
-        `//connect.facebook.net/${this.initOptions.locale}/sdk.js`,
-        () => {
-          FB.init({
-            appId: this.clientId,
-            autoLogAppEvents: true,
-            cookie: true,
-            xfbml: true,
-            version: this.initOptions.version,
-          });
+  public async initialize(): Promise<void> {
+    const scriptTag = await DomUtils.loadScriptAsync(`//connect.facebook.net/${this.initOptions.locale}/sdk.js`);
+    scriptTag.id = FacebookLoginProvider.PROVIDER_ID;
 
-          resolve();
-        }
-      );
+    FB.init({
+      appId: this.clientId,
+      autoLogAppEvents: true,
+      cookie: true,
+      xfbml: true,
+      version: this.initOptions.version,
     });
   }
 
-  getLoginStatus(): Promise<SocialUser> {
+  public getLoginStatus(): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
-      FB.getLoginStatus((response: any) => {
-        if (response.status === 'connected') {
-          let authResponse = response.authResponse;
-          FB.api(`/me?fields=${this.initOptions.fields}`, (fbUser: any) => {
-            let user: SocialUser = new SocialUser();
-
-            user.id = fbUser.id;
-            user.name = fbUser.name;
-            user.email = fbUser.email;
-            user.photoUrl =
-              'https://graph.facebook.com/' +
-              fbUser.id +
-              '/picture?type=normal';
-            user.firstName = fbUser.first_name;
-            user.lastName = fbUser.last_name;
-            user.authToken = authResponse.accessToken;
-
-            user.response = fbUser;
-
+      FB.getLoginStatus(({ status, authResponse }: StatusResponse) => {
+        if (status === 'connected') {
+          FB.api(`/me?fields=${this.initOptions.fields}`, (fbUser: FbUser) => {
+            const user = this.createSocialUser(fbUser, authResponse.accessToken);
             resolve(user);
           });
         } else {
@@ -68,28 +49,14 @@ export class FacebookLoginProvider extends BaseLoginProvider {
     });
   }
 
-  signIn(signInOptions?: any): Promise<SocialUser> {
+  public signIn(signInOptions?: LoginOptionsWithFields): Promise<SocialUser> {
     const options = { ...this.initOptions, ...signInOptions };
+
     return new Promise((resolve, reject) => {
-      FB.login((response: any) => {
-        if (response.authResponse) {
-          let authResponse = response.authResponse;
-          FB.api(`/me?fields=${options.fields}`, (fbUser: any) => {
-            let user: SocialUser = new SocialUser();
-
-            user.id = fbUser.id;
-            user.name = fbUser.name;
-            user.email = fbUser.email;
-            user.photoUrl =
-              'https://graph.facebook.com/' +
-              fbUser.id +
-              '/picture?type=normal';
-            user.firstName = fbUser.first_name;
-            user.lastName = fbUser.last_name;
-            user.authToken = authResponse.accessToken;
-
-            user.response = fbUser;
-
+      FB.login(({ authResponse }: StatusResponse) => {
+        if (authResponse) {
+          FB.api(`/me?fields=${options.fields}`, (fbUser: FbUser) => {
+            const user = this.createSocialUser(fbUser, authResponse.accessToken);
             resolve(user);
           });
         } else {
@@ -99,11 +66,21 @@ export class FacebookLoginProvider extends BaseLoginProvider {
     });
   }
 
-  signOut(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      FB.logout((response: any) => {
-        resolve();
-      });
-    });
+  public signOut(): Promise<any> {
+    return new Promise(resolve => FB.logout(() => resolve()));
+  }
+
+  private createSocialUser(fbUser: FbUser, accessToken: string): SocialUser {
+    return new SocialUser(
+      FacebookLoginProvider.PROVIDER_ID,
+      fbUser.id,
+      fbUser.email,
+      fbUser.name,
+      `https://graph.facebook.com/${fbUser.id}/picture?type=normal`,
+      fbUser.first_name,
+      fbUser.last_name,
+      accessToken,
+      fbUser
+    );
   }
 }

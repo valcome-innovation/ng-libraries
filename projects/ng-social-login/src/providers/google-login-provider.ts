@@ -1,142 +1,104 @@
-import { BaseLoginProvider } from '../entities/base-login-provider';
-import { SocialUser } from '../entities/social-user';
+import { SocialProvider, SocialUser } from '../entities/social-user';
+import { DomUtils } from '@valcome/ng-core';
+import { LoginProvider } from '../entities/login-provider';
 
-declare let gapi: any;
+const defaultInitOptions = { scope: 'email' };
+export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;
 
-export class GoogleLoginProvider extends BaseLoginProvider {
-  public static readonly PROVIDER_ID: string = 'GOOGLE';
+export class GoogleLoginProvider implements LoginProvider {
 
-  protected auth2: any;
+  public static readonly PROVIDER_ID: SocialProvider = 'GOOGLE';
+  protected auth2?: gapi.auth2.GoogleAuth;
 
-  constructor(
-    private clientId: string,
-    private initOptions: any = { scope: 'email' }
-  ) {
-    super();
+  public constructor(private clientId: string,
+                     private initOptions: gapi.auth2.ClientConfig = defaultInitOptions) {
   }
 
-  initialize(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      this.loadScript(
-        GoogleLoginProvider.PROVIDER_ID,
-        'https://apis.google.com/js/platform.js',
-        () => {
-          gapi.load('auth2', () => {
-            this.auth2 = gapi.auth2.init({
-              ...this.initOptions,
-              client_id: this.clientId,
-            });
+  public async initialize(): Promise<void> {
+    const scriptTag = await DomUtils.loadScriptAsync('https://apis.google.com/js/platform.js');
+    scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
 
-            this.auth2
-              .then(() => {
-                resolve();
-              })
-              .catch((err: any) => {
-                reject(err);
-              });
-          });
-        }
-      );
+    return new Promise((resolve, reject) => {
+      gapi.load('auth2', () => {
+        gapi.auth2.init({
+          ...this.initOptions,
+          client_id: this.clientId,
+        }).then(
+          googleAuth => {
+            this.auth2 = googleAuth;
+            resolve()
+          },
+          reason => reject(reason)
+        );
+      });
     });
   }
 
-  getLoginStatus(): Promise<SocialUser> {
+  public async getLoginStatus(): Promise<SocialUser> {
+    this.validateAuth()
+
     return new Promise((resolve, reject) => {
-      if (this.auth2.isSignedIn.get()) {
-        let user: SocialUser = new SocialUser();
+      const isSignedIn = this.auth2!.isSignedIn.get();
+      const googleUser = isSignedIn ? this.auth2!.currentUser.get() : undefined;
 
-        let profile = this.auth2.currentUser.get().getBasicProfile();
-        let token = this.auth2.currentUser.get().getAuthResponse(true)
-          .access_token;
-        let backendToken = this.auth2.currentUser.get().getAuthResponse(true)
-          .id_token;
-
-        user.id = profile.getId();
-        user.name = profile.getName();
-        user.email = profile.getEmail();
-        user.photoUrl = profile.getImageUrl();
-        user.firstName = profile.getGivenName();
-        user.lastName = profile.getFamilyName();
-        user.authToken = token;
-        user.idToken = backendToken;
-        user.response = profile;
-
-        resolve(user);
+      if (isSignedIn && googleUser) {
+        resolve(this.createSocialUser(googleUser))
       } else {
         reject(`No user is currently logged in with ${GoogleLoginProvider.PROVIDER_ID}`);
       }
     });
   }
 
-  signIn(signInOptions?: any): Promise<SocialUser> {
+  public async signIn(signInOptions?: gapi.auth2.ClientConfig): Promise<SocialUser> {
+    this.validateAuth()
+
     const options = { ...this.initOptions, ...signInOptions };
-
-    return new Promise((resolve, reject) => {
-      const offlineAccess: boolean = options && options.offline_access;
-      let promise = !offlineAccess
-        ? this.auth2.signIn(signInOptions)
-        : this.auth2.grantOfflineAccess(signInOptions);
-
-      promise
-        .then(
-          (response: any) => {
-            let user: SocialUser = new SocialUser();
-
-            if (response && response.code) {
-              user.authorizationCode = response.code;
-            } else {
-              let profile = this.auth2.currentUser.get().getBasicProfile();
-              let token = this.auth2.currentUser.get().getAuthResponse(true)
-                .access_token;
-              let backendToken = this.auth2.currentUser
-                .get()
-                .getAuthResponse(true).id_token;
-
-              user.id = profile.getId();
-              user.name = profile.getName();
-              user.email = profile.getEmail();
-              user.photoUrl = profile.getImageUrl();
-              user.firstName = profile.getGivenName();
-              user.lastName = profile.getFamilyName();
-              user.authToken = token;
-              user.idToken = backendToken;
-
-              user.response = profile;
-            }
-
-            resolve(user);
-          },
-          (closed: any) => {
-            reject(closed);
-          }
-        )
-        .catch((err: any) => {
-          reject(err);
-        });
-    });
+    const googleUser = await this.auth2!.signIn(options)
+    return this.createSocialUser(googleUser);
   }
 
-  signOut(revoke?: boolean): Promise<any> {
-    return new Promise((resolve, reject) => {
-      let signOutPromise: Promise<any>;
+  public async signOut(revoke?: boolean): Promise<any> {
+    this.validateAuth()
+    let signOutPromise: Promise<any>;
 
-      if (revoke) {
-        signOutPromise = this.auth2.disconnect();
-      } else {
-        signOutPromise = this.auth2.signOut();
-      }
+    if (revoke) {
+      signOutPromise = this.auth2!.disconnect();
+    } else {
+      signOutPromise = this.auth2!.signOut();
+    }
 
-      signOutPromise
-        .then((err: any) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve();
-          }
-        })
-        .catch((err: any) => {
-          reject(err);
-        });
-    });
+    const err = await signOutPromise;
+
+    if (err) {
+      throw new Error(err);
+    }
+  }
+
+  private createSocialUser(googleUser: gapi.auth2.GoogleUser): SocialUser {
+    const profile = googleUser.getBasicProfile();
+    const token = googleUser.getAuthResponse(true).access_token;
+    const backendToken = googleUser.getAuthResponse(true).id_token;
+
+    const user = new SocialUser(
+      GoogleLoginProvider.PROVIDER_ID,
+      profile.getId(),
+      profile.getEmail(),
+      profile.getName(),
+      profile.getImageUrl(),
+      profile.getGivenName(),
+      profile.getFamilyName(),
+      token,
+      profile
+    );
+
+    user.idToken = backendToken;
+
+    return user;
+  }
+
+  private validateAuth(): void {
+    if (!this.auth2) {
+      throw new Error('Couldn\'t create Google Auth object');
+    }
   }
 }

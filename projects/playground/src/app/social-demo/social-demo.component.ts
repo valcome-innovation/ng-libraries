@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AmazonLoginProvider,
-  FacebookLoginProvider,
-  GoogleLoginProvider,
-  SocialAuthService,
-  SocialUser
-} from '@valcome/ng-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from '@valcome/ng-social-login';
 
 @Component({
   selector: 'val-social-demo',
@@ -31,10 +25,6 @@ export class SocialDemoComponent implements OnInit {
 
   public signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  public signInWithAmazon(): void {
-    this.authService.signIn(AmazonLoginProvider.PROVIDER_ID);
   }
 
   public signOut(): void {
