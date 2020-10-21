@@ -9,6 +9,7 @@ import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUs
 export class SocialDemoComponent implements OnInit {
 
   public user?: SocialUser;
+  public areCookiesBlocked = false;
 
   public constructor(private authService: SocialAuthService) {
   }
@@ -17,6 +18,8 @@ export class SocialDemoComponent implements OnInit {
     this.authService.authState.subscribe(user => {
       this.user = user;
     });
+
+    this.authService.hasCookieError$.subscribe(areCookiesBlocked => this.areCookiesBlocked = areCookiesBlocked);
   }
 
   public signInWithGoogle(): void {

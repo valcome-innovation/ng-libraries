@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { AsyncSubject, Observable, ReplaySubject } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './entities/login-provider';
 import { SocialProvider, SocialUser } from './entities/social-user';
 import { BaseInitializableService } from '@valcome/ng-core';
@@ -16,7 +16,8 @@ export interface SocialAuthServiceConfig {
 export class SocialAuthService extends BaseInitializableService {
   private static readonly ERR_LOGIN_PROVIDER_NOT_FOUND = 'Login provider not found';
   private static readonly ERR_NOT_LOGGED_IN = 'Not logged in';
-  private static readonly ERR_NOT_INITIALIZED = 'Login providers not ready yet. Are there errors on your console?';
+
+  public hasCookieError$ = new BehaviorSubject<boolean>(false);
 
   private providers: Map<SocialProvider, LoginProvider> = new Map();
   private autoLogin = false;
@@ -50,7 +51,12 @@ export class SocialAuthService extends BaseInitializableService {
 
     try {
       await Promise.all(Array.from(this.providers.values())
-        .map(provider => provider.initialize().catch(console.error)));
+        .map(provider => provider.initialize().catch(reason => {
+          console.error(reason);
+          if (reason.details.includes('Cookies are not enabled')) {
+            this.hasCookieError$.next(true);
+          }
+        })));
 
       this.initialized = true;
       this._initState.next(this.initialized);

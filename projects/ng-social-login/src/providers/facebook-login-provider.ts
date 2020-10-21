@@ -54,6 +54,7 @@ export class FacebookLoginProvider implements LoginProvider {
 
     return new Promise((resolve, reject) => {
       FB.login(({ authResponse }: StatusResponse) => {
+        console.log(authResponse);
         if (authResponse) {
           FB.api(`/me?fields=${options.fields}`, (fbUser: FbUser) => {
             const user = this.createSocialUser(fbUser, authResponse.accessToken);

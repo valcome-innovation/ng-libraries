@@ -43,7 +43,7 @@ import {
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('738096225314-bf85u305r2bhosi9jpi7bek8m2jsnkqa.apps.googleusercontent.com')
+            provider: new GoogleLoginProvider('738096225314-5r0dns5llrfepeihg3h5l6c7gs5kiq7e.apps.googleusercontent.com')
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,

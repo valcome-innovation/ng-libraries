@@ -17,18 +17,21 @@ export class GoogleLoginProvider implements LoginProvider {
   public async initialize(): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync('https://apis.google.com/js/platform.js');
     scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
+    const params = {
+      cookie_policy: 'none',
+      client_id: this.clientId,
+    };
 
     return new Promise((resolve, reject) => {
       gapi.load('auth2', () => {
-        gapi.auth2.init({
-          ...this.initOptions,
-          client_id: this.clientId,
-        }).then(
+        gapi.auth2.init(params).then(
           googleAuth => {
             this.auth2 = googleAuth;
             resolve()
           },
-          reason => reject(reason)
+          reason => {
+            reject(reason)
+          }
         );
       });
     });
@@ -50,10 +53,10 @@ export class GoogleLoginProvider implements LoginProvider {
   }
 
   public async signIn(signInOptions?: gapi.auth2.ClientConfig): Promise<SocialUser> {
-    this.validateAuth()
+    this.validateAuth();
 
     const options = { ...this.initOptions, ...signInOptions };
-    const googleUser = await this.auth2!.signIn(options)
+    const googleUser = await this.auth2!.signIn(options);
     return this.createSocialUser(googleUser);
   }
 

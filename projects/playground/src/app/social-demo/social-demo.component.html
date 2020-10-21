@@ -8,9 +8,13 @@
       <p class="card-text">Sign in with</p>
     </div>
     <div class="card-block">
-      <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()">Google
+      <button class="btn btn-social-icon btn-google mx-1"
+              *ngIf="!areCookiesBlocked" (click)="signInWithGoogle()">
+        Google
       </button>
-      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()">Facebook</button>
+      <button class="btn btn-social-icon btn-facebook mx-1" (click)="signInWithFB()">
+        Facebook
+      </button>
     </div>
   </div>
   <div *ngIf="user" class="card text-center">
