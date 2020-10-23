@@ -1,5 +1,4 @@
-import { SocialUser } from '@valcome/ng-social-login';
-import { GoogleTokenClaims, SocialProvider } from '../entities/social-user';
+import { GoogleTokenClaims, SocialProvider, SocialUser } from '../entities/social-user';
 import * as JwtDecode from 'jwt-decode';
 import { GoogleDeviceResponse, GooglePollResponse } from '../types/google';
 import { HttpClient } from '@angular/common/http';

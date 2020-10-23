@@ -1,4 +1,4 @@
-import { SocialUser } from '@valcome/ng-social-login';
+import { SocialUser } from "../entities/social-user";
 
 export interface DeviceCodeResponse {
   device_code: string;
@@ -6,14 +6,6 @@ export interface DeviceCodeResponse {
   verification_url: string;
   expires_in: number;
   interval: number;
-}
-
-export interface PollResponse {
-  access_token: string;
-  expires_in: number;
-  scope: string;
-  token_type: string;
-  refresh_token: string;
 }
 
 export type PolledUser = { type: 'user', user: SocialUser } | { type: 'empty' };
