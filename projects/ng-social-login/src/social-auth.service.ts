@@ -54,7 +54,7 @@ export class SocialAuthService extends BaseInitializableService {
       await Promise.all(Array.from(this.providers.values())
         .map(provider => provider.initialize().catch(reason => {
           console.error(reason);
-          if (reason.details.includes('Cookies are not enabled')) {
+          if (reason.details?.includes('Cookies are not enabled')) {
             this.hasCookieError$.next(true);
           }
         })));

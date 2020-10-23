@@ -29,15 +29,18 @@ export class FacebookLoginProvider implements LoginProvider {
 
   public async initialize(): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync(`//connect.facebook.net/${this.initOptions.locale}/sdk.js`);
-    scriptTag.id = FacebookLoginProvider.PROVIDER_ID;
 
-    FB.init({
-      appId: this.clientId,
-      autoLogAppEvents: true,
-      cookie: true,
-      xfbml: true,
-      version: this.initOptions.version,
-    });
+    if (scriptTag) {
+      scriptTag.id = FacebookLoginProvider.PROVIDER_ID;
+
+      FB.init({
+        appId: this.clientId,
+        autoLogAppEvents: true,
+        cookie: true,
+        xfbml: true,
+        version: this.initOptions.version,
+      });
+    }
   }
 
   public getDeviceCode(): Promise<DeviceCodeResponse> {

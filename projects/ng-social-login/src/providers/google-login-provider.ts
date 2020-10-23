@@ -25,26 +25,29 @@ export class GoogleLoginProvider implements LoginProvider {
 
   public async initialize(): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync('https://apis.google.com/js/platform.js');
-    scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
 
-    const params = {
-      cookie_policy: 'none',
-      client_id: this.clientId,
-    };
+    if (scriptTag) {
+      scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
 
-    return new Promise((resolve, reject) => {
-      gapi.load('auth2', () => {
-        gapi.auth2.init(params).then(
-          googleAuth => {
-            this.auth2 = googleAuth;
-            resolve()
-          },
-          reason => {
-            reject(reason)
-          }
-        );
+      const params = {
+        cookie_policy: 'none',
+        client_id: this.clientId,
+      };
+
+      return new Promise((resolve, reject) => {
+        gapi.load('auth2', () => {
+          gapi.auth2.init(params).then(
+            googleAuth => {
+              this.auth2 = googleAuth;
+              resolve()
+            },
+            reason => {
+              reject(reason)
+            }
+          );
+        });
       });
-    });
+    }
   }
 
   public getDeviceCode(): Promise<DeviceCodeResponse> {
