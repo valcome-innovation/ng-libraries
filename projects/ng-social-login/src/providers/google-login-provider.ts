@@ -54,7 +54,7 @@ export class GoogleLoginProvider implements LoginProvider {
   }
 
   public async singlePollForDevice(deviceCodeResponse: DeviceCodeResponse): Promise<PolledUser> {
-    const pollResponse = await this.googleHelper.fetchAccessCode(deviceCodeResponse.device_code);
+    const pollResponse = await this.googleHelper.fetchAccessCode(deviceCodeResponse.device_code).catch(err => err);
 
     if ('access_token' in pollResponse) {
       const user = this.googleHelper.createSocialUserFromToken(pollResponse.access_token, 'GOOGLE_TV');

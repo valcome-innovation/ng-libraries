@@ -48,7 +48,7 @@ export class FacebookLoginProvider implements LoginProvider {
   }
 
   public async singlePollForDevice(deviceCodeResponse: DeviceCodeResponse): Promise<PolledUser> {
-    const pollResponse = await this.facebookHelper.fetchAccessCode(deviceCodeResponse.device_code);
+    const pollResponse = await this.facebookHelper.fetchAccessCode(deviceCodeResponse.device_code).catch(err => err);
 
     if ('access_token' in pollResponse) {
       const fbUser = await this.facebookHelper.fetchProfile(this.initOptions.fields, pollResponse.access_token);
