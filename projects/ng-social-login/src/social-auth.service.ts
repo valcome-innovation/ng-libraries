@@ -3,6 +3,7 @@ import { BaseInitializableService } from '@valcome/ng-core';
 import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './entities/login-provider';
 import { SocialProvider, SocialUser } from './entities/social-user';
+import { DeviceCodeResponse, PolledUser } from './types/social';
 
 export interface SocialAuthServiceConfig {
   autoLogin?: boolean;
@@ -75,16 +76,27 @@ export class SocialAuthService extends BaseInitializableService {
     super.markAsInitialized();
   }
 
+  public getDeviceCode(providerId: SocialProvider): Promise<DeviceCodeResponse> {
+    const loginProvider = this.getProvider(providerId);
+    return loginProvider.getDeviceCode();
+  }
+
+  public async pollForDevice(providerId: SocialProvider, deviceCodeResponse: DeviceCodeResponse): Promise<PolledUser> {
+    const loginProvider = this.getProvider(providerId);
+    const polledUser = await loginProvider.singlePollForDevice(deviceCodeResponse);
+
+    if (polledUser.type === 'user') {
+      this.setUser(polledUser.user);
+    }
+
+    return polledUser;
+  }
+
   public async signIn(providerId: SocialProvider, signInOptions?: SignInOptions): Promise<SocialUser> {
     await super.waitUntilInitialized();
 
-    let loginProvider = this.providers.get(providerId);
-
-    if (loginProvider) {
-      return this.signInFromProvider(loginProvider, providerId, signInOptions);
-    } else {
-      throw new Error(SocialAuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
-    }
+    const loginProvider = this.getProvider(providerId);
+    return this.signInFromProvider(loginProvider, providerId, signInOptions);
   }
 
   public async signOut(revoke: boolean = false): Promise<void> {
@@ -93,14 +105,19 @@ export class SocialAuthService extends BaseInitializableService {
     if (!this._user) {
       throw new Error(SocialAuthService.ERR_NOT_LOGGED_IN);
     } else {
-      let providerId = this._user.provider;
-      let loginProvider = this.providers.get(providerId);
+      const providerId = this._user.provider;
+      const loginProvider = this.getProvider(providerId);
+      return this.signOutFromProvider(loginProvider, revoke);
+    }
+  }
 
-      if (loginProvider) {
-        return this.signOutFromProvider(loginProvider, revoke);
-      } else {
-        throw new Error(SocialAuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
-      }
+  private getProvider(providerId: SocialProvider): LoginProvider {
+    let loginProvider = this.providers.get(providerId);
+
+    if (loginProvider) {
+      return loginProvider;
+    } else {
+      throw new Error(SocialAuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
     }
   }
 

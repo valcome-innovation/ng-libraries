@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from '@valcome/ng-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  GoogleTvLoginProvider,
+  SocialAuthService,
+  SocialUser
+} from '@valcome/ng-social-login';
 
 @Component({
   selector: 'val-social-demo',
@@ -24,6 +30,10 @@ export class SocialDemoComponent implements OnInit {
 
   public signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  public signInWithGoogleOnTv(): void {
+    this.authService.signIn(GoogleTvLoginProvider.PROVIDER_ID);
   }
 
   public signInWithFB(): void {

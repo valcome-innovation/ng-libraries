@@ -1,3 +1,18 @@
+export interface FacebookDeviceResponse {
+  code: string;
+  user_code: string;
+  verification_uri: string;
+  expires_in: number;
+  interval: number;
+}
+
+export type FacebookPollResponse = {
+  access_token: string;
+  expires_in: number;
+} | {
+  error: any;
+}
+
 export type FacebookEventType =
   | 'auth.authResponseChange'
   | 'auth.logout'

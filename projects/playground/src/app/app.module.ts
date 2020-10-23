@@ -16,6 +16,7 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from '@valcome/ng-social-login';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,25 +33,33 @@ import {
     FormsModule,
     ReactiveFormsModule,
     ImageGalleryModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [
     DeviceService,
     {
       provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider('738096225314-5r0dns5llrfepeihg3h5l6c7gs5kiq7e.apps.googleusercontent.com')
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('570472933755093')
-          }
-        ]
-      } as SocialAuthServiceConfig
+      useFactory: (httpClient: HttpClient) => {
+        return {
+          autoLogin: false,
+          providers: [
+            {
+              id: GoogleLoginProvider.PROVIDER_ID,
+              provider: new GoogleLoginProvider(
+                '738096225314-bf85u305r2bhosi9jpi7bek8m2jsnkqa.apps.googleusercontent.com',
+                '1-4ZieXGfZNaKEeDh_TYYcuj',
+                httpClient
+              )
+            },
+            {
+              id: FacebookLoginProvider.PROVIDER_ID,
+              provider: new FacebookLoginProvider('570472933755093')
+            }
+          ]
+        } as SocialAuthServiceConfig
+      },
+      deps: [HttpClient]
     }
   ],
   bootstrap: [AppComponent]

@@ -1,6 +1,16 @@
 import BasicProfile = gapi.auth2.BasicProfile;
 
-export type SocialProvider = 'FACEBOOK' | 'GOOGLE';
+export type SocialProvider = 'FACEBOOK' | 'FACEBOOK_TV' | 'GOOGLE' | 'GOOGLE_TV';
+
+export interface GoogleTokenClaims {
+  sub: string;
+  email: string;
+  email_verified: string;
+  name: string;
+  picture: string;
+  given_name: string;
+  family_name: string;
+}
 
 export interface FbUser {
   id: string;
@@ -9,6 +19,8 @@ export interface FbUser {
   last_name: string;
   email: string;
 }
+
+export type SocialUserResponse = FbUser | BasicProfile | GoogleTokenClaims;
 
 export class SocialUser {
   public provider: SocialProvider;
@@ -22,10 +34,10 @@ export class SocialUser {
 
   public idToken?: string; // Reference https://developers.google.com/identity/sign-in/web/backend-auth
 
-  public response: FbUser | BasicProfile;
+  public response: SocialUserResponse;
 
   public constructor(provider: SocialProvider, id: string, email: string, name: string, photoUrl: string,
-                     firstName: string, lastName: string, authToken: string, response: any) {
+                     firstName: string, lastName: string, authToken: string, response: SocialUserResponse) {
     this.provider = provider;
     this.id = id;
     this.email = email;

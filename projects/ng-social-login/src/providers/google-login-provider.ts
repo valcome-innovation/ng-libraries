@@ -1,6 +1,9 @@
 import { SocialProvider, SocialUser } from '../entities/social-user';
 import { DomUtils } from '@valcome/ng-core';
 import { LoginProvider } from '../entities/login-provider';
+import { GoogleHelper } from '../helper/google.helper';
+import { HttpClient } from '@angular/common/http';
+import { DeviceCodeResponse, PolledUser } from '../types/social';
 
 const defaultInitOptions = { scope: 'email' };
 export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;
@@ -8,15 +11,21 @@ export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;
 export class GoogleLoginProvider implements LoginProvider {
 
   public static readonly PROVIDER_ID: SocialProvider = 'GOOGLE';
+
   protected auth2?: gapi.auth2.GoogleAuth;
+  protected googleHelper: GoogleHelper;
 
   public constructor(private clientId: string,
+                     clientSecret: string,
+                     http: HttpClient,
                      private initOptions: gapi.auth2.ClientConfig = defaultInitOptions) {
+    this.googleHelper = new GoogleHelper(clientId, clientSecret, http);
   }
 
   public async initialize(): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync('https://apis.google.com/js/platform.js');
     scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
+
     const params = {
       cookie_policy: 'none',
       client_id: this.clientId,
@@ -37,6 +46,21 @@ export class GoogleLoginProvider implements LoginProvider {
     });
   }
 
+  public getDeviceCode(): Promise<DeviceCodeResponse> {
+    return this.googleHelper.fetchDeviceCode();
+  }
+
+  public async singlePollForDevice(deviceCodeResponse: DeviceCodeResponse): Promise<PolledUser> {
+    const pollResponse = await this.googleHelper.fetchAccessCode(deviceCodeResponse.device_code);
+
+    if ('access_token' in pollResponse) {
+      const user = this.googleHelper.createSocialUserFromToken(pollResponse.access_token, 'GOOGLE_TV');
+      return { type: 'user', user };
+    } else {
+      return { type: 'empty' };
+    }
+  }
+
   public async getLoginStatus(): Promise<SocialUser> {
     this.validateAuth()
 
@@ -45,7 +69,7 @@ export class GoogleLoginProvider implements LoginProvider {
       const googleUser = isSignedIn ? this.auth2!.currentUser.get() : undefined;
 
       if (isSignedIn && googleUser) {
-        resolve(this.createSocialUser(googleUser))
+        resolve(this.googleHelper.createSocialUser(googleUser, 'GOOGLE'))
       } else {
         reject(`No user is currently logged in with ${GoogleLoginProvider.PROVIDER_ID}`);
       }
@@ -57,7 +81,8 @@ export class GoogleLoginProvider implements LoginProvider {
 
     const options = { ...this.initOptions, ...signInOptions };
     const googleUser = await this.auth2!.signIn(options);
-    return this.createSocialUser(googleUser);
+
+    return this.googleHelper.createSocialUser(googleUser, 'GOOGLE');
   }
 
   public async signOut(revoke?: boolean): Promise<any> {
@@ -75,28 +100,6 @@ export class GoogleLoginProvider implements LoginProvider {
     if (err) {
       throw new Error(err);
     }
-  }
-
-  private createSocialUser(googleUser: gapi.auth2.GoogleUser): SocialUser {
-    const profile = googleUser.getBasicProfile();
-    const token = googleUser.getAuthResponse(true).access_token;
-    const backendToken = googleUser.getAuthResponse(true).id_token;
-
-    const user = new SocialUser(
-      GoogleLoginProvider.PROVIDER_ID,
-      profile.getId(),
-      profile.getEmail(),
-      profile.getName(),
-      profile.getImageUrl(),
-      profile.getGivenName(),
-      profile.getFamilyName(),
-      token,
-      profile
-    );
-
-    user.idToken = backendToken;
-
-    return user;
   }
 
   private validateAuth(): void {

@@ -2,6 +2,9 @@ import { FbUser, SocialProvider, SocialUser } from '../entities/social-user';
 import { DomUtils } from '@valcome/ng-core';
 import { LoginProvider } from '../entities/login-provider';
 import { FacebookStatic, LoginOptions, StatusResponse } from '../types/facebook';
+import { DeviceCodeResponse, PolledUser } from '../types/social';
+import { FacebookHelper } from '../helper/facebook.helper';
+import { HttpClient } from '@angular/common/http';
 
 const defaultInitOptions = {
   scope: 'email,public_profile',
@@ -16,9 +19,12 @@ export type LoginOptionsWithFields = LoginOptions & { fields: string };
 export class FacebookLoginProvider implements LoginProvider {
 
   public static readonly PROVIDER_ID: SocialProvider = 'FACEBOOK';
+  protected facebookHelper: FacebookHelper;
 
   public constructor(private clientId: string,
+                     http: HttpClient,
                      private initOptions: typeof defaultInitOptions = defaultInitOptions) {
+    this.facebookHelper = new FacebookHelper(this.clientId, http);
   }
 
   public async initialize(): Promise<void> {
@@ -34,12 +40,29 @@ export class FacebookLoginProvider implements LoginProvider {
     });
   }
 
+  public getDeviceCode(): Promise<DeviceCodeResponse> {
+    return this.facebookHelper.fetchDeviceCode()
+      .then(this.facebookHelper.mapFacebookCodeToDeviceCode);
+  }
+
+  public async singlePollForDevice(deviceCodeResponse: DeviceCodeResponse): Promise<PolledUser> {
+    const pollResponse = await this.facebookHelper.fetchAccessCode(deviceCodeResponse.device_code);
+
+    if ('access_token' in pollResponse) {
+      const fbUser = await this.facebookHelper.fetchProfile(this.initOptions.fields, pollResponse.access_token);
+      const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'FACEBOOK_TV');
+      return { type: 'user', user };
+    } else {
+      return { type: 'empty' };
+    }
+  }
+
   public getLoginStatus(): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
       FB.getLoginStatus(({ status, authResponse }: StatusResponse) => {
         if (status === 'connected') {
           FB.api(`/me?fields=${this.initOptions.fields}`, (fbUser: FbUser) => {
-            const user = this.createSocialUser(fbUser, authResponse.accessToken);
+            const user = this.facebookHelper.createSocialUser(fbUser, authResponse.accessToken, 'FACEBOOK');
             resolve(user);
           });
         } else {
@@ -54,10 +77,9 @@ export class FacebookLoginProvider implements LoginProvider {
 
     return new Promise((resolve, reject) => {
       FB.login(({ authResponse }: StatusResponse) => {
-        console.log(authResponse);
         if (authResponse) {
           FB.api(`/me?fields=${options.fields}`, (fbUser: FbUser) => {
-            const user = this.createSocialUser(fbUser, authResponse.accessToken);
+            const user = this.facebookHelper.createSocialUser(fbUser, authResponse.accessToken, 'FACEBOOK');
             resolve(user);
           });
         } else {
@@ -69,19 +91,5 @@ export class FacebookLoginProvider implements LoginProvider {
 
   public signOut(): Promise<any> {
     return new Promise(resolve => FB.logout(() => resolve()));
-  }
-
-  private createSocialUser(fbUser: FbUser, accessToken: string): SocialUser {
-    return new SocialUser(
-      FacebookLoginProvider.PROVIDER_ID,
-      fbUser.id,
-      fbUser.email,
-      fbUser.name,
-      `https://graph.facebook.com/${fbUser.id}/picture?type=normal`,
-      fbUser.first_name,
-      fbUser.last_name,
-      accessToken,
-      fbUser
-    );
   }
 }
