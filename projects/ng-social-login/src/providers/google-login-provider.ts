@@ -16,10 +16,11 @@ export class GoogleLoginProvider implements LoginProvider {
   protected googleHelper: GoogleHelper;
 
   public constructor(private clientId: string,
+                     clientTvId: string,
                      clientSecret: string,
                      http: HttpClient,
                      private initOptions: gapi.auth2.ClientConfig = defaultInitOptions) {
-    this.googleHelper = new GoogleHelper(clientId, clientSecret, http);
+    this.googleHelper = new GoogleHelper(clientTvId, clientSecret, http);
   }
 
   public async initialize(): Promise<void> {

@@ -5,14 +5,14 @@ import { HttpClient } from '@angular/common/http';
 
 export class GoogleHelper {
 
-  public constructor(private clientId: string,
+  public constructor(private clientTvId: string,
                      private clientSecret: string,
                      private http: HttpClient) {
   }
 
   public fetchAccessCode(deviceCode: string): Promise<GooglePollResponse> {
     return this.http.post<GooglePollResponse>('https://oauth2.googleapis.com/token', {
-      client_id: this.clientId,
+      client_id: this.clientTvId,
       client_secret: this.clientSecret,
       scope: 'email profile',
       device_code: deviceCode,
@@ -22,7 +22,7 @@ export class GoogleHelper {
 
   public fetchDeviceCode(): Promise<GoogleDeviceResponse> {
     return this.http.post<GoogleDeviceResponse>('https://oauth2.googleapis.com/device/code', {
-      client_id: this.clientId,
+      client_id: this.clientTvId,
       scope: 'email profile'
     }).toPromise();
   }
