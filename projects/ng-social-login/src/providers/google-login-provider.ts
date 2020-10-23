@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
 
 const defaultInitOptions = { scope: 'email' };
-export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;
 
 export class GoogleLoginProvider implements LoginProvider {
 

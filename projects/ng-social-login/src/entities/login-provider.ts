@@ -1,6 +1,6 @@
 import { SocialUser } from './social-user';
-import { LoginOptionsWithFields } from '../providers/facebook-login-provider';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
+import { LoginOptionsWithFields } from '../types/facebook';
 
 export type SignInOptions = LoginOptionsWithFields | gapi.auth2.ClientConfig;
 

@@ -1,7 +1,7 @@
 import { FbUser, SocialProvider, SocialUser } from '../entities/social-user';
 import { DomUtils } from '@valcome/ng-core';
 import { LoginProvider } from '../entities/login-provider';
-import { FacebookStatic, LoginOptions, StatusResponse } from '../types/facebook';
+import { FacebookStatic, LoginOptionsWithFields, StatusResponse } from '../types/facebook';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
 import { FacebookHelper } from '../helper/facebook.helper';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,6 @@ const defaultInitOptions = {
 };
 
 declare let FB: FacebookStatic;
-export type LoginOptionsWithFields = LoginOptions & { fields: string };
 
 export class FacebookLoginProvider implements LoginProvider {
 

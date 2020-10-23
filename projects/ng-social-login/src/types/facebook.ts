@@ -13,6 +13,8 @@ export type FacebookPollResponse = {
   error: any;
 }
 
+export type LoginOptionsWithFields = LoginOptions & { fields: string };
+
 export type FacebookEventType =
   | 'auth.authResponseChange'
   | 'auth.logout'

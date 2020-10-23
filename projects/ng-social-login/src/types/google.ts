@@ -16,3 +16,5 @@ export type GooglePollResponse = {
   error: string;
   error_description: string;
 }
+
+export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;
