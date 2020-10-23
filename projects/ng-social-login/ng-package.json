@@ -7,7 +7,8 @@
       "@valcome/ts-core": "@valcome/ts-core",
       "ts-core": "@valcome/ts-core",
       "@valcome/ng-core": "@valcome/ng-core",
-      "ng-core": "@valcome/ng-core"
+      "ng-core": "@valcome/ng-core",
+      "jwt-decode": "jwt-decode"
     }
   }
 }
