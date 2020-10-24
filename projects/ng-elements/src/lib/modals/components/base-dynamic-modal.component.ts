@@ -10,7 +10,7 @@ export abstract class BaseDynamicModalComponent extends BaseBehaviorComponent {
   public modalClose: EventEmitter<any> = new EventEmitter<any>();
 
   @HostListener('document:keydown.escape')
-  public closeModal(): void {
-    this.modalClose.emit();
+  public closeModal(value?: any): void {
+    this.modalClose.emit(value);
   }
 }
