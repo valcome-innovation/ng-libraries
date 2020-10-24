@@ -1,6 +1,6 @@
 import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
-import { INotyfOptions } from 'notyf';
 import { UniversalModule } from '@valcome/ng-core';
+import { INotyfOptions } from 'notyf';
 
 export const TOASTER_OPTIONS = new InjectionToken<Partial<INotyfOptions>>('TOASTER_OPTIONS');
 

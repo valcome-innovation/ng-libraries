@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
+import { RenderService } from '@valcome/ng-core';
 import { INotyfOptions, Notyf } from 'notyf';
 import { TOASTER_OPTIONS, ToasterModule } from './toaster.module';
-import { RenderService } from '@valcome/ng-core';
 
+// @dynamic
 @Injectable({ providedIn: ToasterModule })
 export class ToasterService {
 
