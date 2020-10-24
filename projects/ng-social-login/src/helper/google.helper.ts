@@ -49,8 +49,8 @@ export class GoogleHelper {
     return user;
   }
 
-  public createSocialUserFromToken(token: string, provider: SocialProvider): SocialUser {
-    const tokenClaims = JwtDecode(token) as GoogleTokenClaims;
+  public createSocialUserFromToken({ access_token, id_token }: GooglePollResponse, provider: SocialProvider): SocialUser {
+    const tokenClaims = JwtDecode(id_token) as GoogleTokenClaims;
 
     return new SocialUser(
       provider,
@@ -60,7 +60,7 @@ export class GoogleHelper {
       tokenClaims.picture,
       tokenClaims.given_name,
       tokenClaims.family_name,
-      token,
+      access_token,
       tokenClaims
     );
   }

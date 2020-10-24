@@ -9,8 +9,6 @@ export interface FacebookDeviceResponse {
 export type FacebookPollResponse = {
   access_token: string;
   expires_in: number;
-} | {
-  error: any;
 }
 
 export type LoginOptionsWithFields = LoginOptions & { fields: string };

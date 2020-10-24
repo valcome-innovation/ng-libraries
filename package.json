@@ -25,7 +25,7 @@
     "bootstrap": "^4.4.1",
     "drift-zoom": "^1.4.0",
     "ios-inner-height": "^1.1.1",
-    "jwt-decode": "^3.0.0",
+    "jwt-decode": "^2.2.0",
     "ngx-device-detector": "^1.4.2",
     "notyf": "^3.7.0",
     "rxjs": "~6.5.4",

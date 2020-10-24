@@ -12,9 +12,7 @@ export type GooglePollResponse = {
   scope: string;
   token_type: string;
   refresh_token: string;
-} | {
-  error: string;
-  error_description: string;
+  id_token: string;
 }
 
 export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;

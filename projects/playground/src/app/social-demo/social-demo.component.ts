@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  DeviceCodeResponse,
   FacebookLoginProvider,
   GoogleLoginProvider,
-  GoogleTvLoginProvider,
   SocialAuthService,
   SocialUser
 } from '@valcome/ng-social-login';
@@ -16,6 +16,10 @@ export class SocialDemoComponent implements OnInit {
 
   public user?: SocialUser;
   public areCookiesBlocked = false;
+
+  public deviceCode?: DeviceCodeResponse;
+  public remainingSeconds = 0;
+  private pollingInterval: any;
 
   public constructor(private authService: SocialAuthService) {
   }
@@ -32,8 +36,26 @@ export class SocialDemoComponent implements OnInit {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  public signInWithGoogleOnTv(): void {
-    this.authService.signIn(GoogleTvLoginProvider.PROVIDER_ID);
+  public async signInWithGoogleOnTv(): Promise<void> {
+    this.deviceCode = await this.authService.getDeviceCode('GOOGLE');
+    this.remainingSeconds = this.deviceCode.expires_in;
+    
+    this.pollingInterval = setInterval(async () => {
+      this.remainingSeconds--;
+
+      if (this.remainingSeconds <= 0) {
+        clearInterval(this.pollingInterval);
+      }
+
+      if (this.remainingSeconds % this.deviceCode!.interval === 0) {
+        const { type } = await this.authService.pollForDevice('GOOGLE', this.deviceCode!);
+
+        if (type === 'user') {
+          clearInterval(this.pollingInterval);
+        }
+      }
+    }, 1000);
+
   }
 
   public signInWithFB(): void {

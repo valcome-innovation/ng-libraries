@@ -40,7 +40,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     DeviceService,
     {
       provide: 'SocialAuthServiceConfig',
-      useFactory: (httpClient: HttpClient) => {
+      useFactory: (http: HttpClient) => {
         return {
           autoLogin: false,
           providers: [
@@ -48,16 +48,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
               id: GoogleLoginProvider.PROVIDER_ID,
               provider: new GoogleLoginProvider(
                 '738096225314-bf85u305r2bhosi9jpi7bek8m2jsnkqa.apps.googleusercontent.com',
+                '738096225314-5r0dns5llrfepeihg3h5l6c7gs5kiq7e.apps.googleusercontent.com',
                 '1-4ZieXGfZNaKEeDh_TYYcuj',
-                httpClient
+                http
               )
             },
             {
               id: FacebookLoginProvider.PROVIDER_ID,
-              provider: new FacebookLoginProvider('570472933755093')
+              provider: new FacebookLoginProvider('570472933755093', http)
             }
           ]
-        } as SocialAuthServiceConfig
+        } as SocialAuthServiceConfig;
       },
       deps: [HttpClient]
     }
