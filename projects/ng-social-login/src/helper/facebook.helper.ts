@@ -12,7 +12,7 @@ export class FacebookHelper {
   public fetchDeviceCode(): Promise<FacebookDeviceResponse> {
     return this.http.post<FacebookDeviceResponse>('https://graph.facebook.com/v2.6/device/login', {
       access_token: this.clientId,
-      scope: 'public_profile'
+      scope: 'name,email,picture,first_name,last_name'
     }).toPromise()
   }
 
