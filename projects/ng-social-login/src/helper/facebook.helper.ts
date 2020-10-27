@@ -11,22 +11,22 @@ export class FacebookHelper {
 
   public fetchDeviceCode(): Promise<FacebookDeviceResponse> {
     const params = new HttpParams();
-    params.append('access_token', this.clientId)
-    params.append('scope', 'name,email,picture,first_name,last_name')
+    params.append('access_token', this.clientId);
+    params.append('scope', 'name,email,picture,first_name,last_name');
 
     return this.http.post<FacebookDeviceResponse>(
       'https://graph.facebook.com/v2.6/device/login', undefined, { params }
-    ).toPromise()
+    ).toPromise();
   }
 
   public fetchAccessCode(deviceCode: string): Promise<FacebookPollResponse> {
     const params = new HttpParams();
-    params.append('access_token', this.clientId)
-    params.append('code', deviceCode)
+    params.append('access_token', this.clientId);
+    params.append('code', deviceCode);
 
     return this.http.post<FacebookPollResponse>(
       'https://graph.facebook.com/v2.6/device/login_status', undefined, { params }
-    ).toPromise()
+    ).toPromise();
   }
 
   public fetchProfile(fields: string, accessToken: string): Promise<FbUser> {
