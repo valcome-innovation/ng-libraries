@@ -20,10 +20,13 @@ export class FacebookHelper {
   }
 
   public fetchAccessCode(deviceCode: string): Promise<FacebookPollResponse> {
-    return this.http.post<FacebookPollResponse>('https://graph.facebook.com/v2.6/device/login_status', {
-      access_token: this.clientId,
-      code: deviceCode
-    }).toPromise()
+    const params = new HttpParams();
+    params.append('access_token', this.clientId)
+    params.append('code', deviceCode)
+
+    return this.http.post<FacebookPollResponse>(
+      'https://graph.facebook.com/v2.6/device/login_status', undefined, { params }
+    ).toPromise()
   }
 
   public fetchProfile(fields: string, accessToken: string): Promise<FbUser> {
