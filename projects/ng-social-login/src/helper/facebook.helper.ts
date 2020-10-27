@@ -12,10 +12,10 @@ export class FacebookHelper {
   public fetchDeviceCode(): Promise<FacebookDeviceResponse> {
     const params = new HttpParams();
     params.append('access_token', this.clientId);
-    params.append('scope', 'name,email,picture,first_name,last_name');
+    params.append('scope', 'public_profile');
 
     return this.http.post<FacebookDeviceResponse>(
-      'https://graph.facebook.com/v2.6/device/login', undefined, { params }
+      'https://graph.facebook.com/v3.2/device/login', undefined, { params }
     ).toPromise();
   }
 
@@ -25,7 +25,7 @@ export class FacebookHelper {
     params.append('code', deviceCode);
 
     return this.http.post<FacebookPollResponse>(
-      'https://graph.facebook.com/v2.6/device/login_status', undefined, { params }
+      'https://graph.facebook.com/v3.2/device/login_status', undefined, { params }
     ).toPromise();
   }
 
