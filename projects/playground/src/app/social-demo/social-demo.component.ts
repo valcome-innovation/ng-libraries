@@ -39,7 +39,7 @@ export class SocialDemoComponent implements OnInit {
   public async signInWithGoogleOnTv(): Promise<void> {
     this.deviceCode = await this.authService.getDeviceCode('GOOGLE');
     this.remainingSeconds = this.deviceCode.expires_in;
-    
+
     this.pollingInterval = setInterval(async () => {
       this.remainingSeconds--;
 
@@ -56,6 +56,11 @@ export class SocialDemoComponent implements OnInit {
       }
     }, 1000);
 
+  }
+
+  public async signInWithFBTV(): Promise<void> {
+    this.deviceCode = await this.authService.getDeviceCode('FACEBOOK');
+    console.log(this.deviceCode);
   }
 
   public signInWithFB(): void {
