@@ -10,10 +10,13 @@ export class FacebookHelper {
   }
 
   public fetchDeviceCode(): Promise<FacebookDeviceResponse> {
-    return this.http.post<FacebookDeviceResponse>('https://graph.facebook.com/v2.6/device/login', {
-      access_token: this.clientId,
-      scope: 'name,email,picture,first_name,last_name'
-    }).toPromise()
+    const params = new HttpParams();
+    params.append('access_token', this.clientId)
+    params.append('scope', 'name,email,picture,first_name,last_name')
+
+    return this.http.post<FacebookDeviceResponse>(
+      'https://graph.facebook.com/v2.6/device/login', undefined, { params }
+    ).toPromise()
   }
 
   public fetchAccessCode(deviceCode: string): Promise<FacebookPollResponse> {
