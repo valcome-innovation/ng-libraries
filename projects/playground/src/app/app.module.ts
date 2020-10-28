@@ -55,7 +55,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
             },
             {
               id: FacebookLoginProvider.PROVIDER_ID,
-              provider: new FacebookLoginProvider('570472933755093', http)
+              provider: new FacebookLoginProvider(
+                '570472933755093',
+                'ca75a92764f2289c6678055a39d9a818',
+                http
+              )
             }
           ]
         } as SocialAuthServiceConfig;
