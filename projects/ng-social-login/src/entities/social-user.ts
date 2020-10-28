@@ -1,6 +1,6 @@
 import BasicProfile = gapi.auth2.BasicProfile;
 
-export type SocialProvider = 'FACEBOOK' | 'FACEBOOK_TV' | 'GOOGLE' | 'GOOGLE_TV';
+export type SocialProvider = 'FACEBOOK' | 'GOOGLE';
 
 export interface GoogleTokenClaims {
   sub: string;

@@ -53,7 +53,7 @@ export class FacebookLoginProvider implements LoginProvider {
 
     if ('access_token' in pollResponse) {
       const fbUser = await this.facebookHelper.fetchProfile(this.initOptions.fields, pollResponse.access_token);
-      const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'FACEBOOK_TV');
+      const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'FACEBOOK');
       return { type: 'user', user };
     } else {
       return { type: 'empty' };

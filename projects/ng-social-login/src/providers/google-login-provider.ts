@@ -57,7 +57,7 @@ export class GoogleLoginProvider implements LoginProvider {
     const pollResponse = await this.googleHelper.fetchAccessCode(deviceCodeResponse.device_code).catch(err => err);
 
     if ('id_token' in pollResponse && 'access_token' in pollResponse) {
-      const user = this.googleHelper.createSocialUserFromToken(pollResponse, 'GOOGLE_TV');
+      const user = this.googleHelper.createSocialUserFromToken(pollResponse, 'GOOGLE');
       return { type: 'user', user };
     } else {
       return { type: 'empty' };
