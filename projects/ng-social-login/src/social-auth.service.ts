@@ -18,7 +18,8 @@ export class SocialAuthService extends BaseInitializableService {
   private static readonly ERR_LOGIN_PROVIDER_NOT_FOUND = 'Login provider not found';
   private static readonly ERR_NOT_LOGGED_IN = 'Not logged in';
 
-  public hasCookieError$ = new BehaviorSubject<boolean>(false);
+  public googleError$ = new BehaviorSubject<boolean>(false);
+  public facebookError$ = new BehaviorSubject<boolean>(false);
 
   private providers: Map<SocialProvider, LoginProvider> = new Map();
   private autoLogin = false;
@@ -51,11 +52,13 @@ export class SocialAuthService extends BaseInitializableService {
     config.providers.forEach(item => this.providers.set(item.id, item.provider));
 
     try {
-      await Promise.all(Array.from(this.providers.values())
-        .map(provider => provider.initialize().catch(reason => {
+      await Promise.all(Array.from(this.providers.keys())
+        .map(key => this.providers.get(key)!.initialize().catch(reason => {
           console.error(reason);
-          if (reason.details?.includes('Cookies are not enabled')) {
-            this.hasCookieError$.next(true);
+          if (key === 'GOOGLE') {
+            this.googleError$.next(true);
+          } else if (key === 'FACEBOOK') {
+            this.facebookError$.next(true);
           }
         })));
 
