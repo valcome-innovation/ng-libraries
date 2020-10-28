@@ -10,7 +10,7 @@ const defaultInitOptions = {
   scope: 'email,public_profile',
   locale: 'en_US',
   fields: 'name,email,picture,first_name,last_name',
-  version: 'v3.2',
+  version: 'v4.0',
 };
 
 declare let FB: FacebookStatic;

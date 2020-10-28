@@ -28,8 +28,6 @@ export class SocialDemoComponent implements OnInit {
     this.authService.authState.subscribe(user => {
       this.user = user;
     });
-
-    this.authService.hasCookieError$.subscribe(areCookiesBlocked => this.areCookiesBlocked = areCookiesBlocked);
   }
 
   public signInWithGoogle(): void {
@@ -60,7 +58,6 @@ export class SocialDemoComponent implements OnInit {
 
   public async signInWithFBTV(): Promise<void> {
     this.deviceCode = await this.authService.getDeviceCode('FACEBOOK');
-    console.log(this.deviceCode);
   }
 
   public signInWithFB(): void {
