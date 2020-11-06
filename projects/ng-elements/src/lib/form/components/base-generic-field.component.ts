@@ -27,6 +27,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
 
   public id!: string;
   public isValid: boolean = true;
+  public currentValue: any;
 
   public formControl!: FormControl;
 
@@ -59,6 +60,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
 
   private handleFormValidation(): void {
     this.isValid = this.formControl.valid;
+    this.currentValue = this.formControl.value;
     this.hideOrDisplayErrorMessages();
   }
 
