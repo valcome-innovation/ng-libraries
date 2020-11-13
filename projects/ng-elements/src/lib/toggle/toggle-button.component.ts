@@ -14,10 +14,10 @@ export class ToggleButtonComponent implements OnInit {
   public values!: readonly [DisplayValue<any>, DisplayValue<any>];
 
   @Input()
-  public value!: DisplayValue<any>;
+  public value!: any;
 
   @Output()
-  public valueChange = new EventEmitter<DisplayValue<any>>();
+  public valueChange = new EventEmitter<any>();
 
   public activeIndex = 0;
 
@@ -27,10 +27,10 @@ export class ToggleButtonComponent implements OnInit {
 
   private initDefaultValues(): void {
     if (this.value) {
-      this.activeIndex = this.values.findIndex(v => v.value === this.value.value) || 0;
+      this.activeIndex = this.values.findIndex(v => v.value === this.value) || 0;
     } else {
       this.activeIndex = 0;
-      this.value = this.values[0];
+      this.value = this.values[0].value;
     }
   }
 
@@ -40,7 +40,7 @@ export class ToggleButtonComponent implements OnInit {
   }
 
   public setValue(index: number): void {
-    this.value = this.values[index];
+    this.value = this.values[index].value;
     this.valueChange.emit(this.value);
   }
 }

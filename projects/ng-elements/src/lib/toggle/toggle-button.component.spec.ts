@@ -31,15 +31,15 @@ describe('GenderButtonComponent', () => {
 
   it('should create with default value and index', () => {
     expect(component.activeIndex).toEqual(0);
-    expect(component.value).toEqual(value1);
+    expect(component.value).toEqual(value1.value);
   });
 
   it('should create with second value', () => {
-    component.value = value2;
+    component.value = value2.value;
     component.ngOnInit();
 
     expect(component.activeIndex).toEqual(1);
-    expect(component.value).toEqual(value2);
+    expect(component.value).toEqual(value2.value);
   });
 
   it('should toggle value', () => {
@@ -48,14 +48,14 @@ describe('GenderButtonComponent', () => {
     component.toggleValue();
 
     expect(component.activeIndex).toEqual(1);
-    expect(component.value).toEqual(value2);
+    expect(component.value).toEqual(value2.value);
   });
 
   it('should emit value on change', done => {
     component.activeIndex = 1;
 
-    component.valueChange.subscribe((value: DisplayValue<string>) => {
-      expect(value).toEqual(value1);
+    component.valueChange.subscribe((value: string) => {
+      expect(value).toEqual(value1.value);
       done();
     });
 
