@@ -14,6 +14,9 @@ export * from './lib/unsaved-changes/unsaved-changes.module';
 export * from './lib/unsaved-changes/unsaved-changes.guard';
 export * from './lib/unsaved-changes/base-unsaved-changes.component';
 
+export * from './lib/toggle/toggle-button.component';
+export * from './lib/toggle/toggle-button.module';
+
 export * from './lib/range-slider/range-slider.module';
 export * from './lib/range-slider/range-slider.component';
 
