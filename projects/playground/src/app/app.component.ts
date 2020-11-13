@@ -11,6 +11,9 @@ import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
 })
 export class AppComponent implements OnInit {
 
+  public value = new DisplayValue('Yeah', 'Yeah');
+  public values = [new DisplayValue('Yeah', 'Yeah'), new DisplayValue('No', 'No')];
+
   public lessImages: Image[] = [
     {
       url: 'https://weinfreunde.de/magazin/wp-content/uploads/2018/12/1-1-Bild_1500x800px_4-1.jpg',

@@ -1,0 +1,39 @@
+$disabled: #7B7B7B;
+
+.gender-button {
+  display: flex;
+  width: 300px;
+  height: 40px;
+  background-color: #f0f0f0;
+  position: relative;
+
+  .animated-bg {
+    background-color: white;
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    z-index: 10;
+  }
+
+  button {
+    z-index: 20;
+    flex: 1;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+  }
+
+  button.first.active {
+    font-weight: bold;
+  }
+
+  button.second.active {
+    font-weight: bold;
+  }
+}

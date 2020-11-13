@@ -17,6 +17,7 @@ import {
   SocialLoginModule
 } from '@valcome/ng-social-login';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToggleButtonModule } from '../../../ng-elements/src/lib/toggle/toggle-button.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     ImageGalleryModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    ToggleButtonModule
   ],
   providers: [
     DeviceService,
