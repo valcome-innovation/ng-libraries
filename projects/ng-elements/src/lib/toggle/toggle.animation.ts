@@ -1,5 +1,5 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { AnimationEasing } from 'ng-animations';
+import { AnimationEasing } from '@valcome/ng-animations';
 
 export const toggleBackground = trigger('toggleBackground', [
   state('0', style({ left: '3px', right: '50%' })),
