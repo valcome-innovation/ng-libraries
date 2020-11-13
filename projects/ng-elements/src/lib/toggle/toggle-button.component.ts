@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { toggleBackground } from './toggle.animation';
-import { DisplayValue } from 'ng-core';
+import { DisplayValue } from '@valcome/ng-core';
 
 @Component({
   selector: 'val-toggle-button',
