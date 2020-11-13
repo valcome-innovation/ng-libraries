@@ -67,13 +67,13 @@ export class AppComponent implements OnInit {
   public shippingForm!: FormGroup;
   public isSubmitted: boolean = false;
 
-  public countries: DisplayValue[] = [
+  public countries: DisplayValue<string>[] = [
     new DisplayValue('Österreich', 'AT'),
     new DisplayValue('Deutschland', 'DE', true),
     new DisplayValue('United Kingdom', 'UK')
   ];
 
-  public beers: DisplayValue[] = [
+  public beers: DisplayValue<number>[] = [
     new DisplayValue('Schwechater', 0),
     new DisplayValue('Ottakringer', 1),
     new DisplayValue('Wieselburger', 2)

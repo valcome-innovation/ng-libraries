@@ -11,13 +11,13 @@ import { DisplayValue } from '@valcome/ng-core';
 export class ToggleButtonComponent implements OnInit {
 
   @Input()
-  public values!: [DisplayValue, DisplayValue];
+  public values!: [DisplayValue<any>, DisplayValue<any>];
 
   @Input()
-  public value!: DisplayValue;
+  public value!: DisplayValue<any>;
 
   @Output()
-  public valueChange = new EventEmitter<DisplayValue>();
+  public valueChange = new EventEmitter<DisplayValue<any>>();
 
   public activeIndex = 0;
 

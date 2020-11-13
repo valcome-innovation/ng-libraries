@@ -11,7 +11,7 @@ describe('GenderButtonComponent', () => {
   const value1 = new DisplayValue('yeah', 'yeah');
   const value2 = new DisplayValue('no', 'no');
 
-  const values: [DisplayValue, DisplayValue] = [value1, value2];
+  const values: [DisplayValue<string>, DisplayValue<string>] = [value1, value2];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -54,7 +54,7 @@ describe('GenderButtonComponent', () => {
   it('should emit value on change', done => {
     component.activeIndex = 1;
 
-    component.valueChange.subscribe((value: DisplayValue) => {
+    component.valueChange.subscribe((value: DisplayValue<string>) => {
       expect(value).toEqual(value1);
       done();
     });

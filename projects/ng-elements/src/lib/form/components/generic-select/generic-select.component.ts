@@ -11,7 +11,7 @@ import { BaseGenericFieldComponent } from '../base-generic-field.component';
 export class GenericSelectComponent extends BaseGenericFieldComponent {
 
   @Input()
-  public options: DisplayValue[] = [];
+  public options: DisplayValue<any>[] = [];
 
   @Input()
   public label!: string;

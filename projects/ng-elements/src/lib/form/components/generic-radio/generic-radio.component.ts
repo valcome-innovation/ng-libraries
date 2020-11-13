@@ -10,5 +10,5 @@ import { DisplayValue } from '@valcome/ng-core';
 })
 export class GenericRadioComponent extends BaseGenericFieldComponent {
   @Input()
-  public options: DisplayValue[] = [];
+  public options: DisplayValue<any>[] = [];
 }
