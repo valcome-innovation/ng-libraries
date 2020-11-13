@@ -11,7 +11,7 @@ describe('GenderButtonComponent', () => {
   const value1 = new DisplayValue('yeah', 'yeah');
   const value2 = new DisplayValue('no', 'no');
 
-  const values: [DisplayValue<string>, DisplayValue<string>] = [value1, value2];
+  const values = [value1, value2] as const;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

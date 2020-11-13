@@ -11,7 +11,7 @@ import { DisplayValue } from '@valcome/ng-core';
 export class ToggleButtonComponent implements OnInit {
 
   @Input()
-  public values!: [DisplayValue<any>, DisplayValue<any>];
+  public values!: readonly [DisplayValue<any>, DisplayValue<any>];
 
   @Input()
   public value!: DisplayValue<any>;
