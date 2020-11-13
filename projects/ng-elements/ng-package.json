@@ -4,10 +4,12 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "ng-core": "@valcome/ng-core",
       "ts-core": "@valcome/ts-core",
+      "ng-core": "@valcome/ng-core",
+      "ng-animations": "@valcome/ng-animations",
       "@valcome/ts-core": "@valcome/ts-core",
       "@valcome/ng-core": "@valcome/ng-core",
+      "@valcome/ng-animations": "@valcome/ng-animations",
       "notyf": "notyf"
     }
   },
