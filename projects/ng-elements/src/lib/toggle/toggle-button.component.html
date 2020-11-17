@@ -1,11 +1,17 @@
-<div class="toggle-button back">
+<div class="toggle-button back" [ngClass]="{'disabled': isDisabled}">
   <div class="animated-bg" [@toggleBackground]="activeIndex">&nbsp;</div>
 
-  <button class="first" [ngClass]="{'active': activeIndex === 0}" (click)="toggleValue()">
+  <button [ngClass]="{'active': activeIndex === 0}"
+          [disabled]="isDisabled"
+          (click)="toggleValue()"
+          class="first">
     <span>{{values[0].display}}</span>
   </button>
 
-  <button class="second" [ngClass]="{'active': activeIndex === 1}" (click)="toggleValue()">
+  <button [ngClass]="{'active': activeIndex === 1}"
+          [disabled]="isDisabled"
+          (click)="toggleValue()"
+          class="second">
     <span>{{values[1].display}}</span>
   </button>
 </div>
