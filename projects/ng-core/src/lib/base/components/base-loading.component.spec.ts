@@ -31,6 +31,6 @@ describe('BaseLoadingComponent', () => {
 
 class BaseLoadingComponentSpec extends BaseLoadingComponent {
   public test(subject: Subject<void>): Promise<void> {
-    return this.load(new Promise<void>(resolve => subject.subscribe(() => resolve())));
+    return this.load(() => new Promise<void>(resolve => subject.subscribe(() => resolve())));
   }
 }
