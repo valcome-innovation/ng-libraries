@@ -12,7 +12,7 @@ export class ToggleButtonComponent implements OnInit {
 
   @Input()
   public isDisabled = false
-  
+
   @Input()
   public values!: readonly [DisplayValue<any>, DisplayValue<any>];
 
