@@ -6,10 +6,10 @@ export class BaseLoadingComponent extends BaseSubscriptionComponent {
 
   public isLoading = false;
 
-  public async load<T>(task: () => Promise<T>): Promise<T> {
+  public async load<T>(promise: Promise<T>): Promise<T> {
     try {
       this.isLoading = true;
-      return await task()
+      return await promise
     } finally {
       this.isLoading = false;
     }
