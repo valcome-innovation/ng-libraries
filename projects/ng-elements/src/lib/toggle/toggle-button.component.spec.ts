@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToggleButtonComponent } from './toggle-button.component';
 import { DisplayValue } from '@valcome/ng-core';
 
-describe('GenderButtonComponent', () => {
+describe('ToggleButtonComponent', () => {
   let component: ToggleButtonComponent;
   let fixture: ComponentFixture<ToggleButtonComponent>;
 
