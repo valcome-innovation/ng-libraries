@@ -18,7 +18,13 @@ export class ToggleButtonComponent implements OnInit {
 
   @Input('value')
   public set setValue(value: any) {
-    this.value = value;
+    if (value) {
+      this.value = value;
+      this.activeIndex = this.values.findIndex(v => v.value === this.value) || 0;
+    } else {
+      this.value = this.values[0].value;
+      this.activeIndex = 0;
+    }
   }
 
   public value!: any;
@@ -29,16 +35,7 @@ export class ToggleButtonComponent implements OnInit {
   public activeIndex = 0;
 
   public ngOnInit(): void {
-    this.initDefaultValues();
-  }
-
-  private initDefaultValues(): void {
-    if (this.value) {
-      this.activeIndex = this.values.findIndex(v => v.value === this.value) || 0;
-    } else {
-      this.activeIndex = 0;
-      this.value = this.values[0].value;
-    }
+    this.setValue = this.value;
   }
 
   public toggleValue(): void {
