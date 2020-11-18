@@ -43,7 +43,7 @@ describe('ToggleButtonComponent', () => {
   });
 
   it('should toggle value', () => {
-    component.setValue(0);
+    component.selectValue(0);
 
     component.toggleValue();
 

@@ -16,7 +16,11 @@ export class ToggleButtonComponent implements OnInit {
   @Input()
   public values!: readonly [DisplayValue<any>, DisplayValue<any>];
 
-  @Input()
+  @Input('value')
+  public set setValue(value: any) {
+    this.value = value;
+  }
+
   public value!: any;
 
   @Output()
@@ -39,10 +43,10 @@ export class ToggleButtonComponent implements OnInit {
 
   public toggleValue(): void {
     this.activeIndex = Math.abs(this.activeIndex - 1); // toggle 0 or 1
-    this.setValue(this.activeIndex);
+    this.selectValue(this.activeIndex);
   }
 
-  public setValue(index: number): void {
+  public selectValue(index: number): void {
     this.value = this.values[index].value;
     this.valueChange.emit(this.value);
   }
