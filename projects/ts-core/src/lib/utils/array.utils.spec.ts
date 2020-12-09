@@ -52,4 +52,12 @@ describe('ArrayUtils', () => {
     actual = ArrayUtils.createArrayFromNumber(-2);
     expect(actual.length).toBe(0);
   });
+
+  it('should remove duplicates', () => {
+    const array = [1, 1, 2, 2, 2, 3, 4, 5, 5];
+
+    const result = ArrayUtils.removeDuplicates(array);
+
+    expect(result).toEqual([1, 2, 3, 4, 5]);
+  });
 });
