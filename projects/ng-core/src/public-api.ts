@@ -13,6 +13,7 @@ export * from './lib/model/display-value';
 export * from './lib/base/components/base-replay.component';
 export * from './lib/base/components/base-behavoir.component';
 export * from './lib/base/components/base-subscription.component';
+export * from './lib/base/components/base-loading.component';
 
 export * from './lib/base/services/base-initializable.service';
 
