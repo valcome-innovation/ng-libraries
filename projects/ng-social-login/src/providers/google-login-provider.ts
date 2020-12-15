@@ -23,7 +23,7 @@ export class GoogleLoginProvider implements LoginProvider {
   }
 
   public async initialize(): Promise<void> {
-    const scriptTag = await DomUtils.loadScriptAsync('https://apis.google.com/js/platform.js');
+    const scriptTag = await DomUtils.loadScriptAsync('googleScript', 'https://apis.google.com/js/platform.js');
 
     if (scriptTag) {
       scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
