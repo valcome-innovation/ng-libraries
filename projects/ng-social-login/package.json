@@ -3,7 +3,6 @@
   "version": "4.1.1",
   "description": "Social login and authentication module for Angular 9 / 10. Forked from https://github.com/abacritt/angularx-social-login#readme",
   "scripts": {
-    "preversion": "ng test ng-social-login --watch=false",
     "version": "ng build ng-social-login --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && npm run publish",
