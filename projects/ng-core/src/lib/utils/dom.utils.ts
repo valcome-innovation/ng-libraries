@@ -33,23 +33,29 @@ export class DomUtils {
     );
   }
 
-  public static loadScriptAsync(src: string): Promise<HTMLScriptElement> {
-    const headTag = document.getElementsByTagName('head')[0];
+  public static loadScriptAsync(id: string, src: string): Promise<HTMLScriptElement> {
+    const element = document.getElementById(id)
 
-    return new Promise((resolve, reject) => {
-      const scriptHTML = document.createElement('script');
+    if (!element || !(element instanceof HTMLScriptElement)) {
+      return new Promise((resolve, reject) => {
+        const headTag = document.getElementsByTagName('head')[0];
+        const scriptHTML = document.createElement('script');
 
-      scriptHTML.type = 'text/javascript';
-      scriptHTML.src = src;
+        scriptHTML.type = 'text/javascript';
+        scriptHTML.src = src;
+        scriptHTML.id = id;
 
-      scriptHTML.onload = () => resolve(scriptHTML);
-      scriptHTML.onerror = () => reject();
+        scriptHTML.onload = () => resolve(scriptHTML);
+        scriptHTML.onerror = () => reject();
 
-      if (headTag) {
-        headTag.appendChild(scriptHTML);
-      } else {
-        reject();
-      }
-    });
+        if (headTag) {
+          headTag.appendChild(scriptHTML);
+        } else {
+          reject();
+        }
+      });
+    } else {
+      return Promise.resolve(element);
+    }
   }
 }

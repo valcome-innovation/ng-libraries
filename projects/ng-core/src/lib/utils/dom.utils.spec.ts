@@ -48,8 +48,11 @@ describe('DomUtils', () => {
   });
 
   it('should add script async', async () => {
-    const element = await DomUtils.loadScriptAsync('https://code.jquery.com/jquery-3.5.1.slim.min.js');
-    
-    expect(element).toBeDefined();
+    await DomUtils.loadScriptAsync('jQuery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js');
+    await DomUtils.loadScriptAsync('jQuery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js');
+
+    const scripts = Array.from(document.getElementsByTagName('script')).filter(e => e.id === 'jQuery');
+
+    expect(scripts.length).toEqual(1);
   });
 })
