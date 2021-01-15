@@ -1,7 +1,22 @@
 /* tslint:disable */
 
 //@ts-nocheck
+import { ParserError } from '@angular/compiler';
+
 export class ColorUtils {
+
+  public static hexToRGB(hex: string): [number, number, number] {
+    const normalizedHex = hex.replace('#', '');
+
+    if (normalizedHex.length === 6) {
+      const r = parseInt(normalizedHex.substring(0, 2), 16);
+      const g = parseInt(normalizedHex.substring(2, 4), 16);
+      const b = parseInt(normalizedHex.substring(4, 6), 16);
+      return [r, g, b];
+    } else {
+      throw new ParserError('Invalid hex length. hex must have a length of 6');
+    }
+  }
 
   public static rgbToHex(rgb: number[]) {
     return '#' + this.componentToHex(rgb[0]) + this.componentToHex(rgb[1]) + this.componentToHex(rgb[2]);

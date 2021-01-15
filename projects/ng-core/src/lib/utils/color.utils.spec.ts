@@ -1,18 +1,43 @@
 import { ColorUtils } from './color.utils';
+import { MathUtils } from './math.utils';
 
 describe('ColorUtils', () => {
 
-  let color1 = "rgb(20,60,200)";
-  let color2 = "rgba(20,60,200,0.67423)";
-  let color3 = "#67DAF0";
-  let color4 = "#5567DAF0";
-  let color5 = "#F3A";
-  let color6 = "#F3A9";
-  let color7 = "rgb(200,60,20)";
-  let color8 = "rgba(200,60,20,0.98631)";
+  const color1 = 'rgb(20,60,200)';
+  const color2 = 'rgba(20,60,200,0.67423)';
+  const color3 = '#67DAF0';
+  const color4 = '#5567DAF0';
+  const color5 = '#F3A';
+  const color6 = '#F3A9';
+  const color7 = 'rgb(200,60,20)';
+  const color8 = 'rgba(200,60,20,0.98631)';
+
+  it('should convert hex to rgb', () => {
+    expect(ColorUtils.hexToRGB('#000000')).toEqual([0, 0, 0]);
+    expect(ColorUtils.hexToRGB('000000')).toEqual([0, 0, 0]);
+
+    expect(ColorUtils.hexToRGB('#FF0000')).toEqual([255, 0, 0]);
+    expect(ColorUtils.hexToRGB('FF0000')).toEqual([255, 0, 0]);
+
+    expect(ColorUtils.hexToRGB('#00FF00')).toEqual([0, 255, 0]);
+    expect(ColorUtils.hexToRGB('00FF00')).toEqual([0, 255, 0]);
+
+    expect(ColorUtils.hexToRGB('#0000FF')).toEqual([0, 0, 255]);
+    expect(ColorUtils.hexToRGB('0000FF')).toEqual([0, 0, 255]);
+
+    for (let i = 0; i < 10000; i++) {
+      const r = randomHex();
+      const g = randomHex();
+      const b = randomHex();
+      const hex = `#${r}${g}${b}`;
+      const rgb = ColorUtils.hexToRGB(hex);
+      const reverseHex = ColorUtils.rgbToHex(rgb);
+      expect(hex).toEqual(reverseHex);
+    }
+  });
 
   it('should convert rgb to hex', () => {
-    let actual: string = ColorUtils.rgbToHex([255, 0, 0]);
+    const actual: string = ColorUtils.rgbToHex([255, 0, 0]);
     expect(actual).toBe('#ff0000');
   });
 
@@ -43,24 +68,24 @@ describe('ColorUtils', () => {
 
     // logarithmic
     actual = ColorUtils.shadeBlendConvert(0.42, color1); // rgb(20,60,200)
-    expect(actual).toBe('rgb(166,171,225)') // 42% Lighter
+    expect(actual).toBe('rgb(166,171,225)'); // 42% Lighter
 
     actual = ColorUtils.shadeBlendConvert(-0.4, color5); // #F3A
-    expect(actual).toBe('#c62884') // 40% Darker
+    expect(actual).toBe('#c62884'); // 40% Darker
 
     actual = ColorUtils.shadeBlendConvert(0.42, color8); // rgba(200,60,20,0.98631)
-    expect(actual).toBe('rgba(225,171,166,0.986)') // 42% Lighter
+    expect(actual).toBe('rgba(225,171,166,0.986)'); // 42% Lighter
   });
 
   it('should convert color log (shadeBlendConvert)', () => {
     let actual: any;
 
     // logarithmic
-    actual = ColorUtils.shadeBlendConvert(0, color6, "c"); // #F3A9
+    actual = ColorUtils.shadeBlendConvert(0, color6, 'c'); // #F3A9
     expect(actual).toBe('rgba(255,51,170,0.6)');
 
-    actual = ColorUtils.shadeBlendConvert(0.42, color2, "c"); // rgba(20,60,200,0.67423)
-    expect(actual).toBe('#a6abe1ac') // 42% Lighter
+    actual = ColorUtils.shadeBlendConvert(0.42, color2, 'c'); // rgba(20,60,200,0.67423)
+    expect(actual).toBe('#a6abe1ac'); // 42% Lighter
   });
 
   it('should blend color log (shadeBlendConvert)', () => {
@@ -79,15 +104,15 @@ describe('ColorUtils', () => {
 
     // linear
     actual = ColorUtils.shadeBlendConvert(0.42, color1, false, true); // rgb(20,60,200)
-    expect(actual).toBe('rgb(119,142,223)') // 42% Lighter
+    expect(actual).toBe('rgb(119,142,223)'); // 42% Lighter
   });
 
   it('should convert color linear (shadeBlendConvert)', () => {
     let actual: any;
 
     // linear
-    actual = ColorUtils.shadeBlendConvert(0.42, color2, "c", true); // rgba(20,60,200,0.67423)
-    expect(actual).toBe('#778edfac') // 42% Lighter
+    actual = ColorUtils.shadeBlendConvert(0.42, color2, 'c', true); // rgba(20,60,200,0.67423)
+    expect(actual).toBe('#778edfac'); // 42% Lighter
   });
 
   it('should blend color linear (shadeBlendConvert)', () => {
@@ -104,10 +129,14 @@ describe('ColorUtils', () => {
   it('should check errors (shadeBlendConvert)', () => {
     let actual: any;
 
-    actual = ColorUtils.shadeBlendConvert(0.42, "#FFBAA");
+    actual = ColorUtils.shadeBlendConvert(0.42, '#FFBAA');
     expect(actual).toBeNull();
 
     actual = ColorUtils.shadeBlendConvert(42, color1, color5);
     expect(actual).toBeNull();
   });
-})
+
+  function randomHex(): string {
+    return `${MathUtils.randomInt(16).toString(16)}${MathUtils.randomInt(16).toString(16)}`;
+  }
+});

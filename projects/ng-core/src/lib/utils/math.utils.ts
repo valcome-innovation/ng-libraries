@@ -2,6 +2,10 @@ import { Point } from '../model/point';
 
 export class MathUtils {
 
+  public static randomInt(ceiling: number): number {
+    return Math.floor(Math.random() * ceiling);
+  }
+
   public static quadOutGrowth(x: number): number {
     let a = -1;
     let b = -1;
