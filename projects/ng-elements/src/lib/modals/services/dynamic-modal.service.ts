@@ -23,6 +23,11 @@ export class DynamicModalService {
     return this.onCloseModal(componentRef);
   }
 
+  public destroyModal(componentRef: ComponentRef<BaseDynamicModalComponent>): void {
+    this.appRef.detachView(componentRef.hostView);
+    componentRef.destroy();
+  }
+
   private onCloseModal(modalRef: ComponentRef<BaseDynamicModalComponent>): Promise<any> {
     return new Promise((resolve) => {
       modalRef.instance.modalClose.subscribe((value: any) => {
@@ -42,10 +47,5 @@ export class DynamicModalService {
     document.body.appendChild(domElem);
 
     return componentRef;
-  }
-
-  private destroyModal(componentRef: ComponentRef<BaseDynamicModalComponent>): void {
-    this.appRef.detachView(componentRef.hostView);
-    componentRef.destroy();
   }
 }
