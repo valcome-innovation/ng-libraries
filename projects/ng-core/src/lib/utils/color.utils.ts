@@ -22,11 +22,11 @@ export class ColorUtils {
     return '#' + this.componentToHex(rgb[0]) + this.componentToHex(rgb[1]) + this.componentToHex(rgb[2]);
   }
 
-  public static getTextColor(color: string): string {
+  public static getTextColor(color: string, dark: string = '#000000'): string {
     const [red, green, blue] = this.hexToRGB(color);
 
     if ((red * 0.299 + green * 0.587 + blue * 0.114) > 186) {
-      return '#000000';
+      return dark;
     } else {
       return '#ffffff';
     }
