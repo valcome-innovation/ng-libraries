@@ -29,7 +29,7 @@ export class DynamicModalService {
   /**
    * Displays the modal without waiting until it closes again, but rather returns the instance.
    */
-  public showModalAndProceed<T>(dynamicModalType: Type<BaseDynamicModalComponent>, config?: T): ComponentRef<BaseDynamicModalComponent> {
+  public showModalAndProceed<T, K extends BaseDynamicModalComponent>(dynamicModalType: Type<K>, config?: T): ComponentRef<K> {
     const componentRef = this.createModal(dynamicModalType, config);
     this.onCloseModal(componentRef);
 
@@ -50,7 +50,7 @@ export class DynamicModalService {
     });
   }
 
-  private createModal(dynamicModalType: Type<BaseDynamicModalComponent>, config?: any): ComponentRef<BaseDynamicModalComponent> {
+  private createModal<K extends BaseDynamicModalComponent>(dynamicModalType: Type<K>, config?: any): ComponentRef<K> {
     const factory = this.componentFactoryResolver.resolveComponentFactory(dynamicModalType);
     const componentRef = factory.create(this.injector);
     componentRef.instance.config = config;
