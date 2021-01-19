@@ -22,6 +22,16 @@ export class ColorUtils {
     return '#' + this.componentToHex(rgb[0]) + this.componentToHex(rgb[1]) + this.componentToHex(rgb[2]);
   }
 
+  public static getTextColor(color: string): string {
+    const [red, green, blue] = this.hexToRGB(color);
+
+    if ((red * 0.299 + green * 0.587 + blue * 0.114) > 186) {
+      return '#000000';
+    } else {
+      return '#ffffff';
+    }
+  }
+
   public static mixColors(color1: number[], color2: number[], weight: number): number[] {
     let w1: number = weight;
     let w2: number = 1 - w1;

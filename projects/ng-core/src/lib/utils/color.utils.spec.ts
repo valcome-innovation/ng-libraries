@@ -136,6 +136,14 @@ describe('ColorUtils', () => {
     expect(actual).toBeNull();
   });
 
+  it('should get text color', () => {
+    let textColor = ColorUtils.getTextColor('#aaffcc');
+    expect(textColor).toEqual('#000000');
+
+    textColor = ColorUtils.getTextColor('#228855');
+    expect(textColor).toEqual('#ffffff');
+  });
+
   function randomHex(): string {
     return `${MathUtils.randomInt(16).toString(16)}${MathUtils.randomInt(16).toString(16)}`;
   }
