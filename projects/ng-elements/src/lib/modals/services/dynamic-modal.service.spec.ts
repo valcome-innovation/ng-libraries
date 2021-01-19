@@ -26,4 +26,12 @@ describe('DynamicModalService', () => {
     await result.then(() => resolved = true);
     expect(resolved).toBeTrue();
   });
+
+  it('should close proceeded modal', (done: DoneFn) => {
+    const modal = service.showModalAndProceed(SimpleModalComponent);
+
+    modal.instance.modalClose.subscribe(() => done());
+
+    modal.instance.closeModal();
+  });
 });

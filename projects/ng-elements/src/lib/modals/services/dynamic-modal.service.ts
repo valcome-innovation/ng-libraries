@@ -18,12 +18,25 @@ export class DynamicModalService {
                      private injector: Injector) {
   }
 
+  /**
+   * Displays a modal and waits until it gets closed by the user.
+   */
   public async showModal<T>(dynamicModalType: Type<BaseDynamicModalComponent>, config?: T): Promise<any> {
     const componentRef = this.createModal(dynamicModalType, config);
     return this.onCloseModal(componentRef);
   }
 
-  public destroyModal(componentRef: ComponentRef<BaseDynamicModalComponent>): void {
+  /**
+   * Displays the modal without waiting until it closes again, but rather returns the instance.
+   */
+  public showModalAndProceed<T>(dynamicModalType: Type<BaseDynamicModalComponent>, config?: T): ComponentRef<BaseDynamicModalComponent> {
+    const componentRef = this.createModal(dynamicModalType, config);
+    this.onCloseModal(componentRef);
+
+    return componentRef;
+  }
+
+  private destroyModal(componentRef: ComponentRef<BaseDynamicModalComponent>): void {
     this.appRef.detachView(componentRef.hostView);
     componentRef.destroy();
   }
