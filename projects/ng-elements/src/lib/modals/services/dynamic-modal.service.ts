@@ -50,7 +50,7 @@ export class DynamicModalService {
     });
   }
 
-  public createModal(dynamicModalType: Type<BaseDynamicModalComponent>, config?: any): ComponentRef<BaseDynamicModalComponent> {
+  private createModal(dynamicModalType: Type<BaseDynamicModalComponent>, config?: any): ComponentRef<BaseDynamicModalComponent> {
     const factory = this.componentFactoryResolver.resolveComponentFactory(dynamicModalType);
     const componentRef = factory.create(this.injector);
     componentRef.instance.config = config;
