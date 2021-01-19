@@ -68,7 +68,7 @@ class BaseTypedBehaviorComponentSpec extends BaseBehaviorComponent {
 
   public constructor(value: BehaviorSubject<Date>) {
     super();
-    this.listenTyped(value, Date, this.onValueChange.bind(this))
+    this.listen(value, this.onValueChange.bind(this))
   }
 
   public onValueChange(value: Date): void {
