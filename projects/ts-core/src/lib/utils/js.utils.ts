@@ -8,18 +8,18 @@ export class JsUtils {
   }
 
   public static immute(object: any | undefined): any | undefined {
-    if (object) {
+    if (typeof object === 'object' && object !== null) {
       return Object.assign({}, { ...object });
     } else {
-      return null;
+      return object;
     }
   }
 
   public static immuteTyped<T>(object: T | undefined, type: new() => T): T | undefined {
-    if (object) {
+    if (typeof object === 'object' && object !== null) {
       return Object.assign(new type, { ...object });
     } else {
-      return undefined;
+      return object;
     }
   }
 

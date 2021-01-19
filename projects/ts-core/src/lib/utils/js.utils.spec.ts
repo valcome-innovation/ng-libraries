@@ -131,6 +131,18 @@ describe('JsUtils', () => {
     expect(copy).toBeInstanceOf(Basic);
   });
 
+  it('should immute false', () => {
+    let copy = JsUtils.immute(false);
+
+    expect(copy).toBe(false);
+  });
+
+  it('should immute true', () => {
+    let copy = JsUtils.immute(true);
+
+    expect(copy).toBe(true);
+  });
+
   it('should convert null to undeefined', () => {
     const result = JsUtils.nullToUndefined({
       test: null,
