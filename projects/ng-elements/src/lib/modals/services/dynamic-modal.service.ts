@@ -37,6 +37,7 @@ export class DynamicModalService {
   }
 
   private destroyModal(componentRef: ComponentRef<BaseDynamicModalComponent>): void {
+    this.enableBodyScroll();
     this.appRef.detachView(componentRef.hostView);
     componentRef.destroy();
   }
@@ -58,7 +59,16 @@ export class DynamicModalService {
 
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
+    this.preventBodyScroll();
 
     return componentRef;
+  }
+
+  private preventBodyScroll(): void {
+    document.body.style.overflowY = 'hidden';
+  }
+
+  private enableBodyScroll(): void {
+    document.body.style.overflowY = 'scroll';
   }
 }
