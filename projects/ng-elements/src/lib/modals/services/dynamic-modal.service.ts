@@ -37,7 +37,7 @@ export class DynamicModalService {
   }
 
   private destroyModal(componentRef: ComponentRef<BaseDynamicModalComponent>): void {
-    this.enableBodyScroll();
+    this.removeModalOpenClass();
     this.appRef.detachView(componentRef.hostView);
     componentRef.destroy();
   }
@@ -59,16 +59,16 @@ export class DynamicModalService {
 
     const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
     document.body.appendChild(domElem);
-    this.preventBodyScroll();
+    this.addModalOpenClass();
 
     return componentRef;
   }
 
-  private preventBodyScroll(): void {
-    document.body.style.overflowY = 'hidden';
+  private addModalOpenClass(): void {
+    document.body.classList.add('modal-open');
   }
 
-  private enableBodyScroll(): void {
-    document.body.style.overflowY = 'scroll';
+  private removeModalOpenClass(): void {
+    document.body.classList.remove('modal-open');
   }
 }
