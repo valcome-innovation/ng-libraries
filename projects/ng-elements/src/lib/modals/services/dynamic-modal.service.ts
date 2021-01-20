@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { BaseDynamicModalComponent } from '../components/base-dynamic-modal.component';
 import { ModalModule } from '../modal.module';
+import { JsUtils } from 'ts-core';
 
 @Injectable({ providedIn: ModalModule })
 export class DynamicModalService {
@@ -65,7 +66,9 @@ export class DynamicModalService {
   }
 
   private addModalOpenClass(): void {
-    document.body.classList.add('modal-open');
+    JsUtils.callAfterStackResolved(() => {
+      document.body.classList.add('modal-open');
+    })
   }
 
   private removeModalOpenClass(): void {
