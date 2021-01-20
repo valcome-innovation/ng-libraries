@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { BaseDynamicModalComponent } from '../components/base-dynamic-modal.component';
 import { ModalModule } from '../modal.module';
-import { JsUtils } from 'ts-core';
+import { JsUtils } from '@valcome/ts-core';
 
 @Injectable({ providedIn: ModalModule })
 export class DynamicModalService {
