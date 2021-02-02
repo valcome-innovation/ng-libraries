@@ -1,5 +1,5 @@
 import { EMPTY, Observable, of, throwError } from 'rxjs';
-import { fakeAsync, flush } from '@angular/core/testing';
+import { fakeAsync, flush, tick } from '@angular/core/testing';
 import { catchError } from 'rxjs/operators';
 import { RetryObservable } from './retry-observable';
 
@@ -51,5 +51,19 @@ describe('Retry (Decorator)', () => {
       ).toPromise();
 
     flush();
+  }));
+
+  it('should delay retry', fakeAsync(() => {
+    let counter = 0;
+
+    dao.fetchError('example.com', () => counter++)
+      .pipe(catchError(() => EMPTY))
+      .subscribe();
+
+    expect(counter).toEqual(1);
+    tick(1000);
+    expect(counter).toEqual(2);
+    tick(1000);
+    expect(counter).toEqual(3);
   }));
 });

@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { JsUtils } from 'ts-core';
+import { JsUtils } from '@valcome/ts-core';
 
 export type ObservableRequest = (...args: any[]) => Observable<any>;
 
