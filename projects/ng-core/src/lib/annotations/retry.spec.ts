@@ -4,15 +4,19 @@ import { fakeAsync, flush } from '@angular/core/testing';
 import { catchError } from 'rxjs/operators';
 
 class DAO {
+  private message = 'hallo';
+
   @Retry(3)
   public fetch(url: string, callback: Function): Observable<string> {
     callback();
+    console.log(this.message);
     return of(url);
   }
 
   @Retry(3)
   public fetchError(url: string, callback: Function): Observable<never> {
     callback();
+    console.log(this.message);
     return throwError(url);
   }
 }
