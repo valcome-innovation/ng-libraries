@@ -11,7 +11,7 @@ export type RetryPayload = {
 }
 
 export function RetryObservable(count: number, delay: number = 0): MethodDecorator {
-  
+
   return (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const request = descriptor.value as ObservableRequest;
 
@@ -31,12 +31,12 @@ function retryRequest(payload: RetryPayload, attemptsLeft: number, ...args: any[
   if (attemptsLeft === 1) {
     return request.apply(self, args)
   } else {
-    return request.apply(self, args).pipe(
-      catchError(async () => {
-        await JsUtils.wait(delay)
-        return await retryRequest(payload, attemptsLeft - 1, ...args)
-          .toPromise();
-      })
-    );
+    return request.apply(self, args) // either resolve observable, or recursive retry in error case
+      .pipe(catchError(async () => {
+          await JsUtils.wait(delay);
+          return await retryRequest(payload, attemptsLeft - 1, ...args)
+            .toPromise();
+        })
+      );
   }
 }
