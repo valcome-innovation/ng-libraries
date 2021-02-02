@@ -1,21 +1,22 @@
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { JsUtils } from 'ts-core';
 
 export type ObservableRequest = (...args: any[]) => Observable<any>;
 
 export type RetryPayload = {
   self: any,
   request: ObservableRequest,
-  delayMilliseconds: number;
+  delay: number;
 }
 
-export function RetryObservable(count: number, delayMilliseconds: number = 0): MethodDecorator {
-
-  return function (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) {
+export function RetryObservable(count: number, delay: number = 0): MethodDecorator {
+  
+  return (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const request = descriptor.value as ObservableRequest;
 
     descriptor.value = function (...args: any[]): ReturnType<ObservableRequest> {
-      const payload: RetryPayload = { self: this, request, delayMilliseconds }
+      const payload: RetryPayload = { self: this, request, delay }
 
       return retryRequest(payload, count, ...args);
     };
@@ -25,13 +26,14 @@ export function RetryObservable(count: number, delayMilliseconds: number = 0): M
 }
 
 function retryRequest(payload: RetryPayload, attemptsLeft: number, ...args: any[]): ReturnType<ObservableRequest> {
-  const { self, request, delayMilliseconds } = payload;
+  const { self, request, delay } = payload;
 
   if (attemptsLeft === 1) {
     return request.apply(self, args)
   } else {
     return request.apply(self, args).pipe(
-      catchError(async function () {
+      catchError(async () => {
+        await JsUtils.wait(delay)
         return await retryRequest(payload, attemptsLeft - 1, ...args)
           .toPromise();
       })
