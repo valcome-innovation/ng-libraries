@@ -3,6 +3,10 @@ export class JsUtils {
     setTimeout(() => callback(), 0);
   }
 
+  public static wait(milliseconds: number): Promise<void> {
+    return new Promise<void>(resolve => setTimeout(resolve, milliseconds));
+  }
+
   public static mapToPlainJavascriptObject(customObject: any): any {
     return JSON.parse(JSON.stringify(customObject));
   }

@@ -1,19 +1,19 @@
 import { EMPTY, Observable, of, throwError } from 'rxjs';
-import { Retry } from './retry';
 import { fakeAsync, flush } from '@angular/core/testing';
 import { catchError } from 'rxjs/operators';
+import { RetryObservable } from './retry-observable';
 
 class DAO {
   private message = 'hallo';
 
-  @Retry(3)
+  @RetryObservable(3, 1000)
   public fetch(url: string, callback: Function): Observable<string> {
     callback();
     console.log(this.message);
     return of(url);
   }
 
-  @Retry(3)
+  @RetryObservable(3, 1000)
   public fetchError(url: string, callback: Function): Observable<never> {
     callback();
     console.log(this.message);

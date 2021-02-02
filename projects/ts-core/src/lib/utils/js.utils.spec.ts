@@ -1,4 +1,5 @@
 import { JsUtils } from './js.utils';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 class Basic {
   public value: number;
@@ -13,6 +14,18 @@ class Basic {
 }
 
 describe('JsUtils', () => {
+
+  it('should wait', fakeAsync(() => {
+    let resolved = false;
+    JsUtils.wait(1000).then(() => resolved = true);
+
+    expect(resolved).toBe(false);
+    tick(500);
+    expect(resolved).toBe(false);
+    tick(500);
+    expect(resolved).toBe(true);
+  }));
+
   it('should return instantiated object', () => {
     let result = JsUtils.getInstantiatedObject<Basic>(undefined!, Basic);
     expect(result).toBeInstanceOf(Basic);

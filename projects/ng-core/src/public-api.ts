@@ -25,4 +25,4 @@ export * from './lib/base/generic.mapper';
 export * from './lib/universal/universal.module';
 export * from './lib/universal/render.service';
 
-export * from './lib/annotations/retry';
+export * from './lib/annotations/retry-observable';
