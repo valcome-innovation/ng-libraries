@@ -13,6 +13,13 @@ class DAO {
     return of(url);
   }
 
+  @RetryObservable(3)
+  public fetchErrorInstant(url: string, callback: Function): Observable<never> {
+    callback();
+    console.log(this.message);
+    return throwError(url);
+  }
+
   @RetryObservable(3, 1000)
   public fetchError(url: string, callback: Function): Observable<never> {
     callback();
@@ -43,6 +50,21 @@ describe('Retry (Decorator)', () => {
     dao.fetchError('example.com', () => counter++)
       .pipe(
         catchError((err) => {
+          expect(err).toBeTruthy();
+          expect(counter).toEqual(3);
+
+          return EMPTY;
+        })
+      ).toPromise();
+
+    flush();
+  }));
+
+  it('should retry function 3 times on error without delay', fakeAsync(() => {
+    let counter = 0;
+
+    dao.fetchErrorInstant('example.com', () => counter++)
+      .pipe(catchError((err) => {
           expect(err).toBeTruthy();
           expect(counter).toEqual(3);
 
