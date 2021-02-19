@@ -1,0 +1,25 @@
+{
+  "name": "ts-hockeydata-api",
+  "version": "0.0.1",
+  "scripts": {
+    "preversion": "ng test ts-hockeydata-api --watch=false",
+    "version": "ng build ts-hockeydata-api --prod",
+    "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
+    "publish:patch": "npm version patch && cd ../../dist/ts-hockeydata-api && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-hockeydata-api"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-hockeydata-api#tshockeydataapi",
+  "dependencies": {
+    "@valcome/ts-core": "^1.0.6",
+    "@angular/common": "^10.0.0",
+    "tslib": "^2.0.0"
+  }
+}

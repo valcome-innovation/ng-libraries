@@ -58,6 +58,10 @@
       ],
       "@valcome/ng-social-login": [
         "projects/ng-social-login/src/public-api.ts"
+      ],
+      "ts-hockeydata-api": [
+        "dist/ts-hockeydata-api/ts-hockeydata-api",
+        "dist/ts-hockeydata-api"
       ]
     }
   },

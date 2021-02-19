@@ -374,6 +374,46 @@
           }
         }
       }
+    },
+    "ts-hockeydata-api": {
+      "projectType": "library",
+      "root": "projects/ts-hockeydata-api",
+      "sourceRoot": "projects/ts-hockeydata-api/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ts-hockeydata-api/tsconfig.lib.json",
+            "project": "projects/ts-hockeydata-api/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ts-hockeydata-api/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ts-hockeydata-api/src/test.ts",
+            "tsConfig": "projects/ts-hockeydata-api/tsconfig.spec.json",
+            "karmaConfig": "projects/ts-hockeydata-api/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ts-hockeydata-api/tsconfig.lib.json",
+              "projects/ts-hockeydata-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-core"
