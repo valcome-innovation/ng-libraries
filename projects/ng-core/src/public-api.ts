@@ -19,9 +19,6 @@ export * from './lib/base/services/base-initializable.service';
 
 export * from './lib/services/scroll-to-top.service';
 
-export * from './lib/base/base.mapper';
-export * from './lib/base/generic.mapper';
-
 export * from './lib/universal/universal.module';
 export * from './lib/universal/render.service';
 
