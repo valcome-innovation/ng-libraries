@@ -8,11 +8,11 @@ export const FOOTBALL_API_KEY = new InjectionToken<string>('footballApiKey');
   imports: [],
   exports: []
 })
-export class HockeydataApiModule {
+export class HockeyDataApiModule {
 
-  public static forRoot(icehockeyApiKey?: string, footballApiKey?: string): ModuleWithProviders<HockeydataApiModule> {
+  public static forRoot(icehockeyApiKey?: string, footballApiKey?: string): ModuleWithProviders<HockeyDataApiModule> {
     return {
-      ngModule: HockeydataApiModule,
+      ngModule: HockeyDataApiModule,
       providers: [
         { provide: ICEHOCKEY_API_KEY, useValue: icehockeyApiKey },
         { provide: FOOTBALL_API_KEY, useValue: footballApiKey },
@@ -20,7 +20,7 @@ export class HockeydataApiModule {
     };
   }
 
-  public static forChild(): ModuleWithProviders<HockeydataApiModule> {
-    return { ngModule: HockeydataApiModule };
+  public static forChild(): ModuleWithProviders<HockeyDataApiModule> {
+    return { ngModule: HockeyDataApiModule };
   }
 }
