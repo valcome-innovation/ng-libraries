@@ -1,5 +1,5 @@
 {
-  "name": "ts-hockeydata-api",
+  "name": "@valcome/ts-hockeydata-api",
   "version": "0.0.1",
   "scripts": {
     "preversion": "ng test ts-hockeydata-api --watch=false",
@@ -18,8 +18,9 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-hockeydata-api#tshockeydataapi",
   "dependencies": {
-    "@valcome/ts-core": "^1.0.6",
+    "@valcome/ts-core": "^1.0.11",
     "@angular/common": "^10.0.0",
+    "@angular/core": "^10.0.0",
     "tslib": "^2.0.0"
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { UrlBuilder } from '../../../../ts-core/src/lib/builder/url.builder';
 import { Observable } from 'rxjs';
-import { ApiParams, HockeyDataApiCall, HockeyDataLeague, HockeyDataSport, sports } from '../model/types';
+import { ApiParams, HockeyDataApiCall, HockeyDataLeague, HockeyDataSport, IHockeyDataGameReport, sports } from '../model/types';
 
 
 export abstract class HockeyDataDAO {
@@ -18,7 +18,12 @@ export abstract class HockeyDataDAO {
     this.sport = sports[league];
   }
 
-  protected call(call: HockeyDataApiCall, params: ApiParams): Observable<any> {
+  public fetchGameReport(gameId: string, params: ApiParams = {}): Observable<IHockeyDataGameReport> {
+    params.gameId = gameId;
+    return this.call('GetGameReport', params);
+  }
+
+  public call(call: HockeyDataApiCall, params: ApiParams): Observable<any> {
     const baseUrl = this.getBaseUrlBuilder(call);
     const apiUrl = this.getCallUrl(baseUrl, params);
     return this.httpClient.get(apiUrl);

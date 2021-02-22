@@ -3,13 +3,8 @@ import { InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 export const ICEHOCKEY_API_KEY = new InjectionToken<string>('icehockeyApiKey');
 export const FOOTBALL_API_KEY = new InjectionToken<string>('footballApiKey');
 
-@NgModule({
-  declarations: [],
-  imports: [],
-  exports: []
-})
+@NgModule()
 export class HockeyDataApiModule {
-
   public static forRoot(icehockeyApiKey?: string, footballApiKey?: string): ModuleWithProviders<HockeyDataApiModule> {
     return {
       ngModule: HockeyDataApiModule,

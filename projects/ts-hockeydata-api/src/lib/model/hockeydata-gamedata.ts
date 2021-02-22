@@ -1,39 +1,29 @@
-import { HockeyDataPeriod } from './types';
 import { HockeyDataLocation } from './hockeydata-location';
-import { HockeyDataPeriodStats } from './hockeydata-period-stats';
+import { HockeyDataGameScore } from './hockeydata-game-score';
+import { HockeyDataGeneralGameData } from './hockeydata-general-gamedata';
+import { HockeyDataGameDataSchedule } from './hockeydata-gamedata-schedule';
+import { HockeyDataPeriodGameData } from './hockeydata-period-gamedata';
+import { HockeyDataLiveGameData } from './hockeydata-live-gamedata';
 
-export class HockeyDataGameReportGameData {
-  public gameId: string;
-  public divisionId: number;
-  public divisionLongname: string;
-  public gameName: string;
-  public gameRound: number;
-
-  public scheduledDate: Date;
-  public scheduledTime: string;
-  public startTime: string;
-  public endTime: string;
-  public isOvertime: number;
-  public isShootOut: number;
-
-  public homeTeamId: number;
-  public homeTeamLongname: string;
-  public homeTeamShortname: string;
-  public homeTeamScore: number;
-
-  public awayTeamId: number;
-  public awayTeamLongname: string;
-  public awayTeamShortname: string;
-  public awayTeamScore: number;
-  
+export class HockeyDataGameData {
+  public generalData: HockeyDataGeneralGameData;
+  public schedule: HockeyDataGameDataSchedule;
   public location: HockeyDataLocation;
-  public liveTime: number;
-  public liveTimeFormatted: string;
-  public liveTimePeriod: HockeyDataPeriod;
-  public periodStats: HockeyDataPeriodStats[];
-  public numberOfPeriods: number;
-  public lengthOfPeriod: number;
-  public numberOfOvertimes: number;
-  public lengthOfOvertime: number;
-  public shootoutShots: number;
+  public teamScores: HockeyDataGameScore;
+  public liveData: HockeyDataLiveGameData;
+  public periodData: HockeyDataPeriodGameData;
+
+  public constructor(generalData: HockeyDataGeneralGameData,
+                     schedule: HockeyDataGameDataSchedule,
+                     teamScores: HockeyDataGameScore,
+                     location: HockeyDataLocation,
+                     liveData: HockeyDataLiveGameData,
+                     periodData: HockeyDataPeriodGameData) {
+    this.generalData = generalData;
+    this.schedule = schedule;
+    this.teamScores = teamScores;
+    this.location = location;
+    this.liveData = liveData;
+    this.periodData = periodData;
+  }
 }

@@ -1,12 +1,20 @@
 import { BaseMapper } from '@valcome/ts-core';
-import { HockeyDataGameDataSchedule } from '../model/hockeydata-gamedata-schedule';
+import { HockeyDataGeneralGameData } from '../model/hockeydata-general-gamedata';
+import { Injectable } from '@angular/core';
+import { IHockeyDataGameReportGameData } from '../model/types';
 
-export class HockeyDataGameDataScheduleMapper extends BaseMapper<HockeyDataGameDataSchedule> {
+@Injectable({ providedIn: 'root' })
+export class HockeyDataGeneralGameDataMapper extends BaseMapper<HockeyDataGeneralGameData> {
   public constructor() {
-    super(HockeyDataGameDataSchedule);
+    super(HockeyDataGeneralGameData);
   }
 
-  public fromJson(json: Partial<HockeyDataGameDataSchedule>): HockeyDataGameDataSchedule {
-    return super.fromJson(json);
+  public fromJson(json: Partial<IHockeyDataGameReportGameData>): HockeyDataGeneralGameData {
+    const gameId = this.getValidated(json.id);
+    const divisionId = this.getValidated(json.divisionId);
+    const divisionLongname = this.getValidated(json.divisionLongname);
+    const gameName = this.getValidated(json.gameName);
+    const gameRound = this.getValidated(json.gameRound);
+    return new HockeyDataGeneralGameData(gameId, divisionId, divisionLongname, gameName, gameRound);
   }
 }

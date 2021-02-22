@@ -1,13 +1,19 @@
 import { BaseMapper } from '@valcome/ts-core';
-import { HockeyDataGameReport } from '../model/hockeydata-gamereport';
-import { IHockeyDataGameReport } from '../model/types';
+import { HockeyDataLocation } from '../model/hockeydata-location';
+import { Injectable } from '@angular/core';
+import { IHockeyDataGameReportGameData } from '../model/types';
 
-export class HockeyDataGameReportMapper extends BaseMapper<HockeyDataGameReport> {
+@Injectable({ providedIn: 'root' })
+export class HockeyDataLocationMapper extends BaseMapper<HockeyDataLocation> {
   public constructor() {
-    super(HockeyDataGameReport);
+    super(HockeyDataLocation);
   }
 
-  public fromJson(json: Partial<IHockeyDataGameReport>): HockeyDataGameReport {
-    return super.fromJson(json);
+  public fromJson(json: Partial<IHockeyDataGameReportGameData>): HockeyDataLocation {
+    const shortName = this.getValidated(json.location?.shortname);
+    const longName = this.getValidated(json.location?.longname);
+    const lat = json.location?.coordinates?.lat;
+    const lng = json.location?.coordinates?.lng;
+    return new HockeyDataLocation(longName, shortName, lat, lng);
   }
 }
