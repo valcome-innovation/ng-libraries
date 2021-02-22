@@ -1,4 +1,4 @@
-import { JsUtils } from '@valcome/ts-core';
+import { JsUtils } from '../utils/js.utils';
 
 export class GenericMapper<T> {
 
