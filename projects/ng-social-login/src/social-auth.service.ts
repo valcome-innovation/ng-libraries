@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { BaseInitializableService } from '@valcome/ng-core';
+import { BaseInitializableService, RenderService } from '@valcome/ng-core';
 import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './entities/login-provider';
 import { SocialProvider, SocialUser } from './entities/social-user';
@@ -38,12 +38,16 @@ export class SocialAuthService extends BaseInitializableService {
     return this._initState.asObservable();
   }
 
-  public constructor(@Inject('SocialAuthServiceConfig') config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig>) {
+  public constructor(@Inject('SocialAuthServiceConfig') config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig>,
+                     private renderService: RenderService) {
     super();
-    if (config instanceof Promise) {
-      config.then((config) => this.initialize(config));
-    } else {
-      this.initialize(config);
+
+    if (this.renderService.isBrowser()) {
+      if (config instanceof Promise) {
+        config.then((config) => this.initialize(config));
+      } else {
+        this.initialize(config);
+      }
     }
   }
 
