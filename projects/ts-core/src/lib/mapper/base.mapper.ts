@@ -21,7 +21,7 @@ export abstract class BaseMapper<T> {
     return jsonArray.map(j => this.fromJson(j));
   }
 
-  public getValidated<V>(data: V): V {
+  public getValidated<V>(data: V | undefined): V {
     if (data != null) {
       return data;
     } else {
