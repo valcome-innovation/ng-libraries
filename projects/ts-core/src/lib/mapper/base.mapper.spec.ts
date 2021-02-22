@@ -42,6 +42,17 @@ describe('BaseMapper', () => {
     expect(result[0].name).toEqual('John Doe');
     expect(result[1].name).toEqual('John Lennon');
   });
+
+  it('should map validated', () => {
+    const data = { obj: { value: 'test' } };
+    const result = humanMapper.getValidated(data.obj.value);
+    expect(result).toEqual(data.obj.value);
+  });
+
+  it('should throw error on map validated if undefined', () => {
+    expect(() => humanMapper.getValidated(undefined)).toThrowError();
+    expect(() => humanMapper.getValidated(null)).toThrowError();
+  });
 });
 
 function getTestHuman(): Human {

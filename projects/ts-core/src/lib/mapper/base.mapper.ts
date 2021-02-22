@@ -20,4 +20,12 @@ export abstract class BaseMapper<T> {
   public fromJsonArray(jsonArray: any[]): T[] {
     return jsonArray.map(j => this.fromJson(j));
   }
+
+  public getValidated<V>(data: V): V {
+    if (data != null) {
+      return data;
+    } else {
+      throw new Error('Value is not defined');
+    }
+  }
 }
