@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ts-hockeydata-api",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "scripts": {
     "preversion": "ng test ts-hockeydata-api --watch=false",
     "version": "ng build ts-hockeydata-api --prod",
@@ -17,10 +17,12 @@
     "url": "https://github.com/valcome-analytics/ng-libraries/issues"
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-hockeydata-api#tshockeydataapi",
-  "dependencies": {
+  "peerDependencies": {
     "@valcome/ts-core": "^1.0.11",
     "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
+    "@angular/core": "^10.0.0"
+  },
+  "dependencies": {
     "tslib": "^2.0.0"
   }
 }

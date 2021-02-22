@@ -1,7 +1,7 @@
 import { JsUtils } from '@valcome/ts-core';
 
 export const getGameReportData = () => {
-  return JsUtils.immute(gameReportData);
+  return JsUtils.mapToPlainJavascriptObject(gameReportData);
 };
 
 const gameReportData = {

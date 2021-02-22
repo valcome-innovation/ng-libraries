@@ -1,5 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { HockeyDataDAO } from './hockeydata.dao';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import createSpy = jasmine.createSpy;
+
+@Injectable()
+class TestDAO extends HockeyDataDAO {
+  public constructor(httpClient: HttpClient) {
+    super('ebel', 'apiKey', httpClient);
+  }
+}
 
 describe('HockeydataDAO', () => {
 
@@ -7,10 +17,13 @@ describe('HockeydataDAO', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [HockeyDataDAO]
+      providers: [
+        { provide: HttpClient, useValue: { get: createSpy('getSpy') } },
+        TestDAO
+      ]
     });
 
-    service = TestBed.inject(HockeyDataDAO);
+    service = TestBed.inject(TestDAO);
   });
 
   it('should create', () => {

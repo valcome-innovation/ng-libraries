@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { UrlBuilder } from '../../../../ts-core/src/lib/builder/url.builder';
 import { Observable } from 'rxjs';
 import { ApiParams, HockeyDataApiCall, HockeyDataLeague, HockeyDataSport, IHockeyDataGameReport, sports } from '../model/types';
+import { UrlBuilder } from 'ts-core';
 
 
 export abstract class HockeyDataDAO {
