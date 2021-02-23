@@ -34,7 +34,11 @@ export abstract class HockeyDataDAO {
   public call(call: HockeyDataApiCall, params: ApiParams): Observable<any> {
     const baseUrl = this.getBaseUrlBuilder(call);
     const apiUrl = this.getCallUrl(baseUrl, params);
-    return this.httpClient.get(apiUrl);
+    return this.httpClient.get(apiUrl, {
+      headers: {
+        'Sec-Fetch-Mode': 'no-cors'
+      }
+    });
   }
 
   private getCallUrl(builder: UrlBuilder, params: ApiParams): string {
