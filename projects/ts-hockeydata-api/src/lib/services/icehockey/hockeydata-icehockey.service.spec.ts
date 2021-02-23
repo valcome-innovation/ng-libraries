@@ -9,7 +9,7 @@ import createSpy = jasmine.createSpy;
 describe('HockeyDataIcehockeyService', () => {
 
   let service: HockeyDataIceHockeyService;
-  const getMock = createSpy('getMock');
+  const jsonpMock = createSpy('getMock');
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,7 +17,7 @@ describe('HockeyDataIcehockeyService', () => {
         HockeyDataApiModule.forRoot({ apiKey: 'apiKey', referer: 'referer' })
       ],
       providers: [
-        { provide: HttpClient, useValue: { get: getMock } }
+        { provide: HttpClient, useValue: { jsonp: jsonpMock } }
       ],
     });
 
@@ -29,7 +29,7 @@ describe('HockeyDataIcehockeyService', () => {
   });
 
   it('should return game report data', async () => {
-    getMock.and.returnValue(of(getGameReportData()));
+    jsonpMock.and.returnValue(of(getGameReportData()));
 
     const gameReport = await service.getGameReport('gameId');
 
