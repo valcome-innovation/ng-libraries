@@ -7,7 +7,7 @@ import createSpy = jasmine.createSpy;
 @Injectable()
 class TestDAO extends HockeyDataDAO {
   public constructor(httpClient: HttpClient) {
-    super('ebel', 'apiKey', httpClient);
+    super('ebel', { apiKey: 'apiKey', referer: 'referer' }, httpClient);
   }
 }
 

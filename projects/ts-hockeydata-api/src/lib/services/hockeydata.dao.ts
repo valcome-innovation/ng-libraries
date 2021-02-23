@@ -1,20 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ApiParams, HockeyDataApiCall, HockeyDataLeague, HockeyDataSport, IHockeyDataGameReport, sports } from '../model/types';
+import {
+  ApiParams,
+  HockeyDataApiCall,
+  HockeyDataApiConfig,
+  HockeyDataLeague,
+  HockeyDataSport,
+  IHockeyDataGameReport,
+  sports
+} from '../model/types';
 import { UrlBuilder } from '@valcome/ts-core';
 
 
 export abstract class HockeyDataDAO {
 
-  private readonly apiKey: string;
+  private readonly apiConfig: HockeyDataApiConfig;
   private readonly sport: HockeyDataSport;
   private readonly league: HockeyDataLeague;
 
   protected constructor(league: HockeyDataLeague,
-                        apiKey: string,
+                        apiConfig: HockeyDataApiConfig,
                         protected httpClient: HttpClient) {
     this.league = league;
-    this.apiKey = apiKey;
+    this.apiConfig = apiConfig;
     this.sport = sports[league];
   }
 
@@ -40,7 +48,8 @@ export abstract class HockeyDataDAO {
     const builder = new UrlBuilder('https://api.hockeydata.net/data');
     builder.addPath(this.league);
     builder.addPath(call);
-    builder.addQueryParam('apiKey', this.apiKey);
+    builder.addQueryParam('apiKey', this.apiConfig.apiKey);
+    builder.addQueryParam('referer', this.apiConfig.referer);
     return builder;
   }
 }

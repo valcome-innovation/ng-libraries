@@ -14,7 +14,7 @@ describe('HockeyDataIcehockeyService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HockeyDataApiModule.forRoot('iceApiKey')
+        HockeyDataApiModule.forRoot({ apiKey: 'apiKey', referer: 'referer' })
       ],
       providers: [
         { provide: HttpClient, useValue: { get: getMock } }

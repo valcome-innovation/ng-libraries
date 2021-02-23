@@ -1,3 +1,8 @@
+export interface HockeyDataApiConfig {
+  apiKey: string;
+  referer: string;
+}
+
 export type HockeyDataSport = 'icehockey' | 'americanfootball';
 export type HockeyDataLeague = 'ebel' | 'afboe';
 export type HockeyDataApiCall = 'GetGameReport' | 'Standings' | 'Schedule';
