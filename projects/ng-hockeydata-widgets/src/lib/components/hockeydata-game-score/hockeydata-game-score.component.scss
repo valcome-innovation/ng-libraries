@@ -46,6 +46,7 @@
     &.left {
       @media (min-width: 576px) {
         margin-left: var(--logo-margin);
+        justify-content: flex-start;
       }
     }
 
