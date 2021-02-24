@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { HockeyDataGameReport, HockeyDataIceHockeyService } from '@valcome/ts-hockeydata-api';
 
 @Component({
-  selector: 'val-hockeydata-game-score',
+  selector: 'hockeydata-game-score',
   templateUrl: './hockeydata-game-score.component.html',
   styleUrls: ['./hockeydata-game-score.component.scss']
 })

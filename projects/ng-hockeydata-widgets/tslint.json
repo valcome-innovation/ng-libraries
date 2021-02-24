@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "val",
+      "hockeydata",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "val",
+      "hockeydata",
       "kebab-case"
     ]
   }
