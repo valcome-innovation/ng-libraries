@@ -6,9 +6,9 @@
                 <span>{{gameReport.gameData.teamScores.homeTeamShortname}}</span>
             </div>
         </div>
-        <div class="score-container live-score">
+        <div class="score-container live-score my-auto">
             <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
-            <div class="period-display">
+            <div class="period-display my-auto">
                 <ng-container [ngTemplateOutlet]="periodDisplay"></ng-container>
             </div>
             <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
