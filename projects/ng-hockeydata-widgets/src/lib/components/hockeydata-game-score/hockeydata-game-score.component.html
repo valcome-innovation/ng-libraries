@@ -1,8 +1,10 @@
 <div *ngIf="gameReport" class="container">
     <div class="score-grid">
-        <div class="team-display right">
-            <img [src]="homeLogo" alt="home-logo">
-            <div>{{gameReport.gameData.teamScores.homeTeamShortname}}</div>
+        <div class="team-container right">
+            <div class="team-display">
+                <img [src]="homeLogo" alt="home-logo">
+                <span>{{gameReport.gameData.teamScores.homeTeamShortname}}</span>
+            </div>
         </div>
         <div class="score-container live-score">
             <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
@@ -11,9 +13,11 @@
             </div>
             <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
         </div>
-        <div class="team-display left">
-            <img [src]="awayLogo" alt="away-logo">
-            <div>{{gameReport.gameData.teamScores.awayTeamShortname}}</div>
+        <div class="team-container left">
+            <div class="team-display">
+                <img [src]="awayLogo" alt="away-logo">
+                <div>{{gameReport.gameData.teamScores.awayTeamShortname}}</div>
+            </div>
         </div>
     </div>
     <div class="period-score mx-auto">
@@ -23,9 +27,6 @@
             <div>{{periodStat.homeScore}}:{{periodStat.awayScore}}</div>
         </div>
     </div>
-</div>
-<div *ngIf="error">
-    ERROR!
 </div>
 
 <ng-template #periodDisplay>
