@@ -3,6 +3,7 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
 import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
+import { HockeyDataGameReport, HockeyDataIceHockeyService } from 'ts-hockeydata-api';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  public gameReport?: HockeyDataGameReport;
+  public homeLogo = 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/ECB.png';
+  public awayLogo = 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/WSV.png';
 
   public value = new DisplayValue('Yeah', 'Yeah');
   public values = [new DisplayValue('Yeah', 'Yeah'), new DisplayValue('No', 'No')];
@@ -79,7 +83,8 @@ export class AppComponent implements OnInit {
     new DisplayValue('Wieselburger', 2)
   ];
 
-  public constructor(private fb: FormBuilder) {
+  public constructor(private fb: FormBuilder,
+                     private hockeyDataIceHockeyService: HockeyDataIceHockeyService) {
     this.initForm();
   }
 
@@ -89,6 +94,10 @@ export class AppComponent implements OnInit {
     if (control) {
       control.statusChanges.subscribe((s) => console.log(s));
     }
+
+    this.getGameReport().then(report => {
+      this.gameReport = report;
+    });
   }
 
   private initForm(): void {
@@ -123,5 +132,9 @@ export class AppComponent implements OnInit {
     if (control) {
       control.setErrors({ server: true });
     }
+  }
+
+  public async getGameReport(): Promise<HockeyDataGameReport> {
+    return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
   }
 }
