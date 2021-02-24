@@ -1,10 +1,9 @@
 <div *ngIf="gameReport" class="container">
     <div class="score-grid">
         <div class="team-container right">
-            <div class="team-display">
-                <img [src]="homeLogo" alt="home-logo">
-                <span>{{gameReport.gameData.teamScores.homeTeamShortname}}</span>
-            </div>
+            <hockeydata-team-display [name]="gameReport.gameData.teamScores.homeTeamShortname"
+                                     [logo]="homeLogo" [logoAlignment]="homeLogoAlignment">
+            </hockeydata-team-display>
         </div>
         <div class="score-container live-score my-auto">
             <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
@@ -14,13 +13,13 @@
             <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
         </div>
         <div class="team-container left">
-            <div class="team-display">
-                <img [src]="awayLogo" alt="away-logo">
-                <div>{{gameReport.gameData.teamScores.awayTeamShortname}}</div>
-            </div>
+            <hockeydata-team-display [name]="gameReport.gameData.teamScores.awayTeamShortname"
+                                     [logo]="awayLogo" [logoAlignment]="awayLogoAlignment">
+            </hockeydata-team-display>
         </div>
     </div>
-    <div class="period-score mx-auto">
+
+    <div class="period-score mx-auto" *ngIf="showPeriodScores">
         <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
              class="text-center">
             <div class="bold">{{periodStat.period}}</div>
@@ -29,6 +28,7 @@
     </div>
 </div>
 
+<!-- Templates -->
 <ng-template #periodDisplay>
     <div class="text-center"
          *ngIf="gameReport?.gameData.schedule.isOvertime">
@@ -42,7 +42,7 @@
          *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
         {{gameReport?.gameData.liveData.liveTimePeriod}}/{{gameReport?.gameData.periodData.numberOfPeriods}}
     </div>
-    <div class="text-center">
+    <div class="text-center" *ngIf="showTime">
         {{gameReport?.gameData.liveData.liveTimeFormatted}}
     </div>
 </ng-template>

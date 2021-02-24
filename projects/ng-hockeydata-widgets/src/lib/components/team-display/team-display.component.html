@@ -1,0 +1,11 @@
+<div class="team-display" *ngIf="logoAlignment === 'top' || logoAlignment === 'left'"
+     [ngClass]="{ 'column': logoAlignment === 'top' }">
+    <img [src]="logo" alt="team-logo">
+    <div class="team-name">{{name}}</div>
+</div>
+<div class="team-display" *ngIf="logoAlignment === 'bottom' || logoAlignment === 'right'"
+     [ngClass]="{ 'column': logoAlignment === 'bottom' }">
+    <div class="team-name">{{name}}</div>
+    <img [src]="logo" alt="team-logo">
+</div>
+

@@ -3,13 +3,11 @@
   --score-font-size: 48px;
   --team-font-size: 22px;
   --stat-font-size: 12px;
-  --image-size: 60px;
   --logo-margin: 17%;
 
   @media (max-width: 576px) {
     --score-font-size: 30px;
     --team-font-size: 18px;
-    --image-size: 40px;
     --stat-font-size: 10px;
   }
 
@@ -30,12 +28,6 @@
     font-size: var(--team-font-size);
     font-weight: bold;
 
-    .team-display {
-      display: inline-flex;
-      flex-direction: column;
-      text-align: center;
-    }
-
     &.right {
       @media (min-width: 576px) {
         margin-right: var(--logo-margin);
@@ -49,19 +41,12 @@
         justify-content: flex-start;
       }
     }
-
-    img {
-      width: var(--image-size);
-      height: var(--image-size);
-      object-fit: contain;
-      object-position: center;
-    }
   }
 
   .score-container {
     display: flex;
     justify-content: space-around;
-    min-width: 135px;
+    //min-width: 135px;
 
     .score-display {
       font-size: var(--score-font-size);

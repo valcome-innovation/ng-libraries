@@ -1,0 +1,28 @@
+:host {
+  --image-size: 60px;
+
+  @media (max-width: 576px) {
+    --image-size: 40px;
+  }
+
+  .team-display {
+    display: inline-flex;
+    text-align: center;
+
+    &.column {
+      flex-direction: column;
+    }
+
+    img {
+      width: var(--image-size);
+      height: var(--image-size);
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .team-name {
+      margin: auto;
+      padding: 5px;
+    }
+  }
+}
