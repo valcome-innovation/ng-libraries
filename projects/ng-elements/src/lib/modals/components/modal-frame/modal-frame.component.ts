@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { BaseDynamicModalComponent } from '../base-dynamic-modal.component';
-import { AnimationEasing, fade } from 'ng-animations';
+import { AnimationEasing, fade } from '@valcome/ng-animations';
 
 @Component({
   selector: 'val-modal-frame',
