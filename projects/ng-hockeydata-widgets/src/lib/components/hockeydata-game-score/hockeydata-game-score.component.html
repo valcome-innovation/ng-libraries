@@ -25,7 +25,7 @@
 
 <!-- Templates -->
 <ng-template #periodStats>
-    <div class="period-score mx-auto" *ngIf="showPeriodScores">
+    <div class="period-score mx-auto" *ngIf="gameReport && showPeriodScores">
         <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
              class="text-center">
             <div class="bold">{{periodStat.period}}</div>
