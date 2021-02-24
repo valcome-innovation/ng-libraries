@@ -5,12 +5,15 @@
                                      [logo]="homeLogo" [logoAlignment]="homeLogoAlignment">
             </hockeydata-team-display>
         </div>
-        <div class="score-container live-score my-auto">
-            <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
-            <div class="period-display my-auto">
-                <ng-container [ngTemplateOutlet]="periodDisplay"></ng-container>
+        <div class="my-auto">
+            <div class="score-container live-score my-auto">
+                <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
+                <div class="period-display my-auto">
+                    <ng-container [ngTemplateOutlet]="periodDisplay"></ng-container>
+                </div>
+                <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
             </div>
-            <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
+            <ng-container [ngTemplateOutlet]="periodStats"></ng-container>
         </div>
         <div class="team-container left">
             <hockeydata-team-display [name]="gameReport.gameData.teamScores.awayTeamShortname"
@@ -18,17 +21,19 @@
             </hockeydata-team-display>
         </div>
     </div>
+</div>
 
+<!-- Templates -->
+<ng-template #periodStats>
     <div class="period-score mx-auto" *ngIf="showPeriodScores">
         <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
              class="text-center">
             <div class="bold">{{periodStat.period}}</div>
-            <div>{{periodStat.homeScore}}:{{periodStat.awayScore}}</div>
+            <div>({{periodStat.homeScore}}:{{periodStat.awayScore}})</div>
         </div>
     </div>
-</div>
+</ng-template>
 
-<!-- Templates -->
 <ng-template #periodDisplay>
     <div class="text-center"
          *ngIf="gameReport?.gameData.schedule.isOvertime">

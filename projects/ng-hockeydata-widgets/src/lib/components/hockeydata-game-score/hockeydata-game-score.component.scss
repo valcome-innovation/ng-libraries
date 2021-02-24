@@ -46,7 +46,6 @@
   .score-container {
     display: flex;
     justify-content: space-around;
-    //min-width: 135px;
 
     .score-display {
       font-size: var(--score-font-size);
@@ -61,9 +60,12 @@
   .period-score {
     display: flex;
     justify-content: space-around;
-    width: 40%;
+
     max-width: 250px;
     min-width: 135px;
+
+    margin-top: 6px;
+
     font-size: var(--stat-font-size);
   }
 
