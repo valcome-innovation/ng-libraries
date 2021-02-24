@@ -10,14 +10,12 @@ import { RangeSliderModule } from '../../../ng-elements/src/lib/range-slider/ran
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageGalleryModule } from '../../../ng-elements/src/lib/image-gallery/image-gallery.module';
 import { SocialDemoComponent } from './social-demo/social-demo.component';
-import {
-  FacebookLoginProvider,
-  GoogleLoginProvider,
-  SocialAuthServiceConfig,
-  SocialLoginModule
-} from '@valcome/ng-social-login';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@valcome/ng-social-login';
+import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ToggleButtonModule } from '../../../ng-elements/src/lib/toggle/toggle-button.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HockeyDataWidgetsModule } from '../../../ng-hockeydata-widgets/src/lib/hockeydata-widgets.module';
+import { HockeyDataApiModule } from '@valcome/ts-hockeydata-api';
 
 @NgModule({
   declarations: [
@@ -26,6 +24,7 @@ import { ToggleButtonModule } from '../../../ng-elements/src/lib/toggle/toggle-b
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AppRoutingModule,
     CoreAnimationsModule,
@@ -35,8 +34,14 @@ import { ToggleButtonModule } from '../../../ng-elements/src/lib/toggle/toggle-b
     ReactiveFormsModule,
     ImageGalleryModule,
     SocialLoginModule,
+    ToggleButtonModule,
     HttpClientModule,
-    ToggleButtonModule
+    HttpClientJsonpModule,
+    HockeyDataWidgetsModule,
+    HockeyDataApiModule.forRoot({
+      apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
+      referer: 'dev.valcome.tv'
+    })
   ],
   providers: [
     DeviceService,

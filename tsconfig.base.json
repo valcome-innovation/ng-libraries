@@ -65,6 +65,10 @@
       "ts-hockeydata-api": [
         "dist/ts-hockeydata-api/ts-hockeydata-api",
         "dist/ts-hockeydata-api"
+      ],
+      "ng-hockeydata-widgets": [
+        "dist/ng-hockeydata-widgets/ng-hockeydata-widgets",
+        "dist/ng-hockeydata-widgets"
       ]
     }
   },
