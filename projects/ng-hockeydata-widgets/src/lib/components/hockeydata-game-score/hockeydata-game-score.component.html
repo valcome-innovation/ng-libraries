@@ -1,0 +1,47 @@
+<div *ngIf="gameReport" class="container">
+    <div class="score-grid">
+        <div class="team-display right">
+            <img [src]="homeLogo" alt="home-logo">
+            <div>{{gameReport.gameData.teamScores.homeTeamShortname}}</div>
+        </div>
+        <div class="score-container live-score">
+            <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
+            <div class="period-display">
+                <ng-container [ngTemplateOutlet]="periodDisplay"></ng-container>
+            </div>
+            <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
+        </div>
+        <div class="team-display left">
+            <img [src]="awayLogo" alt="away-logo">
+            <div>{{gameReport.gameData.teamScores.awayTeamShortname}}</div>
+        </div>
+    </div>
+    <div class="period-score mx-auto">
+        <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
+             class="text-center">
+            <div class="bold">{{periodStat.period}}</div>
+            <div>{{periodStat.homeScore}}:{{periodStat.awayScore}}</div>
+        </div>
+    </div>
+</div>
+<div *ngIf="error">
+    ERROR!
+</div>
+
+<ng-template #periodDisplay>
+    <div class="text-center"
+         *ngIf="gameReport?.gameData.schedule.isOvertime">
+        OT
+    </div>
+    <div class="text-center"
+         *ngIf="gameReport?.gameData.schedule.isShootOut">
+        SO
+    </div>
+    <div class="text-center"
+         *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
+        {{gameReport?.gameData.liveData.liveTimePeriod}}/{{gameReport?.gameData.periodData.numberOfPeriods}}
+    </div>
+    <div class="text-center">
+        {{gameReport?.gameData.liveData.liveTimeFormatted}}
+    </div>
+</ng-template>
