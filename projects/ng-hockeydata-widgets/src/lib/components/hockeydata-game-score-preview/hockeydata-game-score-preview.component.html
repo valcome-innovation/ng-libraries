@@ -1,0 +1,28 @@
+<div *ngIf="gameReport" class="container">
+    <div class="d-flex">
+        <div class="team-container right my-auto flex-1">
+            <div class="team-display">
+                <img class="team-logo" [src]="homeLogo" alt="team-logo">
+                <div class="team-name">{{gameReport.gameData.teamScores.homeTeamShortname}}</div>
+            </div>
+        </div>
+        <div class="my-auto text-center">
+            <div class="score-display d-flex justify-content-center">
+                <span class="score">{{gameReport.gameData.teamScores.homeTeamScore}}</span>
+                <span class="px-2 my-auto">:</span>
+                <span class="score">{{gameReport.gameData.teamScores.awayTeamScore}}</span>
+            </div>
+            <div class="period-info mt-2">
+                <span>{{gameReport.gameData.liveData.liveTimePeriod | period }}</span>
+                <span> - </span>
+                <span>{{gameReport.gameData.liveData.liveTimeFormatted}}</span>
+            </div>
+        </div>
+        <div class="team-container left my-auto flex-1">
+            <div class="team-display">
+                <img class="team-logo" [src]="awayLogo" alt="team-logo">
+                <div class="team-name">{{gameReport.gameData.teamScores.awayTeamShortname}}</div>
+            </div>
+        </div>
+    </div>
+</div>

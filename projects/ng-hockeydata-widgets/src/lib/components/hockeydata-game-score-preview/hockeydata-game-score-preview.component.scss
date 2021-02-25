@@ -1,0 +1,62 @@
+:host {
+  --font-size: 20px;
+  --image-size: 35px;
+
+  @media (max-width: 576px) {
+    --image-size: 35px;
+  }
+
+  @media (max-width: 350px) {
+    --image-size: 35px;
+    --font-size: 18px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .team-container {
+    display: flex;
+    justify-content: center;
+
+    font-size: var(--font-size);
+    font-weight: bold;
+  }
+
+  .score-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .score-display {
+    background-color: #E8EBEE;
+    font-size: var(--font-size);
+    font-weight: 300;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+
+  img {
+    width: var(--image-size);
+    height: var(--image-size);
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .team-display {
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .team-name {
+    margin: auto;
+    padding: 5px;
+  }
+
+  .period-info {
+    font-weight: 300;
+  }
+}

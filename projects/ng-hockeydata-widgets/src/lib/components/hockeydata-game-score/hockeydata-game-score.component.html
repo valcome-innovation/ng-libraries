@@ -2,13 +2,13 @@
     <div class="score-grid">
         <div class="team-container right my-auto">
             <hockeydata-team-display [name]="gameReport.gameData.teamScores.homeTeamShortname"
-                                     [logo]="homeLogo" [logoAlignment]="homeLogoAlignment">
+                                     [logo]="homeLogo">
             </hockeydata-team-display>
         </div>
         <div class="my-auto">
             <div class="score-container live-score my-auto">
                 <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
-                <div class="period-display my-auto">
+                <div class="period-display my-auto text-center">
                     <ng-container [ngTemplateOutlet]="periodDisplay"></ng-container>
                 </div>
                 <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
@@ -17,7 +17,7 @@
         </div>
         <div class="team-container left my-auto">
             <hockeydata-team-display [name]="gameReport.gameData.teamScores.awayTeamShortname"
-                                     [logo]="awayLogo" [logoAlignment]="awayLogoAlignment">
+                                     [logo]="awayLogo">
             </hockeydata-team-display>
         </div>
     </div>
@@ -25,29 +25,26 @@
 
 <!-- Templates -->
 <ng-template #periodStats>
-    <div class="period-score mx-auto" *ngIf="gameReport && showPeriodScores">
+    <div class="period-score mx-auto" *ngIf="gameReport">
         <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
              class="text-center">
-            <div class="bold">{{periodStat.period}}</div>
+            <div class="font-weight-bold">{{periodStat.period}}</div>
             <div>({{periodStat.homeScore}}:{{periodStat.awayScore}})</div>
         </div>
     </div>
 </ng-template>
 
 <ng-template #periodDisplay>
-    <div class="text-center"
-         *ngIf="gameReport?.gameData.schedule.isOvertime">
+    <div *ngIf="gameReport?.gameData.schedule.isOvertime">
         OT
     </div>
-    <div class="text-center"
-         *ngIf="gameReport?.gameData.schedule.isShootOut">
+    <div *ngIf="gameReport?.gameData.schedule.isShootOut">
         SO
     </div>
-    <div class="text-center"
-         *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
+    <div *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
         {{gameReport?.gameData.liveData.liveTimePeriod}}/{{gameReport?.gameData.periodData.numberOfPeriods}}
     </div>
-    <div class="text-center" *ngIf="showTime">
+    <div>
         {{gameReport?.gameData.liveData.liveTimeFormatted}}
     </div>
 </ng-template>

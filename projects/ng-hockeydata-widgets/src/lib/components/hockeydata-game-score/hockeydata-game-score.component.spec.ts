@@ -1,9 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HockeyDataGameScoreComponent } from './hockeydata-game-score.component';
-import { ICEHOCKEY_API_CONFIG } from '@valcome/ts-hockeydata-api';
-import { HttpClient } from '@angular/common/http';
-import createSpy = jasmine.createSpy;
 
 describe('HockeydataGameScoreComponent', () => {
   let component: HockeyDataGameScoreComponent;
@@ -13,10 +10,6 @@ describe('HockeydataGameScoreComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         HockeyDataGameScoreComponent
-      ],
-      providers: [
-        { provide: ICEHOCKEY_API_CONFIG, useValue: { apiKey: 'apiKey', referer: 'referer' } },
-        { provide: HttpClient, useValue: { jsonp: createSpy('jsonpMock') } },
       ]
     }).compileComponents();
   }));
