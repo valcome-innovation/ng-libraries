@@ -1,4 +1,4 @@
-<div *ngIf="gameReport" class="container">
+<div *ngIf="gameReport; else content" class="container">
     <div class="d-flex">
         <div class="team-container right my-auto flex-1">
             <div class="team-display">
@@ -26,3 +26,6 @@
         </div>
     </div>
 </div>
+<ng-template #content>
+    <ng-content></ng-content>
+</ng-template>
