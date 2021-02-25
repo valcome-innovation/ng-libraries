@@ -1,31 +1,28 @@
-.team-display {
+:host {
   --image-size: 60px;
 
   @media (max-width: 576px) {
     --image-size: 40px;
   }
 
-  display: inline-flex;
-  text-align: center;
-
-  .team-logo {
+  img {
     width: var(--image-size);
     height: var(--image-size);
     object-fit: contain;
     object-position: center;
   }
 
-  &.column {
-    flex-direction: column;
-  }
+  .team-display {
+    display: inline-flex;
+    text-align: center;
 
+    &.column {
+      flex-direction: column;
+    }
 
-  .team-name {
-    margin: auto;
-    padding: 5px;
+    .team-name {
+      margin: auto;
+      padding: 5px;
+    }
   }
 }
-
-
-
-
