@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { HockeyDataGameReport } from 'ts-hockeydata-api';
+import { HockeyDataGameReport } from '@valcome/ts-hockeydata-api';
 
 @Directive()
 export abstract class BaseGameScoreComponent {
