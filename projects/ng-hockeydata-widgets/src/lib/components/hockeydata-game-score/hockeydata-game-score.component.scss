@@ -46,26 +46,23 @@
   .score-container {
     display: flex;
     justify-content: space-around;
+  }
 
-    .score-display {
-      font-size: var(--score-font-size);
-      font-weight: bold;
-    }
+  .score-display {
+    font-size: var(--score-font-size);
+    font-weight: bold;
+  }
 
-    .period-display {
-      font-size: var(--stat-font-size);
-    }
+  .period-display {
+    font-size: var(--stat-font-size);
   }
 
   .period-score {
     display: flex;
     justify-content: space-around;
-
     max-width: 250px;
     min-width: 135px;
-
     margin-top: 6px;
-
     font-size: var(--stat-font-size);
   }
 
