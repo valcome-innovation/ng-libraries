@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: '<div id="value">{{value | period}}</div>'
+  template: '<div id="value">{{value | period:1200}}</div>'
 })
 class TestComponent {
-  public value = '';
+  public value = 0;
 }
 
 describe('HockeyDataPeriodPipe', () => {
@@ -32,7 +32,7 @@ describe('HockeyDataPeriodPipe', () => {
   });
 
   it('should transform one', fakeAsync(() => {
-    changeComponentValue('1');
+    changeComponentValue(1200);
 
     const element = getPeriodElement();
 
@@ -40,7 +40,7 @@ describe('HockeyDataPeriodPipe', () => {
   }));
 
   it('should transform two', fakeAsync(() => {
-    changeComponentValue('2');
+    changeComponentValue(2400);
 
     const element = getPeriodElement();
 
@@ -48,7 +48,7 @@ describe('HockeyDataPeriodPipe', () => {
   }));
 
   it('should transform three', fakeAsync(() => {
-    changeComponentValue('3');
+    changeComponentValue(3600);
 
     const element = getPeriodElement();
 
@@ -56,21 +56,20 @@ describe('HockeyDataPeriodPipe', () => {
   }));
 
   it('should transform any number', fakeAsync(() => {
-    const num = Math.ceil(Math.random() * 100 + 4);
-    changeComponentValue(`${num}`);
+    changeComponentValue(6000);
 
     const element = getPeriodElement();
 
-    expect(element.textContent).toEqual(`${num}th`);
+    expect(element.textContent).toEqual(`5th`);
   }));
 
   it('should transform empty', fakeAsync(() => {
     const element = getPeriodElement();
 
-    expect(element.textContent).toEqual('');
+    expect(element.textContent).toEqual('0th');
   }));
 
-  function changeComponentValue(value: string): void {
+  function changeComponentValue(value: number): void {
     component.value = value;
     fixture.detectChanges();
     flush();

@@ -42,7 +42,7 @@
         SO
     </div>
     <div *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
-        {{gameReport?.gameData.liveData.liveTimePeriod}}/{{gameReport?.gameData.periodData.numberOfPeriods}}
+        {{gameReport?.gameData.liveData.liveTime | period:gameReport?.gameData.periodData.lengthOfPeriod}}
     </div>
     <div>
         {{gameReport?.gameData.liveData.liveTimeFormatted}}

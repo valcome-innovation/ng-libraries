@@ -13,7 +13,7 @@
                 <span class="score">{{gameReport.gameData.teamScores.awayTeamScore}}</span>
             </div>
             <div class="period-info mt-2">
-                <span>{{gameReport.gameData.liveData.liveTimePeriod | period }}</span>
+                <span>{{ gameReport.gameData.liveData.liveTime | period:gameReport.gameData.periodData.lengthOfPeriod }}</span>
                 <span> - </span>
                 <span>{{gameReport.gameData.liveData.liveTimeFormatted}}</span>
             </div>
