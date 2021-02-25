@@ -11,11 +11,6 @@
     --font-size: 18px;
   }
 
-  .container {
-    width: 100%;
-    max-width: 1000px;
-  }
-
   .team-container {
     display: flex;
     justify-content: center;
@@ -58,5 +53,10 @@
 
   .period-info {
     font-weight: 300;
+    font-size: 12px;
+  }
+
+  .space-evenly {
+    justify-content: space-evenly;
   }
 }
