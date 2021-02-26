@@ -11,6 +11,13 @@
     --font-size: 18px;
   }
 
+  .container {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .team-container {
     display: flex;
     justify-content: center;
