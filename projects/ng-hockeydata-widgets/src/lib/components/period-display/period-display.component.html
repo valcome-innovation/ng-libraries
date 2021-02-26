@@ -1,0 +1,11 @@
+<div *ngIf="gameReport" class="d-inline">
+    <ng-container *ngIf="gameReport.gameData.schedule.isOvertime && !gameReport.gameData.schedule.isShootOut">
+        OT
+    </ng-container>
+    <ng-container *ngIf="gameReport.gameData.schedule.isShootOut">
+        SO
+    </ng-container>
+    <ng-container *ngIf="!gameReport.gameData.schedule.isShootOut && !gameReport.gameData.schedule.isOvertime">
+        {{gameReport.gameData.liveData.liveTime | period:gameReport.gameData.periodData.lengthOfPeriod}}
+    </ng-container>
+</div>

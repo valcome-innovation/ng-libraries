@@ -9,7 +9,8 @@
             <div class="score-container live-score my-auto">
                 <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
                 <div class="period-display my-auto text-center">
-                    <ng-container [ngTemplateOutlet]="periodDisplay"></ng-container>
+                    <hockeydata-period-display [gameReport]="gameReport"></hockeydata-period-display>
+                    <div>{{gameReport?.gameData.liveData.liveTimeFormatted}}</div>
                 </div>
                 <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
             </div>
@@ -44,7 +45,5 @@
     <div *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
         {{gameReport?.gameData.liveData.liveTime | period:gameReport?.gameData.periodData.lengthOfPeriod}}
     </div>
-    <div>
-        {{gameReport?.gameData.liveData.liveTimeFormatted}}
-    </div>
+
 </ng-template>

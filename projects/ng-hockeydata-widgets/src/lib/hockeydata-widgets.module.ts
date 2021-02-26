@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TeamDisplayComponent } from './components/team-display/team-display.component';
 import { HockeyDataGameScorePreviewComponent } from './components/hockeydata-game-score-preview/hockeydata-game-score-preview.component';
 import { HockeydataPeriodPipe } from './pipes/hockeydata-period.pipe';
+import { PeriodDisplayComponent } from './components/period-display/period-display.component';
 
 
 @NgModule({
@@ -13,8 +14,9 @@ import { HockeydataPeriodPipe } from './pipes/hockeydata-period.pipe';
   declarations: [
     HockeyDataGameScoreComponent,
     HockeyDataGameScorePreviewComponent,
+    HockeydataPeriodPipe,
     TeamDisplayComponent,
-    HockeydataPeriodPipe
+    PeriodDisplayComponent
   ],
   exports: [
     HockeyDataGameScoreComponent,
