@@ -34,7 +34,6 @@ speed-measure-plugin*.json
 # misc
 /.sass-cache
 /connect.lock
-/coverage
 /libpeerconnection.log
 npm-debug.log
 yarn-error.log
@@ -67,11 +66,26 @@ bower_components/
 # misc
 .sass-cache/
 connect.lock/
-coverage/
 libpeerconnection.log/
 npm-debug.log
 testem.log
 projects/ng-social-login/typings/
+
+# coverage
+coverage/ng-animations/*
+!coverage/ng-animations/lcov.info
+coverage/ng-core/*
+!coverage/ng-core/lcov.info
+coverage/ng-elements/*
+!coverage/ng-elements/lcov.info
+coverage/ng-hockeydata-widgets/*
+!coverage/ng-hockeydata-widgets/lcov.info
+coverage/ng-screens/*
+!coverage/ng-screens/lcov.info
+coverage/ts-core/*
+!coverage/ts-core/lcov.info
+coverage/ts-hockeydata-api/*
+!coverage/ts-hockeydata-api/lcov.info
 
 # e2e
 e2e/*.js
