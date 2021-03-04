@@ -7,6 +7,7 @@ import {
   HockeyDataLeague,
   HockeyDataSport,
   IHockeyDataGameReport,
+  IHockeyDataStandings,
   sports
 } from '../model/types';
 import { UrlBuilder } from '@valcome/ts-core';
@@ -29,6 +30,12 @@ export abstract class HockeyDataDAO {
   public fetchGameReport(gameId: string, params: ApiParams = {}): Observable<IHockeyDataGameReport> {
     params.gameId = gameId;
     return this.call('GetGameReport', params);
+  }
+
+  public fetchStandings(divisionId: number, live: boolean, params: ApiParams = {}): Observable<IHockeyDataStandings> {
+    params.divisionId = divisionId;
+    params.widgetOptions = `{"live":${live}}`;
+    return this.call('Standings', params);
   }
 
   public call(call: HockeyDataApiCall, params: ApiParams): Observable<any> {

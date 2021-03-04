@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HockeyDataGameReportMapper } from './hockeydata-gamereport.mapper';
 import { HockeyDataGameDataMapper } from './hockeydata-gamedata.mapper';
 import { HockeyDataGameReport } from '../model/hockeydata-gamereport';
-import { getGameReportData } from './game-report-data';
+import { getGameReportData } from './test-data/game-report-data';
 import createSpy = jasmine.createSpy;
 
 describe('HockeyDataGameReportMapper', () => {

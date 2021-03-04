@@ -6,7 +6,7 @@ export interface HockeyDataApiConfig {
 export type HockeyDataSport = 'icehockey' | 'americanfootball';
 export type HockeyDataLeague = 'ebel' | 'afboe';
 export type HockeyDataApiCall = 'GetGameReport' | 'Standings' | 'Schedule';
-export type ApiParams = Record<string, string | number>;
+export type ApiParams = Record<string, string | number | boolean>;
 
 export const sports: Record<HockeyDataLeague, HockeyDataSport> = {
   ebel: 'icehockey',
@@ -92,11 +92,45 @@ export interface IHockeyDataGameReportData {
   gameSituations: any[];
 }
 
-export interface IHockeyDataGameReport {
+export interface IHockeyDataApiResponse {
   statusId: number;
   statusMsg: string;
-  data: IHockeyDataGameReportData;
+  data: any | any[];
   calcTime: number;
   lastUpdate: IHockeyDataDate;
   servedByServer: string;
+}
+
+export interface IHockeyDataGameReport extends IHockeyDataApiResponse {
+  data: IHockeyDataGameReportData;
+}
+
+export interface IHockeyDataStandings extends IHockeyDataApiResponse {
+  data: {
+    rows: IHockeyDataTeamStanding[]
+  };
+}
+
+export interface IHockeyDataTeamStanding {
+  id: number;
+  tableRank: number;
+  tableRankImprovement: number;
+  teamLongname: string;
+  teamShortname: string;
+  gamesPlayed: number;
+  gamesWon: number;
+  gamesWonInOt: number;
+  gamesTied: number;
+  gamesLostInOt: number;
+  gamesLost: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDifference: string;
+  points: number;
+  bonusPoints: number;
+  labels: string[];
+  pointsPerGame: number;
+  goalsForPerGame: number;
+  goalDifferencePerGame: number;
+  gamesPlayedPercentage: number;
 }

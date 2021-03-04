@@ -3,7 +3,10 @@ import { HockeyDataIceHockeyService } from './hockeydata-icehockey.service';
 import { HockeyDataApiModule } from '../../hockeydata-api.module';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
-import { getGameReportData } from '../../mapper/game-report-data';
+import { getGameReportData } from '../../mapper/test-data/game-report-data';
+import { getTeamStandings } from '../../mapper/test-data/team-standings-data';
+import { HockeyDataTeamStanding } from '../../model/hockeydata-team-standing';
+import { HockeyDataGameReport } from '../../model/hockeydata-gamereport';
 import createSpy = jasmine.createSpy;
 
 describe('HockeyDataIcehockeyService', () => {
@@ -33,7 +36,7 @@ describe('HockeyDataIcehockeyService', () => {
 
     const gameReport = await service.getGameReport('gameId');
 
-    expect(gameReport).toBeDefined();
+    expect(gameReport).toBeInstanceOf(HockeyDataGameReport);
     expect(gameReport.gameData).toBeDefined();
     expect(gameReport.gameData.generalData).toBeDefined();
     expect(gameReport.gameData.liveData).toBeDefined();
@@ -41,5 +44,34 @@ describe('HockeyDataIcehockeyService', () => {
     expect(gameReport.gameData.location).toBeDefined();
     expect(gameReport.gameData.schedule).toBeDefined();
     expect(gameReport.gameData.teamScores).toBeDefined();
+  });
+
+  it('should return team standings data', async () => {
+    jsonpMock.and.returnValue(of(getTeamStandings()));
+
+    const teamStandings = await service.getStandings(1234, true);
+
+    expect(teamStandings).toBeInstanceOf(Array);
+    expect(teamStandings.every(ts => ts instanceof HockeyDataTeamStanding)).toEqual(true);
+    teamStandings.forEach(standing => {
+      expect(standing.teamId).toBeDefined();
+      expect(standing.teamShortname).toBeDefined();
+      expect(standing.teamLongname).toBeDefined();
+      expect(standing.gamesWonInOt).toBeDefined();
+      expect(standing.gamesWon).toBeDefined();
+      expect(standing.gamesLost).toBeDefined();
+      expect(standing.gamesLostInOt).toBeDefined();
+      expect(standing.gamesTied).toBeDefined();
+      expect(standing.goalsFor).toBeDefined();
+      expect(standing.goalsAgainst).toBeDefined();
+      expect(standing.goalsForPerGame).toBeDefined();
+      expect(standing.points).toBeDefined();
+      expect(standing.pointsPerGame).toBeDefined();
+      expect(standing.bonusPoints).toBeDefined();
+      expect(standing.rankImprovement).toBeDefined();
+      expect(standing.rank).toBeDefined();
+      expect(standing.goalDifference).toBeDefined();
+      expect(standing.goalDifferencePerGame).toBeDefined();
+    });
   });
 });

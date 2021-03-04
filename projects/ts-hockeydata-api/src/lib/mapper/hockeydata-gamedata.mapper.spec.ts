@@ -7,7 +7,7 @@ import { HockeyDataGameDataScheduleMapper } from './hockeydata-gamedata-schedule
 import { HockeyDataLocationMapper } from './hockeydata-location.mapper';
 import { HockeyDataGameScoreMapper } from './hockeydata-game-score.mapper';
 import { HockeyDataPeriodGameDataMapper } from './hockeydata-period-gamedata.mapper';
-import { getGameReportData } from './game-report-data';
+import { getGameReportData } from './test-data/game-report-data';
 import { HockeyDataGameData } from '../model/hockeydata-gamedata';
 
 describe('HockeyDataGameDataMapper', () => {
