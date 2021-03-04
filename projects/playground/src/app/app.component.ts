@@ -3,7 +3,7 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
 import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
-import { HockeyDataGameReport, HockeyDataIceHockeyService } from 'ts-hockeydata-api';
+import { HockeyDataGameReport, HockeyDataIceHockeyService, HockeyDataTeamStanding } from 'ts-hockeydata-api';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,13 @@ import { HockeyDataGameReport, HockeyDataIceHockeyService } from 'ts-hockeydata-
 })
 export class AppComponent implements OnInit {
   public gameReport?: HockeyDataGameReport;
+  public standings?: HockeyDataTeamStanding[];
+  public logos: Record<string, string> = {
+    SWL: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/SWL.png',
+    ECB: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/ECB.png',
+    JES: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/JES.png'
+  };
+
   public homeLogo = 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/ECB.png';
   public awayLogo = 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/WSV.png';
 
@@ -98,6 +105,10 @@ export class AppComponent implements OnInit {
     this.getGameReport().then(report => {
       this.gameReport = report;
     });
+
+    this.getTeamStandings().then(standings => {
+      this.standings = standings;
+    });
   }
 
   private initForm(): void {
@@ -136,5 +147,9 @@ export class AppComponent implements OnInit {
 
   public async getGameReport(): Promise<HockeyDataGameReport> {
     return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
+  }
+
+  public async getTeamStandings(): Promise<HockeyDataTeamStanding[]> {
+    return await this.hockeyDataIceHockeyService.getStandings(7818, true);
   }
 }
