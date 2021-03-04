@@ -12,3 +12,4 @@ export * from './lib/model/hockeydata-live-gamedata';
 export * from './lib/model/hockeydata-location';
 export * from './lib/model/hockeydata-period-gamedata';
 export * from './lib/model/hockeydata-period-stats';
+export * from './lib/model/hockeydata-team-standing';
