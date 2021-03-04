@@ -1,0 +1,42 @@
+<ng-container *ngIf="standings">
+    <table id="standingsTable">
+        <thead>
+        <tr class="standings-header-row">
+            <th></th>
+            <th></th>
+            <th>Team</th>
+            <th>GP</th>
+            <th>W</th>
+            <th>L</th>
+            <th>OTW</th>
+            <th>OTL</th>
+            <th>GF</th>
+            <th>GA</th>
+            <th>GD</th>
+            <th>PTS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let standing of standings" class="standings-row"
+            [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
+            <td class="rank">{{standing.rank}}</td>
+            <td class="logo">
+                <img [src]="logos['JES']" alt="team-logo"/>
+            </td>
+            <td class="team-name">
+                <span class="desktop">{{standing.teamLongname}}</span>
+                <span class="mobile">{{standing.teamShortname}}</span>
+            </td>
+            <td class="value">{{standing.gamesPlayed}}</td>
+            <td class="value">{{standing.gamesWon}}</td>
+            <td class="value">{{standing.gamesLost}}</td>
+            <td class="value">{{standing.gamesWonInOt}}</td>
+            <td class="value">{{standing.gamesLostInOt}}</td>
+            <td class="value">{{standing.goalsFor}}</td>
+            <td class="value">{{standing.goalsAgainst}}</td>
+            <td class="value">{{standing.goalDifference}}</td>
+            <td class="value">{{standing.points}}</td>
+        </tr>
+        </tbody>
+    </table>
+</ng-container>

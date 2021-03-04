@@ -1,0 +1,29 @@
+#standingsTable {
+  --value-width: 7%;
+
+  @media (max-width: 768px) {
+    --value-width: 28px;
+  }
+}
+
+td {
+  &.value {
+    width: var(--value-width);
+  }
+
+  &.team-name {
+    padding-right: 8px;
+
+    --display-mobile: none;
+    --display-desktop: inherit;
+
+    @media (max-width: 650px) {
+      --display-mobile: inherit;
+      --display-desktop: none;
+    }
+
+    .mobile { display: var(--display-mobile)}
+
+    .desktop { display: var(--display-desktop)}
+  }
+}

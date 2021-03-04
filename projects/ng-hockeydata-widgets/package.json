@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-hockeydata-widgets",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "scripts": {
     "preversion": "ng test ng-hockeydata-widgets --watch=false",
     "version": "ng build ng-hockeydata-widgets --prod",
@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^10.0.0",
     "@angular/core": "^10.0.0",
-    "@valcome/ts-hockeydata-api": "^0.0.9"
+    "@valcome/ts-hockeydata-api": "^0.1.0"
   },
   "dependencies": {
     "@valcome/ng-styles": "^1.0.12",

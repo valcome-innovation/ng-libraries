@@ -1,0 +1,13 @@
+#standingsTable {
+  --value-width: 15%;
+
+  @media (max-width: 768px) {
+    --value-width: 15%;
+  }
+}
+
+td {
+  &.value {
+    width: var(--value-width);
+  }
+}

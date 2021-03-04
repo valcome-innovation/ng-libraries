@@ -5,6 +5,8 @@ import { TeamDisplayComponent } from './components/team-display/team-display.com
 import { HockeyDataGameScorePreviewComponent } from './components/hockeydata-game-score-preview/hockeydata-game-score-preview.component';
 import { HockeydataPeriodPipe } from './pipes/hockeydata-period.pipe';
 import { PeriodDisplayComponent } from './components/period-display/period-display.component';
+import { HockeyDataStandingsStandardComponent } from './components/hockeydata-standings/hockeydata-standings-standard/hockeydata-standings-standard.component';
+import { HockeydataStandingsCompactComponent } from './components/hockeydata-standings/hockeydata-standings-compact/hockeydata-standings-compact.component';
 
 
 @NgModule({
@@ -14,6 +16,8 @@ import { PeriodDisplayComponent } from './components/period-display/period-displ
   declarations: [
     HockeyDataGameScoreComponent,
     HockeyDataGameScorePreviewComponent,
+    HockeyDataStandingsStandardComponent,
+    HockeydataStandingsCompactComponent,
     HockeydataPeriodPipe,
     TeamDisplayComponent,
     PeriodDisplayComponent
@@ -21,6 +25,8 @@ import { PeriodDisplayComponent } from './components/period-display/period-displ
   exports: [
     HockeyDataGameScoreComponent,
     HockeyDataGameScorePreviewComponent,
+    HockeyDataStandingsStandardComponent,
+    HockeydataStandingsCompactComponent,
     HockeydataPeriodPipe
   ]
 })

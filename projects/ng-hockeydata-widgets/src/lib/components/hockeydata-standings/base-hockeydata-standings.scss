@@ -1,0 +1,60 @@
+@import "../../styles";
+
+#standingsTable {
+  --font-size: 14px;
+  --logo-width: 45px;
+
+  @media (max-width: 768px) {
+    --logo-width: 30px;
+  }
+  @media (max-width: 450px) {
+    --font-size: 12px;
+  }
+
+  border-spacing: 0;
+  width: 100%;
+  font-size: var(--font-size);
+}
+
+thead tr {
+  background-color: black;
+  color: white;
+}
+
+.highlighted {
+  background-color: #e9ffd5;
+}
+
+tr:nth-child(even):not(.highlighted) {
+  background-color: #f1f1f1;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px 4px;
+}
+
+
+td {
+  &.team-name {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &.rank {
+    width: 15px;
+  }
+
+  &.logo {
+    padding: 3px;
+    width: var(--logo-width);
+  }
+}
+
+img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  object-position: center;
+}
