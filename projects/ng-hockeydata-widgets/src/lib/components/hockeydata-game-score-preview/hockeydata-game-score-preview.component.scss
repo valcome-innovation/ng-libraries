@@ -1,9 +1,11 @@
 :host {
   --font-size: 20px;
   --image-size: 35px;
+  --score-padding: 0.5rem;
 
   @media (max-width: 576px) {
     --image-size: 35px;
+    --score-padding: 0.25rem;
   }
 
   @media (max-width: 350px) {
@@ -27,8 +29,8 @@
   }
 
   .score-container {
-    display: flex;
-    justify-content: space-around;
+    padding-left: var(--score-padding);
+    padding-right: var(--score-padding);
   }
 
   .score-display {
