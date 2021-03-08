@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-elements#ngelements",
   "peerDependencies": {
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
+    "@angular/common": "~10.0.3",
+    "@angular/core": "~10.0.3",
     "@valcome/ng-animations": "^1.2.2",
     "@valcome/ng-core": "^1.2.0",
     "@valcome/ts-core": "^1.0.0"
