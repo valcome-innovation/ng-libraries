@@ -12,7 +12,10 @@ import { HockeyDataGameReport, HockeyDataIceHockeyService, HockeyDataTeamStandin
 })
 export class AppComponent implements OnInit {
   public gameReport?: HockeyDataGameReport;
-  public standings?: HockeyDataTeamStanding[];
+
+  public standings2?: HockeyDataTeamStanding[];
+  public standings3?: HockeyDataTeamStanding[];
+
   public logos: Record<string, string> = {
     SWL: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/SWL.png',
     ECB: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/ECB.png',
@@ -106,9 +109,8 @@ export class AppComponent implements OnInit {
       this.gameReport = report;
     });
 
-    this.getTeamStandings().then(standings => {
-      this.standings = standings;
-    });
+    this.getTeamStandings(8136).then(standings => this.standings2 = standings);
+    this.getTeamStandings(7818).then(standings => this.standings3 = standings);
   }
 
   private initForm(): void {
@@ -149,7 +151,7 @@ export class AppComponent implements OnInit {
     return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
   }
 
-  public async getTeamStandings(): Promise<HockeyDataTeamStanding[]> {
-    return await this.hockeyDataIceHockeyService.getStandings(7818, true);
+  public async getTeamStandings(divisionId: number): Promise<HockeyDataTeamStanding[]> {
+    return await this.hockeyDataIceHockeyService.getStandings(divisionId, true);
   }
 }
