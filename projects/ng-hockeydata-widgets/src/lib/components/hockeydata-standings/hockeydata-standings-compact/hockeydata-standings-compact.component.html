@@ -14,7 +14,7 @@
         [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
       <td class="rank">{{standing.rank}}</td>
       <td class="team d-flex align-items-center">
-        <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-1"/>
+        <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2"/>
         {{standing.teamShortname}}
       </td>
       <td class="value">{{standing.gamesPlayed}}</td>
