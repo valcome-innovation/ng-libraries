@@ -20,7 +20,6 @@
     "@angular/platform-browser": "~10.2.4",
     "@angular/platform-browser-dynamic": "~10.2.4",
     "@angular/router": "~10.2.4",
-    "bootstrap": "^4.4.1",
     "drift-zoom": "^1.4.0",
     "ios-inner-height": "^1.1.1",
     "jwt-decode": "^2.2.0",
