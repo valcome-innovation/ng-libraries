@@ -10,5 +10,5 @@ export abstract class BaseHockeydataStandingsComponent {
   public logos: Record<string, string> = {};
 
   @Input()
-  public highlighted: string[] = ['SWL'];
+  public highlighted: string[] = [];
 }
