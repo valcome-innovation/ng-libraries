@@ -12,7 +12,9 @@
     <tbody>
     <tr *ngFor="let standing of standings" class="standings-row"
         [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
-      <td class="rank">{{standing.rank}}</td>
+      <td class="rank">
+        <div class="rank-wrapper">{{standing.rank}}</div>
+      </td>
       <td class="team d-flex align-items-center">
         <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2"/>
         {{standing.teamShortname}}
