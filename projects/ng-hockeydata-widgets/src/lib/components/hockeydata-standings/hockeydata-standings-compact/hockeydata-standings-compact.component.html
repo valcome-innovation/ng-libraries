@@ -2,25 +2,24 @@
   <table id="standingsTable">
     <thead>
     <tr class="standings-header-row">
-      <th></th>
-      <th></th>
-      <th>Team</th>
-      <th>GP</th>
-      <th>GD</th>
-      <th>PTS</th>
+      <th class="rank">#</th>
+      <th class="team">Team</th>
+      <th class="value">GP</th>
+      <th class="value">GD</th>
+      <th class="value pts">PTS</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let standing of standings" class="standings-row"
         [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
       <td class="rank">{{standing.rank}}</td>
-      <td class="logo">
-        <img [src]="logos[standing.teamShortname]" alt="team-logo"/>
+      <td class="team d-flex align-items-center">
+        <img [src]="logos[standing.teamShortname]" alt="team-logo" class="mr-1"/>
+        {{standing.teamShortname}}
       </td>
-      <td class="team-name">{{standing.teamShortname}}</td>
       <td class="value">{{standing.gamesPlayed}}</td>
       <td class="value">{{standing.goalDifference}}</td>
-      <td class="value">{{standing.points}}</td>
+      <td class="value pts">{{standing.points}}</td>
     </tr>
     </tbody>
   </table>
