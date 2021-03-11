@@ -7,6 +7,7 @@ import {
   HockeyDataLeague,
   HockeyDataSport,
   IHockeyDataGameReport,
+  IHockeyDataKnockOutStage,
   IHockeyDataStandings,
   sports
 } from '../model/types';
@@ -36,6 +37,11 @@ export abstract class HockeyDataDAO {
     params.divisionId = divisionId;
     params.widgetOptions = `{"live":${live}}`;
     return this.call('Standings', params);
+  }
+
+  public fetchKnockoutStage(divisionId: number, params: ApiParams = {}): Observable<IHockeyDataKnockOutStage> {
+    params.divisionId = divisionId;
+    return this.call('KnockoutStage', params);
   }
 
   public call(call: HockeyDataApiCall, params: ApiParams): Observable<any> {

@@ -32,7 +32,7 @@ describe('HockeyDataGeneralGameDataMapper', () => {
     expect(result).toBeInstanceOf(HockeyDataGeneralGameData);
     expect(result.gameId).toEqual(data.id);
     expect(result.divisionId).toEqual(data.divisionId);
-    expect(result.divisionLongname).toEqual(data.divisionLongname);
+    expect(result.divisionName).toEqual(data.divisionLongname);
     expect(result.gameName).toEqual(data.gameName);
     expect(result.gameRound).toEqual(data.gameRound);
   });

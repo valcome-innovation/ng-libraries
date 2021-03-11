@@ -7,6 +7,13 @@ import { getGameReportData } from '../../mapper/test-data/game-report-data';
 import { getTeamStandings } from '../../mapper/test-data/team-standings-data';
 import { HockeyDataTeamStanding } from '../../model/hockeydata-team-standing';
 import { HockeyDataGameReport } from '../../model/hockeydata-gamereport';
+import { getKnockoutStageData } from '../../mapper/test-data/knockout-stage-data';
+import { HockeyDataKnockoutStage } from '../../model/hockeydata-knockout-stage';
+import { HockeyDataKnockoutPhase } from '../../model/hockeydata-knockout-phase';
+import { HockeyDataKnockoutEncounter } from '../../model/hockeydata-knockout-encounter';
+import { HockeyDataKnockoutTeamScore } from '../../model/hockeydata-knockout-team-score';
+import { HockeyDataKnockoutGame } from '../../model/hockeydata-knockout-game';
+import { HockeyDataGameScore } from '../../model/hockeydata-game-score';
 import createSpy = jasmine.createSpy;
 
 describe('HockeyDataIcehockeyService', () => {
@@ -72,6 +79,50 @@ describe('HockeyDataIcehockeyService', () => {
       expect(standing.rank).toBeDefined();
       expect(standing.goalDifference).toBeDefined();
       expect(standing.goalDifferencePerGame).toBeDefined();
+    });
+  });
+
+  it('should return knockout stage', async () => {
+    const data = getKnockoutStageData();
+    jsonpMock.and.returnValue(of(data));
+
+    const knockoutStage = await service.getKnockoutStage(1234);
+
+    expect(knockoutStage).toBeInstanceOf(HockeyDataKnockoutStage);
+    expect(knockoutStage.divisionName).toEqual(data.data.divisionName);
+    expect(knockoutStage.divisionId).toEqual(data.data.divisionId);
+
+    knockoutStage.phases.forEach(phase => {
+      expect(phase).toBeInstanceOf(HockeyDataKnockoutPhase);
+      expect(phase.name).toBeDefined();
+
+      phase.encounters.forEach(encounter => {
+        expect(encounter).toBeInstanceOf(HockeyDataKnockoutEncounter);
+        expect(encounter.gamesNeeded).toBeDefined();
+        expect(encounter.bestOf).toBeDefined();
+        expect(encounter.isDecided).toBeDefined();
+
+        encounter.teamScores.forEach(score => {
+          expect(score).toBeInstanceOf(HockeyDataKnockoutTeamScore);
+          expect(score.teamId).toBeDefined();
+          expect(score.shortName).toBeDefined();
+          expect(score.longName).toBeDefined();
+          expect(score.gamesWon).toBeDefined();
+        });
+
+        encounter.games.forEach(game => {
+          expect(game).toBeInstanceOf(HockeyDataKnockoutGame);
+          expect(game.isLive).toBeDefined();
+          expect(game.isShootOut).toBeDefined();
+          expect(game.date).toBeDefined();
+          expect(game.isOvertime).toBeDefined();
+          expect(game.hasEnded).toBeDefined();
+          expect(game.gameRound).toBeDefined();
+          expect(game.gameName).toBeDefined();
+          expect(game.gameId).toBeDefined();
+          expect(game.teamScores).toBeInstanceOf(HockeyDataGameScore);
+        });
+      });
     });
   });
 });

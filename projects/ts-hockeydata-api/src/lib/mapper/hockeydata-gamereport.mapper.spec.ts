@@ -27,7 +27,7 @@ describe('HockeyDataGameReportMapper', () => {
 
   it('should map gameData', () => {
     const data = getGameReportData();
-    const result = mapper.fromJson(data);
+    const result = mapper.fromJson(data.data);
 
     expect(result).toBeInstanceOf(HockeyDataGameReport);
     expect(gameDataMapperSpy).toHaveBeenCalledWith(data.data.gameData);

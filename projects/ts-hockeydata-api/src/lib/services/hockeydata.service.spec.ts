@@ -4,13 +4,15 @@ import { HockeyDataGameReportMapper } from '../mapper/hockeydata-gamereport.mapp
 import { Injectable } from '@angular/core';
 import { HockeyDataDAO } from './hockeydata.dao';
 import { HockeyDataTeamStandingMapper } from '../mapper/hockeydata-team-standing.mapper';
+import { HockeyDataKnockoutStageMapper } from '../mapper/hockeydata-knockout-stage.mapper';
 
 @Injectable()
 class TestService extends HockeyDataService {
   public constructor(dao: HockeyDataDAO,
                      gameReportMapper: HockeyDataGameReportMapper,
-                     teamStandingMapper: HockeyDataTeamStandingMapper) {
-    super(dao, gameReportMapper, teamStandingMapper);
+                     teamStandingMapper: HockeyDataTeamStandingMapper,
+                     knockoutStageMapper: HockeyDataKnockoutStageMapper) {
+    super(dao, gameReportMapper, teamStandingMapper, knockoutStageMapper);
   }
 }
 
@@ -24,7 +26,8 @@ describe('HockeyDataService', () => {
         TestService,
         { provide: HockeyDataDAO, useValue: {} },
         { provide: HockeyDataGameReportMapper, useValue: {} },
-        { provide: HockeyDataTeamStandingMapper, useValue: {} }
+        { provide: HockeyDataTeamStandingMapper, useValue: {} },
+        { provide: HockeyDataKnockoutStageMapper, useValue: {} }
       ]
     });
 

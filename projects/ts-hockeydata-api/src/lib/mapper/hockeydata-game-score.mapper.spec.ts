@@ -34,12 +34,37 @@ describe('HockeyDataGameScoreMapper', () => {
 
     expect(result).toBeInstanceOf(HockeyDataGameScore);
     expect(result.homeTeamId).toEqual(data.homeTeamId);
-    expect(result.homeTeamLongname).toEqual(data.homeTeamLongname);
-    expect(result.homeTeamShortname).toEqual(data.homeTeamShortname);
+    expect(result.homeTeamLongName).toEqual(data.homeTeamLongname);
+    expect(result.homeTeamShortName).toEqual(data.homeTeamShortname);
     expect(result.homeTeamScore).toEqual(data.homeTeamScore);
     expect(result.awayTeamId).toEqual(data.awayTeamId);
-    expect(result.awayTeamLongname).toEqual(data.awayTeamLongname);
-    expect(result.awayTeamShortname).toEqual(data.awayTeamShortname);
+    expect(result.awayTeamLongName).toEqual(data.awayTeamLongname);
+    expect(result.awayTeamShortName).toEqual(data.awayTeamShortname);
+    expect(result.awayTeamScore).toEqual(data.awayTeamScore);
+  });
+
+  it('should map team score data from phase game', () => {
+    const data: any = {
+      homeTeamId: 1234,
+      homeTeamLongName: 'HTL',
+      homeTeamShortName: 'HTS',
+      homeTeamScore: 7,
+      awayTeamId: 4321,
+      awayTeamLongName: 'ATL',
+      awayTeamShortName: 'ATS',
+      awayTeamScore: 1
+    };
+
+    const result = mapper.fromJson(data);
+
+    expect(result).toBeInstanceOf(HockeyDataGameScore);
+    expect(result.homeTeamId).toEqual(data.homeTeamId);
+    expect(result.homeTeamLongName).toEqual(data.homeTeamLongName);
+    expect(result.homeTeamShortName).toEqual(data.homeTeamShortName);
+    expect(result.homeTeamScore).toEqual(data.homeTeamScore);
+    expect(result.awayTeamId).toEqual(data.awayTeamId);
+    expect(result.awayTeamLongName).toEqual(data.awayTeamLongName);
+    expect(result.awayTeamShortName).toEqual(data.awayTeamShortName);
     expect(result.awayTeamScore).toEqual(data.awayTeamScore);
   });
 

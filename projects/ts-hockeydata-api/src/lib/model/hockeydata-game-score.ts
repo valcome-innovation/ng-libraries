@@ -1,11 +1,11 @@
 export class HockeyDataGameScore {
   public homeTeamId: number;
-  public homeTeamLongname: string;
-  public homeTeamShortname: string;
+  public homeTeamLongName: string;
+  public homeTeamShortName: string;
   public homeTeamScore: number;
   public awayTeamId: number;
-  public awayTeamLongname: string;
-  public awayTeamShortname: string;
+  public awayTeamLongName: string;
+  public awayTeamShortName: string;
   public awayTeamScore: number;
 
   public constructor(homeTeamId: number,
@@ -17,12 +17,12 @@ export class HockeyDataGameScore {
                      awayTeamShortname: string,
                      awayTeamScore: number) {
     this.homeTeamId = homeTeamId;
-    this.homeTeamLongname = homeTeamLongname;
-    this.homeTeamShortname = homeTeamShortname;
+    this.homeTeamLongName = homeTeamLongname;
+    this.homeTeamShortName = homeTeamShortname;
     this.homeTeamScore = homeTeamScore;
     this.awayTeamId = awayTeamId;
-    this.awayTeamLongname = awayTeamLongname;
-    this.awayTeamShortname = awayTeamShortname;
+    this.awayTeamLongName = awayTeamLongname;
+    this.awayTeamShortName = awayTeamShortname;
     this.awayTeamScore = awayTeamScore;
   }
 }

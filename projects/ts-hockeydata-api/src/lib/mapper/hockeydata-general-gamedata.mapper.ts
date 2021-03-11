@@ -12,9 +12,9 @@ export class HockeyDataGeneralGameDataMapper extends BaseMapper<HockeyDataGenera
   public fromJson(json: Partial<IHockeyDataGameReportGameData>): HockeyDataGeneralGameData {
     const gameId = this.getValidated(json.id);
     const divisionId = this.getValidated(json.divisionId);
-    const divisionLongname = this.getValidated(json.divisionLongname);
+    const divisionName = this.getValidated(json.divisionLongname);
     const gameName = this.getValidated(json.gameName);
     const gameRound = this.getValidated(json.gameRound);
-    return new HockeyDataGeneralGameData(gameId, divisionId, divisionLongname, gameName, gameRound);
+    return new HockeyDataGeneralGameData(gameId, divisionId, divisionName, gameName, gameRound);
   }
 }

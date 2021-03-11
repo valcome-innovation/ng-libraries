@@ -5,7 +5,7 @@ export interface HockeyDataApiConfig {
 
 export type HockeyDataSport = 'icehockey' | 'americanfootball';
 export type HockeyDataLeague = 'ebel' | 'afboe';
-export type HockeyDataApiCall = 'GetGameReport' | 'Standings' | 'Schedule';
+export type HockeyDataApiCall = 'GetGameReport' | 'Standings' | 'Schedule' | 'KnockoutStage';
 export type ApiParams = Record<string, string | number | boolean>;
 
 export const sports: Record<HockeyDataLeague, HockeyDataSport> = {
@@ -133,4 +133,82 @@ export interface IHockeyDataTeamStanding {
   goalsForPerGame: number;
   goalDifferencePerGame: number;
   gamesPlayedPercentage: number;
+}
+
+export interface IHockeyDataKnockOutStage extends IHockeyDataApiResponse {
+  data: IHockeyDataKnockOutStageData;
+}
+
+export interface IHockeyDataKnockOutStageData {
+  divisionId: number;
+  divisionName: string;
+  phases: IHockeyDataKnockOutPhase[];
+}
+
+export interface IHockeyDataKnockOutPhase {
+  divisionId: number;
+  divisionName: string;
+  divisionType: number;
+  encounters: IHockeyDataPhaseEncounter[];
+  phaseTeams: IHockeyDataPhaseTeam[];
+}
+
+export interface IHockeyDataPhaseTeam {
+  teamId: number;
+  divisionId: number;
+  isGhost: boolean;
+  qualifyState: number;
+}
+
+export interface IHockeyDataPhaseEncounter {
+  id: number;
+  longname: string;
+  shortname: string;
+  isDecided: boolean;
+  labels: any[];
+  bestOf: number;
+  gamesNeeded: number;
+  teams: IHockeyDataPhaseEncounterTeam[];
+  games: IHockeyDataKnockoutPhaseGame[];
+}
+
+export interface IHockeyDataPhaseEncounterTeam {
+  id: number;
+  longname: string;
+  shortname: string;
+  gamesWon: number;
+  encounterTeamStatus: number;
+}
+
+export interface IHockeyDataKnockoutPhaseGame {
+  id: string;
+  scheduledDate: {
+    sortValue: number;
+    value: string;
+    shortValue: string;
+    longValue: string;
+  };
+  scheduledTime: string;
+  gameName: string;
+  gameDay: any;
+  gameRound: number;
+  gameUtcTimestamp: number;
+  awayTeamId: number;
+  awayTeamLongName: string;
+  awayTeamShortName: string;
+  awayTeamScore: number;
+  homeTeamId: number;
+  homeTeamLongName: string;
+  homeTeamShortName: string;
+  homeTeamScore: number;
+  gameStatus: number;
+  extendedStatus: number;
+  dateIsToBeDetermined: boolean;
+  timeIsToBeDetermined: boolean;
+  isOvertime: boolean;
+  isShootOut: boolean;
+  liveTime: number;
+  gameHasEnded: boolean;
+  labels: any[];
+  seriesStandings: any;
 }
