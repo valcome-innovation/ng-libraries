@@ -13,6 +13,7 @@ export const sports: Record<HockeyDataLeague, HockeyDataSport> = {
   afboe: 'americanfootball'
 };
 
+
 export interface IHockeyDataDate {
   formattedShort: string;
   formattedLong: string;
