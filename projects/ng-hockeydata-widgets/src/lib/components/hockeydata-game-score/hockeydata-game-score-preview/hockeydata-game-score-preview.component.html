@@ -1,28 +1,28 @@
 <div *ngIf="gameReport" class="container w-100">
-    <div class="d-flex space-evenly w-100">
-        <div class="team-container right my-auto">
-            <div class="team-display">
-                <img class="team-logo" [src]="homeLogo" alt="team-logo">
-                <div class="team-name">{{gameReport.gameData.teamScores.homeTeamShortName}}</div>
-            </div>
-        </div>
-        <div class="score-container my-auto text-center">
-            <div class="score-display d-flex justify-content-center">
-                <span class="score">{{gameReport.gameData.teamScores.homeTeamScore}}</span>
-                <span class="px-2 my-auto">:</span>
-                <span class="score">{{gameReport.gameData.teamScores.awayTeamScore}}</span>
-            </div>
-            <div class="period-info mt-2">
-                <hockeydata-period-display [gameReport]="gameReport"></hockeydata-period-display>
-                <span> - </span>
-                <span>{{gameReport.gameData.liveData.liveTimeFormatted}}</span>
-            </div>
-        </div>
-        <div class="team-container left my-auto">
-            <div class="team-display">
-                <img class="team-logo" [src]="awayLogo" alt="team-logo">
-                <div class="team-name">{{gameReport.gameData.teamScores.awayTeamShortName}}</div>
-            </div>
-        </div>
+  <div class="d-flex space-evenly w-100">
+    <div class="team-container right my-auto">
+      <div class="team-display">
+        <img class="team-logo" [src]="homeLogo" alt="team-logo">
+        <div class="team-name">{{gameReport.gameData.teamScores.homeTeamShortName}}</div>
+      </div>
     </div>
+    <div class="score-container my-auto text-center">
+      <div class="score-display d-flex justify-content-center">
+        <span class="score">{{gameReport.gameData.teamScores.homeTeamScore}}</span>
+        <span class="px-2 my-auto">:</span>
+        <span class="score">{{gameReport.gameData.teamScores.awayTeamScore}}</span>
+      </div>
+      <div class="period-info mt-2">
+        <hd-period-display [gameReport]="gameReport"></hd-period-display>
+        <span> - </span>
+        <span>{{gameReport.gameData.liveData.liveTimeFormatted}}</span>
+      </div>
+    </div>
+    <div class="team-container left my-auto">
+      <div class="team-display">
+        <img class="team-logo" [src]="awayLogo" alt="team-logo">
+        <div class="team-name">{{gameReport.gameData.teamScores.awayTeamShortName}}</div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -21,7 +21,7 @@
         [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
       <td class="rank">{{standing.rank}}</td>
       <td class="logo">
-        <img [src]="logoMap['JES']" alt="team-logo"/>
+        <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2"/>
       </td>
       <td class="team-name">
         <span class="desktop">{{standing.teamLongname}}</span>

@@ -4,7 +4,6 @@ export const getKnockoutStageData = () => {
   return JsUtils.mapToPlainJavascriptObject(knockoutStageData);
 };
 
-
 export const knockoutStageData = {
   statusId: 1,
   statusMsg: 'Ok',
