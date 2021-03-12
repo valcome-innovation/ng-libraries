@@ -3,7 +3,7 @@ import { HockeyDataKnockoutTeamScoreMapper } from './hockeydata-knockout-team-sc
 import { IHockeyDataPhaseEncounterTeam } from '../model/types';
 import { HockeyDataKnockoutTeamScore } from '../model/hockeydata-knockout-team-score';
 
-describe('HoyDataKnockoutTeamScoreMapper', () => {
+describe('HockeyDataKnockoutTeamScoreMapper', () => {
 
   let mapper: HockeyDataKnockoutTeamScoreMapper;
 
@@ -18,7 +18,7 @@ describe('HoyDataKnockoutTeamScoreMapper', () => {
   it('should create', () => {
     expect(mapper).toBeDefined();
   });
-
+  
   it('should map knockout team standings', () => {
     const data = {
       id: 23,
