@@ -4,6 +4,7 @@ import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
 import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
 import { HockeyDataGameReport, HockeyDataIceHockeyService, HockeyDataTeamStanding } from 'ts-hockeydata-api';
+import { HockeyDataKnockoutStage } from '../../../../dist/ts-hockeydata-api/lib/model/hockeydata-knockout-stage';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { HockeyDataGameReport, HockeyDataIceHockeyService, HockeyDataTeamStandin
 })
 export class AppComponent implements OnInit {
   public gameReport?: HockeyDataGameReport;
+
+  public knockoutStage?: HockeyDataKnockoutStage;
 
   public standings2?: HockeyDataTeamStanding[];
   public standings3?: HockeyDataTeamStanding[];
@@ -111,6 +114,11 @@ export class AppComponent implements OnInit {
 
     this.getTeamStandings(8136).then(standings => this.standings2 = standings);
     this.getTeamStandings(7818).then(standings => this.standings3 = standings);
+
+    this.getKnockOutStage(8259).then(knockoutStage => {
+      this.knockoutStage = knockoutStage;
+      console.log(this.knockoutStage);
+    });
   }
 
   private initForm(): void {
@@ -153,5 +161,9 @@ export class AppComponent implements OnInit {
 
   public async getTeamStandings(divisionId: number): Promise<HockeyDataTeamStanding[]> {
     return await this.hockeyDataIceHockeyService.getStandings(divisionId, true);
+  }
+
+  public async getKnockOutStage(divisionId: number): Promise<HockeyDataKnockoutStage> {
+    return await this.hockeyDataIceHockeyService.getKnockoutStage(divisionId);
   }
 }

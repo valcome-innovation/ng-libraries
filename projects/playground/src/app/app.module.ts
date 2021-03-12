@@ -39,8 +39,10 @@ import { HockeyDataApiModule } from '@valcome/ts-hockeydata-api';
     HttpClientJsonpModule,
     HockeyDataWidgetsModule,
     HockeyDataApiModule.forRoot({
-      apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
-      referer: 'dev.valcome.tv'
+      // apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
+      // referer: 'dev.valcome.tv'
+      apiKey: '64e80889471a0e6f2579e0b9cc165b3a',
+      referer: 'dev.live.ice.hockey'
     })
   ],
   providers: [
