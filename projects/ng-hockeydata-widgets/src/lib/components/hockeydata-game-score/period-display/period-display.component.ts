@@ -4,7 +4,7 @@ import { HockeyDataGameReport } from '@valcome/ts-hockeydata-api';
 @Component({
   selector: 'hockeydata-period-display',
   templateUrl: './period-display.component.html',
-  styleUrls: ['./period-display.component.scss', '../../styles.scss']
+  styleUrls: ['./period-display.component.scss', '../../../styles.scss']
 })
 export class PeriodDisplayComponent {
   @Input()
