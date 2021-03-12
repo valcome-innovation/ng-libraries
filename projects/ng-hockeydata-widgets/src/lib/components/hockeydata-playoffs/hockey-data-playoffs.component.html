@@ -1,9 +1,11 @@
 <div class="playoffs">
-  <div class="header">{{knockoutPhase.name}}</div>
+  <div class="phase" *ngFor="let phase of phases">
+    <div class="header">{{phase.name}}</div>
 
-  <div *ngFor="let encounter of knockoutPhase.encounters">
-    <hd-encounter [encounter]="encounter"
-                  [logoMap]="logoMap">
-    </hd-encounter>
+    <div *ngFor="let encounter of phase.encounters">
+      <hd-encounter [encounter]="encounter"
+                    [logoMap]="logoMap">
+      </hd-encounter>
+    </div>
   </div>
 </div>

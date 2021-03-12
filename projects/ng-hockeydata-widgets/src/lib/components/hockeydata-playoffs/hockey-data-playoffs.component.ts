@@ -10,7 +10,7 @@ import { LogoMap } from '../../model/logo-map';
 export class HockeyDataPlayoffsComponent {
 
   @Input()
-  public knockoutPhase!: HockeyDataKnockoutPhase;
+  public phases: HockeyDataKnockoutPhase[] = [];
 
   @Input()
   public logoMap: LogoMap = {};

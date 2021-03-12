@@ -16,7 +16,7 @@ describe('HockeyDataPlayoffsComponent', () => {
 
     fixture = TestBed.createComponent(HockeyDataPlayoffsComponent);
     component = fixture.componentInstance;
-    component.knockoutPhase = HockeyDataTestData.createKnockoutStage().phases[0];
+    component.phases = HockeyDataTestData.createKnockoutStage().phases;
 
     fixture.detectChanges();
   });

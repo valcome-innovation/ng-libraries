@@ -8,7 +8,7 @@
 <!--<hd-standings-compact [standings]="standings3" [logoMap]="logos"></hd-standings-compact>-->
 
 <hd-playoffs *ngIf="knockoutStage"
-             [knockoutPhase]="knockoutStage.phases[0]"
+             [phases]="knockoutStage.phases"
              [logoMap]="logoMap">
 </hd-playoffs>
 
