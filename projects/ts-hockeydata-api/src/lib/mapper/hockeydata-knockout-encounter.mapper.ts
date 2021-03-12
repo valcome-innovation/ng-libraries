@@ -4,6 +4,7 @@ import { HockeyDataKnockoutEncounter } from '../model/hockeydata-knockout-encoun
 import { IHockeyDataPhaseEncounter } from '../model/types';
 import { HockeyDataKnockoutGameMapper } from './hockeydata-knockout-game.mapper';
 import { HockeyDataKnockoutTeamScoreMapper } from './hockeydata-knockout-team-score.mapper';
+import { HockeyDataKnockoutTeamScore } from '../model/hockeydata-knockout-team-score';
 
 @Injectable({ providedIn: 'root' })
 export class HockeyDataKnockoutEncounterMapper extends BaseMapper<HockeyDataKnockoutEncounter> {
