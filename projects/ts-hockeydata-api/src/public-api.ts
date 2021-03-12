@@ -13,3 +13,8 @@ export * from './lib/model/hockeydata-location';
 export * from './lib/model/hockeydata-period-gamedata';
 export * from './lib/model/hockeydata-period-stats';
 export * from './lib/model/hockeydata-team-standing';
+export * from './lib/model/hockeydata-knockout-encounter';
+export * from './lib/model/hockeydata-knockout-game';
+export * from './lib/model/hockeydata-knockout-phase';
+export * from './lib/model/hockeydata-knockout-stage';
+export * from './lib/model/hockeydata-knockout-team-score';

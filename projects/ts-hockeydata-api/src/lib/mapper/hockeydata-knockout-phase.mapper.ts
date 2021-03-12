@@ -12,7 +12,12 @@ export class HockeyDataKnockoutPhaseMapper extends BaseMapper<HockeyDataKnockout
 
   public fromJson(json: Partial<IHockeyDataKnockOutPhase>): HockeyDataKnockoutPhase {
     const name = this.getValidated(json.divisionName);
+    const isActive = this.checkIfActive(json);
     const encounters = this.knockoutEncounterMapper.fromJsonArray(this.getValidated(json.encounters));
-    return new HockeyDataKnockoutPhase(name, encounters);
+    return new HockeyDataKnockoutPhase(name, isActive, encounters);
+  }
+
+  private checkIfActive(json: Partial<IHockeyDataKnockOutPhase>): boolean {
+    return true; // TODO
   }
 }
