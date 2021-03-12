@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ScoreResult } from 'ts-hockeydata-api';
+import { ScoreResult } from '@valcome/ts-hockeydata-api';
 
 @Component({
   selector: 'hd-encounter-results',
