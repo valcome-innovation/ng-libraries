@@ -3,7 +3,7 @@ import { HockeyDataGameScore } from './hockeydata-game-score';
 export class HockeyDataKnockoutGame {
   public gameId: string;
   public gameName: string;
-  public gameRound: number | undefined;
+  public gameRound?: number;
   public date: Date;
   public isOvertime: boolean;
   public isShootOut: boolean;

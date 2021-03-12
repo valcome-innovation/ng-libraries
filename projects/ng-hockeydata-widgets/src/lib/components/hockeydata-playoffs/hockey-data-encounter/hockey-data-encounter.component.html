@@ -1,0 +1,24 @@
+<div class="hd-encounter">
+
+  <div class="left">
+    <div class="team">
+      <img [src]="logoMap[leftTeamScore.shortName]" [alt]="leftTeamScore.shortName">
+      <h3>{{leftTeamScore.shortName}}</h3>
+    </div>
+    <hd-encounter-results [results]="leftTeamScore.results"></hd-encounter-results>
+  </div>
+
+  <div class="won-games mx-2">{{leftTeamScore.gamesWon}}</div>
+
+  <div class="mx-2">vs</div>
+
+  <div class="won-games mx-2">{{rightTeamScore.gamesWon}}</div>
+
+  <div class="right">
+    <div class="team">
+      <img [src]="logoMap[rightTeamScore.shortName]" [alt]="rightTeamScore.shortName">
+      <h3>{{rightTeamScore.shortName}}</h3>
+    </div>
+    <hd-encounter-results [results]="rightTeamScore.results"></hd-encounter-results>
+  </div>
+</div>

@@ -18,7 +18,7 @@ export class HockeyDataKnockoutEncounterMapper extends BaseMapper<HockeyDataKnoc
     const isDecided = this.getValidated(json.isDecided);
     const labels = this.getValidated(json.labels);
     const games = this.knockoutGamesMapper.fromJsonArray(this.getValidated(json.games));
-    const teamScores = this.knockoutTeamScoreMapper.fromJsonArray(this.getValidated(json.teams));
+    const teamScores = this.knockoutTeamScoreMapper.fromJsonArray(this.getValidated(json.teams)) as [HockeyDataKnockoutTeamScore, HockeyDataKnockoutTeamScore];
     this.knockoutTeamScoreMapper.mapScoreResults(teamScores, games);
 
     return new HockeyDataKnockoutEncounter(bestOf, gamesNeeded, isDecided, teamScores, games, labels);

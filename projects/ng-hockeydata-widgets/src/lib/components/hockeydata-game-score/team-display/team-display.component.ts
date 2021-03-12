@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 export type LogoAlignment = 'top' | 'bottom' | 'left' | 'right';
 
 @Component({
-  selector: 'hockeydata-team-display',
+  selector: 'hd-team-display',
   templateUrl: './team-display.component.html',
   styleUrls: ['./team-display.component.scss']
 })

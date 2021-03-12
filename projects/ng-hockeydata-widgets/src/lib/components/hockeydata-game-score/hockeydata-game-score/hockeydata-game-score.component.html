@@ -1,49 +1,49 @@
 <div *ngIf="gameReport" class="container">
-    <div class="score-grid">
-        <div class="team-container right my-auto">
-            <hockeydata-team-display [name]="gameReport.gameData.teamScores.homeTeamShortName"
-                                     [logo]="homeLogo">
-            </hockeydata-team-display>
-        </div>
-        <div class="my-auto">
-            <div class="score-container live-score my-auto">
-                <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
-                <div class="period-display my-auto text-center">
-                    <hockeydata-period-display [gameReport]="gameReport"></hockeydata-period-display>
-                    <div>{{gameReport?.gameData.liveData.liveTimeFormatted}}</div>
-                </div>
-                <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
-            </div>
-            <ng-container [ngTemplateOutlet]="periodStats"></ng-container>
-        </div>
-        <div class="team-container left my-auto">
-            <hockeydata-team-display [name]="gameReport.gameData.teamScores.awayTeamShortName"
-                                     [logo]="awayLogo">
-            </hockeydata-team-display>
-        </div>
+  <div class="score-grid">
+    <div class="team-container right my-auto">
+      <hd-team-display [name]="gameReport.gameData.teamScores.homeTeamShortName"
+                       [logo]="homeLogo">
+      </hd-team-display>
     </div>
+    <div class="my-auto">
+      <div class="score-container live-score my-auto">
+        <div class="score-display">{{gameReport.gameData.teamScores.homeTeamScore}}</div>
+        <div class="period-display my-auto text-center">
+          <hd-period-display [gameReport]="gameReport"></hd-period-display>
+          <div>{{gameReport?.gameData.liveData.liveTimeFormatted}}</div>
+        </div>
+        <div class="score-display">{{gameReport.gameData.teamScores.awayTeamScore}}</div>
+      </div>
+      <ng-container [ngTemplateOutlet]="periodStats"></ng-container>
+    </div>
+    <div class="team-container left my-auto">
+      <hd-team-display [name]="gameReport.gameData.teamScores.awayTeamShortName"
+                       [logo]="awayLogo">
+      </hd-team-display>
+    </div>
+  </div>
 </div>
 
 <!-- Templates -->
 <ng-template #periodStats>
-    <div class="period-score mx-auto" *ngIf="gameReport">
-        <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
-             class="text-center">
-            <div class="font-weight-bold">{{periodStat.period}}</div>
-            <div>({{periodStat.homeScore}}:{{periodStat.awayScore}})</div>
-        </div>
+  <div class="period-score mx-auto" *ngIf="gameReport">
+    <div *ngFor="let periodStat of gameReport.gameData.periodData.periodStats"
+         class="text-center">
+      <div class="font-weight-bold">{{periodStat.period}}</div>
+      <div>({{periodStat.homeScore}}:{{periodStat.awayScore}})</div>
     </div>
+  </div>
 </ng-template>
 
 <ng-template #periodDisplay>
-    <div *ngIf="gameReport?.gameData.schedule.isOvertime">
-        OT
-    </div>
-    <div *ngIf="gameReport?.gameData.schedule.isShootOut">
-        SO
-    </div>
-    <div *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
-        {{gameReport?.gameData.liveData.liveTime | period:gameReport?.gameData.periodData.lengthOfPeriod}}
-    </div>
+  <div *ngIf="gameReport?.gameData.schedule.isOvertime">
+    OT
+  </div>
+  <div *ngIf="gameReport?.gameData.schedule.isShootOut">
+    SO
+  </div>
+  <div *ngIf="!gameReport?.gameData.schedule.isShootOut && !gameReport?.gameData.schedule.isOvertime">
+    {{gameReport?.gameData.liveData.liveTime | period:gameReport?.gameData.periodData.lengthOfPeriod}}
+  </div>
 
 </ng-template>

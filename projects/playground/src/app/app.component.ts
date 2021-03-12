@@ -3,8 +3,13 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
 import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
-import { HockeyDataGameReport, HockeyDataIceHockeyService, HockeyDataTeamStanding } from 'ts-hockeydata-api';
-import { HockeyDataKnockoutStage } from '../../../../dist/ts-hockeydata-api/lib/model/hockeydata-knockout-stage';
+import {
+  HockeyDataGameReport,
+  HockeyDataIceHockeyService,
+  HockeyDataKnockoutStage,
+  HockeyDataTeamStanding
+} from 'ts-hockeydata-api';
+import { LogoMap } from 'ng-hockeydata-widgets';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +23,20 @@ export class AppComponent implements OnInit {
 
   public standings2?: HockeyDataTeamStanding[];
   public standings3?: HockeyDataTeamStanding[];
+
+  public logoMap: LogoMap = {
+    VIC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VIC.png",
+    DEC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/DEC.png",
+    AVS: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/AVS.png",
+    HCI: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/HCI.png",
+    G99: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/G99.png",
+    BWI: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/BWI.png",
+    RBS: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/RBS.png",
+    HCB: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/HCB.png",
+    BRC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/BRC.png",
+    VSV: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VSV.png",
+    KAC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/KAC.png"
+  }
 
   public logos: Record<string, string> = {
     SWL: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/SWL.png',
