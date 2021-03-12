@@ -1,7 +1,7 @@
 <div *ngIf="gameReport" class="container">
     <div class="score-grid">
         <div class="team-container right my-auto">
-            <hockeydata-team-display [name]="gameReport.gameData.teamScores.homeTeamShortname"
+            <hockeydata-team-display [name]="gameReport.gameData.teamScores.homeTeamShortName"
                                      [logo]="homeLogo">
             </hockeydata-team-display>
         </div>
@@ -17,7 +17,7 @@
             <ng-container [ngTemplateOutlet]="periodStats"></ng-container>
         </div>
         <div class="team-container left my-auto">
-            <hockeydata-team-display [name]="gameReport.gameData.teamScores.awayTeamShortname"
+            <hockeydata-team-display [name]="gameReport.gameData.teamScores.awayTeamShortName"
                                      [logo]="awayLogo">
             </hockeydata-team-display>
         </div>

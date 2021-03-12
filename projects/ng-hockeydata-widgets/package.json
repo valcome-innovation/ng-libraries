@@ -21,7 +21,7 @@
     "@angular/common": "~10.2.4",
     "@angular/core": "~10.2.4",
     "@valcome/ng-styles": "^1.0.12",
-    "@valcome/ts-hockeydata-api": "^0.1.0"
+    "@valcome/ts-hockeydata-api": "^0.1.1"
   },
   "dependencies": {
     "@valcome/ng-styles": "^1.0.12",
