@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-hockeydata-widgets",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "scripts": {
     "preversion": "ng test ng-hockeydata-widgets --watch=false --code-coverage=true",
     "version": "ng build ng-hockeydata-widgets --prod",
