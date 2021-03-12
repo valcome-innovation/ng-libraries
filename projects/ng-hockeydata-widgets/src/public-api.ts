@@ -8,3 +8,4 @@ export * from './lib/components/hockeydata-standings/base-hockeydata-standings.c
 export *
   from './lib/components/hockeydata-standings/hockeydata-standings-compact/hockeydata-standings-compact.component';
 export * from './lib/model/logo-map';
+export * from './lib/components/hockeydata-playoffs/hockey-data-playoffs.component';
