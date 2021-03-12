@@ -168,7 +168,7 @@ export interface IHockeyDataPhaseEncounter {
   labels: any[];
   bestOf: number;
   gamesNeeded: number;
-  teams: IHockeyDataPhaseEncounterTeam[];
+  teams: [IHockeyDataPhaseEncounterTeam, IHockeyDataPhaseEncounterTeam];
   games: IHockeyDataKnockoutPhaseGame[];
 }
 

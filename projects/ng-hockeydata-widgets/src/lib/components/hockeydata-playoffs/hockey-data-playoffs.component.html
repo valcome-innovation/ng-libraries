@@ -2,5 +2,8 @@
   <div class="header">{{knockoutPhase.name}}</div>
 
   <div *ngFor="let encounter of knockoutPhase.encounters">
+    <hd-encounter [encounter]="encounter"
+                  [logoMap]="logoMap">
+    </hd-encounter>
   </div>
 </div>

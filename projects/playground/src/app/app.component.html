@@ -4,8 +4,13 @@
 <!--</hockeydata-game-score>-->
 
 <!--<hockeydata-standings [standings]="standings3" [logos]="logos"></hockeydata-standings>-->
-<hd-standings-compact [standings]="standings2" [logoMap]="logos"></hd-standings-compact>
-<hd-standings-compact [standings]="standings3" [logoMap]="logos"></hd-standings-compact>
+<!--<hd-standings-compact [standings]="standings2" [logoMap]="logos"></hd-standings-compact>-->
+<!--<hd-standings-compact [standings]="standings3" [logoMap]="logos"></hd-standings-compact>-->
+
+<hd-playoffs *ngIf="knockoutStage"
+             [knockoutPhase]="knockoutStage.phases[0]"
+             [logoMap]="logoMap">
+</hd-playoffs>
 
 <!--<div data-hd-widget="hockeydata.los.Game.LiveBox" data-hd-widget-options='{-->
 <!--        "apiKey": "702b9e4a55d61cf7ffe943e90bede05b",-->

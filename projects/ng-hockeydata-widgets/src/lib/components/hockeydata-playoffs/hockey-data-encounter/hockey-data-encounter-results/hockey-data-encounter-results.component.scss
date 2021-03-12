@@ -1,0 +1,35 @@
+.results {
+  display: flex;
+  margin: 5px 2px;
+
+  .result {
+    margin: 0 3px;
+
+    .circle {
+      height: 7px;
+      width: 7px;
+      stroke-width: 2px;
+      overflow: visible;
+
+      &.won {
+        fill: #0D933A;
+        stroke: #0D933A;
+      }
+
+      &.lost {
+        fill: #C4C4C4;
+        stroke: #C4C4C4;
+      }
+
+      &.live {
+        fill: #28AAED;
+        stroke: #28AAED;
+      }
+
+      &.scheduled {
+        fill: none;
+        stroke: #C4C4C4;
+      }
+    }
+  }
+}

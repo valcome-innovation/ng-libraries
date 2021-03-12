@@ -5,14 +5,14 @@ export class HockeyDataKnockoutEncounter {
   public bestOf: number;
   public gamesNeeded: number;
   public isDecided: boolean;
-  public teamScores: HockeyDataKnockoutTeamScore[];
+  public teamScores: [HockeyDataKnockoutTeamScore, HockeyDataKnockoutTeamScore];
   public games: HockeyDataKnockoutGame[];
   public labels: any[];
 
   public constructor(bestOf: number,
                      gamesNeeded: number,
                      isDecided: boolean,
-                     teamScores: HockeyDataKnockoutTeamScore[] = [],
+                     teamScores: [HockeyDataKnockoutTeamScore, HockeyDataKnockoutTeamScore],
                      games: HockeyDataKnockoutGame[] = [],
                      labels: any[] = []) {
     this.bestOf = bestOf;

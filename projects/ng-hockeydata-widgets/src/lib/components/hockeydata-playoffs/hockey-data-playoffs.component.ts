@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { HockeyDataKnockoutPhase } from '@valcome/ts-hockeydata-api';
+import { LogoMap } from '../../model/logo-map';
 
 @Component({
   selector: 'hd-playoffs',
@@ -10,4 +11,7 @@ export class HockeyDataPlayoffsComponent {
 
   @Input()
   public knockoutPhase!: HockeyDataKnockoutPhase;
+
+  @Input()
+  public logoMap: LogoMap = {};
 }

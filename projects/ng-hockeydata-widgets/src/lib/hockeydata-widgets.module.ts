@@ -8,6 +8,8 @@ import { HockeyDataStandingsStandardComponent } from './components/hockeydata-st
 import { HockeydataStandingsCompactComponent } from './components/hockeydata-standings/hockeydata-standings-compact/hockeydata-standings-compact.component';
 import { HockeyDataGameScoreComponent } from './components/hockeydata-game-score/hockeydata-game-score/hockeydata-game-score.component';
 import { HockeyDataPlayoffsComponent } from './components/hockeydata-playoffs/hockey-data-playoffs.component';
+import { HockeyDataEncounterComponent } from './components/hockeydata-playoffs/hockey-data-encounter/hockey-data-encounter.component';
+import { HockeyDataEncounterResultsComponent } from './components/hockeydata-playoffs/hockey-data-encounter/hockey-data-encounter-results/hockey-data-encounter-results.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { HockeyDataPlayoffsComponent } from './components/hockeydata-playoffs/ho
     HockeyDataStandingsStandardComponent,
     HockeydataStandingsCompactComponent,
     HockeyDataPlayoffsComponent,
+    HockeyDataEncounterComponent,
+    HockeyDataEncounterResultsComponent,
     HockeydataPeriodPipe,
     TeamDisplayComponent,
     PeriodDisplayComponent
