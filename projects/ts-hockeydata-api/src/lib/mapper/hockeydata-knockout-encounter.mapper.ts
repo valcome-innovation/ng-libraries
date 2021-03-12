@@ -5,7 +5,6 @@ import { IHockeyDataPhaseEncounter } from '../model/types';
 import { HockeyDataKnockoutGameMapper } from './hockeydata-knockout-game.mapper';
 import { HockeyDataKnockoutTeamScoreMapper } from './hockeydata-knockout-team-score.mapper';
 import { HockeyDataKnockoutTeamScore } from '../model/hockeydata-knockout-team-score';
-import { HockeyDataKnockoutGame } from '../model/hockeydata-knockout-game';
 
 @Injectable({ providedIn: 'root' })
 export class HockeyDataKnockoutEncounterMapper extends BaseMapper<HockeyDataKnockoutEncounter> {
@@ -21,10 +20,8 @@ export class HockeyDataKnockoutEncounterMapper extends BaseMapper<HockeyDataKnoc
     const labels = this.getValidated(json.labels);
     const games = this.knockoutGamesMapper.fromJsonArray(this.getValidated(json.games));
     const teamScores = this.knockoutTeamScoreMapper.fromJsonArray(this.getValidated(json.teams)) as [HockeyDataKnockoutTeamScore, HockeyDataKnockoutTeamScore];
-    teamScores.forEach(teamScore => this.mapTeamScoreResults(teamScore, games));
-    return new HockeyDataKnockoutEncounter(bestOf, gamesNeeded, isDecided, teamScores, games, labels);
-  }
+    this.knockoutTeamScoreMapper.mapScoreResults(teamScores, games);
 
-  private mapTeamScoreResults(teamScore: HockeyDataKnockoutTeamScore, games: HockeyDataKnockoutGame[]): void {
+    return new HockeyDataKnockoutEncounter(bestOf, gamesNeeded, isDecided, teamScores, games, labels);
   }
 }

@@ -14,6 +14,7 @@ export class HockeyDataKnockoutStageMapper extends BaseMapper<HockeyDataKnockout
     const divisionId = this.getValidated(json.divisionId);
     const divisionName = this.getValidated(json.divisionName);
     const phases = this.knockoutPhaseMapper.fromJsonArray(this.getValidated(json.phases));
+    this.knockoutPhaseMapper.mapIsActiveFlags(phases);
     return new HockeyDataKnockoutStage(divisionId, divisionName, phases);
   }
 }

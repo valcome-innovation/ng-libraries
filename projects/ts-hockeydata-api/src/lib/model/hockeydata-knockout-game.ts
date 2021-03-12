@@ -30,4 +30,18 @@ export class HockeyDataKnockoutGame {
     this.hasEnded = hasEnded;
     this.teamScores = teamScores;
   }
+
+  public isScheduled(): boolean {
+    return !this.isLive && !this.hasEnded;
+  }
+
+  public hasWon(teamShortName: string): boolean {
+    const homeTeamWon = this.teamScores.homeTeamShortName === teamShortName
+      && this.teamScores.homeTeamScore > this.teamScores.awayTeamScore;
+
+    const awayTeamWon = this.teamScores.awayTeamShortName === teamShortName
+      && this.teamScores.awayTeamScore > this.teamScores.homeTeamScore;
+
+    return this.hasEnded && homeTeamWon || awayTeamWon;
+  }
 }
