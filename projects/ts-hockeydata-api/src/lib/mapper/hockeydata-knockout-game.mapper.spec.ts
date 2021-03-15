@@ -25,7 +25,7 @@ describe('HockeyDataKnockoutGameMapper', () => {
   });
 
   it('should map knockout game', () => {
-    const game = getKnockOutGame();
+    const game = getKnockOutGame(0, false);
 
     const result = mapper.fromJson(game);
 
@@ -42,41 +42,47 @@ describe('HockeyDataKnockoutGameMapper', () => {
   });
 
   it('should map isLive to true', () => {
-    const game = getKnockOutGame();
-    game.gameHasEnded = false;
-    game.liveTime = 1356;
+    const game = getKnockOutGame(1356, false);
 
     const result = mapper.fromJson(game);
     expect(result.isLive).toEqual(true);
   });
 
   it('should map isLive to false if game not started', () => {
-    const game = getKnockOutGame();
-    game.gameHasEnded = false;
-    game.liveTime = 0;
+    const game = getKnockOutGame(0, false);
 
     const result = mapper.fromJson(game);
     expect(result.isLive).toEqual(false);
   });
 
   it('should map isLive to false if game ended', () => {
-    const game = getKnockOutGame();
-    game.gameHasEnded = true;
-    game.liveTime = 3600;
+    const game = getKnockOutGame(3600, true);
 
     const result = mapper.fromJson(game);
     expect(result.isLive).toEqual(false);
   });
 
+  it('should map isLive to false if data inconsistent', () => {
+    let result = mapper.fromJson(getKnockOutGame(3456, false, ['FINISHED']));
+    expect(result.isLive).toEqual(false);
+    expect(result.hasEnded).toEqual(true);
+
+    result = mapper.fromJson(getKnockOutGame(3600, false, ['FINISHED']));
+    expect(result.isLive).toEqual(false);
+    expect(result.hasEnded).toEqual(true);
+  });
+
   it('should fail mapping on missing field', () => {
-    const game = getKnockOutGame() as any;
+    const game = getKnockOutGame(0, false) as any;
     game.awayTeamShortName = undefined;
 
     expect(() => mapper.fromJson(game)).toThrowError();
   });
 });
 
-function getKnockOutGame(): IHockeyDataKnockoutPhaseGame {
+function getKnockOutGame(liveTime: number = 0,
+                         gameHasEnded: boolean = false,
+                         labels: string[] = []): IHockeyDataKnockoutPhaseGame {
   return {
     id: 'c63b7e97-f13e-4677-9557-875cf6a178a6',
     scheduledDate: {
@@ -106,9 +112,9 @@ function getKnockOutGame(): IHockeyDataKnockoutPhaseGame {
     timeIsToBeDetermined: false,
     isOvertime: false,
     isShootOut: false,
-    liveTime: 0,
-    gameHasEnded: false,
-    labels: [],
+    liveTime,
+    gameHasEnded,
+    labels,
     seriesStandings: null,
     youTubeLink: null
   };
