@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ScoreResult } from '@valcome/ts-hockeydata-api';
 
 @Component({
@@ -6,13 +6,8 @@ import { ScoreResult } from '@valcome/ts-hockeydata-api';
   templateUrl: './hockey-data-encounter-results.component.html',
   styleUrls: ['./hockey-data-encounter-results.component.scss']
 })
-export class HockeyDataEncounterResultsComponent implements OnInit {
+export class HockeyDataEncounterResultsComponent {
 
   @Input()
   public results: ScoreResult[] = [];
-
-  // TODO remove
-  public ngOnInit(): void {
-    this.results = ['won', 'lost', 'lost', 'won', 'live', 'scheduled', 'scheduled'];
-  }
 }
