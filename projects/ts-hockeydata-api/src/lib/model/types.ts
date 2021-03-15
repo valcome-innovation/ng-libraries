@@ -97,9 +97,9 @@ export interface IHockeyDataApiResponse {
   statusId: number;
   statusMsg: string;
   data: any | any[];
-  calcTime: number;
+  calcTime?: number;
   lastUpdate: IHockeyDataDate;
-  servedByServer: string;
+  servedByServer?: string;
 }
 
 export interface IHockeyDataGameReport extends IHockeyDataApiResponse {
@@ -152,6 +152,8 @@ export interface IHockeyDataKnockOutPhase {
   divisionType: number;
   encounters: IHockeyDataPhaseEncounter[];
   phaseTeams: IHockeyDataPhaseTeam[];
+  positionX: number;
+  positionY: number;
 }
 
 export interface IHockeyDataPhaseTeam {
@@ -164,7 +166,7 @@ export interface IHockeyDataPhaseTeam {
 export interface IHockeyDataPhaseEncounter {
   id: number;
   longname: string;
-  shortname: string;
+  shortname: string | null;
   isDecided: boolean;
   labels: any[];
   bestOf: number;
@@ -192,15 +194,17 @@ export interface IHockeyDataKnockoutPhaseGame {
   scheduledTime: string;
   gameName: string;
   gameDay: any;
-  gameRound: number;
+  gameRound: number | null;
   gameUtcTimestamp: number;
   awayTeamId: number;
   awayTeamLongName: string;
   awayTeamShortName: string;
+  awayTeamFlavourname: string;
   awayTeamScore: number;
   homeTeamId: number;
   homeTeamLongName: string;
   homeTeamShortName: string;
+  homeTeamFlavourname: string;
   homeTeamScore: number;
   gameStatus: number;
   extendedStatus: number;
@@ -211,5 +215,6 @@ export interface IHockeyDataKnockoutPhaseGame {
   liveTime: number;
   gameHasEnded: boolean;
   labels: any[];
+  youTubeLink: string | null;
   seriesStandings: any;
 }

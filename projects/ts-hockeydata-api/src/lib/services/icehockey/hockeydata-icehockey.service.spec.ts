@@ -117,7 +117,6 @@ describe('HockeyDataIcehockeyService', () => {
           expect(game.date).toBeDefined();
           expect(game.isOvertime).toBeDefined();
           expect(game.hasEnded).toBeDefined();
-          expect(game.gameRound).toBeDefined();
           expect(game.gameName).toBeDefined();
           expect(game.gameId).toBeDefined();
           expect(game.teamScores).toBeInstanceOf(HockeyDataGameScore);

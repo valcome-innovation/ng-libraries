@@ -32,7 +32,7 @@ describe('HockeyDataKnockoutGameMapper', () => {
     expect(result).toBeInstanceOf(HockeyDataKnockoutGame);
     expect(result.gameId).toEqual(game.id);
     expect(result.gameName).toEqual(game.gameName);
-    expect(result.gameRound).toEqual(game.gameRound);
+    expect(result.gameRound).toEqual(55);
     expect(result.hasEnded).toEqual(game.gameHasEnded);
     expect(result.isLive).toEqual(false);
     expect(result.isOvertime).toEqual(game.isOvertime);
@@ -93,9 +93,11 @@ function getKnockOutGame(): IHockeyDataKnockoutPhaseGame {
     awayTeamId: 28176,
     awayTeamLongName: 'iClinic Bratislava Capitals',
     awayTeamShortName: 'BRC',
+    awayTeamFlavourname: 'BRC',
     homeTeamId: 193,
     homeTeamLongName: 'HCB Südtirol Alperia',
     homeTeamShortName: 'HCB',
+    homeTeamFlavourname: 'HCB',
     homeTeamScore: 0,
     awayTeamScore: 0,
     gameStatus: 0,
@@ -107,6 +109,7 @@ function getKnockOutGame(): IHockeyDataKnockoutPhaseGame {
     liveTime: 0,
     gameHasEnded: false,
     labels: [],
-    seriesStandings: null
+    seriesStandings: null,
+    youTubeLink: null
   };
 }
