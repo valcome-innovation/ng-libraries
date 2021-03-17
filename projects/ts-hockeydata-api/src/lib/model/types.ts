@@ -13,6 +13,7 @@ export const sports: Record<HockeyDataLeague, HockeyDataSport> = {
   afboe: 'americanfootball'
 };
 
+export type HockeyDataLabel = 'LIVE' | 'FINISHED';
 
 export interface IHockeyDataDate {
   formattedShort: string;
@@ -129,7 +130,7 @@ export interface IHockeyDataTeamStanding {
   goalDifference: string;
   points: number;
   bonusPoints: number;
-  labels: string[];
+  labels: HockeyDataLabel[];
   pointsPerGame: number;
   goalsForPerGame: number;
   goalDifferencePerGame: number;

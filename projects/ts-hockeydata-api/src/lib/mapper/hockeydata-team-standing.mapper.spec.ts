@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HockeyDataTeamStandingMapper } from './hockeydata-team-standing.mapper';
 import { HockeyDataTeamStanding } from '../model/hockeydata-team-standing';
+import { HockeyDataLabel } from '../model/types';
 
 describe('HockeyDataTeamStandingMapper', () => {
 
@@ -46,11 +47,11 @@ describe('HockeyDataTeamStandingMapper', () => {
       goalDifference: '+1',
       points: 21,
       bonusPoints: 8,
-      labels: [],
+      labels: ['LIVE'] as HockeyDataLabel[],
       pointsPerGame: 2.62,
       goalsForPerGame: 3.0,
       goalDifferencePerGame: 0.12,
-      gamesPlayedPercentage: 100.0
+      gamesPlayedPercentage: 100.0,
     };
 
     const result = mapper.fromJson(data);
@@ -76,5 +77,8 @@ describe('HockeyDataTeamStandingMapper', () => {
     expect(result.goalsForPerGame).toEqual(data.goalsForPerGame);
     expect(result.goalDifferencePerGame).toEqual(data.goalDifferencePerGame);
     expect(result.gamesPlayedPercentage).toEqual(data.gamesPlayedPercentage);
+    expect(result.labels.includes('LIVE')).toBeTrue();
+    expect(result.labels.includes('FINISHED')).toBeFalse();
+    expect(result.isLive()).toBeTrue();
   });
 });

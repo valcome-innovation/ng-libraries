@@ -31,6 +31,7 @@ export class HockeyDataTeamStandingMapper extends BaseMapper<HockeyDataTeamStand
     const goalsForPerGame = this.getValidated(json.goalsForPerGame);
     const goalDifferencePerGame = this.getValidated(json.goalDifferencePerGame);
     const gamesPlayedPercentage = this.getValidated(json.gamesPlayedPercentage);
+    const labels = this.getValidated(json.labels);
 
     return new HockeyDataTeamStanding(
       teamId,
@@ -52,7 +53,8 @@ export class HockeyDataTeamStandingMapper extends BaseMapper<HockeyDataTeamStand
       pointsPerGame,
       goalsForPerGame,
       goalDifferencePerGame,
-      gamesPlayedPercentage
+      gamesPlayedPercentage,
+      labels
     );
   }
 }
