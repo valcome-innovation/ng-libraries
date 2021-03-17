@@ -1,5 +1,3 @@
-import { HockeyDataLabel } from './types';
-
 export class HockeyDataTeamStanding {
   public teamId: number;
   public rank: number;
@@ -21,7 +19,7 @@ export class HockeyDataTeamStanding {
   public goalsForPerGame: number;
   public goalDifferencePerGame: number;
   public gamesPlayedPercentage: number;
-  public labels: HockeyDataLabel[];
+  public isLive: boolean;
 
   public constructor(teamId: number,
                      rank: number,
@@ -43,7 +41,7 @@ export class HockeyDataTeamStanding {
                      goalsForPerGame: number,
                      goalDifferencePerGame: number,
                      gamesPlayedPercentage: number,
-                     labels: HockeyDataLabel[] = []) {
+                     isLive: boolean) {
     this.teamId = teamId;
     this.rank = rank;
     this.rankImprovement = rankImprovement;
@@ -64,10 +62,6 @@ export class HockeyDataTeamStanding {
     this.goalsForPerGame = goalsForPerGame;
     this.goalDifferencePerGame = goalDifferencePerGame;
     this.gamesPlayedPercentage = gamesPlayedPercentage;
-    this.labels = [...labels];
-  }
-
-  public isLive(): boolean {
-    return this.labels.includes('LIVE');
+    this.isLive = isLive;
   }
 }

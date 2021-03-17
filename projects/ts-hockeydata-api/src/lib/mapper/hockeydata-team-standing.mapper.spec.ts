@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { HockeyDataTeamStandingMapper } from './hockeydata-team-standing.mapper';
 import { HockeyDataTeamStanding } from '../model/hockeydata-team-standing';
-import { HockeyDataLabel } from '../model/types';
+import { HockeyDataLabel, IHockeyDataTeamStanding } from '../model/types';
+import { JsUtils } from '@valcome/ts-core';
 
 describe('HockeyDataTeamStandingMapper', () => {
 
@@ -30,29 +31,7 @@ describe('HockeyDataTeamStandingMapper', () => {
   });
 
   it('should map standings from api', () => {
-    const data = {
-      id: 191,
-      tableRank: 1,
-      tableRankImprovement: 0,
-      teamLongname: 'Dornbirn Bulldogs',
-      teamShortname: 'DEC',
-      gamesPlayed: 8,
-      gamesWon: 3,
-      gamesWonInOt: 1,
-      gamesTied: 0,
-      gamesLostInOt: 2,
-      gamesLost: 2,
-      goalsFor: 24,
-      goalsAgainst: 23,
-      goalDifference: '+1',
-      points: 21,
-      bonusPoints: 8,
-      labels: ['LIVE'] as HockeyDataLabel[],
-      pointsPerGame: 2.62,
-      goalsForPerGame: 3.0,
-      goalDifferencePerGame: 0.12,
-      gamesPlayedPercentage: 100.0,
-    };
+    const data = getStandingData();
 
     const result = mapper.fromJson(data);
 
@@ -77,8 +56,51 @@ describe('HockeyDataTeamStandingMapper', () => {
     expect(result.goalsForPerGame).toEqual(data.goalsForPerGame);
     expect(result.goalDifferencePerGame).toEqual(data.goalDifferencePerGame);
     expect(result.gamesPlayedPercentage).toEqual(data.gamesPlayedPercentage);
-    expect(result.labels.includes('LIVE')).toBeTrue();
-    expect(result.labels.includes('FINISHED')).toBeFalse();
-    expect(result.isLive()).toBeTrue();
+    expect(result.isLive).toBeTrue();
+  });
+
+  it('should map isLive to false', () => {
+    const data = getStandingData();
+    data.labels = [];
+
+    let result = mapper.fromJson(data);
+
+    expect(result).toBeInstanceOf(HockeyDataTeamStanding);
+    expect(result.isLive).toBeFalse();
+
+    data.labels = ['FINISHED'];
+
+    result = mapper.fromJson(data);
+
+    expect(result).toBeInstanceOf(HockeyDataTeamStanding);
+    expect(result.isLive).toBeFalse();
   });
 });
+
+function getStandingData(): IHockeyDataTeamStanding {
+  const data = {
+    id: 191,
+    tableRank: 1,
+    tableRankImprovement: 0,
+    teamLongname: 'Dornbirn Bulldogs',
+    teamShortname: 'DEC',
+    gamesPlayed: 8,
+    gamesWon: 3,
+    gamesWonInOt: 1,
+    gamesTied: 0,
+    gamesLostInOt: 2,
+    gamesLost: 2,
+    goalsFor: 24,
+    goalsAgainst: 23,
+    goalDifference: '+1',
+    points: 21,
+    bonusPoints: 8,
+    labels: ['LIVE'] as HockeyDataLabel[],
+    pointsPerGame: 2.62,
+    goalsForPerGame: 3.0,
+    goalDifferencePerGame: 0.12,
+    gamesPlayedPercentage: 100.0,
+  };
+
+  return JsUtils.mapToPlainJavascriptObject(data);
+}

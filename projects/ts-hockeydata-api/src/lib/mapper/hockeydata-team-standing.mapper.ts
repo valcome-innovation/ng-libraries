@@ -31,7 +31,7 @@ export class HockeyDataTeamStandingMapper extends BaseMapper<HockeyDataTeamStand
     const goalsForPerGame = this.getValidated(json.goalsForPerGame);
     const goalDifferencePerGame = this.getValidated(json.goalDifferencePerGame);
     const gamesPlayedPercentage = this.getValidated(json.gamesPlayedPercentage);
-    const labels = this.getValidated(json.labels);
+    const isLive = this.mapIsLiveFromLabels(json);
 
     return new HockeyDataTeamStanding(
       teamId,
@@ -54,7 +54,12 @@ export class HockeyDataTeamStandingMapper extends BaseMapper<HockeyDataTeamStand
       goalsForPerGame,
       goalDifferencePerGame,
       gamesPlayedPercentage,
-      labels
+      isLive
     );
+  }
+
+  private mapIsLiveFromLabels(json: Partial<IHockeyDataTeamStanding>): boolean {
+    const labels = this.getValidated(json.labels);
+    return labels.includes('LIVE');
   }
 }
