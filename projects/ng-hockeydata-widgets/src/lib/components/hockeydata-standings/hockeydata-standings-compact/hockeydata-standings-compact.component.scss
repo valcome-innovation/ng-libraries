@@ -11,3 +11,40 @@ td {
     width: var(--value-width);
   }
 }
+
+.live-badge {
+  font-size: 11px;
+  color: white;
+  background-color: black;
+  padding: 1px 1px;
+  border-radius: 8px;
+  width: 38px;
+  margin: auto;
+  justify-content: space-evenly;
+
+  .icon {
+    --size: 8px;
+
+    fill: #CD3131;
+    width: var(--size);
+    height: var(--size);
+    margin-top: auto;
+    margin-bottom: auto;
+    animation: pulse 1.8s infinite;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
