@@ -72,20 +72,7 @@ testem.log
 projects/ng-social-login/typings/
 
 # coverage
-coverage/ng-animations/*
-!coverage/ng-animations/lcov.info
-coverage/ng-core/*
-!coverage/ng-core/lcov.info
-coverage/ng-elements/*
-!coverage/ng-elements/lcov.info
-coverage/ng-hockeydata-widgets/*
-!coverage/ng-hockeydata-widgets/lcov.info
-coverage/ng-screens/*
-!coverage/ng-screens/lcov.info
-coverage/ts-core/*
-!coverage/ts-core/lcov.info
-coverage/ts-hockeydata-api/*
-!coverage/ts-hockeydata-api/lcov.info
+coverage/
 
 # e2e
 e2e/*.js
