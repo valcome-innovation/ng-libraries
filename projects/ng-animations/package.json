@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-animations",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Angular animations",
   "scripts": {
     "version": "ng build ng-animations --prod",
@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-animations#nganimations",
   "peerDependencies": {
-    "@angular/animations": "~10.2.4",
-    "@angular/common": "~10.2.4",
-    "@angular/core": "~10.2.4"
+    "@angular/animations": "^11.2.10",
+    "@angular/common": "^11.2.10",
+    "@angular/core": "^11.2.10"
   },
   "dependencies": {
     "tslib": "^2.0.0"
