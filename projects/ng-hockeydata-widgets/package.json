@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-hockeydata-widgets",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "scripts": {
     "preversion": "ng test ng-hockeydata-widgets --watch=false --code-coverage=true",
     "version": "ng build ng-hockeydata-widgets --prod",
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-hockeydata-widgets#tshockeydatawidgets",
   "peerDependencies": {
-    "@angular/common": "^11.2.11",
-    "@angular/core": "^11.2.11",
+    "@angular/common": "~11.2.11",
+    "@angular/core": "~11.2.11",
     "@valcome/ng-styles": "^1.0.12",
     "@valcome/ts-hockeydata-api": "^0.1.7"
   },
