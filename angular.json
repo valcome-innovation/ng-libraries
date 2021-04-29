@@ -114,7 +114,7 @@
             "tsConfig": "projects/ng-elements/tsconfig.spec.json",
             "karmaConfig": "projects/ng-elements/karma.conf.js",
             "codeCoverageExclude": [
-              "**/lib/file-picker/**"
+              "**/file-picker/**"
             ]
           }
         },
