@@ -109,7 +109,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ng-elements/src/test.ts",
+            "main": "projects/ng-elements/test.ts",
             "codeCoverage": true,
             "tsConfig": "projects/ng-elements/tsconfig.spec.json",
             "karmaConfig": "projects/ng-elements/karma.conf.js",

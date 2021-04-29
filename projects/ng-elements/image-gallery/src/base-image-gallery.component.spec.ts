@@ -2,7 +2,7 @@ import { Image } from './image';
 import { TestBed } from '@angular/core/testing';
 import { RenderService, UniversalModule } from '@valcome/ng-core';
 import { BaseImageGalleryComponent } from './base-image-gallery.component';
-import { SkeletonModule } from '../skeleton/skeleton.module';
+import { SkeletonModule } from '../../skeleton/src/skeleton.module';
 
 describe('BaseImageGalleryComponent', () => {
 

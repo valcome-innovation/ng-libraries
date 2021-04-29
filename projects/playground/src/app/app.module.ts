@@ -5,17 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreAnimationsModule } from 'ng-animations';
 import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
-import { GenericFormsModule } from 'projects/ng-elements/src/lib/form/generic-forms.module';
-import { RangeSliderModule } from '../../../ng-elements/src/lib/range-slider/range-slider.module';
+import { RangeSliderModule } from '../../../ng-elements/range-slider/src/range-slider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ImageGalleryModule } from '../../../ng-elements/src/lib/image-gallery/image-gallery.module';
+import { ImageGalleryModule } from '../../../ng-elements/image-gallery/src/image-gallery.module';
 import { SocialDemoComponent } from './social-demo/social-demo.component';
-import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@valcome/ng-social-login';
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from '@valcome/ng-social-login';
 import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { ToggleButtonModule } from '../../../ng-elements/src/lib/toggle/toggle-button.module';
+import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-button.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HockeyDataWidgetsModule } from '../../../ng-hockeydata-widgets/src/lib/hockeydata-widgets.module';
 import { HockeyDataApiModule } from '@valcome/ts-hockeydata-api';
+import { GenericFormsModule } from '../../../../dist/ng-elements/form';
 
 @NgModule({
   declarations: [

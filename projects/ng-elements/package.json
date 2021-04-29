@@ -25,11 +25,11 @@
     "@angular/core": "~11.2.11",
     "@valcome/ng-animations": "^1.2.2",
     "@valcome/ng-core": "^1.2.0",
-    "@valcome/ts-core": "^1.0.0"
+    "@valcome/ts-core": "^1.0.0",
+    "drift-zoom": "^1.4.0",
+    "notyf": "^3.7.0"
   },
   "dependencies": {
-    "drift-zoom": "^1.4.0",
-    "notyf": "^3.7.0",
     "tslib": "^2.0.0"
   }
 }

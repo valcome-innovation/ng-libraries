@@ -2,19 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ng-elements",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "ts-core": "@valcome/ts-core",
-      "ng-core": "@valcome/ng-core",
-      "ng-animations": "@valcome/ng-animations",
-      "@valcome/ts-core": "@valcome/ts-core",
-      "@valcome/ng-core": "@valcome/ng-core",
-      "@valcome/ng-animations": "@valcome/ng-animations",
-      "notyf": "notyf"
-    }
-  },
-  "whitelistedNonPeerDependencies": [
-    "drift-zoom",
-    "notyf"
-  ]
+    "entryFile": "src/public-api.ts"
+  }
 }

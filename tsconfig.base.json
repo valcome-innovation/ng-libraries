@@ -32,6 +32,15 @@
       "@valcome/ng-animations": [
         "dist/ng-animations"
       ],
+      "@valcome/ng-elements": [
+        "dist/ng-elements"
+      ],
+      "@valcome/ng-elements/skeleton": [
+        "projects/ng-elements/skeleton/src/public-api"
+      ],
+      "@valcome/ng-elements/click-outside": [
+        "projects/ng-elements/click-outside/src/public-api"
+      ],
       "ng-core": [
         "dist/ng-core/ng-core",
         "dist/ng-core"

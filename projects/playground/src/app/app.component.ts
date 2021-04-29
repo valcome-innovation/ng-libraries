@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DisplayValue } from 'ng-core';
-import { FormErrorType } from 'projects/ng-elements/src/lib/form/model/form-error-type';
-import { Image } from '../../../ng-elements/src/lib/image-gallery/image';
+import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
+import { Image } from '../../../ng-elements/image-gallery/src/image';
 import {
   HockeyDataGameReport,
   HockeyDataIceHockeyService,
