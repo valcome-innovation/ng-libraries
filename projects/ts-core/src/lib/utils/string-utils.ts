@@ -1,4 +1,5 @@
 export class StringUtils {
+
   public static getUnderscoredUniqueString(): string {
     return '_' + this.getUniqueString();
   }
@@ -6,7 +7,6 @@ export class StringUtils {
   public static getUniqueString(): string {
     return Math.random().toString(36).substring(2) + Date.now().toString(36);
   }
-
 
   // https://stackoverflow.com/a/11616993/12237560
   public static safeStringify(value: any): string {
