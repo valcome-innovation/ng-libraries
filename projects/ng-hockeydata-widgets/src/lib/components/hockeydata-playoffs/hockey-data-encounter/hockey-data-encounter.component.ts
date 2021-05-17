@@ -5,7 +5,7 @@ import { LogoMap } from '../../../model/logo-map';
 @Component({
   selector: 'hd-encounter',
   templateUrl: './hockey-data-encounter.component.html',
-  styleUrls: ['./hockey-data-encounter.component.scss', '../../../styles.scss']
+  styleUrls: ['./hockey-data-encounter.component.scss']
 })
 export class HockeyDataEncounterComponent {
 

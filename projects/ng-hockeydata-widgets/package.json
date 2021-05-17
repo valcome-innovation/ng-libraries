@@ -24,7 +24,6 @@
     "@valcome/ts-hockeydata-api": "^0.1.7"
   },
   "dependencies": {
-    "@valcome/ng-styles": "^1.0.12",
     "tslib": "^2.0.0"
   }
 }
