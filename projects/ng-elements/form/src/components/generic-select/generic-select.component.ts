@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
 import { DisplayValue } from '@valcome/ng-core';
+import { JsUtils } from '@valcome/ts-core';
 import { BaseGenericFieldComponent } from '../base-generic-field.component';
-import { JsUtils } from '../../../../../ts-core/src/lib/utils/js.utils';
 
 @Component({
   selector: 'val-generic-select',
