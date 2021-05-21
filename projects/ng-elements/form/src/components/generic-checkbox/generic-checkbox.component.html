@@ -3,7 +3,8 @@
 
   <label>
     <input type="checkbox"
-           [formControlName]="formName">
+           [formControlName]="formName"
+           [disabled]="isDisabled">
     {{label}}<span *ngIf="markAsRequired">*</span>
   </label>
 

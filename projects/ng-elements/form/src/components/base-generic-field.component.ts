@@ -25,6 +25,9 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   @Input()
   public useDefaultErrorMessages = false;
 
+  @Input()
+  public isDisabled = false;
+
   public id!: string;
   public isValid: boolean = true;
   public currentValue: any;

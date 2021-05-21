@@ -31,6 +31,9 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
   @Input()
   public placeholder!: string;
 
+  @Input()
+  public displayCustomCaret = false;
+
   public constructor(private changeDetector: ChangeDetectorRef) {
     super();
   }

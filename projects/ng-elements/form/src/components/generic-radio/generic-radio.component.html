@@ -6,6 +6,7 @@
     <label>
       <input type="radio"
              [formControlName]="formName"
+             [disabled]="isDisabled"
              [value]="item.value">
       {{item.display}}
     </label>

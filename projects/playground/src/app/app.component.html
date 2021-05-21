@@ -57,6 +57,17 @@
                     [placeholder]="'Land wählen'"
                     [options]="countries"
                     [isFormSubmitted]="isSubmitted"
+                    [isDisabled]="true"
+                    [useDefaultErrorMessages]="true">
+</val-generic-select>
+
+<val-generic-select [formName]="'country'"
+                    [form]="shippingForm"
+                    [label]="'Land'"
+                    [placeholder]="'Land wählen'"
+                    [options]="countries"
+                    [isFormSubmitted]="isSubmitted"
+                    [displayCustomCaret]="true"
                     [useDefaultErrorMessages]="true">
 </val-generic-select>
 

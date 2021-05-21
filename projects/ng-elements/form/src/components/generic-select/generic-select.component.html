@@ -1,5 +1,5 @@
 <div [formGroup]="form" class="input-group select"
-     [ngClass]="{'invalid': !isValid}">
+     [ngClass]="{'invalid': !isValid, 'custom-caret': displayCustomCaret}">
 
   <label *ngIf="label != null" [for]="id">
     {{label}}<span *ngIf="markAsRequired">*</span>
@@ -7,7 +7,8 @@
 
   <select [id]="id"
           [formControlName]="formName"
-          [ngClass]="{'empty': formControl?.value == null}">
+          [ngClass]="{'empty': formControl?.value == null}"
+          [attr.disabled]="isDisabled ? '' : null">
 
     <option hidden [value]="null">
       {{placeholder}}
@@ -26,4 +27,15 @@
                                 (errorMessages)="addDefaultErrorMessages($event)">
     </val-generic-error-messages>
   </div>
+
+  <ng-container *ngIf="displayCustomCaret || !isDisabled"
+                [ngTemplateOutlet]="caretDown">
+  </ng-container>
 </div>
+
+<ng-template #caretDown>
+  <svg class="caret-down" width="12" height="6" viewBox="0 0 17 10" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M16.1972 0.03125H0.803461C0.341742 0.03125 0.0839297 0.51875 0.369867 0.851562L8.06674 9.77656C8.28705 10.032 8.71127 10.032 8.93393 9.77656L16.6308 0.851562C16.9167 0.51875 16.6589 0.03125 16.1972 0.03125Z"/>
+  </svg>
+</ng-template>

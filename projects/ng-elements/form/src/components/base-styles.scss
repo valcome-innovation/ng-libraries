@@ -1,4 +1,6 @@
 .input-group {
+  position: relative;
+
   .text label, .select label {
     display: block;
     margin-bottom: 5px;
@@ -28,5 +30,20 @@
     min-height: 15px;
     font-size: 12px;
     margin-bottom: 3px;
+  }
+
+  &.custom-caret {
+    select, input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+  }
+
+  .caret-down {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
