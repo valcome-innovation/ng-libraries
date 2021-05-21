@@ -18,9 +18,7 @@ import {
 import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-button.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HockeyDataWidgetsModule } from '../../../ng-hockeydata-widgets/src/lib/hockeydata-widgets.module';
-import { HockeyDataApiModule } from '@valcome/ts-hockeydata-api';
-import { GenericFormsModule } from '../../../../dist/ng-elements/form';
+import { GenericFormsModule } from '../../../ng-elements/form/src/generic-forms.module';
 
 @NgModule({
   declarations: [
@@ -42,13 +40,13 @@ import { GenericFormsModule } from '../../../../dist/ng-elements/form';
     ToggleButtonModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    HockeyDataWidgetsModule,
-    HockeyDataApiModule.forRoot({
-      // apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
-      // referer: 'dev.valcome.tv'
-      apiKey: '64e80889471a0e6f2579e0b9cc165b3a',
-      referer: 'dev.live.ice.hockey'
-    })
+    // HockeyDataWidgetsModule,
+    // HockeyDataApiModule.forRoot({
+    //   // apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
+    //   // referer: 'dev.valcome.tv'
+    //   apiKey: '64e80889471a0e6f2579e0b9cc165b3a',
+    //   referer: 'dev.live.ice.hockey'
+    // })
   ],
   providers: [
     DeviceService,

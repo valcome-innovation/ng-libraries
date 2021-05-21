@@ -12,7 +12,7 @@ import { GenericPasswordComponent } from './components/generic-password/generic-
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     GenericInputComponent,
@@ -21,7 +21,7 @@ import { GenericPasswordComponent } from './components/generic-password/generic-
     GenericRadioComponent,
     GenericCheckboxComponent,
     GenericErrorMessagesComponent,
-    FormErrorMessageDirective
+    FormErrorMessageDirective,
   ],
   exports: [
     GenericInputComponent,
@@ -31,7 +31,7 @@ import { GenericPasswordComponent } from './components/generic-password/generic-
     GenericCheckboxComponent,
     GenericErrorMessagesComponent,
     FormErrorMessageDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class GenericFormsModule {

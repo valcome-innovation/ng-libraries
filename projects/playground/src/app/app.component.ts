@@ -3,13 +3,7 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
 import { Image } from '../../../ng-elements/image-gallery/src/image';
-import {
-  HockeyDataGameReport,
-  HockeyDataIceHockeyService,
-  HockeyDataKnockoutStage,
-  HockeyDataTeamStanding
-} from 'ts-hockeydata-api';
-import { LogoMap } from 'ng-hockeydata-widgets';
+import { HockeyDataGameReport, HockeyDataKnockoutStage, HockeyDataTeamStanding } from 'ts-hockeydata-api';
 
 @Component({
   selector: 'app-root',
@@ -24,19 +18,19 @@ export class AppComponent implements OnInit {
   public standings2?: HockeyDataTeamStanding[];
   public standings3?: HockeyDataTeamStanding[];
 
-  public logoMap: LogoMap = {
-    VIC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VIC.png",
-    DEC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/DEC.png",
-    AVS: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/AVS.png",
-    HCI: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/HCI.png",
-    G99: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/G99.png",
-    BWI: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/BWI.png",
-    RBS: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/RBS.png",
-    HCB: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/HCB.png",
-    BRC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/BRC.png",
-    VSV: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VSV.png",
-    KAC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/KAC.png"
-  }
+  // public logoMap: LogoMap = {
+  //   VIC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VIC.png",
+  //   DEC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/DEC.png",
+  //   AVS: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/AVS.png",
+  //   HCI: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/HCI.png",
+  //   G99: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/G99.png",
+  //   BWI: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/BWI.png",
+  //   RBS: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/RBS.png",
+  //   HCB: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/HCB.png",
+  //   BRC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/BRC.png",
+  //   VSV: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VSV.png",
+  //   KAC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/KAC.png"
+  // }
 
   public logos: Record<string, string> = {
     SWL: 'https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/SWL.png',
@@ -115,8 +109,7 @@ export class AppComponent implements OnInit {
     new DisplayValue('Wieselburger', 2)
   ];
 
-  public constructor(private fb: FormBuilder,
-                     private hockeyDataIceHockeyService: HockeyDataIceHockeyService) {
+  public constructor(private fb: FormBuilder) {
     this.initForm();
   }
 
@@ -127,17 +120,17 @@ export class AppComponent implements OnInit {
       control.statusChanges.subscribe((s) => console.log(s));
     }
 
-    this.getGameReport().then(report => {
-      this.gameReport = report;
-    });
-
-    this.getTeamStandings(8136).then(standings => this.standings2 = standings);
-    this.getTeamStandings(7818).then(standings => this.standings3 = standings);
-
-    this.getKnockOutStage(8259).then(knockoutStage => {
-      this.knockoutStage = knockoutStage;
-      console.log(this.knockoutStage);
-    });
+    // this.getGameReport().then(report => {
+    //   this.gameReport = report;
+    // });
+    //
+    // this.getTeamStandings(8136).then(standings => this.standings2 = standings);
+    // this.getTeamStandings(7818).then(standings => this.standings3 = standings);
+    //
+    // this.getKnockOutStage(8259).then(knockoutStage => {
+    //   this.knockoutStage = knockoutStage;
+    //   console.log(this.knockoutStage);
+    // });
   }
 
   private initForm(): void {
@@ -145,7 +138,7 @@ export class AppComponent implements OnInit {
       eMail: ['', this.fbOptions([Validators.required])],
       firstName: ['', this.fbOptions([Validators.required])],
       lastName: ['', this.fbOptions([Validators.required])],
-      country: [null, this.fbOptions([Validators.required, Validators.email], 'change')],
+      country: [null, this.fbOptions([Validators.required], 'change')],
       useDifferentBilling: [false, this.fbOptions([Validators.requiredTrue], 'change')],
       beer: [1, this.fbOptions([Validators.required], 'change')]
     });
@@ -174,15 +167,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  public async getGameReport(): Promise<HockeyDataGameReport> {
-    return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
-  }
-
-  public async getTeamStandings(divisionId: number): Promise<HockeyDataTeamStanding[]> {
-    return await this.hockeyDataIceHockeyService.getStandings(divisionId, true);
-  }
-
-  public async getKnockOutStage(divisionId: number): Promise<HockeyDataKnockoutStage> {
-    return await this.hockeyDataIceHockeyService.getKnockoutStage(divisionId);
-  }
+  //
+  // public async getGameReport(): Promise<HockeyDataGameReport> {
+  //   return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
+  // }
+  //
+  // public async getTeamStandings(divisionId: number): Promise<HockeyDataTeamStanding[]> {
+  //   return await this.hockeyDataIceHockeyService.getStandings(divisionId, true);
+  // }
+  //
+  // public async getKnockOutStage(divisionId: number): Promise<HockeyDataKnockoutStage> {
+  //   return await this.hockeyDataIceHockeyService.getKnockoutStage(divisionId);
+  // }
 }

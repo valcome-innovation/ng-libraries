@@ -1,0 +1,32 @@
+<div [formGroup]="form" class="input-group text"
+     [ngClass]="{'invalid': !isValid}">
+
+  <label *ngIf="label != null" [for]="id">
+    {{label}}<span *ngIf="markAsRequired">*</span>
+  </label>
+
+  <input [id]="id"
+         [placeholder]="placeholder"
+         [formControlName]="formName"
+         [valAutocomplete]="autocomplete"
+         type="text">
+
+  <val-autocomplete #autocomplete="valAutocomplete">
+    <ng-template valAutocompleteContent>
+      <ng-container *ngIf="(options | filter: formControl.value:'display') as result">
+        <val-autocomplete-option *ngFor="let option of result" [value]="option.value">
+          {{ option.display }}
+        </val-autocomplete-option>
+        <val-autocomplete-option class="no-result" *ngIf="!result.length">No result...</val-autocomplete-option>
+      </ng-container>
+    </ng-template>
+  </val-autocomplete>
+
+
+  <div class="input-errors">
+    <ng-content></ng-content>
+    <val-generic-error-messages *ngIf="useDefaultErrorMessages"
+                                (errorMessages)="addDefaultErrorMessages($event)">
+    </val-generic-error-messages>
+  </div>
+</div>

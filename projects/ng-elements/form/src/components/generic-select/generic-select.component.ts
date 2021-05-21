@@ -18,5 +18,4 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
 
   @Input()
   public placeholder!: string;
-
 }

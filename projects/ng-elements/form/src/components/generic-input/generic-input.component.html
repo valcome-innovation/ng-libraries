@@ -2,21 +2,20 @@
 <div [formGroup]="form" class="input-group text"
      [ngClass]="{'invalid': !isValid}">
 
-    <label *ngIf="label != null"
-           [for]="id">
-        {{label}}<span *ngIf="markAsRequired">*</span>
-    </label>
+  <label *ngIf="label != null" [for]="id">
+    {{label}}<span *ngIf="markAsRequired">*</span>
+  </label>
 
-    <input [id]="id"
-           [type]="type"
-           [placeholder]="placeholder"
-           [formControlName]="formName"
-           autocomplete="{{autocomplete}}">
+  <input [id]="id"
+         [type]="type"
+         [placeholder]="placeholder"
+         [formControlName]="formName"
+         autocomplete="{{autocomplete}}">
 
-    <div class="input-errors">
-        <ng-content></ng-content>
-        <val-generic-error-messages *ngIf="useDefaultErrorMessages"
-                                    (errorMessages)="addDefaultErrorMessages($event)">
-        </val-generic-error-messages>
-    </div>
+  <div class="input-errors">
+    <ng-content></ng-content>
+    <val-generic-error-messages *ngIf="useDefaultErrorMessages"
+                                (errorMessages)="addDefaultErrorMessages($event)">
+    </val-generic-error-messages>
+  </div>
 </div>
