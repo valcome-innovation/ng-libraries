@@ -1,17 +1,16 @@
-<!--suppress HtmlFormInputWithoutLabel -->
 <div [formGroup]="form" class="input-group checkbox"
      [ngClass]="{'invalid': !isValid}">
 
-    <label>
-        <input type="checkbox"
-               [formControlName]="formName">
-        {{label}}<span *ngIf="markAsRequired">*</span>
-    </label>
+  <label>
+    <input type="checkbox"
+           [formControlName]="formName">
+    {{label}}<span *ngIf="markAsRequired">*</span>
+  </label>
 
-    <div class="input-errors">
-        <ng-content></ng-content>
-        <val-generic-error-messages *ngIf="useDefaultErrorMessages"
-                                    (errorMessages)="addDefaultErrorMessages($event)">
-        </val-generic-error-messages>
-    </div>
+  <div class="input-errors">
+    <ng-content></ng-content>
+    <val-generic-error-messages *ngIf="useDefaultErrorMessages"
+                                (errorMessages)="addDefaultErrorMessages($event)">
+    </val-generic-error-messages>
+  </div>
 </div>

@@ -4,6 +4,7 @@ import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
 import { Image } from '../../../ng-elements/image-gallery/src/image';
 import { HockeyDataGameReport, HockeyDataKnockoutStage, HockeyDataTeamStanding } from 'ts-hockeydata-api';
+import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
 
 @Component({
   selector: 'app-root',
@@ -131,6 +132,14 @@ export class AppComponent implements OnInit {
     //   this.knockoutStage = knockoutStage;
     //   console.log(this.knockoutStage);
     // });
+
+    setInterval(() => {
+      this.countries = [
+        new DisplayValue('AT' + StringUtils.getUnderscoredUniqueString(), 'AT'),
+        new DisplayValue('DE' + StringUtils.getUnderscoredUniqueString(), 'DE', true),
+        new DisplayValue('UK' + StringUtils.getUnderscoredUniqueString(), 'UK')
+      ]
+    }, 3_000);
   }
 
   private initForm(): void {

@@ -51,6 +51,15 @@
 <!--                          [useDefaultErrorMessages]="true">-->
 <!--</val-generic-autocomplete>-->
 
+<val-generic-select [formName]="'country'"
+                    [form]="shippingForm"
+                    [label]="'Land'"
+                    [placeholder]="'Land wählen'"
+                    [options]="countries"
+                    [isFormSubmitted]="isSubmitted"
+                    [useDefaultErrorMessages]="true">
+</val-generic-select>
+
 <!--<div>{{shippingForm?.get('country')?.hasError('server')}}</div>-->
 
 <!--<val-generic-checkbox [form]="shippingForm"-->

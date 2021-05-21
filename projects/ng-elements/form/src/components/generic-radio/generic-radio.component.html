@@ -1,22 +1,21 @@
-<!--suppress HtmlFormInputWithoutLabel -->
 <div [formGroup]="form" class="input-group radio"
      [ngClass]="{'invalid': !isValid}">
 
-    <div *ngFor="let item of options; let index = index"
-         class="radio-element">
-        <label>
-            <input type="radio"
-                   [formControlName]="formName"
-                   [value]="item.value">
-            {{item.display}}
-        </label>
-    </div>
-    <span *ngIf="markAsRequired">*</span>
+  <div *ngFor="let item of options; let index = index"
+       class="radio-element">
+    <label>
+      <input type="radio"
+             [formControlName]="formName"
+             [value]="item.value">
+      {{item.display}}
+    </label>
+  </div>
+  <span *ngIf="markAsRequired">*</span>
 
-    <div class="input-errors">
-        <ng-content></ng-content>
-        <val-generic-error-messages *ngIf="useDefaultErrorMessages"
-                                    (errorMessages)="addDefaultErrorMessages($event)">
-        </val-generic-error-messages>
-    </div>
+  <div class="input-errors">
+    <ng-content></ng-content>
+    <val-generic-error-messages *ngIf="useDefaultErrorMessages"
+                                (errorMessages)="addDefaultErrorMessages($event)">
+    </val-generic-error-messages>
+  </div>
 </div>
