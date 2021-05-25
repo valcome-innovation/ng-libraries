@@ -8,8 +8,7 @@
   <div class="position-relative">
     <select [id]="id"
             [formControlName]="formName"
-            [ngClass]="{'empty': formControl?.value == null}"
-            [attr.disabled]="isDisabled ? '' : null">
+            [ngClass]="{'empty': formControl?.value == null}">
 
       <option hidden [value]="null">
         {{placeholder}}
@@ -22,7 +21,7 @@
       </option>
     </select>
 
-    <ng-container *ngIf="displayCustomCaret && !isDisabled"
+    <ng-container *ngIf="displayCustomCaret"
                   [ngTemplateOutlet]="caretDown">
     </ng-container>
   </div>
