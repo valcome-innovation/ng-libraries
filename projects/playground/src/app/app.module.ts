@@ -16,14 +16,16 @@ import {
   SocialLoginModule
 } from '@valcome/ng-social-login';
 import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
-import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-button.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-button.module';
 import { GenericFormsModule } from '../../../ng-elements/form/src/generic-forms.module';
+import { ErrorMessagesComponent } from './error/error-messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SocialDemoComponent
+    SocialDemoComponent,
+    ErrorMessagesComponent
   ],
   imports: [
     BrowserModule,

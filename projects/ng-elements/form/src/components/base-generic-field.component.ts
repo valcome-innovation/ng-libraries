@@ -7,7 +7,7 @@ import { FormHelper } from '../helpers/form.helper';
 @Directive()
 export class BaseGenericFieldComponent extends BaseBehaviorComponent implements OnInit, OnChanges {
 
-  @ContentChildren(FormErrorMessageDirective, { descendants: false })
+  @ContentChildren(FormErrorMessageDirective)
   public errorMessages!: QueryList<FormErrorMessageDirective>;
 
   @Input()
@@ -65,10 +65,14 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   }
 
   private hideOrDisplayErrorMessages(): void {
+    console.log(this.errorMessages);
+    console.log(this.formControl);
     this.errorMessages?.forEach((errorMessage: FormErrorMessageDirective) => {
       if (this.formControl.hasError(errorMessage.errorType)) {
+        console.log('show');
         errorMessage.showError();
       } else {
+        console.log('hide');
         errorMessage.hideError();
       }
     });

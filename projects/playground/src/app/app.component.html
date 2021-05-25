@@ -51,25 +51,23 @@
 <!--                          [useDefaultErrorMessages]="true">-->
 <!--</val-generic-autocomplete>-->
 
-<val-generic-select [formName]="'country'"
-                    [form]="shippingForm"
-                    [label]="'Land'"
-                    [placeholder]="'Land wählen'"
-                    [options]="countries"
-                    [isFormSubmitted]="isSubmitted"
-                    [isDisabled]="true"
-                    [useDefaultErrorMessages]="true">
-</val-generic-select>
+<!--<val-generic-select [formName]="'country'"-->
+<!--                    [form]="shippingForm"-->
+<!--                    [label]="'Land'"-->
+<!--                    [placeholder]="'Land wählen'"-->
+<!--                    [options]="countries"-->
+<!--                    [isFormSubmitted]="isSubmitted"-->
+<!--                    [useDefaultErrorMessages]="true">-->
+<!--</val-generic-select>-->
 
-<val-generic-select [formName]="'country'"
-                    [form]="shippingForm"
-                    [label]="'Land'"
-                    [placeholder]="'Land wählen'"
-                    [options]="countries"
-                    [isFormSubmitted]="isSubmitted"
-                    [displayCustomCaret]="true"
-                    [useDefaultErrorMessages]="true">
-</val-generic-select>
+<val-generic-input [formName]="'firstName'"
+                   [form]="shippingForm"
+                   [label]="'Name'"
+                   [placeholder]="'Land wählen'"
+                   [isFormSubmitted]="isSubmitted"
+                   [useDefaultErrorMessages]="false">
+  <val-error-messages></val-error-messages>
+</val-generic-input>
 
 <!--<div>{{shippingForm?.get('country')?.hasError('server')}}</div>-->
 
