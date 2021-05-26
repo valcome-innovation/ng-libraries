@@ -24,6 +24,11 @@
     <ng-container *ngIf="displayCustomCaret && !isLoading"
                   [ngTemplateOutlet]="caretDown">
     </ng-container>
+
+    <val-loading-spinner [show]="isLoading"
+                         [dark]="true"
+                         [size]="20">
+    </val-loading-spinner>
   </div>
 
   <div class="input-errors">
@@ -32,11 +37,6 @@
                                 (errorMessages)="addDefaultErrorMessages($event)">
     </val-generic-error-messages>
   </div>
-
-  <val-loading-spinner [show]="isLoading"
-                       [dark]="true"
-                       [size]="20">
-  </val-loading-spinner>
 </div>
 
 <ng-template #caretDown>

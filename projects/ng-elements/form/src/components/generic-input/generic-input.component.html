@@ -5,11 +5,18 @@
     {{label}}<span *ngIf="markAsRequired">*</span>
   </label>
 
-  <input [id]="id"
-         [type]="type"
-         [placeholder]="placeholder"
-         [formControlName]="formName"
-         autocomplete="{{autocomplete}}">
+  <div class="position-relative">
+    <input [id]="id"
+           [type]="type"
+           [placeholder]="placeholder"
+           [formControlName]="formName"
+           autocomplete="{{autocomplete}}">
+
+    <val-loading-spinner [show]="isLoading"
+                         [dark]="true"
+                         [size]="20">
+    </val-loading-spinner>
+  </div>
 
   <div class="input-errors">
     <ng-content></ng-content>
@@ -17,9 +24,4 @@
                                 (errorMessages)="addDefaultErrorMessages($event)">
     </val-generic-error-messages>
   </div>
-
-  <val-loading-spinner [show]="isLoading"
-                       [dark]="true"
-                       [size]="20">
-  </val-loading-spinner>
 </div>

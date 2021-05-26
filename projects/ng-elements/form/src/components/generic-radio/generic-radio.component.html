@@ -1,8 +1,7 @@
 <div [formGroup]="form" class="input-group radio"
      [ngClass]="{'invalid': !isValid}">
 
-  <div *ngFor="let item of options; let index = index"
-       class="radio-element">
+  <div *ngFor="let item of options; let index = index" class="radio-element">
     <label>
       <input type="radio"
              [formControlName]="formName"
