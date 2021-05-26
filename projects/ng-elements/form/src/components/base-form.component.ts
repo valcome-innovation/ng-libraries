@@ -26,7 +26,7 @@ export class BaseFormComponent extends BaseBehaviorComponent {
   public submit(event: Event): Promise<any> | boolean {
     this.isSubmitted = true;
     this.focusSubmitButton(event);
-    this.validateAllFields();
+    this.form.updateValueAndValidity();
     this.form.markAllAsTouched();
 
     if (this.isFormValid()) {
@@ -43,12 +43,6 @@ export class BaseFormComponent extends BaseBehaviorComponent {
     if (target) {
       target.focus();
     }
-  }
-
-  private validateAllFields(): void {
-    Object.keys(this.form.controls).forEach(key => {
-      this.form.get(key)?.updateValueAndValidity();
-    });
   }
 
   public isFormValid(): boolean {
