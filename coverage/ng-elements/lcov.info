@@ -1,5 +1,5 @@
 TN:
-SF:projects/ng-elements/src/ng-elements.module.ts
+SF:src/ng-elements.module.ts
 FNF:0
 FNH:0
 DA:16,1
@@ -9,7 +9,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:projects/ng-elements/src/public-api.ts
+SF:src/public-api.ts
 FNF:0
 FNH:0
 LF:0
@@ -18,15 +18,15 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:projects/ng-elements/src/loading-spinner/loading-spinner.component.ts
+SF:src/loading-spinner/loading-spinner.component.ts
 FNF:0
 FNH:0
 DA:8,1
-DA:11,1
-DA:14,1
-DA:17,1
+DA:11,0
+DA:14,0
+DA:17,0
 LF:4
-LH:4
+LH:1
 BRF:0
 BRH:0
 end_of_record

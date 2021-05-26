@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { DisplayValue } from '@valcome/ng-core';
 import { JsUtils } from '@valcome/ts-core';
 import { BaseGenericFieldComponent } from '../base-generic-field.component';
@@ -18,7 +18,10 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
     this._options = options;
 
     // fixes value reset after displays have changed
-    JsUtils.callAfterStackResolved(() => this.formControl.setValue(this.formControl.value));
+    JsUtils.callAfterStackResolved(() => this.formControl.setValue(this.formControl.value, {
+      onlySelf: true,
+      emitEvent: false
+    }));
   }
 
   public get options(): DisplayValue<any>[] {
@@ -33,9 +36,4 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
 
   @Input()
   public displayCustomCaret = false;
-
-  public constructor(private changeDetector: ChangeDetectorRef) {
-    super();
-  }
-
 }

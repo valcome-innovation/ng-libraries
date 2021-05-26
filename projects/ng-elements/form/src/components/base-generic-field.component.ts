@@ -56,20 +56,18 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   }
 
   private listenOnValueChanges(): void {
-    this.addSub(this.formControl.statusChanges.subscribe(() => {
-      this.handleFormValidation();
-    }));
+    this.addSub(this.formControl.valueChanges.subscribe(() => this.handleFormValidation()));
   }
 
   private handleFormValidation(): void {
-    this.isValid = this.formControl.valid && !this.formControl.pristine;
+    this.isValid = this.formControl.valid;
     this.currentValue = this.formControl.value;
     this.hideOrDisplayErrorMessages();
   }
 
   private hideOrDisplayErrorMessages(): void {
     this.errorMessages?.forEach((errorMessage: FormErrorMessageDirective) => {
-      if (this.formControl.hasError(errorMessage.errorType) && !this.isValid) {
+      if (this.formControl.hasError(errorMessage.errorType)) {
         errorMessage.showError();
       } else {
         errorMessage.hideError();

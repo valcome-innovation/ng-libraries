@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
@@ -9,9 +9,11 @@ import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
+
   public gameReport?: HockeyDataGameReport;
 
   public knockoutStage?: HockeyDataKnockoutStage;
@@ -115,6 +117,10 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    setTimeout(() => {
+      this.shippingForm.get('firstName')!.enable({ emitEvent: false });
+    }, 0);
+
     let control = this.shippingForm.get('country');
 
     if (control) {
