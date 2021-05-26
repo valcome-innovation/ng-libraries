@@ -56,7 +56,9 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   }
 
   private listenOnValueChanges(): void {
-    this.addSub(this.formControl.valueChanges.subscribe(() => this.handleFormValidation()));
+    this.addSub(this.formControl.statusChanges.subscribe(() => {
+      this.handleFormValidation();
+    }));
   }
 
   private handleFormValidation(): void {
