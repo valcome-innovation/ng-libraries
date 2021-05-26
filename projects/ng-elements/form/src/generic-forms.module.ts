@@ -8,11 +8,13 @@ import { GenericRadioComponent } from './components/generic-radio/generic-radio.
 import { GenericCheckboxComponent } from './components/generic-checkbox/generic-checkbox.component';
 import { GenericErrorMessagesComponent } from './components/generic-error-messages/generic-error-messages.component';
 import { GenericPasswordComponent } from './components/generic-password/generic-password.component';
+import { NgElementsModule } from '@valcome/ng-elements';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    NgElementsModule,
   ],
   declarations: [
     GenericInputComponent,
