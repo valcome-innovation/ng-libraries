@@ -24,13 +24,6 @@ describe('BaseFormComponent', () => {
     expect(component.isSubmitted).toBeFalsy();
   });
 
-  it('should mark form as touched and submitted after submitting', () => {
-    component.submit(getMockedSubmitEvent());
-
-    expect(component.isSubmitted).toBeTruthy();
-    expect(component.form.touched).toBeTruthy();
-  });
-
   it('should resolve submitted true if valid', async () => {
     spyOn(component, 'isFormValid').and.returnValue(true);
 
