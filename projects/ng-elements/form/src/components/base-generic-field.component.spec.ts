@@ -58,6 +58,8 @@ describe('BaseGenericFieldComponent', () => {
     let showMessageSpy = createSpy('showMessage');
     let hideMessageSpy = createSpy('hideMessage');
     component.errorMessages = getMockedErrorMessages(showMessageSpy, hideMessageSpy);
+    formControlSpy.valid = false;
+    formControlSpy.pristine = false;
     formControlSpy.hasError.withArgs(FormErrorType.MAX_LENGTH).and.returnValue(true);
     component.ngOnInit();
 
