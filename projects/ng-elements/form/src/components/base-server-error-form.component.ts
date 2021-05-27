@@ -4,7 +4,7 @@ import { BaseFormComponent } from './base-form.component';
 import { FormErrorType } from '../model/form-error-type';
 
 export interface FormServerError {
-  field: string;
+  field?: string;
 }
 
 @Directive()
@@ -41,8 +41,10 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError> extends 
   protected addServerErrors(formGroup: FormGroup, errors: E[]): void {
     this.clearAllServerErrors(formGroup);
     for (const error of errors) {
-      const field: FormControl = formGroup.get(error.field) as FormControl;
-      field?.setErrors({ server: true }, { emitEvent: true });
+      if (error.field) {
+        const field: FormControl = formGroup.get(error.field) as FormControl;
+        field?.setErrors({ server: true }, { emitEvent: true });
+      }
     }
   }
 
