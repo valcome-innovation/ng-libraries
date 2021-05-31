@@ -14,7 +14,7 @@ export class BaseFormComponent extends BaseBehaviorComponent {
   public isLoading = false;
 
   @Input()
-  public isSubmitted: boolean = false;
+  public isSubmitted = false;
 
   public FormErrorType = FormErrorType;
   public InputAutofill = InputAutofill;

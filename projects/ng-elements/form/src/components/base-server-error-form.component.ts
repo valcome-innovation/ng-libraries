@@ -29,7 +29,7 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError> extends 
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.errorsChanged(changes.serverErrors)) {
-      this.resetSubmission();
+      // this.resetSubmission();
       this.addServerErrors(this.form, changes.serverErrors.currentValue);
     }
   }
@@ -40,6 +40,7 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError> extends 
 
   protected addServerErrors(formGroup: FormGroup, errors: E[]): void {
     this.clearAllServerErrors(formGroup);
+
     for (const error of errors) {
       if (error.field) {
         const field: FormControl = formGroup.get(error.field) as FormControl;
