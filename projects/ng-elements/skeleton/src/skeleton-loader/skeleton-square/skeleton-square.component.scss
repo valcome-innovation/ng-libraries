@@ -1,6 +1,8 @@
 :host {
   display: flex;
   overflow: hidden;
+  width: 52px;
+  height: 52px;
 
   .square {
     flex: 1;
