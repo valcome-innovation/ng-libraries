@@ -25,21 +25,13 @@ export class BaseFormComponent extends BaseBehaviorComponent {
 
   public submit(event: Event): Promise<any> | boolean {
     this.isSubmitted = true;
-    this.focusSubmitButton(event);
+    this.form.updateValueAndValidity();
 
     if (this.isFormValid()) {
       return true;
     } else {
       event.preventDefault();
       return false;
-    }
-  }
-
-  private focusSubmitButton(event: Event): void {
-    let target: HTMLElement = event?.target as HTMLElement;
-
-    if (target) {
-      target.focus();
     }
   }
 
