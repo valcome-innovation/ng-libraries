@@ -27,7 +27,7 @@ describe('BaseFormComponent', () => {
   it('should resolve submitted true if valid', async () => {
     spyOn(component, 'isFormValid').and.returnValue(true);
 
-    let result: boolean = await component.submit(getMockedSubmitEvent());
+    let result: boolean = await component.submit(getMockedSubmitElement(), getMockedSubmitEvent());
 
     expect(result).toBeTruthy();
   });
@@ -35,10 +35,14 @@ describe('BaseFormComponent', () => {
   it('should resolve submitted false if invalid', async () => {
     spyOn(component, 'isFormValid').and.returnValue(false);
 
-    let result: boolean = await component.submit(getMockedSubmitEvent());
+    let result: boolean = await component.submit(getMockedSubmitElement(), getMockedSubmitEvent());
 
     expect(result).toBeFalsy();
   });
+
+  function getMockedSubmitElement(): any {
+    return { focus: () => 0 }
+  }
 
   function getMockedSubmitEvent(): any {
     return {

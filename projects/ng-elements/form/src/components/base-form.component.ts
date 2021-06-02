@@ -23,9 +23,9 @@ export class BaseFormComponent extends BaseBehaviorComponent {
     this.isSubmitted = false;
   }
 
-  public submit(event: Event): Promise<any> | boolean {
+  public submit(submitElement: HTMLElement, event: Event): Promise<any> | boolean {
     this.isSubmitted = true;
-    this.form.updateValueAndValidity();
+    submitElement.focus();
 
     if (this.isFormValid()) {
       return true;

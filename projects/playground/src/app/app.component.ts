@@ -5,6 +5,7 @@ import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-ty
 import { Image } from '../../../ng-elements/image-gallery/src/image';
 import { HockeyDataGameReport, HockeyDataKnockoutStage, HockeyDataTeamStanding } from 'ts-hockeydata-api';
 import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
+import { BaseFormComponent } from '../../../ng-elements/form/src/components/base-form.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit {
+export class AppComponent extends BaseFormComponent implements OnInit {
 
   public gameReport?: HockeyDataGameReport;
 
@@ -97,7 +98,7 @@ export class AppComponent implements OnInit {
 
   public FormErrorType = FormErrorType;
 
-  public shippingForm!: FormGroup;
+  public form!: FormGroup;
   public isSubmitted: boolean = false;
 
   public countries: DisplayValue<string>[] = [
@@ -113,15 +114,16 @@ export class AppComponent implements OnInit {
   ];
 
   public constructor(private fb: FormBuilder) {
+    super();
     this.initForm();
   }
 
   public ngOnInit(): void {
     setTimeout(() => {
-      this.shippingForm.get('firstName')!.enable({ emitEvent: false });
+      this.form.get('firstName')!.enable({ emitEvent: false });
     }, 0);
 
-    let control = this.shippingForm.get('country');
+    let control = this.form.get('country');
 
     if (control) {
       control.statusChanges.subscribe((s) => console.log(s));
@@ -149,33 +151,29 @@ export class AppComponent implements OnInit {
   }
 
   private initForm(): void {
-    this.shippingForm = this.fb.group({
-      eMail: ['', this.fbOptions([Validators.required])],
-      firstName: ['', this.fbOptions([Validators.required])],
-      lastName: ['', this.fbOptions([Validators.required])],
-      country: [null, this.fbOptions([Validators.required], 'change')],
-      useDifferentBilling: [false, this.fbOptions([Validators.requiredTrue], 'change')],
-      beer: [1, this.fbOptions([Validators.required], 'change')]
+    this.form = this.fb.group({
+      firstName: ['', this.fbOptions([Validators.required], 'blur')],
     });
+    // this.form = this.fb.group({
+    //   eMail: ['', this.fbOptions([Validators.required])],
+    //   firstName: ['', this.fbOptions([Validators.required], 'blur')],
+    //   lastName: ['', this.fbOptions([Validators.required])],
+    //   country: [null, this.fbOptions([Validators.required], 'change')],
+    //   useDifferentBilling: [false, this.fbOptions([Validators.requiredTrue], 'change')],
+    //   beer: [1, this.fbOptions([Validators.required], 'change')]
+    // });
   }
 
   private fbOptions(validators: ValidatorFn[], updateOn: 'blur' | 'change' = 'blur'): AbstractControlOptions {
     return { validators, updateOn };
   }
 
-  public submit(event: Event): void {
-    this.isSubmitted = true;
-    this.shippingForm.markAllAsTouched();
-
-    if (this.shippingForm.valid) {
-
-    } else {
-      event.preventDefault();
-    }
+  public submit(submit: HTMLInputElement, event: Event): boolean | Promise<any> {
+    return super.submit(submit, event);
   }
 
   public setError(): void {
-    let control = this.shippingForm.get('country');
+    let control = this.form.get('country');
 
     if (control) {
       control.setErrors({ server: true });

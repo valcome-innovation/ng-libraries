@@ -60,32 +60,37 @@
 <!--                    [useDefaultErrorMessages]="true">-->
 <!--</val-generic-select>-->
 
-<val-generic-input [formName]="'firstName'"
-                   [form]="shippingForm"
-                   [isLoading]="false"
-                   [label]="'Name'"
-                   [placeholder]="'Name wählen'"
-                   [isFormSubmitted]="isSubmitted"
-                   [useDefaultErrorMessages]="false">
-  <div val-input-error-message [errorType]="FormErrorType.REQUIRED">
-    {{ 'requiredMessage' }}
-  </div>
-  <div val-input-error-message [errorType]="FormErrorType.MAX_LENGTH">
-    {{ 'maxLengthMessage' }}
-  </div>
-  <div val-input-error-message [errorType]="FormErrorType.MIN_LENGTH">
-    {{ 'minLengthMessage' }}
-  </div>
-  <div val-input-error-message [errorType]="FormErrorType.EMAIL">
-    {{ 'emailMessage' }}
-  </div>
-  <div val-input-error-message [errorType]="FormErrorType.MIN">
-    {{ 'minMessage' }}
-  </div>
-  <div val-input-error-message [errorType]="FormErrorType.MAX">
-    {{ 'maxMessage' }}
-  </div>
-</val-generic-input>
+<form [formGroup]="form" (ngSubmit)="submit(submitInput, $event)">
+  <val-generic-input [formName]="'firstName'"
+                     [form]="form"
+                     [isLoading]="false"
+                     [label]="'Name'"
+                     [placeholder]="'Name wählen'"
+                     [isFormSubmitted]="isSubmitted"
+                     [useDefaultErrorMessages]="false">
+    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">
+      {{ 'requiredMessage' }}
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.MAX_LENGTH">
+      {{ 'maxLengthMessage' }}
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.MIN_LENGTH">
+      {{ 'minLengthMessage' }}
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.EMAIL">
+      {{ 'emailMessage' }}
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.MIN">
+      {{ 'minMessage' }}
+    </div>
+    <div val-input-error-message [errorType]="FormErrorType.MAX">
+      {{ 'maxMessage' }}
+    </div>
+  </val-generic-input>
+
+  <input type="submit" value="submit" #submitInput>
+  {{form.valid}}
+</form>
 
 <!--<div>{{shippingForm?.get('country')?.hasError('server')}}</div>-->
 
