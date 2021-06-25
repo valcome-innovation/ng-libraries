@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'val-skeleton-line',
   templateUrl: './skeleton-line.component.html',
-  styleUrls: ['./skeleton-line.component.scss']
+  styleUrls: ['./skeleton-line.component.scss', '../skeleton.scss']
 })
 export class SkeletonLineComponent implements OnInit {
 

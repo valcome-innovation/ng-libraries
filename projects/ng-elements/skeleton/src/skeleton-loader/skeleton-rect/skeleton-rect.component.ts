@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'val-skeleton-rect',
   templateUrl: './skeleton-rect.component.html',
-  styleUrls: ['./skeleton-rect.component.scss']
+  styleUrls: ['./skeleton-rect.component.scss', '../skeleton.scss']
 })
 export class SkeletonRectComponent {
 
