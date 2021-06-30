@@ -21,7 +21,7 @@ describe('ArrayUtils', () => {
       { value: 3 }
     ];
 
-    let sum = ArrayUtils.sumField(values, "value");
+    let sum = ArrayUtils.sumField(values, 'value');
     expect(sum).toEqual(6);
   });
 
@@ -40,7 +40,7 @@ describe('ArrayUtils', () => {
       { value: 3 }
     ];
 
-    let mappedValues = ArrayUtils.map(values, "value");
+    let mappedValues = ArrayUtils.map(values, 'value');
     expect(mappedValues).toEqual([1, 2, 3]);
   });
 

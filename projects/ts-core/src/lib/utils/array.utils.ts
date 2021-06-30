@@ -47,13 +47,13 @@ export class ArrayUtils {
 
   public static createArrayFromNumber(amount: number): number [] {
     if (amount != null && amount > 0) {
-      return Array.from(new Array(amount), (x, i: number) => i + 1)
+      return Array.from(new Array(amount), (x, i: number) => i + 1);
     } else {
       return [];
     }
   }
 
   public static removeDuplicates<T>(array: T[]): T[] {
-    return array.filter((value: T, index: number, array: T[]) => index === array.indexOf(value))
+    return array.filter((value: T, index: number, array: T[]) => index === array.indexOf(value));
   }
 }
