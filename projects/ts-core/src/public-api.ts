@@ -7,3 +7,5 @@ export * from './lib/builder/url.builder';
 
 export * from './lib/mapper/base.mapper';
 export * from './lib/mapper/generic.mapper';
+
+export * from './lib/iterator/paging.iterator';
