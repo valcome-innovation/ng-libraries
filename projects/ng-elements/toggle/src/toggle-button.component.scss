@@ -27,6 +27,10 @@ $disabled: #7B7B7B;
     outline: none;
     cursor: pointer;
     background-color: transparent;
+
+    &:disabled {
+      cursor: default;
+    }
   }
 
   button.first.active {
