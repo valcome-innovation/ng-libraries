@@ -33,7 +33,7 @@ export class DomUtils {
     );
   }
 
-  public static loadScriptAsync(id: string, src: string): Promise<HTMLScriptElement> {
+  public static loadScriptAsync(id: string, src: string, defer: boolean = false): Promise<HTMLScriptElement> {
     const element = document.getElementById(id)
 
     if (!element || !(element instanceof HTMLScriptElement)) {
@@ -44,6 +44,7 @@ export class DomUtils {
         scriptHTML.type = 'text/javascript';
         scriptHTML.src = src;
         scriptHTML.id = id;
+        scriptHTML.defer = defer;
 
         scriptHTML.onload = () => resolve(scriptHTML);
         scriptHTML.onerror = () => reject();
