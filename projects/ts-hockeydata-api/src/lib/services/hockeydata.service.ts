@@ -22,6 +22,12 @@ export abstract class HockeyDataService {
       .toPromise();
   }
 
+  public getSchedule(divisionId: number, params: ApiParams = {}): Promise<HockeyDataKnockoutStage> {
+    return this.dao.fetchSchedule(divisionId, params)
+      .pipe(map(res => this.knockoutStageMapper.fromJson(res.data)))
+      .toPromise();
+  }
+
   public getGameReport(gameId: string, params: ApiParams = {}): Promise<HockeyDataGameReport> {
     return this.dao.fetchGameReport(gameId, params)
       .pipe(map(res => this.gameReportMapper.fromJson(res.data)))

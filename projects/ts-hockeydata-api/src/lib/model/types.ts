@@ -42,14 +42,13 @@ export interface IHockeyDataPeriodStats {
   awayShotsOnGoal: number;
 }
 
-export interface IHockeyDataGameReportGameData {
+
+export interface IHockeyDataBaseGameData {
   id: string;
   divisionId: number;
   divisionLongname: string;
   scheduledDate: IHockeyDataDate;
   scheduledTime: string;
-  startTime: string;
-  endTime: string;
   isOvertime: number;
   isShootOut: number;
   homeTeamId: number;
@@ -64,6 +63,11 @@ export interface IHockeyDataGameReportGameData {
   gameRound: number;
   location: IHockeyDataLocation;
   liveTime: number;
+}
+
+export interface IHockeyDataGameReportGameData extends IHockeyDataBaseGameData {
+  startTime: string;
+  endTime: string;
   liveTimeFormatted: string;
   liveTimePeriod: string;
   periodStats: IHockeyDataPeriodStats[];
@@ -101,6 +105,12 @@ export interface IHockeyDataApiResponse {
   calcTime?: number;
   lastUpdate: IHockeyDataDate;
   servedByServer?: string;
+}
+
+export interface IHockeyDataSchedule extends IHockeyDataApiResponse {
+  data: {
+    rows: IHockeyDataScheduledGame[]
+  };
 }
 
 export interface IHockeyDataGameReport extends IHockeyDataApiResponse {
@@ -173,7 +183,7 @@ export interface IHockeyDataPhaseEncounter {
   bestOf: number;
   gamesNeeded: number;
   teams: [IHockeyDataPhaseEncounterTeam, IHockeyDataPhaseEncounterTeam];
-  games: IHockeyDataKnockoutPhaseGame[];
+  games: IHockeyDataScheduledGame[];
 }
 
 export interface IHockeyDataPhaseEncounterTeam {
@@ -184,7 +194,7 @@ export interface IHockeyDataPhaseEncounterTeam {
   encounterTeamStatus: number;
 }
 
-export interface IHockeyDataKnockoutPhaseGame {
+export interface IHockeyDataScheduledGame {
   id: string;
   scheduledDate: {
     sortValue: number;

@@ -1,35 +1,35 @@
 import { TestBed } from '@angular/core/testing';
 import { HockeyDataGameScoreMapper } from './hockeydata-game-score.mapper';
-import { HockeyDataKnockoutGameMapper } from './hockeydata-knockout-game.mapper';
-import { IHockeyDataKnockoutPhaseGame } from '../model/types';
-import { HockeyDataKnockoutGame } from '../model/hockeydata-knockout-game';
+import { HockeyDataScheduledGameMapper } from './hockeydata-scheduled-game-mapper';
+import { IHockeyDataScheduledGame } from '../model/types';
+import { HockeyDataScheduledGame } from '../model/hockeydata-scheduled-game';
 import { HockeyDataGameScore } from '../model/hockeydata-game-score';
 
-describe('HockeyDataKnockoutGameMapper', () => {
+describe('HockeyDataScheduledGameMapper', () => {
 
-  let mapper: HockeyDataKnockoutGameMapper;
+  let mapper: HockeyDataScheduledGameMapper;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         HockeyDataGameScoreMapper,
-        HockeyDataKnockoutGameMapper
+        HockeyDataScheduledGameMapper
       ]
     });
 
-    mapper = TestBed.inject(HockeyDataKnockoutGameMapper);
+    mapper = TestBed.inject(HockeyDataScheduledGameMapper);
   });
 
   it('should create', () => {
     expect(mapper).toBeDefined();
   });
 
-  it('should map knockout game', () => {
-    const game = getKnockOutGame(0, false);
+  it('should map scheduled game', () => {
+    const game = getScheduledGame(0, false);
 
     const result = mapper.fromJson(game);
 
-    expect(result).toBeInstanceOf(HockeyDataKnockoutGame);
+    expect(result).toBeInstanceOf(HockeyDataScheduledGame);
     expect(result.gameId).toEqual(game.id);
     expect(result.gameName).toEqual(game.gameName);
     expect(result.gameRound).toEqual(55);
@@ -42,47 +42,47 @@ describe('HockeyDataKnockoutGameMapper', () => {
   });
 
   it('should map isLive to true', () => {
-    const game = getKnockOutGame(1356, false);
+    const game = getScheduledGame(1356, false);
 
     const result = mapper.fromJson(game);
     expect(result.isLive).toEqual(true);
   });
 
   it('should map isLive to false if game not started', () => {
-    const game = getKnockOutGame(0, false);
+    const game = getScheduledGame(0, false);
 
     const result = mapper.fromJson(game);
     expect(result.isLive).toEqual(false);
   });
 
   it('should map isLive to false if game ended', () => {
-    const game = getKnockOutGame(3600, true);
+    const game = getScheduledGame(3600, true);
 
     const result = mapper.fromJson(game);
     expect(result.isLive).toEqual(false);
   });
 
   it('should map isLive to false if data inconsistent', () => {
-    let result = mapper.fromJson(getKnockOutGame(3456, false, ['FINISHED']));
+    let result = mapper.fromJson(getScheduledGame(3456, false, ['FINISHED']));
     expect(result.isLive).toEqual(false);
     expect(result.hasEnded).toEqual(true);
 
-    result = mapper.fromJson(getKnockOutGame(3600, false, ['FINISHED']));
+    result = mapper.fromJson(getScheduledGame(3600, false, ['FINISHED']));
     expect(result.isLive).toEqual(false);
     expect(result.hasEnded).toEqual(true);
   });
 
   it('should fail mapping on missing field', () => {
-    const game = getKnockOutGame(0, false) as any;
+    const game = getScheduledGame(0, false) as any;
     game.awayTeamShortName = undefined;
 
     expect(() => mapper.fromJson(game)).toThrowError();
   });
 });
 
-function getKnockOutGame(liveTime: number = 0,
-                         gameHasEnded: boolean = false,
-                         labels: string[] = []): IHockeyDataKnockoutPhaseGame {
+function getScheduledGame(liveTime: number = 0,
+                          gameHasEnded: boolean = false,
+                          labels: string[] = []): IHockeyDataScheduledGame {
   return {
     id: 'c63b7e97-f13e-4677-9557-875cf6a178a6',
     scheduledDate: {
