@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HockeyDataKnockoutTeamScoreMapper } from './hockeydata-knockout-team-score.mapper';
 import { IHockeyDataPhaseEncounterTeam } from '../model/types';
 import { HockeyDataKnockoutTeamScore } from '../model/hockeydata-knockout-team-score';
-import { HockeyDataKnockoutGame } from '../model/hockeydata-knockout-game';
+import { HockeyDataScheduledGame } from '../model/hockeydata-scheduled-game';
 import { HockeyDataGameScore } from '../model/hockeydata-game-score';
 
 describe('HockeyDataKnockoutTeamScoreMapper', () => {
@@ -68,8 +68,8 @@ describe('HockeyDataKnockoutTeamScoreMapper', () => {
   });
 });
 
-function getKnockOutGame(isLive: boolean, hasEnded: boolean, homeScore: number, awayScore: number): HockeyDataKnockoutGame {
-  return new HockeyDataKnockoutGame(
+function getKnockOutGame(isLive: boolean, hasEnded: boolean, homeScore: number, awayScore: number): HockeyDataScheduledGame {
+  return new HockeyDataScheduledGame(
     'gameId', '258', 123, new Date(), false, false, isLive, hasEnded,
     new HockeyDataGameScore(
       10, 'Home', 'SWL', homeScore,

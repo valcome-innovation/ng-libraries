@@ -1,6 +1,6 @@
 import { HockeyDataGameScore } from './hockeydata-game-score';
 
-export class HockeyDataKnockoutGame {
+export class HockeyDataScheduledGame {
   public gameId: string;
   public gameName: string;
   public gameRound?: number;

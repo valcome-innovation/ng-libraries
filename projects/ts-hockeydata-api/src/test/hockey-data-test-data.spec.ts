@@ -3,7 +3,7 @@ import { HockeyDataKnockoutStageMapper } from '../lib/mapper/hockeydata-knockout
 import { HockeyDataKnockoutPhaseMapper } from '../lib/mapper/hockeydata-knockout-phase.mapper';
 import { HockeyDataKnockoutEncounterMapper } from '../lib/mapper/hockeydata-knockout-encounter.mapper';
 import { HockeyDataKnockoutTeamScoreMapper } from '../lib/mapper/hockeydata-knockout-team-score.mapper';
-import { HockeyDataKnockoutGameMapper } from '../lib/mapper/hockeydata-knockout-game.mapper';
+import { HockeyDataScheduledGameMapper } from '../lib/mapper/hockeydata-scheduled-game-mapper';
 import { HockeyDataGameScoreMapper } from '../lib/mapper/hockeydata-game-score.mapper';
 import { IHockeyDataKnockOutStage } from '../lib/model/types';
 
@@ -12,7 +12,7 @@ export class HockeyDataTestData {
   public static createKnockoutStage(): HockeyDataKnockoutStage {
 
     const knockoutGameScoreMapper = new HockeyDataGameScoreMapper();
-    const knockoutGamesMapper = new HockeyDataKnockoutGameMapper(knockoutGameScoreMapper);
+    const knockoutGamesMapper = new HockeyDataScheduledGameMapper(knockoutGameScoreMapper);
     const knockoutTeamScoreMapper = new HockeyDataKnockoutTeamScoreMapper();
     const knockoutEncounterMapper = new HockeyDataKnockoutEncounterMapper(knockoutGamesMapper, knockoutTeamScoreMapper);
     const knockoutPhaseMapper = new HockeyDataKnockoutPhaseMapper(knockoutEncounterMapper);

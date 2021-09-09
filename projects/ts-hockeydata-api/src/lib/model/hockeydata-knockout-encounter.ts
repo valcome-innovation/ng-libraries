@@ -1,19 +1,19 @@
 import { HockeyDataKnockoutTeamScore } from './hockeydata-knockout-team-score';
-import { HockeyDataKnockoutGame } from './hockeydata-knockout-game';
+import { HockeyDataScheduledGame } from './hockeydata-scheduled-game';
 
 export class HockeyDataKnockoutEncounter {
   public bestOf: number;
   public gamesNeeded: number;
   public isDecided: boolean;
   public teamScores: [HockeyDataKnockoutTeamScore, HockeyDataKnockoutTeamScore];
-  public games: HockeyDataKnockoutGame[];
+  public games: HockeyDataScheduledGame[];
   public labels: any[];
 
   public constructor(bestOf: number,
                      gamesNeeded: number,
                      isDecided: boolean,
                      teamScores: [HockeyDataKnockoutTeamScore, HockeyDataKnockoutTeamScore],
-                     games: HockeyDataKnockoutGame[] = [],
+                     games: HockeyDataScheduledGame[] = [],
                      labels: any[] = []) {
     this.bestOf = bestOf;
     this.gamesNeeded = gamesNeeded;

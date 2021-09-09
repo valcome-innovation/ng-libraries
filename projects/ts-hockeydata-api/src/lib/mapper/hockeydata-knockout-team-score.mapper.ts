@@ -2,7 +2,7 @@ import { BaseMapper } from '@valcome/ts-core';
 import { Injectable } from '@angular/core';
 import { IHockeyDataPhaseEncounterTeam } from '../model/types';
 import { HockeyDataKnockoutTeamScore, ScoreResult } from '../model/hockeydata-knockout-team-score';
-import { HockeyDataKnockoutGame } from '../model/hockeydata-knockout-game';
+import { HockeyDataScheduledGame } from '../model/hockeydata-scheduled-game';
 
 @Injectable({ providedIn: 'root' })
 export class HockeyDataKnockoutTeamScoreMapper extends BaseMapper<HockeyDataKnockoutTeamScore> {
@@ -18,18 +18,18 @@ export class HockeyDataKnockoutTeamScoreMapper extends BaseMapper<HockeyDataKnoc
     return new HockeyDataKnockoutTeamScore(teamId, longName, shortName, gamesWon);
   }
 
-  public mapScoreResults(teamScores: HockeyDataKnockoutTeamScore[], games: HockeyDataKnockoutGame[]): void {
+  public mapScoreResults(teamScores: HockeyDataKnockoutTeamScore[], games: HockeyDataScheduledGame[]): void {
     teamScores.forEach(teamScore => {
       const scoreResults = this.getTeamScoreResults(teamScore.shortName, games);
       teamScore.results = [...scoreResults];
     });
   }
 
-  private getTeamScoreResults(teamShortName: string, games: HockeyDataKnockoutGame[]): ScoreResult[] {
+  private getTeamScoreResults(teamShortName: string, games: HockeyDataScheduledGame[]): ScoreResult[] {
     return games.map(game => this.determineScoreResult(teamShortName, game));
   }
 
-  private determineScoreResult(teamShortName: string, game: HockeyDataKnockoutGame): ScoreResult {
+  private determineScoreResult(teamShortName: string, game: HockeyDataScheduledGame): ScoreResult {
     if (game.isScheduled()) {
       return 'scheduled';
     } else if (game.isLive) {

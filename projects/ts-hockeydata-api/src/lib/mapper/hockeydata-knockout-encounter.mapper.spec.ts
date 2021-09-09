@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HockeyDataKnockoutEncounterMapper } from './hockeydata-knockout-encounter.mapper';
 import { getKnockoutStageData } from './test-data/knockout-stage-data';
 import { HockeyDataKnockoutEncounter } from '../model/hockeydata-knockout-encounter';
-import { HockeyDataKnockoutGameMapper } from './hockeydata-knockout-game.mapper';
+import { HockeyDataScheduledGameMapper } from './hockeydata-scheduled-game-mapper';
 import { HockeyDataKnockoutTeamScoreMapper } from './hockeydata-knockout-team-score.mapper';
 import { IHockeyDataPhaseEncounter } from '../model/types';
 
@@ -14,7 +14,7 @@ describe('HockeyDataKnockoutEncounterMapper', () => {
     TestBed.configureTestingModule({
       providers: [
         HockeyDataKnockoutEncounterMapper,
-        HockeyDataKnockoutGameMapper,
+        HockeyDataScheduledGameMapper,
         HockeyDataKnockoutTeamScoreMapper
       ]
     });
