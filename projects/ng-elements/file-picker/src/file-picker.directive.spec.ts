@@ -2,19 +2,22 @@ import { FilePickerDirective } from './file-picker.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { FilePickerError } from './file-picker-error';
-import { PickedFile } from './picked-file';
+
+@Component({
+  template: '<div id="testFilePicker" valFilePicker></div>'
+})
+class TestComponent {
+}
 
 describe('FilePickerDirective', () => {
+
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
   let directive: FilePickerDirective;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [],
       declarations: [TestComponent, FilePickerDirective],
-      providers: []
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestComponent);
@@ -91,7 +94,7 @@ describe('FilePickerDirective', () => {
 
     spyOn(directive.filePick, 'emit').and.callThrough();
     await new Promise(resolve => {
-      directive.filePick.subscribe((file: PickedFile) => {
+      directive.filePick.subscribe((file: File) => {
         expect(directive.filePick.emit).toHaveBeenCalledWith(file);
         expect(file.name).toEqual(dummyFile.name);
         expect(file.size).toEqual(dummyFile.size);
@@ -102,7 +105,7 @@ describe('FilePickerDirective', () => {
     });
   });
 
-  it('should not read file aboce  max size', () => {
+  it('should not read file above max size', () => {
     directive.maxSize = 1;
     directive.ngOnInit();
 
@@ -113,13 +116,6 @@ describe('FilePickerDirective', () => {
 
     spyOn(directive.filePick, 'emit');
     inputElement?.dispatchEvent(event);
-    expect(directive.filePick.emit).toHaveBeenCalledWith(FilePickerError.FileTooBig);
+    expect(directive.filePick.emit).toHaveBeenCalledWith('tooBig');
   });
 });
-
-@Component({
-  template: '<div id="testFilePicker" valFilePicker></div>'
-})
-class TestComponent {
-}
-

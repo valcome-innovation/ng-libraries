@@ -1,6 +1,4 @@
 import { Directive, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
-
-import { PickedFile } from './picked-file';
 import { FilePickerError } from './file-picker-error';
 
 @Directive({
@@ -15,7 +13,7 @@ export class FileDropzoneDirective implements OnInit {
   public maxSize = 0;
 
   @Output()
-  public fileDrop = new EventEmitter<PickedFile | FilePickerError>();
+  public fileDrop = new EventEmitter<File | FilePickerError>();
 
   public constructor(private el: ElementRef, private renderer: Renderer2) {
   }
@@ -45,33 +43,16 @@ export class FileDropzoneDirective implements OnInit {
   }
 
   private handleFiles(files: FileList) {
-
     let file = files[0];
 
     if (file == null) {
-      this.fileDrop.emit(FilePickerError.UndefinedInput);
+      this.fileDrop.emit('undefined');
     } else if (!file.type.match(this.accept)) {
-      this.fileDrop.emit(FilePickerError.InvalidFileType);
+      this.fileDrop.emit('invalid');
     } else if (this.maxSize > 0 && file.size > this.maxSize) {
-      this.fileDrop.emit(FilePickerError.FileTooBig);
+      this.fileDrop.emit('tooBig');
     } else {
-
-      const reader = new FileReader();
-      reader.onload = (loaded: ProgressEvent) => {
-
-        const fileReader = loaded.target as FileReader;
-        const droppedFile = new PickedFile(
-          new Date(file.lastModified),
-          file.name, file.size,
-          file.type,
-          fileReader.result!,
-          file
-        );
-
-        this.fileDrop.emit(droppedFile);
-      };
-
-      reader.readAsDataURL(file);
+      this.fileDrop.emit(file);
     }
   }
 }
