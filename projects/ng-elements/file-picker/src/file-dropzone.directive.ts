@@ -21,16 +21,25 @@ export class FileDropzoneDirective implements OnInit {
   @Output()
   public dragLeave = new EventEmitter<void>();
 
+  // https://stackoverflow.com/a/21002544/12237560
+  private dragCounter = 0;
+
   public constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
   public ngOnInit() {
     this.renderer.listen(this.el.nativeElement, 'dragleave', () => {
-      this.dragLeave.emit();
+      this.dragCounter--;
+
+      if (this.dragCounter === 0) {
+        this.dragLeave.emit();
+      }
     });
 
     this.renderer.listen(this.el.nativeElement, 'dragenter', (event: DragEvent) => {
       this.dragEnter.emit();
+      this.dragCounter++;
+
       event.stopPropagation();
       event.preventDefault();
     });
@@ -41,6 +50,7 @@ export class FileDropzoneDirective implements OnInit {
     });
 
     this.renderer.listen(this.el.nativeElement, 'drop', (event: DragEvent) => {
+      this.dragCounter = 0;
       event.stopPropagation();
       event.preventDefault();
 
