@@ -15,11 +15,22 @@ export class FileDropzoneDirective implements OnInit {
   @Output()
   public fileDrop = new EventEmitter<File | FilePickerError>();
 
+  @Output()
+  public dragEnter = new EventEmitter<void>();
+
+  @Output()
+  public dragLeave = new EventEmitter<void>();
+
   public constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
   public ngOnInit() {
+    this.renderer.listen(this.el.nativeElement, 'dragleave', () => {
+      this.dragLeave.emit();
+    });
+
     this.renderer.listen(this.el.nativeElement, 'dragenter', (event: DragEvent) => {
+      this.dragEnter.emit();
       event.stopPropagation();
       event.preventDefault();
     });
