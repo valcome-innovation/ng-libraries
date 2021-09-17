@@ -3,12 +3,15 @@ import { Directive, OnDestroy } from '@angular/core';
 
 @Directive()
 export class BaseSubscriptionComponent implements OnDestroy {
+
   protected subscriptions: Subscription[] = [];
 
   public ngOnDestroy(): void {
-    this.subscriptions.forEach(s => {
-      s?.unsubscribe();
-    });
+    this.unsubscribe();
+  }
+
+  protected unsubscribe(): void {
+    this.subscriptions.forEach(s => s?.unsubscribe());
     this.subscriptions = [];
   }
 
