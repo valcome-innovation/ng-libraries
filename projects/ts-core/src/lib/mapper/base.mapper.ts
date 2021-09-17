@@ -1,8 +1,10 @@
 import { GenericMapper } from './generic.mapper';
 
-export abstract class BaseMapper<T> {
+export type GenericConstructor<T> = new(...args: any[]) => T;
 
-  protected constructor(protected readonly type: new(...args: any[]) => T) {
+export abstract class BaseMapper<T, K extends GenericConstructor<T> = GenericConstructor<T>> {
+
+  protected constructor(protected readonly type: K) {
   }
 
   public toJson(instance: T | T[]): any {
