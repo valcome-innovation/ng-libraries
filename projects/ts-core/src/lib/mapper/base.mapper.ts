@@ -2,7 +2,7 @@ import { GenericMapper } from './generic.mapper';
 
 export abstract class BaseMapper<T> {
 
-  protected constructor(private readonly type: any) {
+  protected constructor(protected readonly type: any) {
   }
 
   public toJson(instance: T | T[]): any {
