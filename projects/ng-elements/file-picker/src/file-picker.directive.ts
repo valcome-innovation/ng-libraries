@@ -1,5 +1,4 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
-import { PickedFile } from './picked-file';
 import { FilePickerError } from './file-picker-error';
 
 @Directive({
@@ -14,21 +13,21 @@ export class FilePickerDirective implements OnInit {
   public maxSize = 0;
 
   @Input()
-  get multiple() {
+  public get multiple() {
     return this._multiple;
   }
 
-  set multiple(value: any) {
+  public set multiple(value: any) {
     this._multiple = coerceBooleanProperty(value);
   }
 
   @Output()
-  public filePick = new EventEmitter<PickedFile | FilePickerError>();
+  public filePick = new EventEmitter<File | FilePickerError>();
 
   private _multiple = false;
   private input: any;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {
+  public constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
   public ngOnInit() {
@@ -52,7 +51,7 @@ export class FilePickerDirective implements OnInit {
 
   public reset() {
     if (!this.input) {
-      console.error('It seems that ngOnInit() has not been executed or that the hidden input element is null. Did you mess with the DOM?');
+      this.logInitError();
       return;
     }
 
@@ -62,34 +61,25 @@ export class FilePickerDirective implements OnInit {
   @HostListener('click')
   public browse() {
     if (!this.input) {
-      console.error('It seems that ngOnInit() has not been executed or that the hidden input element is null. Did you mess with the DOM?');
+      this.logInitError();
       return;
     }
 
     this.input.click();
   }
 
+  private logInitError(): void {
+    console.error(
+      'It seems that ngOnInit() has not been executed or that the hidden input element is null. ' +
+      'Did you mess with the DOM?'
+    );
+  }
+
   private readFile(file: File) {
-
     if (this.maxSize > 0 && file.size > this.maxSize) {
-      this.filePick.emit(FilePickerError.FileTooBig);
+      this.filePick.emit('tooBig');
     } else {
-      const reader = new FileReader();
-      reader.onload = (loaded: ProgressEvent) => {
-        const fileReader = loaded.target as FileReader;
-        const pickedFile = new PickedFile(
-          new Date(file.lastModified),
-          file.name,
-          file.size,
-          file.type,
-          fileReader.result!,
-          file
-        );
-
-        this.filePick.emit(pickedFile);
-      };
-
-      reader.readAsDataURL(file);
+      this.filePick.emit(file);
     }
   }
 }

@@ -1,14 +1,14 @@
-import { HockeyDataKnockoutGame } from './hockeydata-knockout-game';
+import { HockeyDataScheduledGame } from './hockeydata-scheduled-game';
 import { HockeyDataGameScore } from './hockeydata-game-score';
 
 describe('HockeyDataKnockoutGame', () => {
 
-  let game: HockeyDataKnockoutGame;
+  let game: HockeyDataScheduledGame;
   const homeTeam = 'SWL';
   const awayTeam = 'HKO';
 
   beforeEach(() => {
-    game = new HockeyDataKnockoutGame(
+    game = new HockeyDataScheduledGame(
       'gameId', 'gameName', 50, new Date(), false, false, false, false,
       new HockeyDataGameScore(
         10, 'Home', homeTeam, 0,

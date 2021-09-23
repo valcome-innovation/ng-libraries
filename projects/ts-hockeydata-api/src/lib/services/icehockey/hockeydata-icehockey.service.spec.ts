@@ -12,7 +12,7 @@ import { HockeyDataKnockoutStage } from '../../model/hockeydata-knockout-stage';
 import { HockeyDataKnockoutPhase } from '../../model/hockeydata-knockout-phase';
 import { HockeyDataKnockoutEncounter } from '../../model/hockeydata-knockout-encounter';
 import { HockeyDataKnockoutTeamScore } from '../../model/hockeydata-knockout-team-score';
-import { HockeyDataKnockoutGame } from '../../model/hockeydata-knockout-game';
+import { HockeyDataScheduledGame } from '../../model/hockeydata-scheduled-game';
 import { HockeyDataGameScore } from '../../model/hockeydata-game-score';
 import createSpy = jasmine.createSpy;
 
@@ -111,7 +111,7 @@ describe('HockeyDataIcehockeyService', () => {
         });
 
         encounter.games.forEach(game => {
-          expect(game).toBeInstanceOf(HockeyDataKnockoutGame);
+          expect(game).toBeInstanceOf(HockeyDataScheduledGame);
           expect(game.isLive).toBeDefined();
           expect(game.isShootOut).toBeDefined();
           expect(game.date).toBeDefined();

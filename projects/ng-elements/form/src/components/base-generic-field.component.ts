@@ -38,6 +38,11 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
     if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue && this.formControl) {
       this.handleFormValidation();
     }
+
+    // if form gets submitted during a load the error should be handled after loading has finished
+    if (changes.isLoading && changes.isLoading.currentValue === false && this.isFormSubmitted) {
+      this.handleFormValidation();
+    }
   }
 
   public ngOnInit(): void {

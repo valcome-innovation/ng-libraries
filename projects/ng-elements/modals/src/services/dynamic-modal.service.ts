@@ -68,10 +68,12 @@ export class DynamicModalService {
   private addModalOpenClass(): void {
     JsUtils.callAfterStackResolved(() => {
       document.body.classList.add('modal-open');
+      document.documentElement.classList.add('modal-open');
     })
   }
 
   private removeModalOpenClass(): void {
     document.body.classList.remove('modal-open');
+    document.documentElement.classList.remove('modal-open');
   }
 }

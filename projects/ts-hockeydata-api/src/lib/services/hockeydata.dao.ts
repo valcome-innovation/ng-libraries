@@ -44,6 +44,11 @@ export abstract class HockeyDataDAO {
     return this.call('KnockoutStage', params);
   }
 
+  public fetchSchedule(divisionId: number, params: ApiParams = {}): Observable<any> {
+    params.divisionId = divisionId;
+    return this.call('Schedule', params);
+  }
+
   public call(call: HockeyDataApiCall, params: ApiParams): Observable<any> {
     const baseUrl = this.getBaseUrlBuilder(call);
     const apiUrl = this.getCallUrl(baseUrl, params);

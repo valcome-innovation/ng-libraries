@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-button.module';
 import { GenericFormsModule } from '../../../ng-elements/form/src/generic-forms.module';
 import { ErrorMessagesComponent } from './error/error-messages.component';
+import { FilePickerModule } from '../../../ng-elements/file-picker/src/file-picker.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ErrorMessagesComponent } from './error/error-messages.component';
     ToggleButtonModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    FilePickerModule,
     // HockeyDataWidgetsModule,
     // HockeyDataApiModule.forRoot({
     //   // apiKey: '702b9e4a55d61cf7ffe943e90bede05b',

@@ -20,13 +20,21 @@ export class UrlBuilder {
 
   public getUrl(): string {
     if (this.pathParams.length > 0) {
-      this.baseUrl += `/${this.pathParams.join('/')}`;
+      this.baseUrl += `/${this.getPath()}`;
     }
 
     if (this.queryParams.length > 0) {
-      this.baseUrl += `?${this.queryParams.join('&')}`;
+      this.baseUrl += `?${this.getQueryParams()}`;
     }
 
     return this.baseUrl;
+  }
+
+  public getPath(): string {
+    return this.pathParams.join('/');
+  }
+
+  public getQueryParams(): string {
+    return this.queryParams.join('&');
   }
 }

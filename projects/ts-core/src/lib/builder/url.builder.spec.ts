@@ -20,7 +20,11 @@ describe('UrlBuilder', () => {
     builder.addQueryParam('nicer', 'dicer');
 
     const url = builder.getUrl();
+    const path = builder.getPath();
+    const query = builder.getQueryParams();
 
     expect(url).toEqual('https://domain.com/yeah/1?test%20value=false&nicer=dicer');
+    expect(path).toEqual('yeah/1');
+    expect(query).toEqual('test%20value=false&nicer=dicer');
   });
 });

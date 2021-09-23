@@ -4,7 +4,7 @@ import { IHockeyDataKnockOutPhase } from '../model/types';
 import { HockeyDataKnockoutPhase } from '../model/hockeydata-knockout-phase';
 import { HockeyDataKnockoutEncounterMapper } from './hockeydata-knockout-encounter.mapper';
 import { HockeyDataKnockoutEncounter } from '../model/hockeydata-knockout-encounter';
-import { HockeyDataKnockoutGame } from '../model/hockeydata-knockout-game';
+import { HockeyDataScheduledGame } from '../model/hockeydata-scheduled-game';
 
 @Injectable({ providedIn: 'root' })
 export class HockeyDataKnockoutPhaseMapper extends BaseMapper<HockeyDataKnockoutPhase> {
@@ -20,7 +20,7 @@ export class HockeyDataKnockoutPhaseMapper extends BaseMapper<HockeyDataKnockout
   }
 
   private findFirstGameDate(encounters: HockeyDataKnockoutEncounter[]): Date {
-    const games: HockeyDataKnockoutGame[] = [];
+    const games: HockeyDataScheduledGame[] = [];
 
     encounters.forEach(encounter => games.push(...encounter.games));
     this.sortByDate(games);
@@ -28,7 +28,7 @@ export class HockeyDataKnockoutPhaseMapper extends BaseMapper<HockeyDataKnockout
     return games[0].date;
   }
 
-  private sortByDate(games: HockeyDataKnockoutGame[]): void {
+  private sortByDate(games: HockeyDataScheduledGame[]): void {
     games.sort((a, b) => a.date.getTime() - b.date.getTime());
   }
 

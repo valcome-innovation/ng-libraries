@@ -3,6 +3,12 @@ import { Component } from '@angular/core';
 import { FileDropzoneDirective } from './file-dropzone.directive';
 import { By } from '@angular/platform-browser';
 
+@Component({
+  template: '<div id="testFilePicker" valFileDropzone></div>'
+})
+class TestComponent {
+}
+
 describe('FileDropzoneDirective', () => {
 
   let component: TestComponent;
@@ -28,9 +34,3 @@ describe('FileDropzoneDirective', () => {
     expect(directive).toBeTruthy();
   });
 });
-
-@Component({
-  template: '<div id="testFilePicker" valFileDropzone></div>'
-})
-class TestComponent {
-}

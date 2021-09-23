@@ -1,7 +1,7 @@
 import { BaseMapper } from '@valcome/ts-core';
 import { HockeyDataGameScore } from '../model/hockeydata-game-score';
 import { Injectable } from '@angular/core';
-import { IHockeyDataGameReportGameData, IHockeyDataKnockoutPhaseGame } from '../model/types';
+import { IHockeyDataGameReportGameData, IHockeyDataScheduledGame } from '../model/types';
 
 @Injectable({ providedIn: 'root' })
 export class HockeyDataGameScoreMapper extends BaseMapper<HockeyDataGameScore> {
@@ -9,7 +9,7 @@ export class HockeyDataGameScoreMapper extends BaseMapper<HockeyDataGameScore> {
     super(HockeyDataGameScore);
   }
 
-  public fromJson(json: Partial<IHockeyDataGameReportGameData | IHockeyDataKnockoutPhaseGame>): HockeyDataGameScore {
+  public fromJson(json: Partial<IHockeyDataGameReportGameData | IHockeyDataScheduledGame>): HockeyDataGameScore {
     const homeTeamId = this.getValidated(json.homeTeamId);
     const homeTeamScore = this.getValidated(json.homeTeamScore);
     const awayTeamId = this.getValidated(json.awayTeamId);
@@ -24,7 +24,7 @@ export class HockeyDataGameScoreMapper extends BaseMapper<HockeyDataGameScore> {
       return new HockeyDataGameScore(
         homeTeamId, homeTeamLongname, homeTeamShortname, homeTeamScore,
         awayTeamId, awayTeamLongname, awayTeamShortname, awayTeamScore);
-    } else if (this.isKnockoutPhaseGame(json)) {
+    } else if (this.isScheduledGame(json)) {
       const homeTeamShortname = this.getValidated(json.homeTeamShortName);
       const homeTeamLongname = this.getValidated(json.homeTeamLongName);
       const awayTeamShortname = this.getValidated(json.awayTeamShortName);
@@ -38,7 +38,7 @@ export class HockeyDataGameScoreMapper extends BaseMapper<HockeyDataGameScore> {
     }
   }
 
-  public isGameReportGameData(json: Partial<IHockeyDataGameReportGameData | IHockeyDataKnockoutPhaseGame>)
+  public isGameReportGameData(json: Partial<IHockeyDataGameReportGameData | IHockeyDataScheduledGame>)
     : json is IHockeyDataGameReportGameData {
     return 'homeTeamShortname' in json
       && 'homeTeamLongname' in json
@@ -46,8 +46,8 @@ export class HockeyDataGameScoreMapper extends BaseMapper<HockeyDataGameScore> {
       && 'awayTeamLongname' in json;
   }
 
-  public isKnockoutPhaseGame(json: Partial<IHockeyDataGameReportGameData | IHockeyDataKnockoutPhaseGame>)
-    : json is IHockeyDataKnockoutPhaseGame {
+  public isScheduledGame(json: Partial<IHockeyDataGameReportGameData | IHockeyDataScheduledGame>)
+    : json is IHockeyDataScheduledGame {
     return 'homeTeamShortName' in json
       && 'homeTeamLongName' in json
       && 'awayTeamShortName' in json
