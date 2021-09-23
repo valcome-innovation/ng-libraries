@@ -7,10 +7,10 @@ export class BaseSubscriptionComponent implements OnDestroy {
   protected subscriptions: Subscription[] = [];
 
   public ngOnDestroy(): void {
-    this.unsubscribe();
+    this.unsubscribeAll();
   }
 
-  protected unsubscribe(): void {
+  protected unsubscribeAll(): void {
     this.subscriptions.forEach(s => s?.unsubscribe());
     this.subscriptions = [];
   }
