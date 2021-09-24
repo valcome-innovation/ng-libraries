@@ -8,7 +8,8 @@ export interface FormServerError {
 }
 
 @Directive()
-export class BaseServerErrorFormComponent<T, E extends FormServerError> extends BaseFormComponent implements OnInit, OnChanges {
+export class BaseServerErrorFormComponent<T, E extends FormServerError>
+  extends BaseFormComponent implements OnInit, OnChanges {
 
   @Input()
   public serverErrors: E[] = [];

@@ -1,0 +1,23 @@
+<div [formGroup]="form" class="input-group text area"
+     [ngClass]="{'invalid': !isValid}">
+
+  <label *ngIf="label != null" [for]="id">
+    {{label}}<span *ngIf="markAsRequired">*</span>
+  </label>
+
+  <div class="position-relative">
+    <textarea [id]="id"
+              [rows]="rows"
+              [placeholder]="placeholder"
+              [formControlName]="formName"
+              autocomplete="{{autocomplete}}">
+    </textarea>
+  </div>
+
+  <div class="input-errors">
+    <ng-content></ng-content>
+    <val-generic-error-messages *ngIf="useDefaultErrorMessages"
+                                (errorMessages)="addDefaultErrorMessages($event)">
+    </val-generic-error-messages>
+  </div>
+</div>

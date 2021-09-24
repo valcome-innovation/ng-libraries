@@ -9,6 +9,7 @@ import { GenericCheckboxComponent } from './components/generic-checkbox/generic-
 import { GenericErrorMessagesComponent } from './components/generic-error-messages/generic-error-messages.component';
 import { GenericPasswordComponent } from './components/generic-password/generic-password.component';
 import { NgElementsModule } from '@valcome/ng-elements';
+import { GenericTextAreaComponent } from './components/generic-text-area/generic-text-area.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { NgElementsModule } from '@valcome/ng-elements';
     GenericSelectComponent,
     GenericRadioComponent,
     GenericCheckboxComponent,
+    GenericTextAreaComponent,
     GenericErrorMessagesComponent,
     FormErrorMessageDirective,
   ],
