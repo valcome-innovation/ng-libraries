@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { BaseGenericFieldComponent } from '../base-generic-field.component';
 
 @Component({
-  selector: 'val-text-area',
+  selector: 'val-generic-text-area',
   templateUrl: './generic-text-area.component.html'
 })
 export class GenericTextAreaComponent extends BaseGenericFieldComponent {
