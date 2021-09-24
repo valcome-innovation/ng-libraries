@@ -34,6 +34,7 @@ import { GenericTextAreaComponent } from './components/generic-text-area/generic
     GenericRadioComponent,
     GenericCheckboxComponent,
     GenericErrorMessagesComponent,
+    GenericTextAreaComponent,
     FormErrorMessageDirective,
     ReactiveFormsModule,
   ]
