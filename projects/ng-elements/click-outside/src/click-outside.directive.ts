@@ -15,13 +15,13 @@ export class ClickOutsideDirective {
   public isListenerActive: boolean = true;
 
   @Input()
-  public additionalElements: TemplateRef<any>[] = [];
+  public additionalElements: HTMLElement[] = [];
 
   @HostListener('document:click', ['$event.target'])
   public onClick(targetElement: HTMLElement) {
     if (this.isListenerActive) {
       const clickedInside = this.elementRef.nativeElement.contains(targetElement);
-      const clickedOnOther = this.additionalElements.some(a => a.elementRef.nativeElement.contains(targetElement));
+      const clickedOnOther = this.additionalElements.some(e => e.contains(targetElement));
 
       if (!clickedInside && !clickedOnOther) {
         this.clickOutside.emit(true);
