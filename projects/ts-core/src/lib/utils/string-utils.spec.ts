@@ -24,4 +24,16 @@ describe('StringsUtils', () => {
     expect(result).toBeTruthy();
     expect(result).toEqual('{"a":{"yeah":"1"}}');
   });
-})
+
+  it('should trim slashes', () => {
+    expect(StringUtils.trimSlashes('')).toEqual('');
+    expect(StringUtils.trimSlashes('/')).toEqual('');
+    expect(StringUtils.trimSlashes('//')).toEqual('');
+    expect(StringUtils.trimSlashes('path/1')).toEqual('path/1');
+    expect(StringUtils.trimSlashes('/path/')).toEqual('path');
+    expect(StringUtils.trimSlashes('/path/1')).toEqual('path/1');
+    expect(StringUtils.trimSlashes('/path/1/')).toEqual('path/1');
+    expect(StringUtils.trimSlashes('path/1/')).toEqual('path/1');
+    expect(StringUtils.trimSlashes('////path/1////')).toEqual('path/1');
+  });
+});
