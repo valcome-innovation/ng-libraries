@@ -1,4 +1,5 @@
 export class DomUtils {
+
   // https://gist.github.com/davidtheclark/5515733#gistcomment-2113205
   public static isVisibleInViewport(el: any): boolean {
     if (window == null || !document.body.contains(el)) {
@@ -57,6 +58,23 @@ export class DomUtils {
       });
     } else {
       return Promise.resolve(element);
+    }
+  }
+
+  // https://stackoverflow.com/a/8028584/12237560
+  public static getScrollPercentage(): number {
+    const html = document.documentElement;
+    const body = document.body;
+    const scrollTop = 'scrollTop';
+    const scrollHeight = 'scrollHeight';
+
+    const scrollPosition = (html[scrollTop] || body[scrollTop]);
+    const availableScroll = (html[scrollHeight] || body[scrollHeight]) - html.clientHeight;
+
+    if (availableScroll > 0) {
+      return scrollPosition / availableScroll;
+    } else {
+      return 1;
     }
   }
 }

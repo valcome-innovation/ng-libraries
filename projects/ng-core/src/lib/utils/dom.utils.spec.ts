@@ -55,4 +55,10 @@ describe('DomUtils', () => {
 
     expect(scripts.length).toEqual(1);
   });
+
+  it('should get scroll percentage', () => {
+    const actual = DomUtils.getScrollPercentage();
+
+    expect(actual).toEqual(1);
+  });
 })
