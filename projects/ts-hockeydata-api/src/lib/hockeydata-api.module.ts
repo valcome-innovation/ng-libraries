@@ -4,29 +4,28 @@ import { HockeyDataIceHockeyDAO } from './services/icehockey/hockeydata-icehocke
 import { HockeyDataIceHockeyServiceImpl } from './services/icehockey/hockey-data-ice-hockey-impl.service';
 import { HockeyDataIceHockeyService } from './services/icehockey/contracts/hockey-data-ice-hockey.service';
 import { HockeyDataIceHockeySubstitute } from './services/icehockey/contracts/hockey-data-ice-hockey.substitute';
+import { config } from 'rxjs';
 
 export const ICEHOCKEY_API_CONFIG = new InjectionToken<HockeyDataApiConfig>('icehockeyApiKey');
 export const FOOTBALL_API_CONFIG = new InjectionToken<HockeyDataApiConfig>('footballApiKey');
 
-@NgModule()
-export class HockeyDataApiModule {
-  public static forRoot(hockeyConfig?: HockeyDataApiConfig,
-                        footballConfig?: HockeyDataApiConfig): ModuleWithProviders<HockeyDataApiModule> {
-    return {
-      ngModule: HockeyDataApiModule,
-      providers: [
-        { provide: ICEHOCKEY_API_CONFIG, useValue: hockeyConfig },
-        { provide: FOOTBALL_API_CONFIG, useValue: footballConfig },
-        {
-          provide: HockeyDataIceHockeyService,
-          useClass: !!hockeyConfig ? HockeyDataIceHockeyServiceImpl : HockeyDataIceHockeySubstitute
-        },
-        HockeyDataIceHockeyDAO
-      ]
-    };
+export const iceHockeyServiceFactory = (config?: HockeyDataApiConfig, ...deps: [any, any, any, any, any]): HockeyDataIceHockeyService => {
+  if (config) {
+    return new HockeyDataIceHockeyServiceImpl(...deps);
+  } else {
+    return new HockeyDataIceHockeySubstitute();
   }
+}
 
-  public static forChild(): ModuleWithProviders<HockeyDataApiModule> {
-    return { ngModule: HockeyDataApiModule };
-  }
+@NgModule({
+  providers: [
+    {
+      provide: HockeyDataIceHockeyService,
+      useFactory: iceHockeyServiceFactory,
+      deps: [ICEHOCKEY_API_CONFIG, ...HockeyDataIceHockeyServiceImpl.constructorParams]
+    },
+    HockeyDataIceHockeyDAO
+  ]
+})
+export class HockeyDataApiModule {
 }

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HockeyDataApiModule } from '../../hockeydata-api.module';
+import { HockeyDataApiModule, ICEHOCKEY_API_CONFIG } from '../../hockeydata-api.module';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { getGameReportData } from '../../mapper/test-data/game-report-data';
@@ -25,10 +25,11 @@ describe('HockeyDataIceHockeyServiceImpl', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HockeyDataApiModule.forRoot({ apiKey: 'apiKey', referer: 'referer' })
+        HockeyDataApiModule
       ],
       providers: [
-        { provide: HttpClient, useValue: { jsonp: jsonpMock } }
+        { provide: HttpClient, useValue: { jsonp: jsonpMock } },
+        { provide: ICEHOCKEY_API_CONFIG, useValue: { apiKey: 'apiKey', referer: 'referer' }}
       ],
     });
 

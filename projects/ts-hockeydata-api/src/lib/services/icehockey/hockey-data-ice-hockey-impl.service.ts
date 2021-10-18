@@ -10,6 +10,8 @@ import { HockeyDataIceHockeyService } from './contracts/hockey-data-ice-hockey.s
 @Injectable()
 export class HockeyDataIceHockeyServiceImpl extends HockeyDataService implements HockeyDataIceHockeyService {
 
+  public static readonly constructorParams = [HockeyDataIceHockeyDAO, HockeyDataGameReportMapper, HockeyDataTeamStandingMapper, HockeyDataKnockoutStageMapper, HockeyDataScheduleMapper] as const;
+
   public constructor(protected hockeyDataIceHockeyDAO: HockeyDataIceHockeyDAO,
                      protected gameReportMapper: HockeyDataGameReportMapper,
                      protected teamStandingMapper: HockeyDataTeamStandingMapper,
