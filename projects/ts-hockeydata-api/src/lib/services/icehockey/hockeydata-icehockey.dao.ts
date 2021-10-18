@@ -4,7 +4,7 @@ import { ICEHOCKEY_API_CONFIG } from '../../hockeydata-api.module';
 import { HttpClient } from '@angular/common/http';
 import { HockeyDataApiConfig } from '../../model/types';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class HockeyDataIceHockeyDAO extends HockeyDataDAO {
   public constructor(@Inject(ICEHOCKEY_API_CONFIG) apiConfig: HockeyDataApiConfig,
                      protected httpClient: HttpClient) {

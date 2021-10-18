@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { HockeyDataIceHockeyService } from './hockeydata-icehockey.service';
 import { HockeyDataApiModule } from '../../hockeydata-api.module';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
@@ -15,8 +14,10 @@ import { HockeyDataKnockoutTeamScore } from '../../model/hockeydata-knockout-tea
 import { HockeyDataScheduledGame } from '../../model/hockeydata-scheduled-game';
 import { HockeyDataGameScore } from '../../model/hockeydata-game-score';
 import createSpy = jasmine.createSpy;
+import { HockeyDataIceHockeyServiceImpl } from './hockey-data-ice-hockey-impl.service';
+import { HockeyDataIceHockeyService } from './contracts/hockey-data-ice-hockey.service';
 
-describe('HockeyDataIcehockeyService', () => {
+describe('HockeyDataIceHockeyServiceImpl', () => {
 
   let service: HockeyDataIceHockeyService;
   const jsonpMock = createSpy('getMock');
@@ -41,7 +42,7 @@ describe('HockeyDataIcehockeyService', () => {
   it('should return game report data', async () => {
     jsonpMock.and.returnValue(of(getGameReportData()));
 
-    const gameReport = await service.getGameReport('gameId');
+    const gameReport = (await service.getGameReport('gameId'))!;
 
     expect(gameReport).toBeInstanceOf(HockeyDataGameReport);
     expect(gameReport.gameData).toBeDefined();
@@ -86,7 +87,7 @@ describe('HockeyDataIcehockeyService', () => {
     const data = getKnockoutStageData();
     jsonpMock.and.returnValue(of(data));
 
-    const knockoutStage = await service.getKnockoutStage(1234);
+    const knockoutStage = (await service.getKnockoutStage(1234))!;
 
     expect(knockoutStage).toBeInstanceOf(HockeyDataKnockoutStage);
     expect(knockoutStage.divisionName).toEqual(data.data.divisionName);
