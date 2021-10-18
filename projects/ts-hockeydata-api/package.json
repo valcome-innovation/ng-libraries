@@ -1,11 +1,12 @@
 {
   "name": "@valcome/ts-hockeydata-api",
-  "version": "0.1.11",
+  "version": "1.0.0",
   "scripts": {
     "preversion": "ng test ts-hockeydata-api --watch=false",
     "version": "ng build ts-hockeydata-api --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/ts-hockeydata-api && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/ts-hockeydata-api && npm publish",
+    "publish:major": "npm version major && cd ../../dist/ts-hockeydata-api && npm publish"
   },
   "repository": {
     "type": "git",
