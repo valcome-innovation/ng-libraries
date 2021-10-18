@@ -1,6 +1,6 @@
 export * from './lib/hockeydata-api.module';
 
-export * from './lib/services/icehockey/hockey-data-ice-hockey-service-impl.service';
+export * from './lib/services/icehockey/contracts/hockey-data-ice-hockey.service';
 export * from './lib/services/icehockey/hockeydata-icehockey.dao';
 
 export * from './lib/model/hockeydata-game-score';

@@ -1,4 +1,3 @@
-import { HockeyDataKnockoutStage } from '@valcome/ts-hockeydata-api';
 import { HockeyDataKnockoutStageMapper } from '../lib/mapper/hockeydata-knockout-stage.mapper';
 import { HockeyDataKnockoutPhaseMapper } from '../lib/mapper/hockeydata-knockout-phase.mapper';
 import { HockeyDataKnockoutEncounterMapper } from '../lib/mapper/hockeydata-knockout-encounter.mapper';
@@ -6,7 +5,7 @@ import { HockeyDataKnockoutTeamScoreMapper } from '../lib/mapper/hockeydata-knoc
 import { HockeyDataScheduledGameMapper } from '../lib/mapper/hockeydata-scheduled-game-mapper';
 import { HockeyDataGameScoreMapper } from '../lib/mapper/hockeydata-game-score.mapper';
 import { IHockeyDataKnockOutStage } from '../lib/model/types';
-
+import { HockeyDataKnockoutStage } from '../lib/model/hockeydata-knockout-stage';
 
 export class HockeyDataTestData {
   public static createKnockoutStage(): HockeyDataKnockoutStage {
