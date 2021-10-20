@@ -9,12 +9,9 @@ export const ICEHOCKEY_API_CONFIG = new InjectionToken<HockeyDataApiConfig>('ice
 export const FOOTBALL_API_CONFIG = new InjectionToken<HockeyDataApiConfig>('footballApiKey');
 
 export const iceHockeyServiceFactory = (config?: HockeyDataApiConfig, ...deps: [any, any, any, any, any]): HockeyDataIceHockeyService => {
-  console.log(config);
   if (config) {
-    console.log('A');
     return new HockeyDataIceHockeyServiceImpl(...deps);
   } else {
-    console.log('B');
     return new HockeyDataIceHockeySubstitute();
   }
 }
