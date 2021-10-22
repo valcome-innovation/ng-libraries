@@ -15,6 +15,9 @@ export class BackgroundParallaxDirective implements OnInit {
   @Input()
   public initialLeft: string = 'center';
 
+  @Input()
+  public isEnabled = true;
+
   private get verticalPosition(): number {
     return (this.initialTop - (window.scrollY * this.parallaxRatio));
   }
@@ -31,6 +34,8 @@ export class BackgroundParallaxDirective implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   public onWindowScroll() {
-    this.eleRef.nativeElement.style.backgroundPosition = `${this.initialLeft} ${this.verticalPosition}px`;
+    if (this.isEnabled) {
+      this.eleRef.nativeElement.style.backgroundPosition = `${this.initialLeft} ${this.verticalPosition}px`;
+    }
   }
 }
