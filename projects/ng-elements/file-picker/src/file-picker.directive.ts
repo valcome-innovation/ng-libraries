@@ -24,6 +24,9 @@ export class FilePickerDirective implements OnInit {
   @Output()
   public filePick = new EventEmitter<File | FilePickerError>();
 
+  @Input()
+  public disablePick = false;
+
   private _multiple = false;
   private input: any;
 
@@ -65,7 +68,9 @@ export class FilePickerDirective implements OnInit {
       return;
     }
 
-    this.input.click();
+    if (!this.disablePick) {
+      this.input.click();
+    }
   }
 
   private logInitError(): void {
