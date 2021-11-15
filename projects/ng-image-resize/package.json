@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-image-resize",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "scripts": {
     "preversion": "ng test ng-image-resize --watch=false --code-coverage=true",
     "version": "ng build ng-image-resize --prod",
