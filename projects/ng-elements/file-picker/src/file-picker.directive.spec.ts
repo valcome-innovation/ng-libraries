@@ -68,7 +68,7 @@ describe('FilePickerDirective', () => {
     expect(inputElement).toBeDefined();
 
     spyOn(inputElement, 'click');
-    directive.browse();
+    directive.browse({ stopPropagation: () => ({}) } as any);
     expect(inputElement.click).toHaveBeenCalled();
   });
 
