@@ -189,9 +189,16 @@ export class AppComponent extends BaseFormComponent implements OnInit {
 
   public pickImage(event: any): void {
     const image = event.target.files[0];
+    console.log('input');
     console.log(image);
 
     this.imageResizeService.resize([image], 100, 100).subscribe((result) => {
+      console.log('observed');
+      console.log(result);
+    });
+
+    this.imageResizeService.resizeSingle(image, 100, 100).then(result => {
+      console.log('promised');
       console.log(result);
     });
   }

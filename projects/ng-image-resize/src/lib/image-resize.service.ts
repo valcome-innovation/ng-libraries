@@ -24,24 +24,30 @@ export class ImageResizeService {
     return compressedFileSubject.asObservable();
   }
 
-  public resize(files: File[], maxWidth: number, maxHeight: number, logExecutionTime: boolean = false): Observable<any> {
-    let resizedFileSubject: Subject<any> = new Subject<any>();
-    files.forEach((file) => {
-      this.resizeImage(file, maxWidth, maxHeight, logExecutionTime).subscribe((value) => {
-        resizedFileSubject.next(value);
-      }, error => {
-        resizedFileSubject.error(error);
-      });
+  public resize(files: File[],
+                maxWidth: number,
+                maxHeight: number,
+                logExecutionTime: boolean = false): Observable<File> {
+    let resizedFileSubject = new Subject<File>();
+
+    files.forEach((file: File) => {
+      this.resizeSingle(file, maxWidth, maxHeight, logExecutionTime)
+        .then(file => resizedFileSubject.next(file))
+        .catch(error => resizedFileSubject.error(error))
     });
+
     return resizedFileSubject.asObservable();
   }
 
-  public compressImage(file: File, maxSizeInMB: number, ignoreAlpha: boolean = false, logExecutionTime: boolean = false): Observable<any> {
+  public compressImage(file: File, maxSizeInMB: number, ignoreAlpha: boolean = false, logExecutionTime: boolean = false): Observable<File> {
     return this.imgMaxSizeService.compressImage(file, maxSizeInMB, ignoreAlpha, logExecutionTime);
   }
 
-  public resizeImage(file: File, maxWidth: number, maxHeight: number, logExecutionTime: boolean = false): Observable<any> {
-    return this.imgMaxPXSizeService.resizeImage(file, maxWidth, maxHeight, logExecutionTime);
+  public resizeSingle(file: File, maxWidth: number, maxHeight: number, logExecutionTime: boolean = false): Promise<File> {
+    return new Promise((resolve, reject) => {
+      this.imgMaxPXSizeService.resizeImage(file, maxWidth, maxHeight, logExecutionTime)
+        .subscribe(resolve, reject)
+    });
   }
 
   public getEXIFOrientedImage(image: HTMLImageElement): Promise<HTMLImageElement> {

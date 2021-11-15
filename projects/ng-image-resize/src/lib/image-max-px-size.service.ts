@@ -13,8 +13,9 @@ export class ImageMaxPXSizeService {
                      private imageExifService: ImageExifService) {
   }
 
-  public resizeImage(file: File, maxWidth: number, maxHeight: number, logExecutionTime: boolean = false): Observable<any> {
-    let resizedFileSubject: Subject<any> = new Subject<any>();
+  public resizeImage(file: File, maxWidth: number, maxHeight: number, logExecutionTime: boolean = false): Observable<File> {
+    let resizedFileSubject = new Subject<File>();
+
     this.timeAtStart = new Date().getTime();
     if (file.type !== "image/jpeg" && file.type !== "image/png") {
       //END OF RESIZE
