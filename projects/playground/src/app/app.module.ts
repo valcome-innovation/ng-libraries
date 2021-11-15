@@ -21,6 +21,7 @@ import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-butto
 import { GenericFormsModule } from '../../../ng-elements/form/src/generic-forms.module';
 import { ErrorMessagesComponent } from './error/error-messages.component';
 import { FilePickerModule } from '../../../ng-elements/file-picker/src/file-picker.module';
+import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize.module';
 
 @NgModule({
   declarations: [
@@ -44,13 +45,7 @@ import { FilePickerModule } from '../../../ng-elements/file-picker/src/file-pick
     HttpClientModule,
     HttpClientJsonpModule,
     FilePickerModule,
-    // HockeyDataWidgetsModule,
-    // HockeyDataApiModule.forRoot({
-    //   // apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
-    //   // referer: 'dev.valcome.tv'
-    //   apiKey: '64e80889471a0e6f2579e0b9cc165b3a',
-    //   referer: 'dev.live.ice.hockey'
-    // })
+    ImageResizeModule,
   ],
   providers: [
     DeviceService,

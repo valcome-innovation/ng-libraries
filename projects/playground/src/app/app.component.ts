@@ -3,9 +3,9 @@ import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators
 import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
 import { Image } from '../../../ng-elements/image-gallery/src/image';
-import { HockeyDataGameReport, HockeyDataKnockoutStage, HockeyDataTeamStanding } from 'ts-hockeydata-api';
 import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
 import { BaseFormComponent } from '../../../ng-elements/form/src/components/base-form.component';
+import { ImageResizeService } from '../../../ng-image-resize/src/lib/image-resize.service';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +14,6 @@ import { BaseFormComponent } from '../../../ng-elements/form/src/components/base
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent extends BaseFormComponent implements OnInit {
-
-  public gameReport?: HockeyDataGameReport;
-
-  public knockoutStage?: HockeyDataKnockoutStage;
-
-  public standings2?: HockeyDataTeamStanding[];
-  public standings3?: HockeyDataTeamStanding[];
 
   // public logoMap: LogoMap = {
   //   VIC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VIC.png",
@@ -113,7 +106,8 @@ export class AppComponent extends BaseFormComponent implements OnInit {
     new DisplayValue('Wieselburger', 2)
   ];
 
-  public constructor(private fb: FormBuilder) {
+  public constructor(private fb: FormBuilder,
+                     private imageResizeService: ImageResizeService) {
     super();
     this.initForm();
   }
@@ -192,4 +186,13 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   // public async getKnockOutStage(divisionId: number): Promise<HockeyDataKnockoutStage> {
   //   return await this.hockeyDataIceHockeyService.getKnockoutStage(divisionId);
   // }
+
+  public pickImage(event: any): void {
+    const image = event.target.files[0];
+    console.log(image);
+
+    this.imageResizeService.resize([image], 100, 100).subscribe((result) => {
+      console.log(result);
+    });
+  }
 }

@@ -78,6 +78,9 @@
       "ng-hockeydata-widgets": [
         "dist/ng-hockeydata-widgets/ng-hockeydata-widgets",
         "dist/ng-hockeydata-widgets"
+      ],
+      "@valcome/image-resize": [
+        "dist/image-resize"
       ]
     }
   },

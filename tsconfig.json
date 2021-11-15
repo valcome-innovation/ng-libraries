@@ -47,6 +47,9 @@
     },
     {
       "path": "./projects/ts-hockeydata-api/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ng-image-resize/tsconfig.lib.json"
     }
   ]
 }
