@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as exifr from 'exifr';
+import { orientation } from 'exifr';
 
 @Injectable()
 export class ImageExifService {
@@ -8,7 +8,7 @@ export class ImageExifService {
     return new Promise<HTMLImageElement>(resolve => {
       let img: any;
 
-      exifr.orientation(image)
+      orientation(image)
         .catch(err => undefined)
         .then((orientation: number | undefined) => {
           if (orientation && orientation != 1) {
