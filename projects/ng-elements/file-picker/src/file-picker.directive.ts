@@ -61,8 +61,10 @@ export class FilePickerDirective implements OnInit {
     this.input.value = null;
   }
 
-  @HostListener('click')
-  public browse() {
+  @HostListener('click', ['$event'])
+  public browse(event: MouseEvent) {
+    event.stopPropagation();
+
     if (!this.input) {
       this.logInitError();
       return;
