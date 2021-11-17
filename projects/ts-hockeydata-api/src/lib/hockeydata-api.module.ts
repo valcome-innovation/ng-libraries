@@ -7,7 +7,7 @@ import { HockeyDataIceHockeySubstitute } from './services/icehockey/contracts/ho
 export const ICEHOCKEY_API_CONFIG = new InjectionToken<HockeyDataApiConfig>('icehockeyApiKey');
 export const FOOTBALL_API_CONFIG = new InjectionToken<HockeyDataApiConfig>('footballApiKey');
 
-export const iceHockeyServiceFactory = (config?: HockeyDataApiConfig, ...deps: [any, any, any, any, any]): HockeyDataIceHockeyService => {
+export const iceHockeyServiceFactory = (config: HockeyDataApiConfig | undefined, ...deps: [any, any, any, any, any]): HockeyDataIceHockeyService => {
   if (config) {
     return new HockeyDataIceHockeyServiceImpl(...deps);
   } else {
