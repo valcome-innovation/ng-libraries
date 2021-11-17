@@ -1,46 +1,47 @@
 <ng-container *ngIf="standings">
-    <table id="standingsTable">
-        <thead>
-        <tr class="standings-header-row">
-            <th class="rank">#</th>
-            <th class="team">Team</th>
-            <th></th>
-            <th class="value">GP</th>
-            <th class="value">GD</th>
-            <th class="value pts">PTS</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let standing of standings" class="standings-row"
-            [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
-            <td class="rank">
-                <div class="rank-wrapper">{{standing.rank}}</div>
-            </td>
-            <td class="team d-flex align-items-center">
-                <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2"/>
-                {{standing.teamShortname}}
-
-            </td>
-            <td>
-                <ng-container *ngIf="standing.isLive"
-                              [ngTemplateOutlet]="liveBadge">
-                </ng-container>
-            </td>
-            <td class="value">{{standing.gamesPlayed}}</td>
-            <td class="value">{{standing.goalDifference}}</td>
-            <td class="value pts">{{standing.points}}</td>
-        </tr>
-        </tbody>
-    </table>
+  <table id="standingsTable">
+    <thead>
+    <tr class="standings-header-row">
+      <th class="rank">#</th>
+      <th class="team">Team</th>
+      <th></th>
+      <th class="value">GP</th>
+      <th class="value">GD</th>
+      <th class="value pts">PTS</th>
+      <th *ngIf="displayPointsPerGame" class="value pts pts-pg">PTSpG</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let standing of standings" class="standings-row"
+        [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
+      <td class="rank">
+        <div class="rank-wrapper">{{standing.rank}}</div>
+      </td>
+      <td class="team d-flex align-items-center">
+        <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2"/>
+        {{standing.teamShortname}}
+      </td>
+      <td>
+        <ng-container *ngIf="standing.isLive"
+                      [ngTemplateOutlet]="liveBadge">
+        </ng-container>
+      </td>
+      <td class="value">{{standing.gamesPlayed}}</td>
+      <td class="value">{{standing.goalDifference}}</td>
+      <td class="value pts">{{standing.points}}</td>
+      <td *ngIf="displayPointsPerGame" class="value pts pts-pg">{{standing.pointsPerGame}}</td>
+    </tr>
+    </tbody>
+  </table>
 </ng-container>
 
 
 <ng-template #liveBadge>
-    <div class="live-badge d-flex">
-        <svg class="icon" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
-            <path
-                    d="M6.59236 12.8126C10.0938 12.8126 12.9323 9.9808 12.9323 6.4876C12.9323 2.9944 10.0938 0.162598 6.59236 0.162598C3.09092 0.162598 0.252441 2.9944 0.252441 6.4876C0.252441 9.9808 3.09092 12.8126 6.59236 12.8126Z"/>
-        </svg>
-        <span>Live</span>
-    </div>
+  <div class="live-badge d-flex">
+    <svg class="icon" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+      <path
+          d="M6.59236 12.8126C10.0938 12.8126 12.9323 9.9808 12.9323 6.4876C12.9323 2.9944 10.0938 0.162598 6.59236 0.162598C3.09092 0.162598 0.252441 2.9944 0.252441 6.4876C0.252441 9.9808 3.09092 12.8126 6.59236 12.8126Z"/>
+    </svg>
+    <span>Live</span>
+  </div>
 </ng-template>

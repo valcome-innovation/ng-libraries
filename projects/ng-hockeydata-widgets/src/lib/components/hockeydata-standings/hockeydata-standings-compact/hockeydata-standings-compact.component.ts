@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseHockeydataStandingsComponent } from '../base-hockeydata-standings.component';
 
 @Component({
@@ -7,4 +7,7 @@ import { BaseHockeydataStandingsComponent } from '../base-hockeydata-standings.c
   styleUrls: ['./hockeydata-standings-compact.component.scss', '../base-hockeydata-standings.scss']
 })
 export class HockeydataStandingsCompactComponent extends BaseHockeydataStandingsComponent {
+
+  @Input()
+  public displayPointsPerGame = false;
 }
