@@ -1,6 +1,7 @@
 export interface HockeyDataApiConfig {
   apiKey: string;
   referer: string;
+  displayPointsPerGame: boolean;
 }
 
 export type HockeyDataSport = 'icehockey' | 'americanfootball';
