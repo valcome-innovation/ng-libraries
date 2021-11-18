@@ -19,6 +19,7 @@ export * from './lib/model/hockeydata-knockout-encounter';
 export * from './lib/model/hockeydata-knockout-phase';
 export * from './lib/model/hockeydata-knockout-stage';
 export * from './lib/model/hockeydata-knockout-team-score';
+export * from './lib/model/types';
 
 export * from './lib/mapper/hockeydata-game-score.mapper';
 export * from './lib/mapper/hockeydata-gamedata.mapper';
