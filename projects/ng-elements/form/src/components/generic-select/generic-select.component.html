@@ -10,7 +10,8 @@
             [formControlName]="formName"
             [ngClass]="{'empty': formControl?.value == null}">
 
-      <option hidden [value]="null" class="default-option">
+      <option [hidden]="displayDefaultOption"
+              [value]="null" class="default-option">
         {{placeholder}}
       </option>
 

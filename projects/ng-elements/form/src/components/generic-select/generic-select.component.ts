@@ -36,4 +36,7 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
 
   @Input()
   public displayCustomCaret = false;
+
+  @Input()
+  public displayDefaultOption = false;
 }
