@@ -9,7 +9,7 @@ export class UrlBuilder {
   private queryParams: string[] = [];
 
   public constructor(baseUrl: string) {
-    this.baseUrl = baseUrl;
+    this.baseUrl = StringUtils.trimSlashes(baseUrl);
   }
 
   /**

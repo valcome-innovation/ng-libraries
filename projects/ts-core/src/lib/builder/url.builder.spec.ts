@@ -13,7 +13,7 @@ describe('UrlBuilder', () => {
   });
 
   it('should build url', () => {
-    builder = new UrlBuilder('https://domain.com')
+    builder = new UrlBuilder('https://domain.com/')
       .addPath('yeah')
       .addPath(1)
       .addQueryParam('test value', false)
