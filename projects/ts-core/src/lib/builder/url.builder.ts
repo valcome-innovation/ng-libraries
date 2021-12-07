@@ -57,6 +57,12 @@ export class UrlBuilder {
     return this;
   }
 
+  public addPathsTrimmed(path: UriComponent[]): this {
+    path.forEach(p => this.addPathTrimmed(p));
+
+    return this;
+  }
+
   public addQueryParam(key: string): this
   public addQueryParam(key: string, value: UriComponent): this
   public addQueryParam(key: string, value?: UriComponent): this {
