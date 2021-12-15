@@ -77,4 +77,10 @@ export class DomUtils {
       return 1;
     }
   }
+
+  public static preventEventOnBody(event?: Event): void {
+    if (event && event.target == document.body) {
+      event.preventDefault();
+    }
+  }
 }

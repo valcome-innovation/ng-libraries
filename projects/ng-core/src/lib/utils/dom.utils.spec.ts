@@ -61,4 +61,15 @@ describe('DomUtils', () => {
 
     expect(actual).toEqual(1);
   });
+
+  it('should prevent event on body', () => {
+    const event: Partial<Event> = {
+      target: document.body,
+      preventDefault: jasmine.createSpy()
+    }
+
+    DomUtils.preventEventOnBody(event as Event);
+
+    expect(event.preventDefault).toHaveBeenCalled();
+  });
 })
