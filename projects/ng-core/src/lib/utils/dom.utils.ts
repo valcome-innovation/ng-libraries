@@ -79,7 +79,11 @@ export class DomUtils {
   }
 
   public static preventEventOnBody(event?: Event): void {
-    if (event && event.target == document.body) {
+    DomUtils.preventEventOn(event, document.body);
+  }
+
+  public static preventEventOn(event: Event | undefined, target: HTMLElement): void {
+    if (event && event.target == target) {
       event.preventDefault();
     }
   }
