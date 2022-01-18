@@ -17,7 +17,6 @@ export abstract class BaseHockeydataStandingsComponent {
 
   @Input()
   public set standingConfig({ standing, logoMap }: StandingConfig) {
-    console.log('set standings');
     if (standing) {
       this.standings = standing.map(s => ({ standing: s, logo: logoMap[s.teamShortname] }));
     } else {
@@ -31,10 +30,6 @@ export abstract class BaseHockeydataStandingsComponent {
   public highlighted: string[] = [];
 
   public trackBy: TrackByFunction<TeamStandingWithLogo> = (index: number, item: TeamStandingWithLogo) => {
-    console.log(index);
-    console.log(item);
-    console.log(item.standing.teamId);
-    console.log('++++++++++++++');
     return item.standing.teamId;
   }
 }
