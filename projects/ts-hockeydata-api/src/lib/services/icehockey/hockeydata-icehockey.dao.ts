@@ -1,8 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { HockeyDataDAO } from '../hockeydata.dao';
-import { ICEHOCKEY_API_CONFIG } from '../../hockeydata-api.module';
-import { HttpClient } from '@angular/common/http';
 import { HockeyDataApiConfig } from '../../model/types';
+import { ICEHOCKEY_API_CONFIG } from '../../tokens';
 
 @Injectable({ providedIn: 'root' })
 export class HockeyDataIceHockeyDAO extends HockeyDataDAO {

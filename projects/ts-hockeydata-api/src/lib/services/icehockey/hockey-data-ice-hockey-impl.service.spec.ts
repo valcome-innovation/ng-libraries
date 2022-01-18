@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HockeyDataApiModule, ICEHOCKEY_API_CONFIG } from '../../hockeydata-api.module';
+import { HockeyDataApiModule } from '../../hockeydata-api.module';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { getGameReportData } from '../../mapper/test-data/game-report-data';
@@ -13,9 +13,10 @@ import { HockeyDataKnockoutEncounter } from '../../model/hockeydata-knockout-enc
 import { HockeyDataKnockoutTeamScore } from '../../model/hockeydata-knockout-team-score';
 import { HockeyDataScheduledGame } from '../../model/hockeydata-scheduled-game';
 import { HockeyDataGameScore } from '../../model/hockeydata-game-score';
-import createSpy = jasmine.createSpy;
 import { HockeyDataIceHockeyServiceImpl } from './hockey-data-ice-hockey-impl.service';
 import { HockeyDataIceHockeyService } from './contracts/hockey-data-ice-hockey.service';
+import { ICEHOCKEY_API_CONFIG } from '../../tokens';
+import createSpy = jasmine.createSpy;
 
 describe('HockeyDataIceHockeyServiceImpl', () => {
 
@@ -29,7 +30,7 @@ describe('HockeyDataIceHockeyServiceImpl', () => {
       ],
       providers: [
         { provide: HttpClient, useValue: { jsonp: jsonpMock } },
-        { provide: ICEHOCKEY_API_CONFIG, useValue: { apiKey: 'apiKey', referer: 'referer' }}
+        { provide: ICEHOCKEY_API_CONFIG, useValue: { apiKey: 'apiKey', referer: 'referer' } }
       ],
     });
 

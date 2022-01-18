@@ -1,5 +1,7 @@
 export * from './lib/hockeydata-api.module';
 
+export * from './lib/tokens';
+
 export * from './lib/services/icehockey/contracts/hockey-data-ice-hockey.service';
 export * from './lib/services/icehockey/hockeydata-icehockey.dao';
 
