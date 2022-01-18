@@ -106,9 +106,9 @@ BRH:0
 end_of_record
 TN:
 SF:src/lib/components/hockeydata-standings/base-hockeydata-standings.component.ts
-FN:18,(anonymous_1)
-FN:21,(anonymous_2)
-FN:32,(anonymous_3)
+FN:32,(anonymous_1)
+FN:18,(anonymous_2)
+FN:21,(anonymous_3)
 FNF:3
 FNH:0
 FNDA:0,(anonymous_1)
@@ -120,9 +120,10 @@ DA:21,0
 DA:23,0
 DA:27,2
 DA:30,2
+DA:32,2
 DA:33,0
-LF:7
-LH:3
+LF:8
+LH:4
 BRDA:20,0,0,0
 BRDA:20,0,1,0
 BRF:2

@@ -30,6 +30,10 @@ export abstract class BaseHockeydataStandingsComponent {
   public highlighted: string[] = [];
 
   public trackBy: TrackByFunction<TeamStandingWithLogo> = (index: number, item: TeamStandingWithLogo) => {
+    console.log(index);
+    console.log(item);
+    console.log(item.standing.teamId);
+    console.log('++++++++++++++');
     return item.standing.teamId;
   }
 }
