@@ -17,6 +17,7 @@ export abstract class BaseHockeydataStandingsComponent {
 
   @Input()
   public set standingConfig({ standing, logoMap }: StandingConfig) {
+    console.log('set standings');
     if (standing) {
       this.standings = standing.map(s => ({ standing: s, logo: logoMap[s.teamShortname] }));
     } else {

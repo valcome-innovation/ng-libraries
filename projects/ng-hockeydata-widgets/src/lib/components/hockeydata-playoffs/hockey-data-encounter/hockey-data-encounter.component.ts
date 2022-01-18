@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { HockeyDataKnockoutEncounter, HockeyDataKnockoutTeamScore } from '@valcome/ts-hockeydata-api';
 import { LogoMap } from '../../../model/logo-map';
 
@@ -15,7 +15,8 @@ export type EncounterTeam = {
 @Component({
   selector: 'hd-encounter',
   templateUrl: './hockey-data-encounter.component.html',
-  styleUrls: ['./hockey-data-encounter.component.scss']
+  styleUrls: ['./hockey-data-encounter.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HockeyDataEncounterComponent {
 
