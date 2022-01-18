@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
 import { HockeyDataKnockoutPhase } from '@valcome/ts-hockeydata-api';
 import { LogoMap } from '../../model/logo-map';
 
@@ -15,4 +15,6 @@ export class HockeyDataPlayoffsComponent {
 
   @Input()
   public logoMap: LogoMap = {};
+
+  public trackBy: TrackByFunction<HockeyDataKnockoutPhase[]> = index => index;
 }

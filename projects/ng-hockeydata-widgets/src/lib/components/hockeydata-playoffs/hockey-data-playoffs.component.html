@@ -2,7 +2,7 @@
   <div class="phase" *ngFor="let phase of phases">
     <div class="header">{{phase.name}}</div>
 
-    <div *ngFor="let encounter of phase.encounters">
+    <div *ngFor="let encounter of phase.encounters; trackBy: trackBy">
       <hd-encounter [encounterConfig]="{
                       logoMap: logoMap,
                       encounter: encounter

@@ -9,15 +9,13 @@
     <hd-encounter-results [results]="leftTeam.score.results"></hd-encounter-results>
   </div>
 
-  <div class="won-games px-2 ml-2"
-       [ngClass]="{'font-weight-bold': encounter.gamesNeeded === leftTeam.score.gamesWon}">
+  <div class="won-games px-2 ml-2">
     {{leftTeam.score.gamesWon}}
   </div>
 
   <div class="vs mx-1">vs</div>
 
-  <div class="won-games px-2 mr-2"
-       [ngClass]="{'font-weight-bold': encounter.gamesNeeded === rightTeam.score.gamesWon}">
+  <div class="won-games px-2 mr-2">
     {{rightTeam.score.gamesWon}}
   </div>
 
