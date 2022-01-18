@@ -2,6 +2,16 @@ import { Component, Input } from '@angular/core';
 import { HockeyDataKnockoutEncounter, HockeyDataKnockoutTeamScore } from '@valcome/ts-hockeydata-api';
 import { LogoMap } from '../../../model/logo-map';
 
+export type EncounterConfig = {
+  logoMap: LogoMap;
+  encounter: HockeyDataKnockoutEncounter
+};
+
+export type EncounterTeam = {
+  score: HockeyDataKnockoutTeamScore,
+  logo: string
+}
+
 @Component({
   selector: 'hd-encounter',
   templateUrl: './hockey-data-encounter.component.html',
@@ -10,13 +20,13 @@ import { LogoMap } from '../../../model/logo-map';
 export class HockeyDataEncounterComponent {
 
   @Input()
-  public logoMap: LogoMap = {};
-
-  @Input()
-  public set encounter(encounter: HockeyDataKnockoutEncounter) {
+  public set encounterConfig({ encounter, logoMap }: EncounterConfig) {
     this._encounter = encounter;
-    this.leftTeamScore = encounter.teamScores[0];
-    this.rightTeamScore = encounter.teamScores[1];
+    const firstScore = encounter.teamScores[0];
+    const secondScore = encounter.teamScores[0];
+
+    this.leftTeam = { score: firstScore, logo: logoMap[firstScore.shortName] };
+    this.rightTeam = { score: secondScore, logo: logoMap[secondScore.shortName] };
   }
 
   public get encounter(): HockeyDataKnockoutEncounter {
@@ -25,6 +35,6 @@ export class HockeyDataEncounterComponent {
 
   private _encounter!: HockeyDataKnockoutEncounter;
 
-  public leftTeamScore!: HockeyDataKnockoutTeamScore;
-  public rightTeamScore!: HockeyDataKnockoutTeamScore;
+  public leftTeam!: EncounterTeam;
+  public rightTeam!: EncounterTeam;
 }

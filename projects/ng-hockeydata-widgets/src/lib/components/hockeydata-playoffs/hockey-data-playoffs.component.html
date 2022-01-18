@@ -3,8 +3,10 @@
     <div class="header">{{phase.name}}</div>
 
     <div *ngFor="let encounter of phase.encounters">
-      <hd-encounter [encounter]="encounter"
-                    [logoMap]="logoMap">
+      <hd-encounter [encounterConfig]="{
+                      logoMap: logoMap,
+                      encounter: encounter
+                    }">
       </hd-encounter>
     </div>
   </div>

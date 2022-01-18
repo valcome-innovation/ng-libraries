@@ -12,24 +12,24 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let standing of standings; trackBy: trackBy " class="standings-row"
-        [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
+    <tr *ngFor="let item of standings; trackBy: trackBy " class="standings-row"
+        [ngClass]="{'highlighted': highlighted.includes(item.standing.teamShortname)}">
       <td class="rank">
-        <div class="rank-wrapper">{{standing.rank}}</div>
+        <div class="rank-wrapper">{{item.standing.rank}}</div>
       </td>
       <td class="team d-flex align-items-center">
-        <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2" loading="lazy"/>
-        {{standing.teamShortname}}
+        <img [src]="item.logo" alt="team-logo" class="mr-2" loading="lazy"/>
+        {{item.standing.teamShortname}}
       </td>
       <td>
-        <ng-container *ngIf="standing.isLive"
+        <ng-container *ngIf="item.standing.isLive"
                       [ngTemplateOutlet]="liveBadge">
         </ng-container>
       </td>
-      <td class="value">{{standing.gamesPlayed}}</td>
-      <td class="value">{{standing.goalDifference}}</td>
-      <td class="value pts">{{standing.points}}</td>
-      <td *ngIf="displayPointsPerGame" class="value pts pts-pg">{{standing.pointsPerGame}}</td>
+      <td class="value">{{item.standing.gamesPlayed}}</td>
+      <td class="value">{{item.standing.goalDifference}}</td>
+      <td class="value pts">{{item.standing.points}}</td>
+      <td *ngIf="displayPointsPerGame" class="value pts pts-pg">{{item.standing.pointsPerGame}}</td>
     </tr>
     </tbody>
   </table>

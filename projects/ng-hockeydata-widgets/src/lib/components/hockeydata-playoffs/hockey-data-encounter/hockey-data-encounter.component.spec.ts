@@ -16,7 +16,10 @@ describe('HockeyDataEncounterComponent', () => {
 
     fixture = TestBed.createComponent(HockeyDataEncounterComponent);
     component = fixture.componentInstance;
-    component.encounter = HockeyDataTestData.createKnockoutStage().phases[0].encounters[0];
+    component.encounterConfig = {
+      encounter: HockeyDataTestData.createKnockoutStage().phases[0].encounters[0],
+      logoMap: {}
+    };
 
     fixture.detectChanges();
   });
@@ -27,7 +30,7 @@ describe('HockeyDataEncounterComponent', () => {
 
   it('should set data', () => {
     expect(component.encounter).toBeTruthy();
-    expect(component.leftTeamScore).toBeTruthy();
-    expect(component.rightTeamScore).toBeTruthy();
+    expect(component.leftTeam).toBeTruthy();
+    expect(component.rightTeam).toBeTruthy();
   });
 });

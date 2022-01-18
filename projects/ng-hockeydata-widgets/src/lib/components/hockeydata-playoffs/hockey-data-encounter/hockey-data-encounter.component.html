@@ -3,29 +3,29 @@
 
   <div class="left">
     <div class="team">
-      <img [src]="logoMap[leftTeamScore.shortName]" [alt]="leftTeamScore.shortName" loading="lazy">
-      <h3>{{leftTeamScore.shortName}}</h3>
+      <img [src]="leftTeam.logo" [alt]="leftTeam.score.shortName" loading="lazy">
+      <h3>{{leftTeam.score.shortName}}</h3>
     </div>
-    <hd-encounter-results [results]="leftTeamScore.results"></hd-encounter-results>
+    <hd-encounter-results [results]="leftTeam.score.results"></hd-encounter-results>
   </div>
 
   <div class="won-games px-2 ml-2"
-       [ngClass]="{'font-weight-bold': encounter.gamesNeeded === leftTeamScore.gamesWon}">
-    {{leftTeamScore.gamesWon}}
+       [ngClass]="{'font-weight-bold': encounter.gamesNeeded === leftTeam.score.gamesWon}">
+    {{leftTeam.score.gamesWon}}
   </div>
 
   <div class="vs mx-1">vs</div>
 
   <div class="won-games px-2 mr-2"
-       [ngClass]="{'font-weight-bold': encounter.gamesNeeded === rightTeamScore.gamesWon}">
-    {{rightTeamScore.gamesWon}}
+       [ngClass]="{'font-weight-bold': encounter.gamesNeeded === rightTeam.score.gamesWon}">
+    {{rightTeam.score.gamesWon}}
   </div>
 
   <div class="right">
     <div class="team">
-      <img [src]="logoMap[rightTeamScore.shortName]" [alt]="rightTeamScore.shortName" loading="lazy">
-      <h3>{{rightTeamScore.shortName}}</h3>
+      <img [src]="rightTeam.logo" [alt]="rightTeam.score.shortName" loading="lazy">
+      <h3>{{rightTeam.score.shortName}}</h3>
     </div>
-    <hd-encounter-results [results]="rightTeamScore.results"></hd-encounter-results>
+    <hd-encounter-results [results]="rightTeam.score.results"></hd-encounter-results>
   </div>
 </div>

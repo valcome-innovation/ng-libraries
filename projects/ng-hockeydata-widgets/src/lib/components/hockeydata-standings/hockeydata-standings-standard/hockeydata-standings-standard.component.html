@@ -17,25 +17,25 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let standing of standings; trackBy: trackBy" class="standings-row"
-        [ngClass]="{'highlighted': highlighted.includes(standing.teamShortname)}">
-      <td class="rank">{{standing.rank}}</td>
+    <tr *ngFor="let item of standings; trackBy: trackBy" class="standings-row"
+        [ngClass]="{'highlighted': highlighted.includes(item.standing.teamShortname)}">
+      <td class="rank">{{item.standing.rank}}</td>
       <td class="logo">
-        <img [src]="logoMap[standing.teamShortname]" alt="team-logo" class="mr-2" loading="lazy"/>
+        <img [src]="item.logo" alt="team-logo" class="mr-2" loading="lazy"/>
       </td>
       <td class="team-name">
-        <span class="desktop">{{standing.teamLongname}}</span>
-        <span class="mobile">{{standing.teamShortname}}</span>
+        <span class="desktop">{{item.standing.teamLongname}}</span>
+        <span class="mobile">{{item.standing.teamShortname}}</span>
       </td>
-      <td class="value">{{standing.gamesPlayed}}</td>
-      <td class="value">{{standing.gamesWon}}</td>
-      <td class="value">{{standing.gamesLost}}</td>
-      <td class="value">{{standing.gamesWonInOt}}</td>
-      <td class="value">{{standing.gamesLostInOt}}</td>
-      <td class="value">{{standing.goalsFor}}</td>
-      <td class="value">{{standing.goalsAgainst}}</td>
-      <td class="value">{{standing.goalDifference}}</td>
-      <td class="value">{{standing.points}}</td>
+      <td class="value">{{item.standing.gamesPlayed}}</td>
+      <td class="value">{{item.standing.gamesWon}}</td>
+      <td class="value">{{item.standing.gamesLost}}</td>
+      <td class="value">{{item.standing.gamesWonInOt}}</td>
+      <td class="value">{{item.standing.gamesLostInOt}}</td>
+      <td class="value">{{item.standing.goalsFor}}</td>
+      <td class="value">{{item.standing.goalsAgainst}}</td>
+      <td class="value">{{item.standing.goalDifference}}</td>
+      <td class="value">{{item.standing.points}}</td>
     </tr>
     </tbody>
   </table>
