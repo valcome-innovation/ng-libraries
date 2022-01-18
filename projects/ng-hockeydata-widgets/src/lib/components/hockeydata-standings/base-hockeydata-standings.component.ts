@@ -1,4 +1,4 @@
-import { Directive, Input, TrackByFunction } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { HockeyDataTeamStanding } from '@valcome/ts-hockeydata-api';
 import { LogoMap } from '../../model/logo-map';
 
@@ -29,7 +29,7 @@ export abstract class BaseHockeydataStandingsComponent {
   @Input()
   public highlighted: string[] = [];
 
-  public trackBy: TrackByFunction<TeamStandingWithLogo> = (index: number, item: TeamStandingWithLogo) => {
-    item.standing.teamId
+  public trackBy(item: TeamStandingWithLogo): number {
+    return item.standing.teamId;
   }
 }
