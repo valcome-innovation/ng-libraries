@@ -24,7 +24,7 @@ export class HockeyDataEncounterComponent {
   public set encounterConfig({ encounter, logoMap }: EncounterConfig) {
     this._encounter = encounter;
     const firstScore = encounter.teamScores[0];
-    const secondScore = encounter.teamScores[0];
+    const secondScore = encounter.teamScores[1];
 
     this.leftTeam = { score: firstScore, logo: logoMap[firstScore.shortName] };
     this.rightTeam = { score: secondScore, logo: logoMap[secondScore.shortName] };
