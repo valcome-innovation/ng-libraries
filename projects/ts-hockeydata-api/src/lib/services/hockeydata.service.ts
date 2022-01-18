@@ -39,7 +39,7 @@ export abstract class HockeyDataService {
 
   public getStandings(divisionId: number, live: boolean, params: ApiParams = {}): Promise<HockeyDataTeamStanding[]> {
     return this.dao.fetchStandings(divisionId, live, params)
-      .pipe(map(res => this.teamStandingMapper.fromJsonArray(res.data?.rows)))
+      .pipe(map(res => this.teamStandingMapper.fromJsonArray(res.data?.rows ?? [])))
       .toPromise();
   }
 }
