@@ -13,4 +13,8 @@ export abstract class BaseHockeydataStandingsComponent {
 
   @Input()
   public highlighted: string[] = [];
+
+  public trackBy(item: HockeyDataTeamStanding): number {
+    return item.teamId;
+  }
 }
