@@ -16,5 +16,5 @@ export class HockeyDataPlayoffsComponent {
   @Input()
   public logoMap: LogoMap = {};
 
-  public trackBy: TrackByFunction<HockeyDataKnockoutPhase[]> = index => index;
+  public trackBy: TrackByFunction<any> = index => index;
 }
