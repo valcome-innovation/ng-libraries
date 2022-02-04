@@ -1,54 +1,6 @@
-import { BaseSubscriptionComponent } from './base-subscription.component';
-import { Subject, Subscription } from 'rxjs';
-
-describe('BaseSubscriptionComponent', () => {
-  let baseSubscriptionComponent: BaseSubscriptionComponentSpec;
-
-  beforeEach(() => {
-    baseSubscriptionComponent = new BaseSubscriptionComponentSpec();
-  });
-
-  it('should init with no subscriptions', () => {
-    expect(baseSubscriptionComponent.getSubscriptionCount()).toBe(0);
-  });
-
-  it('should addSubscriptions', () => {
-    baseSubscriptionComponent.subscribe(new Subscription());
-    expect(baseSubscriptionComponent.getSubscriptionCount()).toBe(1);
-
-    baseSubscriptionComponent.subscribe(new Subscription());
-    expect(baseSubscriptionComponent.getSubscriptionCount()).toBe(2);
-  });
-
-  it('should empty subscriptions on ngDestroy', () => {
-    baseSubscriptionComponent.subscribe(new Subscription());
-    baseSubscriptionComponent.subscribe(new Subscription());
-    expect(baseSubscriptionComponent.getSubscriptionCount()).toBe(2);
-
-    baseSubscriptionComponent.ngOnDestroy();
-    expect(baseSubscriptionComponent.getSubscriptionCount()).toBe(0);
-  });
-
-  it('should unsubscribe on destroy', () => {
-    let subject: Subject<number> = new Subject<number>();
-    let subscribedValue: number = 0;
-    baseSubscriptionComponent.subscribe(subject.subscribe(v => subscribedValue = v));
-
-    subject.next(10);
-    expect(subscribedValue).toBe(10);
-
-    baseSubscriptionComponent.ngOnDestroy();
-    subject.next(30);
-    expect(subscribedValue).not.toBe(30);
-  });
-
-  it('should handle null values', () => {
-    expect(() => {
-      baseSubscriptionComponent.subscribe(null!);
-      baseSubscriptionComponent.ngOnDestroy();
-    }).not.toThrow();
-  });
-})
+import { BaseSubscriptionComponent, takeUntilDestroyed } from './base-subscription.component';
+import { interval, Subject, Subscription } from 'rxjs';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 class BaseSubscriptionComponentSpec extends BaseSubscriptionComponent {
   public getSubscriptionCount(): number {
@@ -59,3 +11,71 @@ class BaseSubscriptionComponentSpec extends BaseSubscriptionComponent {
     this.addSub(subscription);
   }
 }
+
+
+describe('BaseSubscriptionComponent', () => {
+
+  let component: BaseSubscriptionComponentSpec;
+
+  beforeEach(() => {
+    component = new BaseSubscriptionComponentSpec();
+  });
+
+  it('should init with no subscriptions', () => {
+    expect(component.getSubscriptionCount()).toBe(0);
+  });
+
+  it('should addSubscriptions', () => {
+    component.subscribe(new Subscription());
+    expect(component.getSubscriptionCount()).toBe(1);
+
+    component.subscribe(new Subscription());
+    expect(component.getSubscriptionCount()).toBe(2);
+  });
+
+  it('should empty subscriptions on ngDestroy', () => {
+    component.subscribe(new Subscription());
+    component.subscribe(new Subscription());
+    expect(component.getSubscriptionCount()).toBe(2);
+
+    component.ngOnDestroy();
+    expect(component.getSubscriptionCount()).toBe(0);
+  });
+
+  it('should unsubscribe on destroy', () => {
+    let subject: Subject<number> = new Subject<number>();
+    let subscribedValue: number = 0;
+    component.subscribe(subject.subscribe(v => subscribedValue = v));
+
+    subject.next(10);
+    expect(subscribedValue).toBe(10);
+
+    component.ngOnDestroy();
+    subject.next(30);
+    expect(subscribedValue).not.toBe(30);
+  });
+
+  it('should handle null values', () => {
+    expect(() => {
+      component.subscribe(null!);
+      component.ngOnDestroy();
+    }).not.toThrow();
+  });
+
+  it('should unsubscribe with takeUntilDestroyed', fakeAsync(() => {
+    const actual: any[] = [];
+
+    const sub = interval(500)
+      .pipe(takeUntilDestroyed(component))
+      .subscribe(n => actual.push(n));
+
+    tick(750);
+    expect(sub.closed).toBe(false);
+    
+    component.ngOnDestroy();
+    tick(750);
+
+    expect(actual).toEqual([0]);
+    expect(sub.closed).toBe(true);
+  }));
+});
