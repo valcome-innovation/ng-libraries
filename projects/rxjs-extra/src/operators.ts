@@ -18,7 +18,7 @@ export function filterNull<T>(): UnaryFunction<Observable<T | null | undefined>,
 export function throwOnUndefined<T>(): UnaryFunction<Observable<T | null | undefined>, Observable<T>> {
   return pipe(
     map(v => {
-      if (v == undefined) {
+      if (v == null) {
         throw new UndefinedValueError();
       } else {
         return v;
