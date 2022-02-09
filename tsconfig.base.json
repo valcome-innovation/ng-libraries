@@ -41,43 +41,11 @@
       "@valcome/ng-elements/click-outside": [
         "projects/ng-elements/click-outside/src/public-api"
       ],
-      "ng-core": [
-        "dist/ng-core/ng-core",
-        "dist/ng-core"
-      ],
-      "ng-animations": [
-        "dist/ng-animations/ng-animations",
-        "dist/ng-animations"
-      ],
-      "ng-elements": [
-        "dist/ng-elements/ng-elements",
-        "dist/ng-elements"
-      ],
-      "ng-screens": [
-        "dist/ng-screens/ng-screens",
-        "dist/ng-screens"
-      ],
-      "ng-styles": [
-        "dist/ng-styles/ng-styles",
-        "dist/ng-styles"
-      ],
-      "ts-core": [
-        "dist/ts-core/ts-core",
-        "dist/ts-core"
-      ],
       "@valcome/ng-social-login": [
         "projects/ng-social-login/src/public-api.ts"
       ],
       "@valcome/ts-hockeydata-api": [
         "dist/ts-hockeydata-api"
-      ],
-      "ts-hockeydata-api": [
-        "dist/ts-hockeydata-api/ts-hockeydata-api",
-        "dist/ts-hockeydata-api"
-      ],
-      "ng-hockeydata-widgets": [
-        "dist/ng-hockeydata-widgets/ng-hockeydata-widgets",
-        "dist/ng-hockeydata-widgets"
       ],
       "@valcome/image-resize": [
         "dist/image-resize"

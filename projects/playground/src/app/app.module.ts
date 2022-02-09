@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreAnimationsModule } from 'ng-animations';
+import { CoreAnimationsModule } from '@valcome/ng-animations';
 import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
 import { RangeSliderModule } from '../../../ng-elements/range-slider/src/range-slider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

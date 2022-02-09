@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { DisplayValue } from 'ng-core';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
 import { Image } from '../../../ng-elements/image-gallery/src/image';
 import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
 import { BaseFormComponent } from '../../../ng-elements/form/src/components/base-form.component';
 import { ImageResizeService } from '../../../ng-image-resize/src/lib/image-resize.service';
+import { DisplayValue } from '@valcome/ng-core';
 
 @Component({
   selector: 'app-root',
