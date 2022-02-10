@@ -57,6 +57,7 @@ describe('LocalStorage', () => {
         expect(actual2).toEqual(null);
       });
 
+      // FLAKY test? localStorage key() does not return in same order?
       it('should get length and key', () => {
         storage().setItem('key2', 'value2');
         storage().setItem('key1', 'value1');
