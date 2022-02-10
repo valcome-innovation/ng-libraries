@@ -1,0 +1,24 @@
+{
+  "name": "@valcome/ng-storage",
+  "version": "0.1.0",
+  "description": "A collection of handy services regarding screen orientation, screen size and fullscreen mode.",
+  "scripts": {
+    "preversion": "ng test ng-storage --watch=false",
+    "version": "ng build ng-storage --prod",
+    "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
+    "publish:patch": "npm version patch && cd ../../dist/ng-storage && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-storage"
+  },
+  "author": "Valcome Analytics",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+  },
+  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-storage#ngscreens",
+  "peerDependencies": {
+    "@angular/core": "~11.2.11"
+  }
+}

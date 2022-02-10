@@ -173,6 +173,47 @@
         }
       }
     },
+    "ng-storage": {
+      "projectType": "library",
+      "root": "projects/ng-storage",
+      "sourceRoot": "projects/ng-storage/src",
+      "prefix": "val",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-storage/tsconfig.lib.json",
+            "project": "projects/ng-storage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-storage/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-storage/src/test.ts",
+            "codeCoverage": true,
+            "tsConfig": "projects/ng-storage/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-storage/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-storage/tsconfig.lib.json",
+              "projects/ng-storage/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "ng-social-login": {
       "projectType": "library",
       "root": "projects/ng-social-login",
