@@ -5,26 +5,26 @@ import { LocalStorage } from './local.storage';
 export class LocalNativeStorage extends LocalStorage {
 
   public get length(): number {
-    return localStorage.length;
+    return localStorage?.length;
   }
 
   public clear(): void {
-    localStorage.clear();
+    localStorage?.clear();
   }
 
   public getItem(key: string): string | null {
-    return localStorage.getItem(key);
+    return localStorage?.getItem(key);
   }
 
   public key(index: number): string | null {
-    return localStorage.key(index); // Returns weird orders
+    return localStorage?.key(index); // Returns weird orders
   }
 
   public removeItem(key: string): void {
-    localStorage.removeItem(key);
+    localStorage?.removeItem(key);
   }
 
   public setItem(key: string, value: string): void {
-    localStorage.setItem(key, value);
+    localStorage?.setItem(key, value);
   }
 }
