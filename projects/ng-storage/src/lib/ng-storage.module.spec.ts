@@ -8,6 +8,8 @@ describe('NgStorageModule', () => {
 
   let localStorageSpy: jasmine.Spy;
 
+  beforeEach(() => spyOn(console, 'error'))
+  
   afterEach(() => localStorageSpy?.and.callThrough());
 
   it('should inject LocalNativeStorage', () => {

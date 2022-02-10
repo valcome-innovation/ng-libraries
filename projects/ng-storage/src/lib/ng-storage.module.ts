@@ -24,6 +24,7 @@ export class NgStorageModule {
     if (NgStorageModule.hasNativeLocalStorageSupport()) {
       return new LocalNativeStorage();
     } else {
+      console.error('STORAGE 6101: Environment does not support native localStorage.');
       return new LocalMemoryStorage();
     }
   }
