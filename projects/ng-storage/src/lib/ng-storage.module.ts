@@ -11,17 +11,17 @@ import { LocalNativeStorage } from './local-storage/local-native.storage';
   providers: [
     {
       provide: LocalStorage,
-      useFactory: StorageModule.provideLocalStorage
+      useFactory: NgStorageModule.provideLocalStorage
     }
   ]
 })
-export class StorageModule {
+export class NgStorageModule {
 
   private static readonly FEATURE_TEST_KEY = 'localStorageFeatureTestKey';
   private static readonly FEATURE_TEST_VALUE = 'localStorageFeatureTestValue';
 
   public static provideLocalStorage(): LocalStorage {
-    if (StorageModule.hasNativeLocalStorageSupport()) {
+    if (NgStorageModule.hasNativeLocalStorageSupport()) {
       return new LocalNativeStorage();
     } else {
       return new LocalMemoryStorage();
@@ -30,8 +30,8 @@ export class StorageModule {
 
   private static hasNativeLocalStorageSupport(): boolean {
     try {
-      localStorage.setItem(StorageModule.FEATURE_TEST_KEY, StorageModule.FEATURE_TEST_VALUE);
-      return StorageModule.FEATURE_TEST_VALUE === localStorage.getItem(StorageModule.FEATURE_TEST_KEY);
+      localStorage.setItem(NgStorageModule.FEATURE_TEST_KEY, NgStorageModule.FEATURE_TEST_VALUE);
+      return NgStorageModule.FEATURE_TEST_VALUE === localStorage.getItem(NgStorageModule.FEATURE_TEST_KEY);
     } catch {
       return false;
     }

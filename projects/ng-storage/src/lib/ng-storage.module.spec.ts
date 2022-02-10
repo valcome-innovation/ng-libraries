@@ -1,10 +1,10 @@
 import { LocalStorage } from './local-storage/local.storage';
 import { TestBed } from '@angular/core/testing';
-import { StorageModule } from './storage.module';
+import { NgStorageModule } from './ng-storage.module';
 import { LocalNativeStorage } from './local-storage/local-native.storage';
 import { LocalMemoryStorage } from './local-storage/local-memory.storage';
 
-describe('StorageModule', () => {
+describe('NgStorageModule', () => {
 
   let localStorageSpy: jasmine.Spy;
 
@@ -36,7 +36,7 @@ describe('StorageModule', () => {
 function injectLocalStorage(): LocalStorage {
   TestBed.configureTestingModule({
     imports: [
-      StorageModule
+      NgStorageModule
     ]
   });
 
