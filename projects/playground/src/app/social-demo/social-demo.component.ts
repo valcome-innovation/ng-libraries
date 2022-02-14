@@ -3,7 +3,7 @@ import {
   DeviceCodeResponse,
   FacebookLoginProvider,
   GoogleLoginProvider,
-  SocialAuthService,
+  SocialAuthFacade,
   SocialUser
 } from '@valcome/ng-social-login';
 
@@ -21,7 +21,7 @@ export class SocialDemoComponent implements OnInit {
   public remainingSeconds = 0;
   private pollingInterval: any;
 
-  public constructor(private authService: SocialAuthService) {
+  public constructor(private authService: SocialAuthFacade) {
   }
 
   public ngOnInit() {

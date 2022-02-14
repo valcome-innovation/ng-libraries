@@ -14,7 +14,8 @@ export interface SocialAuthServiceConfig {
 
 /** @dynamic */
 @Injectable()
-export class SocialAuthService extends BaseInitializableService {
+export class SocialAuthFacade extends BaseInitializableService {
+
   private static readonly ERR_LOGIN_PROVIDER_NOT_FOUND = 'Login provider not found';
   private static readonly ERR_NOT_LOGGED_IN = 'Not logged in';
 
@@ -110,7 +111,7 @@ export class SocialAuthService extends BaseInitializableService {
     await super.markAsInitialized();
 
     if (!this._user) {
-      throw new Error(SocialAuthService.ERR_NOT_LOGGED_IN);
+      throw new Error(SocialAuthFacade.ERR_NOT_LOGGED_IN);
     } else {
       const providerId = this._user.provider;
       const loginProvider = this.getProvider(providerId);
@@ -124,7 +125,7 @@ export class SocialAuthService extends BaseInitializableService {
     if (loginProvider) {
       return loginProvider;
     } else {
-      throw new Error(SocialAuthService.ERR_LOGIN_PROVIDER_NOT_FOUND);
+      throw new Error(SocialAuthFacade.ERR_LOGIN_PROVIDER_NOT_FOUND);
     }
   }
 

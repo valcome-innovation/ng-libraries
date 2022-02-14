@@ -1,13 +1,13 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SocialAuthService, SocialAuthServiceConfig } from './social-auth.service';
+import { SocialAuthFacade, SocialAuthServiceConfig } from './social-auth.facade';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   providers: [
-    SocialAuthService
+    SocialAuthFacade
   ]
 })
 export class SocialLoginModule {
@@ -15,7 +15,7 @@ export class SocialLoginModule {
     return {
       ngModule: SocialLoginModule,
       providers: [
-        SocialAuthService,
+        SocialAuthFacade,
         {
           provide: 'SocialAuthServiceConfig',
           useValue: config
