@@ -19,7 +19,7 @@
   "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/rxjs-extra#tscore",
   "peerDependencies": {
     "@valcome/ng-core": "^1.2.0",
-    "rxjs": "^7.0.0"
+    "rxjs": "^6.6.7"
   },
   "dependencies": {
     "tslib": "^2.0.0"

@@ -53,11 +53,14 @@ export class FacebookLoginProvider implements LoginProvider {
 
     if ('access_token' in pollResponse) {
       const fbUser = await this.facebookHelper.fetchProfile(this.initOptions.fields, pollResponse.access_token);
-      const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'FACEBOOK');
-      return { type: 'user', user };
-    } else {
-      return { type: 'empty' };
+
+      if (fbUser) {
+        const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'FACEBOOK');
+        return { type: 'user', user };
+      }
     }
+
+    return { type: 'empty' };
   }
 
   public getLoginStatus(): Promise<SocialUser> {
@@ -92,7 +95,7 @@ export class FacebookLoginProvider implements LoginProvider {
     });
   }
 
-  public signOut(): Promise<any> {
-    return new Promise(resolve => FB.logout(() => resolve()));
+  public signOut(): Promise<void> {
+    return new Promise<void>(resolve => FB.logout(() => resolve()));
   }
 }

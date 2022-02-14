@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-social-login",
-  "version": "4.1.5",
+  "version": "4.1.7",
   "description": "Social login and authentication module for Angular 9 / 10. Forked from https://github.com/abacritt/angularx-social-login#readme",
   "scripts": {
     "version": "ng build ng-social-login --prod",
@@ -24,6 +24,6 @@
     "@angular/core": "~12.2.16",
     "@valcome/ng-core": "^1.0.0",
     "jwt-decode": "^3.0.0",
-    "rxjs": "^7.0.0"
+    "rxjs": "^6.6.7"
   }
 }

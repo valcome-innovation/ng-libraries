@@ -12,5 +12,5 @@ export abstract class HockeyDataIceHockeyService {
 
   public abstract getGameReport(gameId: string, params?: ApiParams): Promise<HockeyDataGameReport | undefined>;
 
-  public abstract getStandings(divisionId: number, live: boolean, params?: ApiParams): Promise<HockeyDataTeamStanding[] | undefined>;
+  public abstract getStandings(divisionId: number, live: boolean, params?: ApiParams): Promise<HockeyDataTeamStanding[]>;
 }

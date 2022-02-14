@@ -19,25 +19,25 @@ export abstract class HockeyDataService {
                         protected scheduleMapper: HockeyDataScheduleMapper) {
   }
 
-  public getKnockoutStage(divisionId: number, params: ApiParams = {}): Promise<HockeyDataKnockoutStage | undefined> {
+  public getKnockoutStage(divisionId: number, params: ApiParams = {}): Promise<HockeyDataKnockoutStage> {
     return this.dao.fetchKnockoutStage(divisionId, params)
       .pipe(map(res => this.knockoutStageMapper.fromJson(res.data)))
       .toPromise();
   }
 
-  public getSchedule(divisionId: number, params: ApiParams = {}): Promise<HockeyDataSchedule | undefined> {
+  public getSchedule(divisionId: number, params: ApiParams = {}): Promise<HockeyDataSchedule> {
     return this.dao.fetchSchedule(divisionId, params)
       .pipe(map(res => this.scheduleMapper.fromJson(res.data)))
       .toPromise();
   }
 
-  public getGameReport(gameId: string, params: ApiParams = {}): Promise<HockeyDataGameReport | undefined> {
+  public getGameReport(gameId: string, params: ApiParams = {}): Promise<HockeyDataGameReport> {
     return this.dao.fetchGameReport(gameId, params)
       .pipe(map(res => this.gameReportMapper.fromJson(res.data)))
       .toPromise();
   }
 
-  public getStandings(divisionId: number, live: boolean, params: ApiParams = {}): Promise<HockeyDataTeamStanding[] | undefined> {
+  public getStandings(divisionId: number, live: boolean, params: ApiParams = {}): Promise<HockeyDataTeamStanding[]> {
     return this.dao.fetchStandings(divisionId, live, params)
       .pipe(map(res => this.teamStandingMapper.fromJsonArray(res.data?.rows ?? [])))
       .toPromise();
