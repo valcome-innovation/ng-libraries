@@ -1,4 +1,4 @@
-export * from './social-auth.service';
+export * from './social-auth.facade';
 export * from './social-login.module';
 export * from './entities/login-provider';
 export * from './providers/google-login-provider';
