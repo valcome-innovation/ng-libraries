@@ -62,8 +62,8 @@ describe('HockeyDataIceHockeyServiceImpl', () => {
     const teamStandings = await service.getStandings(1234, true);
 
     expect(teamStandings).toBeInstanceOf(Array);
-    expect(teamStandings.every(ts => ts instanceof HockeyDataTeamStanding)).toEqual(true);
-    teamStandings.forEach(standing => {
+    expect(teamStandings?.every(ts => ts instanceof HockeyDataTeamStanding)).toEqual(true);
+    teamStandings?.forEach(standing => {
       expect(standing.teamId).toBeDefined();
       expect(standing.teamShortname).toBeDefined();
       expect(standing.teamLongname).toBeDefined();

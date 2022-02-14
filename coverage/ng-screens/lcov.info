@@ -1,5 +1,5 @@
 TN:
-SF:src/public-api.ts
+SF:projects/ng-screens/src/public-api.ts
 FNF:0
 FNH:0
 LF:0
@@ -8,7 +8,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/test.ts
+SF:projects/ng-screens/src/test.ts
 FNF:0
 FNH:0
 DA:19,1
@@ -20,7 +20,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/lib/screens.module.ts
+SF:projects/ng-screens/src/lib/screens.module.ts
 FNF:0
 FNH:0
 DA:6,1
@@ -30,7 +30,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/lib/services/device.service.ts
+SF:projects/ng-screens/src/lib/services/device.service.ts
 FN:8,(anonymous_0)
 FN:12,(anonymous_1)
 FN:16,(anonymous_2)
@@ -76,7 +76,7 @@ BRF:20
 BRH:16
 end_of_record
 TN:
-SF:src/lib/services/full-screen.service.ts
+SF:projects/ng-screens/src/lib/services/full-screen.service.ts
 FN:15,(anonymous_0)
 FN:20,(anonymous_1)
 FN:26,(anonymous_3)
@@ -86,7 +86,7 @@ FN:40,(anonymous_8)
 FN:46,(anonymous_9)
 FN:48,(anonymous_10)
 FNF:8
-FNH:6
+FNH:7
 FNDA:2,(anonymous_0)
 FNDA:1,(anonymous_1)
 FNDA:1,(anonymous_3)
@@ -94,7 +94,7 @@ FNDA:1,(anonymous_5)
 FNDA:2,(anonymous_7)
 FNDA:0,(anonymous_8)
 FNDA:2,(anonymous_9)
-FNDA:0,(anonymous_10)
+FNDA:4,(anonymous_10)
 DA:8,1
 DA:11,1
 DA:13,2
@@ -112,9 +112,9 @@ DA:40,2
 DA:41,0
 DA:47,2
 DA:48,2
-DA:49,0
+DA:49,4
 LF:18
-LH:15
+LH:16
 BRDA:8,0,0,1
 BRDA:8,0,1,0
 BRDA:21,1,0,1
@@ -147,7 +147,7 @@ BRF:28
 BRH:18
 end_of_record
 TN:
-SF:src/lib/services/orientation.service.ts
+SF:projects/ng-screens/src/lib/services/orientation.service.ts
 FN:12,(anonymous_0)
 FN:16,(anonymous_1)
 FN:19,(anonymous_2)
@@ -217,7 +217,7 @@ BRF:16
 BRH:4
 end_of_record
 TN:
-SF:src/lib/services/screen-fit.service.ts
+SF:projects/ng-screens/src/lib/services/screen-fit.service.ts
 FN:12,(anonymous_0)
 FN:15,(anonymous_1)
 FN:27,(anonymous_2)

@@ -7,7 +7,7 @@ import createSpy = jasmine.createSpy;
 describe('BaseGenericFieldComponent', () => {
 
   let component: BaseGenericFieldComponent;
-  let statusChange: Subject<any> = new Subject<any>();
+  let statusChange = new Subject<void>();
 
   let formControlSpy: any = {
     statusChanges: statusChange.asObservable(),

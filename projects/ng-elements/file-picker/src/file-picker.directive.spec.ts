@@ -93,7 +93,7 @@ describe('FilePickerDirective', () => {
     Object.defineProperty(event, 'target', { writable: false, value: { files: [dummyFile] } });
 
     spyOn(directive.filePick, 'emit').and.callThrough();
-    await new Promise(resolve => {
+    await new Promise<void>(resolve => {
       directive.filePick.subscribe((file: File) => {
         expect(directive.filePick.emit).toHaveBeenCalledWith(file);
         expect(file.name).toEqual(dummyFile.name);
