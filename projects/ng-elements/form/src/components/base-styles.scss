@@ -57,4 +57,12 @@
     transform: translateY(-50%);
     top: 50%;
   }
+
+  .capslock.alert {
+    opacity: 0;
+
+    &.show {
+      opacity: 1;
+    }
+  }
 }

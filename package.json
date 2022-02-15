@@ -37,6 +37,7 @@
     "@angular/cli": "~12.2.16",
     "@angular/compiler-cli": "~12.2.16",
     "@angular/language-service": "~12.2.16",
+    "@types/estree": "^0.0.51",
     "@types/gapi": "0.0.39",
     "@types/gapi.auth2": "0.0.52",
     "@types/jasmine": "~3.6.0",

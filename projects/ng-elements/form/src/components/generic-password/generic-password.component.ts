@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, HostListener, Input, ViewEncapsulation } from '@angular/core';
 import { BaseGenericFieldComponent } from '../base-generic-field.component';
 
 @Component({
@@ -18,13 +18,51 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
   public placeholder!: string;
 
   @Input()
+  public showCapsAlert = true;
+
+  @Input()
   public autocomplete!: string;
 
-  public togglePassword() {
+  @Input()
+  public displayVisibilityToggle = true;
+
+  @Input()
+  public showLabel = 'Show';
+
+  @Input()
+  public hideLabel = 'Hide';
+
+  @Input()
+  public capslockLabel = 'CAPSLOCK is active'
+
+  public visibilityLabel = 'Show';
+  public isCapslockActive = false;
+  public hasFocus = false;
+
+  public ngOnInit() {
+    super.ngOnInit();
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  public onKeyUp(event: KeyboardEvent): void {
+    if (this.isCapslockActive && event.key === 'CapsLock') {
+      this.isCapslockActive = false;
+    } else {
+      this.isCapslockActive = event.getModifierState('CapsLock');
+    }
+  }
+
+  public toggleVisibility() {
     if (this.type === 'password') {
       this.type = 'text';
+      this.visibilityLabel = this.hideLabel;
     } else {
       this.type = 'password';
+      this.visibilityLabel = this.showLabel;
     }
+  }
+
+  public setFocus(value: boolean) {
+    this.hasFocus = value;
   }
 }
