@@ -41,6 +41,8 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
 
   public ngOnInit() {
     super.ngOnInit();
+
+    this.visibilityLabel = this.showLabel;
   }
 
   @HostListener('window:keyup', ['$event'])
