@@ -49,8 +49,10 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
   public onKeyUp(event: KeyboardEvent): void {
     if (this.isCapslockActive && event.key === 'CapsLock') {
       this.isCapslockActive = false;
-    } else {
+    } else if (typeof event.getModifierState === "function") {
       this.isCapslockActive = event.getModifierState('CapsLock');
+    } else {
+      this.isCapslockActive = false;
     }
   }
 
