@@ -110,9 +110,7 @@ export class SocialAuthFacade extends BaseInitializableService {
   public async signOut(revoke: boolean = false): Promise<void> {
     await super.markAsInitialized();
 
-    if (!this._user) {
-      throw new Error(SocialAuthFacade.ERR_NOT_LOGGED_IN);
-    } else {
+    if (this._user) {
       const providerId = this._user.provider;
       const loginProvider = this.getProvider(providerId);
       return this.signOutFromProvider(loginProvider, revoke);
