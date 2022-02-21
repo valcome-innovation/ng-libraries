@@ -1,7 +1,7 @@
 import { GoogleTokenClaims, SocialProvider, SocialUser } from '../entities/social-user';
-import * as JwtDecode from 'jwt-decode';
 import { GoogleDeviceResponse, GooglePollResponse } from '../types/google';
 import { HttpClient } from '@angular/common/http';
+import jwtDecode from 'jwt-decode';
 
 export class GoogleHelper {
 
@@ -49,8 +49,11 @@ export class GoogleHelper {
     return user;
   }
 
-  public createSocialUserFromToken({ access_token, id_token }: GooglePollResponse, provider: SocialProvider): SocialUser {
-    const tokenClaims = JwtDecode(id_token) as GoogleTokenClaims;
+  public createSocialUserFromToken({
+                                     access_token,
+                                     id_token
+                                   }: GooglePollResponse, provider: SocialProvider): SocialUser {
+    const tokenClaims = jwtDecode<GoogleTokenClaims>(id_token);
 
     return new SocialUser(
       provider,
