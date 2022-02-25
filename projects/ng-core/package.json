@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-core",
-  "version": "1.3.30",
+  "version": "1.3.31",
   "description": "Angular core utils and base classes",
   "scripts": {
     "preversion": "ng test ng-core --watch=false",
