@@ -3,6 +3,9 @@ import { fakeAsync, flush, tick } from '@angular/core/testing';
 import { catchError } from 'rxjs/operators';
 import { RetryObservable } from './retry-observable';
 
+class IgnoreError extends Error {
+}
+
 class DAO {
   private message = 'hallo';
 
@@ -25,6 +28,11 @@ class DAO {
     callback();
     console.log(this.message);
     return throwError(url);
+  }
+
+  @RetryObservable(3, 1000, [IgnoreError])
+  public excludeErrors(callback: () => Observable<any>): Observable<any> {
+    return callback();
   }
 }
 
@@ -86,6 +94,36 @@ describe('Retry (Decorator)', () => {
     tick(1000);
     expect(counter).toEqual(2);
     tick(1000);
+    expect(counter).toEqual(3);
+  }));
+
+  it('should ignore error', fakeAsync(() => {
+    let counter = 0;
+    const callback = () => {
+      counter++;
+      return throwError(new IgnoreError());
+    }
+
+    dao.excludeErrors(callback)
+      .pipe(catchError(() => EMPTY))
+      .subscribe();
+
+    tick(3000);
+    expect(counter).toEqual(1);
+  }));
+
+  it('should not ignore error', fakeAsync(() => {
+    let counter = 0;
+    const callback = () => {
+      counter++;
+      return throwError(new Error());
+    }
+
+    dao.excludeErrors(callback)
+      .pipe(catchError(() => EMPTY))
+      .subscribe();
+
+    tick(3000);
     expect(counter).toEqual(3);
   }));
 });
