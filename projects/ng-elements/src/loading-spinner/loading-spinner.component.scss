@@ -20,7 +20,7 @@
 
   &.small {
     border: $small-border rgba(white, 0.2);
-    border-left: $small-border solid white;
+    border-left: $small-border white;
 
     &.dark {
       border: $small-border rgba(black, 0.2);
