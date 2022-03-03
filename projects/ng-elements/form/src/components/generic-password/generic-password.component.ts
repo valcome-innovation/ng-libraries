@@ -35,15 +35,8 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
   @Input()
   public capslockLabel = 'CAPSLOCK is active'
 
-  public visibilityLabel = 'Show';
   public isCapslockActive = false;
   public hasFocus = false;
-
-  public ngOnInit() {
-    super.ngOnInit();
-
-    this.visibilityLabel = this.showLabel;
-  }
 
   @HostListener('window:keyup', ['$event'])
   public onKeyUp(event: KeyboardEvent): void {
@@ -59,10 +52,8 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
   public toggleVisibility() {
     if (this.type === 'password') {
       this.type = 'text';
-      this.visibilityLabel = this.hideLabel;
     } else {
       this.type = 'password';
-      this.visibilityLabel = this.showLabel;
     }
   }
 
