@@ -30,12 +30,10 @@ describe('GenericPasswordComponent', () => {
     component.toggleVisibility();
 
     expect(component.type).toEqual('text');
-    expect(component.visibilityLabel).toEqual('Hide');
 
     component.toggleVisibility();
 
     expect(component.type).toEqual('password');
-    expect(component.visibilityLabel).toEqual('Show');
   });
 
   it('should display capslock alert', () => {
