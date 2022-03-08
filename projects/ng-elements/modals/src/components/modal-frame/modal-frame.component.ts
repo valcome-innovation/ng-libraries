@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { BaseDynamicModalComponent } from '../base-dynamic-modal.component';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -28,7 +28,6 @@ const scale = trigger('scale', [
   selector: 'val-modal-frame',
   templateUrl: './modal-frame.component.html',
   styleUrls: ['./modal-frame.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   animations: [fade, scale]
 })
 export class ModalFrameComponent extends BaseDynamicModalComponent {
