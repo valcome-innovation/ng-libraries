@@ -4,7 +4,7 @@
   "description": "Angular library to simply integrate gtag",
   "scripts": {
     "preversion": "ng test ng-google-gtag --watch=false",
-    "version": "ng build ng-google-gtag --prod",
+    "version": "ng build ng-google-gtag --configuration production",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-google-gtag && npm publish"
   },
