@@ -132,6 +132,50 @@
         }
       }
     },
+    "ng-google-gtag": {
+      "projectType": "library",
+      "root": "projects/ng-google-gtag",
+      "sourceRoot": "projects/ng-google-gtag/src",
+      "prefix": "val",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-google-gtag/tsconfig.lib.json",
+            "project": "projects/ng-google-gtag/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-google-gtag/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-google-gtag/src/test.ts",
+            "tsConfig": "projects/ng-google-gtag/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-google-gtag/karma.conf.js",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/lib/model/**"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-google-gtag/tsconfig.lib.json",
+              "projects/ng-google-gtag/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "ng-screens": {
       "projectType": "library",
       "root": "projects/ng-screens",
