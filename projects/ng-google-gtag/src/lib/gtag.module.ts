@@ -3,7 +3,8 @@ import { GtagService } from './gtag.service';
 
 export type GtagConfig = {
   gtagMeasurementId: string,
-  enableDebugLog?: boolean
+  enableDebugLog?: boolean,
+  deferScript?: boolean
 }
 
 @NgModule()

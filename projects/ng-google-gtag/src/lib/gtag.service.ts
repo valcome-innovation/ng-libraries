@@ -4,10 +4,15 @@ import { GtagConfig } from './gtag.module';
 @Injectable()
 export class GtagService {
 
-  public createGtagEntryPoint({ gtagMeasurementId, enableDebugLog }: GtagConfig): void {
+  public createGtagEntryPoint({ gtagMeasurementId, enableDebugLog, deferScript }: GtagConfig): void {
     // register google tag manager
     const gTagManagerScript = document.createElement('script');
     gTagManagerScript.async = true;
+
+    if (deferScript) {
+      gTagManagerScript.defer = true;
+    }
+
     gTagManagerScript.src = `https://www.googletagmanager.com/gtag/js?id=${gtagMeasurementId}`;
     document.head.appendChild(gTagManagerScript);
 
