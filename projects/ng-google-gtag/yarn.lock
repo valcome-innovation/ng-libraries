@@ -2,7 +2,35 @@
 # yarn lockfile v1
 
 
-tslib@^2.0.0:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
-  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
+"@angular/common@~13.2.6":
+  "integrity" "sha512-t4XRb9db4UeRcPs5aHNtGuXRKSvGBlTEr0zzSeoKzHD9TCaO4dSDISh9obS9hThaPuBmPKRUHN5KE1HFmqnSHg=="
+  "resolved" "https://registry.npmjs.org/@angular/common/-/common-13.2.6.tgz"
+  "version" "13.2.6"
+  dependencies:
+    "tslib" "^2.3.0"
+
+"@angular/core@~13.2.6", "@angular/core@13.2.6":
+  "integrity" "sha512-ctWsxuaSO3d3afLW+wkJSyiEIA2uhaTKNps9x5wz/oZJDaUDYVa4PM4x7/UHn2bXzBjXjN9LSW8h9F31iwmcTg=="
+  "resolved" "https://registry.npmjs.org/@angular/core/-/core-13.2.6.tgz"
+  "version" "13.2.6"
+  dependencies:
+    "tslib" "^2.3.0"
+
+"rxjs@^6.5.3 || ^7.4.0":
+  "integrity" "sha512-sy+H0pQofO95VDmFLzyaw9xNJU4KTRSwQIGM6+iG3SypAtCiLDzpeG8sJrNCWn2Up9km+KhkvTdbkrdy+yzZdw=="
+  "resolved" "https://registry.npmjs.org/rxjs/-/rxjs-7.5.5.tgz"
+  "version" "7.5.5"
+  dependencies:
+    "tslib" "^2.1.0"
+
+"tslib@^2.0.0", "tslib@^2.1.0", "tslib@^2.3.0":
+  "integrity" "sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-2.3.1.tgz"
+  "version" "2.3.1"
+
+"zone.js@~0.11.4":
+  "integrity" "sha512-D1/7VxEuQ7xk6z/kAROe4SUbd9CzxY4zOwVGnGHerd/SgLIVU5f4esDzQUsOCeArn933BZfWMKydH7l7dPEp0g=="
+  "resolved" "https://registry.npmjs.org/zone.js/-/zone.js-0.11.5.tgz"
+  "version" "0.11.5"
+  dependencies:
+    "tslib" "^2.3.0"
