@@ -7,10 +7,10 @@ import { RenderService } from '@valcome/ng-core';
 export class ParallaxDirective implements OnInit {
 
   @Input()
-  public parallaxRatio: number = -0.3;
+  public parallaxRatio = -0.3;
 
   @Input()
-  public parallaxTop: number = 0;
+  public parallaxTop = 0;
 
   public constructor(private eleRef: ElementRef,
                      private renderService: RenderService) {

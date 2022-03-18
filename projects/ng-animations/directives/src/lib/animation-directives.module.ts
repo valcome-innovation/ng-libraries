@@ -12,5 +12,5 @@ import { BackgroundParallaxDirective } from './background-parallax.directive';
     BackgroundParallaxDirective
   ]
 })
-export class CoreAnimationsModule {
+export class AnimationDirectivesModule {
 }
