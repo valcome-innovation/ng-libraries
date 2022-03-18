@@ -1,12 +1,12 @@
 import { AnimationConfig } from './animation-config';
 import { AnimationEasing } from './enum/animation-easing';
 
-export interface AnimationValueConfig extends AnimationConfig {
-  startValue?: number;
-  endValue?: number;
+export interface AnimationValueConfig<T> extends AnimationConfig {
+  startValue?: T;
+  endValue?: T;
 }
 
-export const animationValueConfigDefault: AnimationValueConfig = {
+export const animationValueConfigDefault: AnimationValueConfig<number> = {
   inTime: 500,
   outTime: 500,
   inDelay: 0,
