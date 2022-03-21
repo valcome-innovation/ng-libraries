@@ -14,7 +14,7 @@ export class GtagService {
       gTagManagerScript.async = true;
     }
 
-    gTagManagerScript.src = `https://www.googletagmanager.com/gtag/js?id=${gtagMeasurementId}`;
+    gTagManagerScript.src = `https://googletagmanager.com/gtag/js?id=${gtagMeasurementId}`;
     document.head.appendChild(gTagManagerScript);
 
     // register Google Analytics
