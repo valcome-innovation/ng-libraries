@@ -22,7 +22,7 @@ export class ImageMaxPXSizeService {
       setTimeout(() => {
         resizedFileSubject.error({
           resizedFile: file,
-          reason: "The provided File is neither of type jpg nor of type png.",
+          reason: "The provided file must be either of type jpg or of type png.",
           error: "INVALID_EXTENSION"
         });
       }, 0);
