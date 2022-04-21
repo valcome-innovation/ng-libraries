@@ -4,6 +4,9 @@ import { ImageMaxSizeService } from './image-max-size.service';
 import { ImageExifService } from './image-exif.service';
 import { ImageMaxPXSizeService } from './image-max-px-size.service';
 
+/**
+ * @deprecated Be aware of the following issue https://github.com/nodeca/pica/issues/229
+ */
 @Injectable()
 export class ImageResizeService {
 
