@@ -11,6 +11,9 @@ export class JsUtils {
     return JSON.parse(JSON.stringify(customObject));
   }
 
+  /**
+   * @deprecated Does only work shallow
+   */
   public static immute(object: any | undefined): any | undefined {
     if (typeof object === 'object' && object !== null) {
       return Object.assign({}, { ...object });
@@ -19,6 +22,9 @@ export class JsUtils {
     }
   }
 
+  /**
+   * @deprecated Does only work shallow
+   */
   public static immuteTyped<T>(object: T | undefined, type: new() => T): T | undefined {
     if (typeof object === 'object' && object !== null) {
       return Object.assign(new type, { ...object });
