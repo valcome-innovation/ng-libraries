@@ -156,13 +156,13 @@ describe('JsUtils', () => {
     expect(copy).toBe(true);
   });
 
-  it('should convert null to undeefined', () => {
+  it('should convert null to undefined', () => {
     const result = JsUtils.nullToUndefined({
       test: null,
       yeah: {
         prop1: '2',
         prop2: undefined,
-        prop3: null
+        prop3: null,
       }
     })
 

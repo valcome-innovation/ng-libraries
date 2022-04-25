@@ -52,11 +52,17 @@ export class JsUtils {
     if (obj === null) {
       return undefined;
     }
+
     if (typeof obj === 'object') {
       for (let key in obj) {
-        obj[key] = JsUtils.nullToUndefined(obj[key]);
+        if (typeof obj[key] === 'object') {
+          obj[key] = JsUtils.nullToUndefined(obj[key]);
+        } else if (obj[key] === null) {
+          obj[key] = undefined;
+        }
       }
     }
+
     return obj;
   }
 
