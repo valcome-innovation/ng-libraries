@@ -1,10 +1,10 @@
 <div class="team-display" *ngIf="logoAlignment === 'top' || logoAlignment === 'left'"
      [ngClass]="{ 'column': logoAlignment === 'top' }">
-  <img class="team-logo" [src]="logo" alt="team-logo" loading="lazy">
+  <img *ngIf="logo" class="team-logo" [src]="logo" alt="team-logo" loading="lazy">
   <div class="team-name">{{name}}</div>
 </div>
 <div class="team-display" *ngIf="logoAlignment === 'bottom' || logoAlignment === 'right'"
      [ngClass]="{ 'column': logoAlignment === 'bottom' }">
   <div class="team-name">{{name}}</div>
-  <img class="team-logo" [src]="logo" alt="team-logo" loading="lazy">
+  <img *ngIf="logo" class="team-logo" [src]="logo" alt="team-logo" loading="lazy">
 </div>

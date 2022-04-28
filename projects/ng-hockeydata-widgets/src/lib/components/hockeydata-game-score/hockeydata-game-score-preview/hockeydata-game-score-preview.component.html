@@ -2,7 +2,7 @@
   <div class="d-flex space-evenly w-100">
     <div class="team-container right my-auto">
       <div class="team-display">
-        <img class="team-logo" [src]="homeLogo" alt="team-logo" loading="lazy">
+        <img *ngIf="homeLogo" class="team-logo" [src]="homeLogo" alt="team-logo" loading="lazy">
         <div class="team-name">{{gameReport.gameData.teamScores.homeTeamShortName}}</div>
       </div>
     </div>
@@ -20,7 +20,7 @@
     </div>
     <div class="team-container left my-auto">
       <div class="team-display">
-        <img class="team-logo" [src]="awayLogo" alt="team-logo" loading="lazy">
+        <img *ngIf="awayLogo" class="team-logo" [src]="awayLogo" alt="team-logo" loading="lazy">
         <div class="team-name">{{gameReport.gameData.teamScores.awayTeamShortName}}</div>
       </div>
     </div>
