@@ -31,6 +31,7 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError>
   public ngOnChanges(changes: SimpleChanges): void {
     if (this.errorsChanged(changes.serverErrors)) {
       // this.resetSubmission();
+
       this.addServerErrors(this.form, changes.serverErrors.currentValue);
     }
   }
