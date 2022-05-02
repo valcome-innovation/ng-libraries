@@ -48,6 +48,8 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   public ngOnInit(): void {
     this.formControl = this.form.get(this.formName) as FormControl;
     this.id = this.generateId(this.formControl, this.formName);
+    this.currentValue = this.formControl.value;
+
     this.listenOnValueChanges();
   }
 
