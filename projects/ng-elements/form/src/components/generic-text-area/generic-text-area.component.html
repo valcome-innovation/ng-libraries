@@ -10,6 +10,8 @@
               [rows]="rows"
               [placeholder]="placeholder"
               [formControlName]="formName"
+              (focus)="setFocus(true)"
+              (blur)="setFocus(false)"
               autocomplete="{{autocomplete}}">
     </textarea>
   </div>

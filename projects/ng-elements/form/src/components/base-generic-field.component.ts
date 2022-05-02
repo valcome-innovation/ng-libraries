@@ -31,6 +31,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   public id!: string;
   public isValid: boolean = true;
   public currentValue: any;
+  public hasFocus = false;
 
   public formControl!: FormControl;
 
@@ -91,5 +92,9 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
         ...defaultErrorMessages.toArray()
       ]);
     }
+  }
+
+  public setFocus(value: boolean) {
+    this.hasFocus = value;
   }
 }

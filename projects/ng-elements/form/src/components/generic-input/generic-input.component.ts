@@ -20,4 +20,7 @@ export class GenericInputComponent extends BaseGenericFieldComponent {
 
   @Input()
   public autocomplete!: string;
+
+  @Input()
+  public infoLabel?: string;
 }

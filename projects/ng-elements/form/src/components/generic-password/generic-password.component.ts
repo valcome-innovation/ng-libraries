@@ -36,7 +36,6 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
   public capslockLabel = 'CAPSLOCK is active'
 
   public isCapslockActive = false;
-  public hasFocus = false;
 
   @HostListener('window:keyup', ['$event'])
   public onKeyUp(event: KeyboardEvent): void {
@@ -55,9 +54,5 @@ export class GenericPasswordComponent extends BaseGenericFieldComponent {
     } else {
       this.type = 'password';
     }
-  }
-
-  public setFocus(value: boolean) {
-    this.hasFocus = value;
   }
 }

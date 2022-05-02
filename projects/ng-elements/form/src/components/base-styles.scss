@@ -58,7 +58,7 @@
     top: 50%;
   }
 
-  .capslock.alert {
+  .capslock.alert, .info.alert {
     opacity: 0;
 
     &.show {
