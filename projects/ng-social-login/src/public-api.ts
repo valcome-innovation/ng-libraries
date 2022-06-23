@@ -4,6 +4,7 @@ export * from './entities/login-provider';
 export * from './providers/google-login-provider';
 export * from './providers/facebook-login-provider';
 export * from './entities/social-user';
+export * from './directives/google-sign-in-button.directive';
 export * from './types/facebook';
 export * from './types/google';
 export * from './types/social';
