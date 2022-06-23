@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
-import { SocialAuthFacade } from '@valcome/ng-social-login';
+import { SocialAuthFacade } from '../social-auth.facade';
 
 @Directive({
   selector: 'val-google-sign-in-button',
