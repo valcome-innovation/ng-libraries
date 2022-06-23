@@ -10,7 +10,7 @@ import {
 @Component({
   selector: 'val-social-demo',
   templateUrl: './social-demo.component.html',
-  styleUrls: ['./social-demo.component.css']
+  styleUrls: ['./social-demo.component.scss']
 })
 export class SocialDemoComponent implements OnInit {
 

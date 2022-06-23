@@ -14,5 +14,3 @@ export type GooglePollResponse = {
   refresh_token: string;
   id_token: string;
 }
-
-export type GoogleLoginResponse = { code: string } | gapi.auth2.GoogleUser;

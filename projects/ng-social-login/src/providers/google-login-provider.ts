@@ -4,48 +4,92 @@ import { LoginProvider } from '../entities/login-provider';
 import { GoogleHelper } from '../helper/google.helper';
 import { HttpClient } from '@angular/common/http';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
+import { BehaviorSubject } from 'rxjs';
+import { filter, skip, take } from 'rxjs/operators';
+import { EventEmitter } from '@angular/core';
 
-const defaultInitOptions = { scope: 'email' };
+export interface GoogleInitOptions {
+  oneTapEnabled?: boolean;
+  scopes?: string | string[];
+}
 
+const defaultInitOptions: GoogleInitOptions = {
+  oneTapEnabled: false,
+};
+
+// https://github.com/abacritt/angularx-social-login/blob/e7f2020ad7ecb881d3ef3132ac90f0a3e2d2bada/projects/lib/src/providers/google-login-provider.ts
 export class GoogleLoginProvider implements LoginProvider {
 
   public static readonly PROVIDER_ID: SocialProvider = 'GOOGLE';
 
-  protected auth2?: gapi.auth2.GoogleAuth;
   protected googleHelper: GoogleHelper;
+
+  public readonly changeUser = new EventEmitter<SocialUser | null>();
+
+  private readonly _socialUser = new BehaviorSubject<SocialUser | null>(null);
+  private readonly _accessToken = new BehaviorSubject<string | null>(null);
+  private readonly _receivedAccessToken = new EventEmitter<string | null>();
+  private _tokenClient: google.accounts.oauth2.TokenClient | undefined;
 
   public constructor(private clientId: string,
                      clientTvId: string,
                      clientSecret: string,
                      http: HttpClient,
-                     private initOptions: gapi.auth2.ClientConfig = defaultInitOptions) {
+                     private readonly initOptions: GoogleInitOptions) {
     this.googleHelper = new GoogleHelper(clientTvId, clientSecret, http);
+    this.initOptions = { ...defaultInitOptions, ...this.initOptions };
+
+    // emit changeUser events but skip initial value from behaviorSubject
+    this._socialUser.pipe(skip(1)).subscribe(this.changeUser);
+
+    // emit receivedAccessToken but skip initial value from behaviorSubject
+    this._accessToken.pipe(skip(1)).subscribe(this._receivedAccessToken);
   }
 
-  public async initialize(): Promise<void> {
-    const scriptTag = await DomUtils.loadScriptAsync('googleScript', 'https://apis.google.com/js/platform.js');
+  public async initialize(autoLogin?: boolean): Promise<void> {
+    const scriptTag = await DomUtils.loadScriptAsync(
+      GoogleLoginProvider.PROVIDER_ID,
+      'https://accounts.google.com/gsi/client'
+    );
 
     if (scriptTag) {
-      scriptTag.id = GoogleLoginProvider.PROVIDER_ID;
-
-      const params = {
-        cookie_policy: 'none',
+      google.accounts.id.initialize({
         client_id: this.clientId,
-      };
-
-      return new Promise((resolve, reject) => {
-        gapi.load('auth2', () => {
-          gapi.auth2.init(params).then(
-            googleAuth => {
-              this.auth2 = googleAuth;
-              resolve()
-            },
-            reason => {
-              reject(reason)
-            }
-          );
-        });
+        auto_select: autoLogin,
+        callback: ({ credential }) => {
+          const socialUser = this.googleHelper.createSocialUser(credential);
+          this._socialUser.next(socialUser);
+        },
       });
+
+      if (this.initOptions.oneTapEnabled) {
+        this._socialUser
+          .pipe(filter((user) => user === null))
+          .subscribe(() => google.accounts.id.prompt(console.debug));
+      }
+
+      if (this.initOptions.scopes) {
+        const scope =
+          this.initOptions.scopes instanceof Array
+            ? this.initOptions.scopes.filter((s) => s).join(' ')
+            : this.initOptions.scopes;
+
+        this._tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: this.clientId,
+          scope,
+          callback: (tokenResponse) => {
+            if (tokenResponse.error) {
+              this._accessToken.error({
+                code: tokenResponse.error,
+                description: tokenResponse.error_description,
+                uri: tokenResponse.error_uri,
+              });
+            } else {
+              this._accessToken.next(tokenResponse.access_token);
+            }
+          },
+        });
+      }
     }
   }
 
@@ -64,50 +108,65 @@ export class GoogleLoginProvider implements LoginProvider {
     }
   }
 
-  public async getLoginStatus(): Promise<SocialUser> {
-    this.validateAuth()
-
+  public async getLoginStatus(refreshToken?: boolean): Promise<SocialUser> {
     return new Promise((resolve, reject) => {
-      const isSignedIn = this.auth2!.isSignedIn.get();
-      const googleUser = isSignedIn ? this.auth2!.currentUser.get() : undefined;
-
-      if (isSignedIn && googleUser) {
-        resolve(this.googleHelper.createSocialUser(googleUser, 'GOOGLE'))
+      if (this._socialUser.value) {
+        if (refreshToken) {
+          google.accounts.id.revoke(this._socialUser.value.id, response => {
+            if (response.error) {
+              reject(response.error);
+            }
+            resolve(this._socialUser.value!);
+          });
+        } else {
+          resolve(this._socialUser.value);
+        }
       } else {
-        reject(`No user is currently logged in with ${GoogleLoginProvider.PROVIDER_ID}`);
+        reject(
+          `No user is currently logged in with ${GoogleLoginProvider.PROVIDER_ID}`
+        );
       }
     });
   }
 
-  public async signIn(signInOptions?: gapi.auth2.ClientConfig): Promise<SocialUser> {
-    this.validateAuth();
+  public getAccessToken(): Promise<string | null> {
+    return new Promise((resolve, reject) => {
+      if (!this._tokenClient) {
+        if (this._socialUser.value) {
+          reject(
+            'No token client was instantiated, you should specify some scopes.'
+          );
+        } else {
+          reject('You should be logged-in first.');
+        }
+      } else {
+        this._tokenClient.requestAccessToken({
+          hint: this._socialUser.value?.email,
+        });
+        this._receivedAccessToken.pipe(take(1)).subscribe(resolve);
+      }
+    });
+  }
 
-    const options = { ...this.initOptions, ...signInOptions };
-    const googleUser = await this.auth2!.signIn(options);
-
-    return this.googleHelper.createSocialUser(googleUser, 'GOOGLE');
+  public revokeAccessToken(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (!this._tokenClient) {
+        reject(
+          'No token client was instantiated, you should specify some scopes.'
+        );
+      } else if (!this._accessToken.value) {
+        reject('No access token to revoke');
+      } else {
+        google.accounts.oauth2.revoke(this._accessToken.value, () => {
+          this._accessToken.next(null);
+          resolve();
+        });
+      }
+    });
   }
 
   public async signOut(revoke?: boolean): Promise<any> {
-    this.validateAuth()
-    let signOutPromise: Promise<any>;
-
-    if (revoke) {
-      signOutPromise = this.auth2!.disconnect();
-    } else {
-      signOutPromise = this.auth2!.signOut();
-    }
-
-    const err = await signOutPromise;
-
-    if (err) {
-      throw new Error(err);
-    }
-  }
-
-  private validateAuth(): void {
-    if (!this.auth2) {
-      throw new Error('Couldn\'t create Google Auth object');
-    }
+    google.accounts.id.disableAutoSelect();
+    this._socialUser.next(null);
   }
 }

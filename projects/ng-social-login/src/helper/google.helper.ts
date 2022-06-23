@@ -27,26 +27,29 @@ export class GoogleHelper {
     }).toPromise();
   }
 
-  public createSocialUser(googleUser: gapi.auth2.GoogleUser, provider: SocialProvider): SocialUser {
-    const profile = googleUser.getBasicProfile();
-    const token = googleUser.getAuthResponse(true).access_token;
-    const backendToken = googleUser.getAuthResponse(true).id_token;
+  public createSocialUser(idToken: string): SocialUser {
+    const payload = this.decodeJwt(idToken);
 
-    const user = new SocialUser(
-      provider,
-      profile.getId(),
-      profile.getEmail(),
-      profile.getName(),
-      profile.getImageUrl(),
-      profile.getGivenName(),
-      profile.getFamilyName(),
-      token,
-      profile
-    );
+    // TODO improve or check types of Google's Social User
+    if (payload.sub && payload.email) {
+      return new SocialUser(
+        'GOOGLE',
+        payload.sub,
+        payload.email,
+        payload.name!,
+        payload.picture!,
+        payload['given_name']!,
+        payload['family_name']!,
+        idToken,
+        payload as unknown as GoogleTokenClaims
+      );
+    } else {
+      throw new Error(`Payload did not contain minimum requirements: ${JSON.stringify(payload)}`);
+    }
+  }
 
-    user.idToken = backendToken;
-
-    return user;
+  private decodeJwt(idToken: string): Record<string, string | undefined> {
+    return JSON.parse(window.atob(idToken.split('.')[1]));
   }
 
   public createSocialUserFromToken({

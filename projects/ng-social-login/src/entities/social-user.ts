@@ -1,5 +1,3 @@
-import BasicProfile = gapi.auth2.BasicProfile;
-
 export type SocialProvider = 'FACEBOOK' | 'GOOGLE';
 
 export interface GoogleTokenClaims {
@@ -20,7 +18,7 @@ export interface FbUser {
   email: string;
 }
 
-export type SocialUserResponse = FbUser | BasicProfile | GoogleTokenClaims;
+export type SocialUserResponse = FbUser | GoogleTokenClaims;
 
 export class SocialUser {
   public provider: SocialProvider;

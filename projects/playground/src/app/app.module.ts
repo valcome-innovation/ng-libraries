@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreAnimationsModule } from '@valcome/ng-animations';
 import { DeviceService } from '../../../ng-screens/src/lib/services/device.service';
 import { RangeSliderModule } from '../../../ng-elements/range-slider/src/range-slider.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,7 +33,6 @@ import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize
     BrowserAnimationsModule,
     AppRoutingModule,
     AppRoutingModule,
-    CoreAnimationsModule,
     GenericFormsModule,
     RangeSliderModule,
     FormsModule,
@@ -61,7 +59,8 @@ import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize
                 '738096225314-bf85u305r2bhosi9jpi7bek8m2jsnkqa.apps.googleusercontent.com',
                 '738096225314-5r0dns5llrfepeihg3h5l6c7gs5kiq7e.apps.googleusercontent.com',
                 '1-4ZieXGfZNaKEeDh_TYYcuj',
-                http
+                http,
+                { oneTapEnabled: false, scopes: ['email'] }
               )
             },
             {

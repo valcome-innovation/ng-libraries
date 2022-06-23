@@ -1,17 +1,10 @@
 <div class="jumbotron bg-transparent text-center">
   <div *ngIf="!user" class="card text-center">
-    <h6 class="card-header">
-      Social Login Demo
-    </h6>
     <div class="card-block">
       <h4 class="card-title">Not signed in</h4>
-      <p class="card-text">Sign in with</p>
     </div>
     <div class="card-block">
-      <button class="btn btn-social-icon btn-google mx-1"
-              *ngIf="!areCookiesBlocked" (click)="signInWithGoogle()">
-        Google
-      </button>
+      <val-google-sign-in-button></val-google-sign-in-button>
       <button class="btn btn-social-icon btn-google mx-1"
               (click)="signInWithGoogleOnTv()">
         Google on TV
@@ -27,6 +20,7 @@
   </div>
   <pre>{{deviceCode | json}}</pre>
   <pre>{{remainingSeconds}}</pre>
+
   <div *ngIf="user" class="card text-center">
     <h6 class="card-header">
       Social Login Demo

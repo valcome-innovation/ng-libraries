@@ -1,9 +1,10 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, NgZone } from '@angular/core';
 import { BaseInitializableService, RenderService } from '@valcome/ng-core';
-import { AsyncSubject, BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, isObservable, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './entities/login-provider';
 import { SocialProvider, SocialUser } from './entities/social-user';
 import { DeviceCodeResponse, PolledUser } from './types/social';
+import { GoogleLoginProvider } from './providers/google-login-provider';
 
 export interface SocialAuthServiceConfig {
   autoLogin?: boolean;
@@ -16,8 +17,10 @@ export interface SocialAuthServiceConfig {
 @Injectable()
 export class SocialAuthFacade extends BaseInitializableService {
 
-  private static readonly ERR_LOGIN_PROVIDER_NOT_FOUND = 'Login provider not found';
   private static readonly ERR_NOT_LOGGED_IN = 'Not logged in';
+  private static readonly ERR_LOGIN_PROVIDER_NOT_FOUND = 'Login provider not found';
+  private static readonly ERR_NOT_INITIALIZED = 'Login providers not ready yet. Are there errors on your console?';
+  private static readonly ERR_NOT_SUPPORTED_FOR_ACCESS_TOKEN = 'Chosen login provider is not supported for getting an access token';
 
   public googleError$ = new BehaviorSubject<boolean>(false);
   public facebookError$ = new BehaviorSubject<boolean>(false);
@@ -40,7 +43,8 @@ export class SocialAuthFacade extends BaseInitializableService {
   }
 
   public constructor(@Inject('SocialAuthServiceConfig') config: SocialAuthServiceConfig | Promise<SocialAuthServiceConfig>,
-                     private renderService: RenderService) {
+                     private renderService: RenderService,
+                     private readonly _ngZone: NgZone) {
     super();
 
     if (this.renderService.isBrowser()) {
@@ -66,6 +70,21 @@ export class SocialAuthFacade extends BaseInitializableService {
             this.facebookError$.next(true);
           }
         })));
+
+      // listen to googles user change
+      this.providers.forEach((provider, key) => {
+        if (isObservable(provider.changeUser)) {
+          provider.changeUser.subscribe((user) => {
+            if (user !== null) {
+              user.provider = key;
+            }
+            this._user = user ?? undefined;
+            this._ngZone.run(() => {
+              this._authState.next(user ?? undefined);
+            });
+          });
+        }
+      });
 
       this.initialized = true;
       this._initState.next(this.initialized);
@@ -98,6 +117,20 @@ export class SocialAuthFacade extends BaseInitializableService {
     }
 
     return polledUser;
+  }
+
+  public async getAccessToken(providerId: SocialProvider): Promise<string | null> {
+    const providerObject = this.providers.get(providerId);
+
+    if (!this.initialized) {
+      throw SocialAuthFacade.ERR_NOT_INITIALIZED;
+    } else if (!providerObject) {
+      throw SocialAuthFacade.ERR_LOGIN_PROVIDER_NOT_FOUND;
+    } else if (!(providerObject instanceof GoogleLoginProvider)) {
+      throw SocialAuthFacade.ERR_NOT_SUPPORTED_FOR_ACCESS_TOKEN;
+    }
+
+    return providerObject.getAccessToken();
   }
 
   public async signIn(providerId: SocialProvider, signInOptions?: SignInOptions): Promise<SocialUser> {
@@ -153,14 +186,18 @@ export class SocialAuthFacade extends BaseInitializableService {
   private signInFromProvider(loginProvider: LoginProvider,
                              providerId: SocialProvider,
                              signInOptions?: SignInOptions): Promise<SocialUser> {
-    return loginProvider
-      .signIn(signInOptions)
-      .then((user: SocialUser) => {
-        user.provider = providerId;
-        this.setUser(user);
+    if (loginProvider.signIn) {
+      return loginProvider
+        .signIn(signInOptions)
+        .then((user: SocialUser) => {
+          user.provider = providerId;
+          this.setUser(user);
 
-        return user;
-      });
+          return user;
+        });
+    } else {
+      throw new Error('Cannot directly sign in with this provider.');
+    }
   }
 
   private signOutFromProvider(loginProvider: LoginProvider, revoke: boolean): Promise<void> {

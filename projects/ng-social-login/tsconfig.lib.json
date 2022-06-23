@@ -8,8 +8,7 @@
     "inlineSources": true,
     "allowSyntheticDefaultImports": true,
     "types": [
-      "gapi",
-      "gapi.auth2"
+      "google.accounts"
     ],
     "lib": [
       "dom",

@@ -1,0 +1,35 @@
+.bg-transparent {
+  background-color: transparent;
+}
+
+:host {
+  height: 100%;
+}
+
+.photo {
+  object-fit: contain;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 10px 0 0;
+  padding: 80px;
+  display: flex;
+}
+
+.jumbotron {
+  font-family: sans-serif;
+  padding: 20px;
+
+  h4 {
+    margin-right: 10px;
+  }
+
+  .btn {
+    border: solid 1px #c1c1c1;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+}
