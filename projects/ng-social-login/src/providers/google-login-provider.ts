@@ -57,9 +57,8 @@ export class GoogleLoginProvider implements LoginProvider {
         client_id: this.clientId,
         auto_select: autoLogin,
         callback: async ({ credential }) => {
-          const accessToken = await this.getAccessToken();
-
-          const socialUser = this.googleHelper.createSocialUser(credential, accessToken, 'client');
+          // TODO get access token
+          const socialUser = this.googleHelper.createSocialUser(credential, null, 'client');
           this._socialUser.next(socialUser);
         },
       });
@@ -144,6 +143,7 @@ export class GoogleLoginProvider implements LoginProvider {
       } else {
         this._tokenClient.requestAccessToken({
           hint: this._socialUser.value?.email,
+
         });
         this._receivedAccessToken.pipe(take(1)).subscribe(resolve);
       }
