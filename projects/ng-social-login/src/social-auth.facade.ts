@@ -1,8 +1,8 @@
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { BaseInitializableService, RenderService } from '@valcome/ng-core';
 import { AsyncSubject, BehaviorSubject, isObservable, Observable, ReplaySubject } from 'rxjs';
-import { LoginProvider, SignInOptions } from './entities/login-provider';
-import { SocialProvider, SocialUser } from './entities/social-user';
+import { LoginProvider, SignInOptions } from './types/login-provider';
+import { SocialProvider, SocialUser } from './types/social-user';
 import { DeviceCodeResponse, PolledUser } from './types/social';
 import { GoogleLoginProvider } from './providers/google-login-provider';
 

@@ -1,4 +1,4 @@
-import { SocialUser } from "../entities/social-user";
+import { SocialUser } from './social-user';
 
 export interface DeviceCodeResponse {
   device_code: string;
