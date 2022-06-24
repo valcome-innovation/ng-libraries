@@ -1,6 +1,6 @@
-import { SocialProvider, SocialUser } from '../entities/social-user';
+import { SocialProvider, SocialUser } from '../types/social-user';
 import { DomUtils } from '@valcome/ng-core';
-import { LoginProvider } from '../entities/login-provider';
+import { LoginProvider } from '../types/login-provider';
 import { GoogleHelper } from '../helper/google.helper';
 import { HttpClient } from '@angular/common/http';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
@@ -56,8 +56,10 @@ export class GoogleLoginProvider implements LoginProvider {
       google.accounts.id.initialize({
         client_id: this.clientId,
         auto_select: autoLogin,
-        callback: ({ credential }) => {
-          const socialUser = this.googleHelper.createSocialUser(credential);
+        callback: async ({ credential }) => {
+          const accessToken = await this.getAccessToken();
+
+          const socialUser = this.googleHelper.createSocialUser(credential, accessToken, 'client');
           this._socialUser.next(socialUser);
         },
       });
@@ -101,7 +103,7 @@ export class GoogleLoginProvider implements LoginProvider {
     const pollResponse = await this.googleHelper.fetchAccessCode(deviceCodeResponse.device_code).catch(err => err);
 
     if ('id_token' in pollResponse && 'access_token' in pollResponse) {
-      const user = this.googleHelper.createSocialUserFromToken(pollResponse, 'GOOGLE');
+      const user = this.googleHelper.createSocialUser(pollResponse.id_token, pollResponse.access_token, 'tv');
       return { type: 'user', user };
     } else {
       return { type: 'empty' };

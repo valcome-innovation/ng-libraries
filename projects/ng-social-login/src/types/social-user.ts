@@ -1,4 +1,5 @@
 export type SocialProvider = 'FACEBOOK' | 'GOOGLE';
+export type LoginType = 'tv' | 'client';
 
 export interface GoogleTokenClaims {
   sub: string;
@@ -22,6 +23,7 @@ export type SocialUserResponse = FbUser | GoogleTokenClaims;
 
 export class SocialUser {
   public provider: SocialProvider;
+  public loginType: LoginType;
   public id: string;
   public email: string;
   public name: string;
@@ -34,9 +36,11 @@ export class SocialUser {
 
   public response: SocialUserResponse;
 
-  public constructor(provider: SocialProvider, id: string, email: string, name: string, photoUrl: string,
-                     firstName: string, lastName: string, authToken: string, response: SocialUserResponse) {
+  public constructor(provider: SocialProvider, loginType: LoginType, id: string, email: string, name: string,
+                     photoUrl: string, firstName: string, lastName: string, authToken: string,
+                     response: SocialUserResponse) {
     this.provider = provider;
+    this.loginType = loginType;
     this.id = id;
     this.email = email;
     this.name = name;

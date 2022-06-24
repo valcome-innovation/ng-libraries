@@ -1,6 +1,6 @@
-import { FbUser, SocialProvider, SocialUser } from '../entities/social-user';
+import { FbUser, SocialProvider, SocialUser } from '../types/social-user';
 import { DomUtils } from '@valcome/ng-core';
-import { LoginProvider } from '../entities/login-provider';
+import { LoginProvider } from '../types/login-provider';
 import { FacebookStatic, LoginOptionsWithFields, StatusResponse } from '../types/facebook';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
 import { FacebookHelper } from '../helper/facebook.helper';
@@ -55,7 +55,7 @@ export class FacebookLoginProvider implements LoginProvider {
       const fbUser = await this.facebookHelper.fetchProfile(this.initOptions.fields, pollResponse.access_token);
 
       if (fbUser) {
-        const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'FACEBOOK');
+        const user = this.facebookHelper.createSocialUser(fbUser, pollResponse.access_token, 'tv');
         return { type: 'user', user };
       }
     }
@@ -68,7 +68,7 @@ export class FacebookLoginProvider implements LoginProvider {
       FB.getLoginStatus(({ status, authResponse }: StatusResponse) => {
         if (status === 'connected') {
           FB.api(`/me?fields=${this.initOptions.fields}`, (fbUser: FbUser) => {
-            const user = this.facebookHelper.createSocialUser(fbUser, authResponse.accessToken, 'FACEBOOK');
+            const user = this.facebookHelper.createSocialUser(fbUser, authResponse.accessToken, 'client');
             resolve(user);
           });
         } else {
@@ -85,7 +85,7 @@ export class FacebookLoginProvider implements LoginProvider {
       FB.login(({ authResponse }: StatusResponse) => {
         if (authResponse) {
           FB.api(`/me?fields=${options.fields}`, (fbUser: FbUser) => {
-            const user = this.facebookHelper.createSocialUser(fbUser, authResponse.accessToken, 'FACEBOOK');
+            const user = this.facebookHelper.createSocialUser(fbUser, authResponse.accessToken, 'client');
             resolve(user);
           });
         } else {

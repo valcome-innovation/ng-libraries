@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FacebookDeviceResponse, FacebookPollResponse } from '../types/facebook';
 import { DeviceCodeResponse } from '../types/social';
-import { FbUser, SocialProvider, SocialUser } from '../entities/social-user';
+import { FbUser, LoginType, SocialUser } from '../types/social-user';
 
 export class FacebookHelper {
 
@@ -49,9 +49,10 @@ export class FacebookHelper {
     };
   }
 
-  public createSocialUser(fbUser: FbUser, accessToken: string, provider: SocialProvider): SocialUser {
+  public createSocialUser(fbUser: FbUser, accessToken: string, loginType: LoginType): SocialUser {
     return new SocialUser(
-      provider,
+      'FACEBOOK',
+      loginType,
       fbUser.id,
       fbUser.email,
       fbUser.name,
