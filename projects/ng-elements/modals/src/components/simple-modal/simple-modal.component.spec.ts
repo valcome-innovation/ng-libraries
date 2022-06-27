@@ -19,5 +19,4 @@ describe('SimpleModalComponent', () => {
     component.closeModal();
     expect(component.modalClose.emit).toHaveBeenCalled();
   });
-
 });

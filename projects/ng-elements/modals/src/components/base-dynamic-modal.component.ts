@@ -2,19 +2,19 @@ import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
 import { BaseBehaviorComponent } from '@valcome/ng-core';
 
 @Directive()
-export abstract class BaseDynamicModalComponent extends BaseBehaviorComponent {
+export abstract class BaseDynamicModalComponent<T = any> extends BaseBehaviorComponent {
 
-  public config?: any;
+  public config?: T;
 
   @Output()
-  public modalClose = new EventEmitter<any>();
+  public modalClose = new EventEmitter<T>();
 
   @HostListener('document:keydown.escape')
   public onESCKeydown(): void {
     this.closeModal();
   }
 
-  public closeModal(value?: any): void {
+  public closeModal(value?: T): void {
     this.modalClose.emit(value);
   }
 }
