@@ -22,7 +22,7 @@ export class DynamicModalService {
   /**
    * Displays a modal and waits until it gets closed by the user.
    */
-  public async showModal<T>(dynamicModalType: Type<BaseDynamicModalComponent>, config?: T): Promise<any> {
+  public async showModal<T extends BaseDynamicModalComponent>(dynamicModalType: Type<T>, config?: T['config']): Promise<any> {
     const componentRef = this.createModal(dynamicModalType, config);
     return this.onCloseModal(componentRef);
   }
