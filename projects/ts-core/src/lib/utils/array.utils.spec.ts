@@ -53,6 +53,12 @@ describe('ArrayUtils', () => {
     expect(actual.length).toBe(0);
   });
 
+  it('should generate range', () => {
+    expect(ArrayUtils.range(0, 3)).toEqual([0, 1, 2, 3]);
+    expect(ArrayUtils.range(2, 5)).toEqual([2, 3, 4, 5]);
+    expect(ArrayUtils.range(5, 5)).toEqual([5]);
+  });
+
   it('should remove duplicates', () => {
     const array = [1, 1, 2, 2, 2, 3, 4, 5, 5];
 

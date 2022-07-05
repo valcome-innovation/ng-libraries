@@ -53,6 +53,10 @@ export class ArrayUtils {
     }
   }
 
+  public static range(start: number, end: number): number[] {
+    return Array.from(Array(1 + end - start).keys()).map(v => start + v);
+  }
+
   public static removeDuplicates<T>(array: T[]): T[] {
     return array.filter((value: T, index: number, array: T[]) => index === array.indexOf(value));
   }
