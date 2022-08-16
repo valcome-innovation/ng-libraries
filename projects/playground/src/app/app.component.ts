@@ -6,6 +6,9 @@ import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
 import { BaseFormComponent } from '../../../ng-elements/form/src/components/base-form.component';
 import { ImageResizeService } from '../../../ng-image-resize/src/lib/image-resize.service';
 import { DisplayValue } from '@valcome/ng-core';
+import {
+  HockeyDataIceHockeyService
+} from '../../../ts-hockeydata-api/src/lib/services/icehockey/contracts/hockey-data-ice-hockey.service';
 
 @Component({
   selector: 'app-root',
@@ -107,12 +110,15 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   ];
 
   public constructor(private fb: FormBuilder,
-                     private imageResizeService: ImageResizeService) {
+                     private imageResizeService: ImageResizeService,
+                     private hockeyData: HockeyDataIceHockeyService) {
     super();
     this.initForm();
   }
 
-  public ngOnInit(): void {
+  public async ngOnInit(): Promise<void> {
+    const data = await this.hockeyData.getSchedule(9032);
+
     setTimeout(() => {
       this.form.get('firstName')!.enable({ emitEvent: false });
     }, 0);

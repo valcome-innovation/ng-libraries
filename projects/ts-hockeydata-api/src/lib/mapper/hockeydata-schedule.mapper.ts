@@ -12,10 +12,10 @@ export class HockeyDataScheduleMapper extends BaseMapper<HockeyDataSchedule> {
   }
 
   public fromJson(json: Partial<IHockeyDataSchedule>): HockeyDataSchedule {
-    const rawGames = json.data?.rows;
+    const rows = this.getValidated(json.rows);
 
-    if (rawGames) {
-      const games = this.scheduledGameMapper.fromJsonArray(rawGames);
+    if (rows) {
+      const games = this.scheduledGameMapper.fromJsonArray(rows);
       return new HockeyDataSchedule(games);
     } else {
       throw new Error(`Couldn't map Schedule. Data is not in the expected format.`);

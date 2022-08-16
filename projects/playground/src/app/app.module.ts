@@ -21,6 +21,8 @@ import { GenericFormsModule } from '../../../ng-elements/form/src/generic-forms.
 import { ErrorMessagesComponent } from './error/error-messages.component';
 import { FilePickerModule } from '../../../ng-elements/file-picker/src/file-picker.module';
 import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize.module';
+import { ICEHOCKEY_API_CONFIG } from '../../../ts-hockeydata-api/src/lib/tokens';
+import { HockeyDataApiModule } from '../../../ts-hockeydata-api/src/lib/hockeydata-api.module';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,17 @@ import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize
     HttpClientJsonpModule,
     FilePickerModule,
     ImageResizeModule,
+    HockeyDataApiModule
   ],
   providers: [
     DeviceService,
+    {
+      provide: ICEHOCKEY_API_CONFIG, useValue: {
+        apiKey: '702b9e4a55d61cf7ffe943e90bede05b',
+        referer: 'local.valcome.tv',
+        displayPointsPerGame: false
+      }
+    },
     {
       provide: 'SocialAuthServiceConfig',
       useFactory: (http: HttpClient) => {

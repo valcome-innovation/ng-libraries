@@ -109,9 +109,7 @@ export interface IHockeyDataApiResponse {
 }
 
 export interface IHockeyDataSchedule extends IHockeyDataApiResponse {
-  data: {
-    rows: IHockeyDataScheduledGame[]
-  };
+  rows: IHockeyDataScheduledGame[]
 }
 
 export interface IHockeyDataGameReport extends IHockeyDataApiResponse {
