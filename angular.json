@@ -199,6 +199,7 @@
           "options": {
             "main": "projects/ng-logging/src/test.ts",
             "tsConfig": "projects/ng-logging/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-logging/karma.conf.js",
             "codeCoverage": true,
             "codeCoverageExclude": [
               "**/lib/model/**"
