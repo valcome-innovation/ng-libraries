@@ -42,6 +42,9 @@
       "@valcome/ng-elements/click-outside": [
         "projects/ng-elements/click-outside/src/public-api"
       ],
+      "@valcome/ng-logging": [
+        "dist/ng-logging"
+      ],
       "@valcome/ng-social-login": [
         "projects/ng-social-login/src/public-api.ts"
       ],

@@ -176,6 +176,49 @@
         }
       }
     },
+    "ng-logging": {
+      "projectType": "library",
+      "root": "projects/ng-logging",
+      "sourceRoot": "projects/ng-logging/src",
+      "prefix": "val",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-logging/tsconfig.lib.json",
+            "project": "projects/ng-logging/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-logging/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-logging/src/test.ts",
+            "tsConfig": "projects/ng-logging/tsconfig.spec.json",
+            "codeCoverage": true,
+            "codeCoverageExclude": [
+              "**/lib/model/**"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-logging/tsconfig.lib.json",
+              "projects/ng-logging/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "ng-screens": {
       "projectType": "library",
       "root": "projects/ng-screens",
