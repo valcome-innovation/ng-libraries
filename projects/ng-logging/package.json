@@ -1,7 +1,7 @@
 {
   "name": "@valcome/ng-logging",
   "version": "0.1.0",
-  "description": "A collection of angular components, directives, services and more, which we use in our projects\n",
+  "description": "Used for logging",
   "scripts": {
     "preversion": "ng test ng-logging --watch=false",
     "version": "ng build ng-logging --prod",
