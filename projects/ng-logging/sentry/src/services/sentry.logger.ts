@@ -22,6 +22,8 @@ export class SentryLogger implements Logger {
   }
 
   public exception(exception: any, extra?: ExtraLoggingData): void {
+    console.log(extra);
+    console.log({ level: 'error', contexts: { extraContext: extra } });
     Sentry.captureException(exception, { level: 'error', contexts: { extraContext: extra } });
   }
 }
