@@ -38,7 +38,7 @@ export class ConsoleLogger implements Logger {
   }
 
   public exception(error: any, extra?: ExtraLoggingData): void {
-    console.error(JSON.stringify(error));
+    console.error(error);
 
     if (extra) {
       console.error(JSON.stringify(extra));
