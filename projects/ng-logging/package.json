@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-logging",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Used for logging",
   "scripts": {
     "preversion": "ng test ng-logging --watch=false",
