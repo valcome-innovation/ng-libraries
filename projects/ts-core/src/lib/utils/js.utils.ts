@@ -1,4 +1,5 @@
 export class JsUtils {
+
   public static callAfterStackResolved(callback: () => any): void {
     setTimeout(() => callback(), 0);
   }
@@ -136,5 +137,23 @@ export class JsUtils {
 
   private static isCloneable(value: any) {
     return value instanceof Date || value instanceof Array || value instanceof Object;
+  }
+
+  public static stringifySafe(object: any): string {
+    const getCircularReplacer = () => {
+      const seen = new WeakSet();
+
+      return (key: string, value: any) => {
+        if (typeof value === "object" && value !== null) {
+          if (seen.has(value)) {
+            return;
+          }
+          seen.add(value);
+        }
+        return value;
+      };
+    };
+
+    return JSON.stringify(object, getCircularReplacer());
   }
 }

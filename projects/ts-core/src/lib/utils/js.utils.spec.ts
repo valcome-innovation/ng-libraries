@@ -191,4 +191,13 @@ describe('JsUtils', () => {
 
     expect(isValid).toBe(true);
   });
+
+  it('should stringify circular objects', () => {
+    const a = { id: '1', b: undefined as any };
+    a.b = { id: '2', a };
+
+    const actual = JsUtils.stringifySafe(a);
+
+    expect(actual).toEqual('{"id":"1","b":{"id":"2"}}');
+  });
 });
