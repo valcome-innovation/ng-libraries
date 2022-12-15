@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { toggleBackground } from './toggle.animation';
 import { DisplayValue } from '@valcome/ng-core';
 
@@ -6,7 +6,8 @@ import { DisplayValue } from '@valcome/ng-core';
   selector: 'val-toggle-button',
   templateUrl: './toggle-button.component.html',
   styleUrls: ['./toggle-button.component.scss'],
-  animations: [toggleBackground]
+  encapsulation: ViewEncapsulation.None, // reduces CSS power to make it easier to override
+  animations: [toggleBackground],
 })
 export class ToggleButtonComponent implements OnInit {
 
