@@ -66,4 +66,11 @@ describe('ArrayUtils', () => {
 
     expect(result).toEqual([1, 2, 3, 4, 5]);
   });
+
+  it('should slice into chunks', () => {
+    expect(ArrayUtils.sliceIntoChunks([1, 2, 3, 4, 5], 2)).toEqual([[1, 2], [3, 4], [5]]);
+    expect(ArrayUtils.sliceIntoChunks([1, 2, 3, 4, 5], 10)).toEqual([[1, 2, 3, 4, 5]]);
+    expect(ArrayUtils.sliceIntoChunks([1], 5)).toEqual([[1]]);
+    expect(ArrayUtils.sliceIntoChunks([], 5)).toEqual([]);
+  });
 });
