@@ -8,13 +8,13 @@
   }
 
   &.dark {
-    background-color: darken(#f4f6fa, 7%);
+    background-color: darken(#f4f6fa, 6%);
     background-image: linear-gradient(
         90deg,
-        darken(#f1f3f6, 7%),
-        darken(rgba(225, 227, 232, .8), 7%)
+        darken(#f1f3f6, 6%),
+        darken(rgba(225, 227, 232, .8), 6%)
         40px,
-        darken(#f1f3f6, 7%) 80px
+        darken(#f1f3f6, 6%) 80px
     );
   }
 }
