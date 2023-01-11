@@ -15,4 +15,7 @@ export class SkeletonRectComponent {
 
   @Input()
   public heightWithUnit = '100px';
+
+  @Input()
+  public theme: 'light' | 'dark' = 'light';
 }

@@ -13,6 +13,9 @@ export class SkeletonSquareComponent implements OnInit {
   @Input()
   public unit: string = 'px';
 
+  @Input()
+  public theme: 'light' | 'dark' = 'light';
+
   public width!: string;
   public height!: string;
 
