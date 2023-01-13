@@ -73,4 +73,16 @@ describe('ArrayUtils', () => {
     expect(ArrayUtils.sliceIntoChunks([1], 5)).toEqual([[1]]);
     expect(ArrayUtils.sliceIntoChunks([], 5)).toEqual([]);
   });
+
+  it('should be equal', () => {
+    expect(ArrayUtils.areEqual([1, 3, 2], [1, 2, 3])).toBe(true);
+    expect(ArrayUtils.areEqual(['hey', 'yo'], ['hey', 'yo'])).toBe(true);
+    expect(ArrayUtils.areEqual([true, false, false], [true, false, false])).toBe(true);
+  });
+
+  it('should not be equal', () => {
+    expect(ArrayUtils.areEqual([1, 2], [1, 2, 3])).toBe(false);
+    expect(ArrayUtils.areEqual(['hey', 'yo', 'tz', 'tz'], ['hey', 'yo'])).toBe(false);
+    expect(ArrayUtils.areEqual([true, false, false], [false, false])).toBe(false);
+  });
 });

@@ -71,4 +71,14 @@ export class ArrayUtils {
 
     return res;
   }
+
+  /**
+   * Compares equality with includes() function.
+   * Note: Not very efficient for large collection. Does not work with duplicates and does not consider the order.
+   */
+  public static areEqual(first: (number | string | boolean)[],
+                         second: (number | string | boolean)[]): boolean {
+    return first.length === second.length
+    && first.every(a => second.includes(a))
+  }
 }
