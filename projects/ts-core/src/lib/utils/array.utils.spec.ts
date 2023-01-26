@@ -85,4 +85,9 @@ describe('ArrayUtils', () => {
     expect(ArrayUtils.areEqual(['hey', 'yo', 'tz', 'tz'], ['hey', 'yo'])).toBe(false);
     expect(ArrayUtils.areEqual([true, false, false], [false, false])).toBe(false);
   });
+
+  it('should mode', () => {
+    expect(ArrayUtils.mode([1, 2, 2, 3, 1, 1])).toBe(1);
+    expect(ArrayUtils.mode(['b', 'c', 'a', 'c'])).toBe('c');
+  });
 });

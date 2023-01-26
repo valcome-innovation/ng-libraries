@@ -79,6 +79,30 @@ export class ArrayUtils {
   public static areEqual(first: (number | string | boolean)[],
                          second: (number | string | boolean)[]): boolean {
     return first.length === second.length
-    && first.every(a => second.includes(a))
+      && first.every(a => second.includes(a));
+  }
+
+  // https://stackoverflow.com/a/1053865/12237560
+  public static mode<T extends string | number>(array: T[]): T | null {
+    if (array.length === 0) {
+      return null;
+    }
+
+    const modeMap: { [key in T]: number } = {} as any;
+    let maxEl = array[0];
+    let maxCount = 1;
+
+    for (const el of array) {
+      if (modeMap[el] == null) {
+        modeMap[el] = 1;
+      } else {
+        modeMap[el]++;
+      }
+      if (modeMap[el] > maxCount) {
+        maxEl = el;
+        maxCount = modeMap[el];
+      }
+    }
+    return maxEl;
   }
 }
