@@ -28,7 +28,11 @@ export class FacebookLoginProvider implements LoginProvider {
   }
 
   public async initialize(): Promise<void> {
-    const scriptTag = await DomUtils.loadScriptAsync('fbScript', `//connect.facebook.net/${this.initOptions.locale}/sdk.js`);
+    const scriptTag = await DomUtils.loadScriptAsync(
+      'fbScript',
+      `//connect.facebook.net/${this.initOptions.locale}/sdk.js`,
+      'src'
+    );
 
     if (scriptTag) {
       scriptTag.id = FacebookLoginProvider.PROVIDER_ID;

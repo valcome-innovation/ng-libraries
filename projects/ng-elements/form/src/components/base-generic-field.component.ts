@@ -56,7 +56,8 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
 
   private generateId(control: AbstractControl, name: string): string {
     if (control.parent?.parent != null) {
-      let parentName = FormHelper.getControlName(control.parent);
+      const parentName = FormHelper.getControlName(control.parent);
+
       return `${parentName}_${name}Input`;
     } else {
       return `${name}Input`;

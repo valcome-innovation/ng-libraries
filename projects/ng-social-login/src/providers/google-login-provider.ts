@@ -49,7 +49,8 @@ export class GoogleLoginProvider implements LoginProvider {
   public async initialize(autoLogin?: boolean): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync(
       GoogleLoginProvider.PROVIDER_ID,
-      'https://accounts.google.com/gsi/client'
+      'https://accounts.google.com/gsi/client',
+      'src'
     );
 
     if (scriptTag) {

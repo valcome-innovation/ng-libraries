@@ -9,6 +9,7 @@ import { DisplayValue } from '@valcome/ng-core';
 import {
   HockeyDataIceHockeyService
 } from '../../../ts-hockeydata-api/src/lib/services/icehockey/contracts/hockey-data-ice-hockey.service';
+import { GtagService } from '../../../ng-google-gtag/src/lib/gtag.service';
 
 @Component({
   selector: 'app-root',
@@ -111,7 +112,8 @@ export class AppComponent extends BaseFormComponent implements OnInit {
 
   public constructor(private fb: FormBuilder,
                      private imageResizeService: ImageResizeService,
-                     private hockeyData: HockeyDataIceHockeyService) {
+                     private hockeyData: HockeyDataIceHockeyService,
+                     private gtagService: GtagService) {
     super();
     this.initForm();
   }
@@ -146,7 +148,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
         new DisplayValue('AT' + StringUtils.getUnderscoredUniqueString(), 'AT'),
         new DisplayValue('DE' + StringUtils.getUnderscoredUniqueString(), 'DE', true),
         new DisplayValue('UK' + StringUtils.getUnderscoredUniqueString(), 'UK')
-      ]
+      ];
     }, 3_000);
   }
 
@@ -171,6 +173,14 @@ export class AppComponent extends BaseFormComponent implements OnInit {
 
   public submit(submit: HTMLInputElement, event: Event): boolean | Promise<any> {
     return super.submit(submit, event);
+  }
+
+  public grantConsent(): void {
+    this.gtagService.updateUserConsent('GRANTED');
+  }
+
+  public denyConsent(): void {
+    this.gtagService.updateUserConsent('DENIED');
   }
 
   public setError(): void {

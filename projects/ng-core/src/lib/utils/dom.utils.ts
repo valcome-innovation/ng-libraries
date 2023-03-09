@@ -34,21 +34,29 @@ export class DomUtils {
     );
   }
 
-  public static loadScriptAsync(id: string, src: string, defer: boolean = false): Promise<HTMLScriptElement> {
-    const element = document.getElementById(id)
+  public static loadScriptAsync(id: string,
+                                srcOrScript: string,
+                                scriptType: 'src' | 'plainScript',
+                                defer: boolean = false): Promise<HTMLScriptElement> {
+    const element = document.getElementById(id);
 
     if (!element || !(element instanceof HTMLScriptElement)) {
       return new Promise((resolve, reject) => {
         const headTag = document.getElementsByTagName('head')[0];
         const scriptHTML = document.createElement('script');
 
-        scriptHTML.type = 'text/javascript';
-        scriptHTML.src = src;
         scriptHTML.id = id;
         scriptHTML.defer = defer;
+        scriptHTML.type = 'text/javascript';
 
-        scriptHTML.onload = () => resolve(scriptHTML);
-        scriptHTML.onerror = () => reject();
+        if (scriptType === 'src') {
+          scriptHTML.src = srcOrScript;
+          scriptHTML.onload = () => resolve(scriptHTML);
+          scriptHTML.onerror = () => reject();
+        } else {
+          scriptHTML.innerHTML = srcOrScript;
+          resolve(scriptHTML);
+        }
 
         if (headTag) {
           headTag.appendChild(scriptHTML);

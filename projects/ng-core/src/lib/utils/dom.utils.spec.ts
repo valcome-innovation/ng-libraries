@@ -48,8 +48,8 @@ describe('DomUtils', () => {
   });
 
   it('should add script async', async () => {
-    await DomUtils.loadScriptAsync('jQuery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js');
-    await DomUtils.loadScriptAsync('jQuery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js');
+    await DomUtils.loadScriptAsync('jQuery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js', 'src');
+    await DomUtils.loadScriptAsync('jQuery', 'https://code.jquery.com/jquery-3.5.1.slim.min.js', 'src');
 
     const scripts = Array.from(document.getElementsByTagName('script')).filter(e => e.id === 'jQuery');
 

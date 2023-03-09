@@ -23,6 +23,7 @@ import { FilePickerModule } from '../../../ng-elements/file-picker/src/file-pick
 import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize.module';
 import { ICEHOCKEY_API_CONFIG } from '../../../ts-hockeydata-api/src/lib/tokens';
 import { HockeyDataApiModule } from '../../../ts-hockeydata-api/src/lib/hockeydata-api.module';
+import { GtagModule } from '../../../ng-google-gtag/src/lib/gtag.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,14 @@ import { HockeyDataApiModule } from '../../../ts-hockeydata-api/src/lib/hockeyda
     HttpClientJsonpModule,
     FilePickerModule,
     ImageResizeModule,
-    HockeyDataApiModule
+    HockeyDataApiModule,
+    GtagModule.forRoot({
+      gtagMeasurementId: '<insert tag>',
+      enableDebugLog: true,
+      deferScript: true,
+      anonymizeIp: true,
+      defaultConsent: 'PENDING',
+    })
   ],
   providers: [
     DeviceService,
