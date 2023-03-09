@@ -5,10 +5,10 @@ export type GtagConsent = 'PENDING' | 'DENIED' | 'GRANTED';
 
 export type GtagConfig = {
   gtagMeasurementId: string,
+  defaultConsent: GtagConsent,
   enableDebugLog?: boolean,
   deferScript?: boolean,
   anonymizeIp?: boolean,
-  defaultConsent: GtagConsent
 };
 
 @NgModule()

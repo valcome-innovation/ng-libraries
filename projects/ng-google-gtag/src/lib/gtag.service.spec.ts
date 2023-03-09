@@ -18,7 +18,13 @@ describe('GtagService', () => {
   });
 
   it('should not throw', () => {
-    const gtag = () => service.createGtagEntryPoint({ gtagMeasurementId: 'id' });
+    const gtag = () => service.createGtagEntryPoint({
+      gtagMeasurementId: 'id',
+      anonymizeIp: true,
+      defaultConsent: 'PENDING',
+      deferScript: true,
+      enableDebugLog: true
+    });
 
     expect(gtag).not.toThrow();
   });

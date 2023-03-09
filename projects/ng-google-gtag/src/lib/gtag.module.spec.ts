@@ -9,7 +9,13 @@ describe('GtagModule', () => {
   it('should initialize gtagService', async () => {
     await TestBed.configureTestingModule({
       imports: [
-        GtagModule.forRoot({ gtagMeasurementId: gtagId })
+        GtagModule.forRoot({
+          gtagMeasurementId: gtagId,
+          anonymizeIp: true,
+          defaultConsent: 'PENDING',
+          deferScript: true,
+          enableDebugLog: true
+        })
       ]
     }).compileComponents();
 
