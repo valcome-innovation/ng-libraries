@@ -45,12 +45,12 @@ export class GtagService {
       false
     );
 
-    this.updateUserConsent(defaultConsent);
-
     Promise.all([manager, registration])
       .then((value) => this.initializeResolve(value));
 
     await this.initialize$;
+
+    this.updateUserConsent(defaultConsent);
 
     if (enableDebugLog) {
       console.log(`[GtagService] initialized gtag with id: ${gtagMeasurementId}`);
