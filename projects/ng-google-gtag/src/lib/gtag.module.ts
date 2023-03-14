@@ -1,12 +1,10 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { GtagService } from './gtag.service';
-import { UniversalModule } from '@valcome/ng-core';
-
-export type GtagConsent = 'PENDING' | 'DENIED' | 'GRANTED';
+import { UniversalModule, CookieConsent } from '@valcome/ng-core';
 
 export type GtagConfig = {
   gtagMeasurementId: string,
-  defaultConsent: GtagConsent,
+  defaultConsent: CookieConsent,
   enableDebugLog?: boolean,
   deferScript?: boolean,
   anonymizeIp?: boolean,

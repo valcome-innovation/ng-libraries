@@ -9,6 +9,7 @@ export * from './lib/utils/replay.utils';
 export * from './lib/model/share-data';
 export * from './lib/model/point';
 export * from './lib/model/display-value';
+export * from './lib/model/cookie-consent';
 
 export * from './lib/base/components/base-replay.component';
 export * from './lib/base/components/base-behavoir.component';

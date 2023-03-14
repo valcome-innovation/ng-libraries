@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DomUtils, RenderService } from '@valcome/ng-core';
-import { GtagConfig, GtagConsent } from './gtag.module';
+import { DomUtils, RenderService, CookieConsent } from '@valcome/ng-core';
+import { GtagConfig } from './gtag.module';
 
 declare const gtag: any;
 
@@ -62,10 +62,10 @@ export class GtagService {
     }
   }
 
-  public async updateUserConsent(userConsent: GtagConsent): Promise<void> {
+  public async updateUserConsent(userConsent: CookieConsent): Promise<void> {
     await this.initialize$;
 
-    if (userConsent === 'GRANTED') {
+    if (userConsent === 'granted') {
       gtag('consent', 'update', {
         ad_storage: 'granted',
         analytics_storage: 'granted'
