@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-google-gtag",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Angular library to simply integrate gtag",
   "scripts": {
     "preversion": "ng test ng-google-gtag --watch=false",
