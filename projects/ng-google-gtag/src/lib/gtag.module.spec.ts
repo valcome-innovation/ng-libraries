@@ -12,7 +12,7 @@ describe('GtagModule', () => {
         GtagModule.forRoot({
           gtagMeasurementId: gtagId,
           anonymizeIp: true,
-          defaultConsent: 'PENDING',
+          defaultConsent: 'pending',
           deferScript: true,
           enableDebugLog: true
         })

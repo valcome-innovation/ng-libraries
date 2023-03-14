@@ -25,7 +25,7 @@ describe('GtagService', () => {
     const gtag = () => service.createGtagEntryPoint({
       gtagMeasurementId: 'id',
       anonymizeIp: true,
-      defaultConsent: 'PENDING',
+      defaultConsent: 'pending',
       deferScript: true,
       enableDebugLog: true
     });
