@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DomUtils } from '@valcome/ng-core';
+import { DomUtils, RenderService } from '@valcome/ng-core';
 import { GtagConfig, GtagConsent } from './gtag.module';
 
 declare const gtag: any;
@@ -10,6 +10,9 @@ export class GtagService {
   private initializeResolve!: (value: unknown) => void;
   private initialize$ = new Promise(resolve => this.initializeResolve = resolve);
 
+  public constructor(private renderService: RenderService) {
+  }
+
   public async createGtagEntryPoint(config: GtagConfig): Promise<void> {
     const {
       gtagMeasurementId,
@@ -19,16 +22,17 @@ export class GtagService {
       anonymizeIp
     } = config;
 
-    const manager = DomUtils.loadScriptAsync(
-      'gTag',
-      `https://googletagmanager.com/gtag/js?id=${gtagMeasurementId}`,
-      'src',
-      deferScript
-    );
+    if (this.renderService.isBrowser()) {
+      const manager = DomUtils.loadScriptAsync(
+        'gTag',
+        `https://googletagmanager.com/gtag/js?id=${gtagMeasurementId}`,
+        'src',
+        deferScript
+      );
 
-    const registration = DomUtils.loadScriptAsync(
-      'gTagRegistration',
-      `
+      const registration = DomUtils.loadScriptAsync(
+        'gTagRegistration',
+        `
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
@@ -41,19 +45,20 @@ export class GtagService {
         analytics_storage: 'denied'
       });
       `,
-      'plainScript',
-      false
-    );
+        'plainScript',
+        false
+      );
 
-    Promise.all([manager, registration])
-      .then((value) => this.initializeResolve(value));
+      Promise.all([manager, registration])
+        .then((value) => this.initializeResolve(value));
 
-    await this.initialize$;
+      await this.initialize$;
 
-    this.updateUserConsent(defaultConsent);
+      this.updateUserConsent(defaultConsent);
 
-    if (enableDebugLog) {
-      console.log(`[GtagService] initialized gtag with id: ${gtagMeasurementId}`);
+      if (enableDebugLog) {
+        console.log(`[GtagService] initialized gtag with id: ${gtagMeasurementId}`);
+      }
     }
   }
 
