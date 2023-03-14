@@ -62,7 +62,9 @@ export class GtagService {
     }
   }
 
-  public updateUserConsent(userConsent: GtagConsent): void {
+  public async updateUserConsent(userConsent: GtagConsent): Promise<void> {
+    await this.initialize$;
+
     if (userConsent === 'GRANTED') {
       gtag('consent', 'update', {
         ad_storage: 'granted',
