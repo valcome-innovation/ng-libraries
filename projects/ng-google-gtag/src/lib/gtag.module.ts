@@ -1,5 +1,6 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { GtagService } from './gtag.service';
+import { UniversalModule } from '@valcome/ng-core';
 
 export type GtagConsent = 'PENDING' | 'DENIED' | 'GRANTED';
 
@@ -11,7 +12,11 @@ export type GtagConfig = {
   anonymizeIp?: boolean,
 };
 
-@NgModule()
+@NgModule({
+  imports: [
+    UniversalModule
+  ]
+})
 export class GtagModule {
 
   public static forRoot(gtagConfig: GtagConfig): ModuleWithProviders<GtagModule> {
