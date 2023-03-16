@@ -1,5 +1,5 @@
 import { SocialProvider, SocialUser } from '../types/social-user';
-import { DomUtils } from '@valcome/ng-core';
+import { DomUtils, CookieConsent } from '@valcome/ng-core';
 import { LoginProvider } from '../types/login-provider';
 import { GoogleHelper } from '../helper/google.helper';
 import { HttpClient } from '@angular/common/http';
@@ -46,7 +46,7 @@ export class GoogleLoginProvider implements LoginProvider {
     this._accessToken.pipe(skip(1)).subscribe(this._receivedAccessToken);
   }
 
-  public async initialize(autoLogin?: boolean): Promise<void> {
+  public async initialize(defaultCookieConsent: CookieConsent): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync(
       GoogleLoginProvider.PROVIDER_ID,
       'https://accounts.google.com/gsi/client',
@@ -56,7 +56,7 @@ export class GoogleLoginProvider implements LoginProvider {
     if (scriptTag) {
       google.accounts.id.initialize({
         client_id: this.clientId,
-        auto_select: autoLogin,
+        auto_select: false,
         callback: async ({ credential }) => {
           // TODO get access token
           const socialUser = this.googleHelper.createSocialUser(credential, null, 'client');
@@ -171,5 +171,9 @@ export class GoogleLoginProvider implements LoginProvider {
   public async signOut(revoke?: boolean): Promise<any> {
     google.accounts.id.disableAutoSelect();
     this._socialUser.next(null);
+  }
+
+  public setCookieConsent(consent: CookieConsent): void {
+    // No specific consent control for this library found
   }
 }

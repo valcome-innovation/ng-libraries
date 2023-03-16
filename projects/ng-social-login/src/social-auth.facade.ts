@@ -1,5 +1,5 @@
 import { Inject, Injectable, NgZone } from '@angular/core';
-import { BaseInitializableService, RenderService } from '@valcome/ng-core';
+import { BaseInitializableService, RenderService, CookieConsent } from '@valcome/ng-core';
 import { AsyncSubject, BehaviorSubject, isObservable, Observable, ReplaySubject } from 'rxjs';
 import { LoginProvider, SignInOptions } from './types/login-provider';
 import { SocialProvider, SocialUser } from './types/social-user';
@@ -8,6 +8,7 @@ import { GoogleLoginProvider } from './providers/google-login-provider';
 
 export interface SocialAuthServiceConfig {
   autoLogin?: boolean;
+  defaultCookieConsent: CookieConsent;
   providers: { id: SocialProvider; provider: LoginProvider }[];
 
   onError?(error: any): void;
@@ -49,7 +50,7 @@ export class SocialAuthFacade extends BaseInitializableService {
 
     if (this.renderService.isBrowser()) {
       if (config instanceof Promise) {
-        config.then((config) => this.initialize(config));
+        config.then((c) => this.initialize(c));
       } else {
         this.initialize(config);
       }
@@ -62,7 +63,7 @@ export class SocialAuthFacade extends BaseInitializableService {
 
     try {
       await Promise.all(Array.from(this.providers.keys())
-        .map(key => this.providers.get(key)!.initialize().catch(reason => {
+        .map(key => this.providers.get(key)!.initialize(config.defaultCookieConsent).catch(reason => {
           console.error(reason);
           if (key === 'GOOGLE') {
             this.googleError$.next(true);
@@ -151,7 +152,7 @@ export class SocialAuthFacade extends BaseInitializableService {
   }
 
   private getProvider(providerId: SocialProvider): LoginProvider {
-    let loginProvider = this.providers.get(providerId);
+    const loginProvider = this.providers.get(providerId);
 
     if (loginProvider) {
       return loginProvider;
@@ -165,7 +166,7 @@ export class SocialAuthFacade extends BaseInitializableService {
     let loggedIn = false;
 
     providers.forEach((provider: LoginProvider, key: SocialProvider) => {
-      let promise = provider.getLoginStatus();
+      const promise = provider.getLoginStatus();
       loginStatusPromises.push(promise);
 
       promise.then((user: SocialUser) => {
@@ -178,7 +179,7 @@ export class SocialAuthFacade extends BaseInitializableService {
 
     await Promise.all(loginStatusPromises).catch(() => {
       if (!loggedIn) {
-        this.setUser(undefined)
+        this.setUser(undefined);
       }
     });
   }
@@ -209,5 +210,11 @@ export class SocialAuthFacade extends BaseInitializableService {
   private setUser(socialUser: SocialUser | undefined): void {
     this._user = socialUser;
     this._authState.next(socialUser);
+  }
+
+  public setCookieConsent(providerId: SocialProvider, consent: CookieConsent): void {
+    const provider = this.getProvider(providerId);
+
+    return provider.setCookieConsent(consent);
   }
 }

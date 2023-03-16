@@ -1,5 +1,5 @@
 import { FbUser, SocialProvider, SocialUser } from '../types/social-user';
-import { DomUtils } from '@valcome/ng-core';
+import { DomUtils, CookieConsent } from '@valcome/ng-core';
 import { LoginProvider } from '../types/login-provider';
 import { FacebookStatic, LoginOptionsWithFields, StatusResponse } from '../types/facebook';
 import { DeviceCodeResponse, PolledUser } from '../types/social';
@@ -27,7 +27,7 @@ export class FacebookLoginProvider implements LoginProvider {
     this.facebookHelper = new FacebookHelper(clientId, clientToken, http);
   }
 
-  public async initialize(): Promise<void> {
+  public async initialize(defaultCookieConsent: CookieConsent): Promise<void> {
     const scriptTag = await DomUtils.loadScriptAsync(
       'fbScript',
       `//connect.facebook.net/${this.initOptions.locale}/sdk.js`,
@@ -40,7 +40,7 @@ export class FacebookLoginProvider implements LoginProvider {
       FB.init({
         appId: this.clientId,
         autoLogAppEvents: true,
-        cookie: true,
+        cookie: defaultCookieConsent === 'granted',
         xfbml: true,
         version: this.initOptions.version,
       });
@@ -101,5 +101,10 @@ export class FacebookLoginProvider implements LoginProvider {
 
   public signOut(): Promise<void> {
     return new Promise<void>(resolve => FB.logout(() => resolve()));
+  }
+
+  public setCookieConsent(consent: CookieConsent): void {
+    // cookie settings, can only be set via init()?
+    // Therefor the consent will only be set via defaultConsent
   }
 }

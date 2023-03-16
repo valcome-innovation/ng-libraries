@@ -96,7 +96,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   public FormErrorType = FormErrorType;
 
   public form!: FormGroup;
-  public isSubmitted: boolean = false;
+  public isSubmitted = false;
 
   public countries: DisplayValue<string>[] = [
     new DisplayValue('Österreich', 'AT'),
@@ -125,7 +125,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
       this.form.get('firstName')!.enable({ emitEvent: false });
     }, 0);
 
-    let control = this.form.get('country');
+    const control = this.form.get('country');
 
     if (control) {
       control.statusChanges.subscribe((s) => console.log(s));
@@ -176,15 +176,15 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   }
 
   public grantConsent(): void {
-    this.gtagService.updateUserConsent('GRANTED');
+    this.gtagService.updateUserConsent('granted');
   }
 
   public denyConsent(): void {
-    this.gtagService.updateUserConsent('DENIED');
+    this.gtagService.updateUserConsent('denied');
   }
 
   public setError(): void {
-    let control = this.form.get('country');
+    const control = this.form.get('country');
 
     if (control) {
       control.setErrors({ server: true });

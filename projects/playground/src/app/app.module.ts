@@ -53,7 +53,7 @@ import { GtagModule } from '../../../ng-google-gtag/src/lib/gtag.module';
       enableDebugLog: true,
       deferScript: true,
       anonymizeIp: true,
-      defaultConsent: 'PENDING',
+      defaultConsent: 'pending',
     })
   ],
   providers: [
@@ -70,6 +70,7 @@ import { GtagModule } from '../../../ng-google-gtag/src/lib/gtag.module';
       useFactory: (http: HttpClient) => {
         return {
           autoLogin: false,
+          defaultCookieConsent: 'pending',
           providers: [
             {
               id: GoogleLoginProvider.PROVIDER_ID,

@@ -54,7 +54,7 @@
     ],
     "no-consecutive-blank-lines": false,
     "no-console": [
-      true,
+      false,
       "debug",
       "info",
       "time",
@@ -132,7 +132,8 @@
       "options": [
         "ban-keywords",
         "check-format",
-        "allow-pascal-case"
+        "allow-pascal-case",
+        "allow-leading-underscore"
       ]
     },
     "whitespace": {
