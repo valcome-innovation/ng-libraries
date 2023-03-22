@@ -10,3 +10,5 @@ export * from './lib/mapper/base.mapper';
 export * from './lib/mapper/generic.mapper';
 
 export * from './lib/iterator/paging.iterator';
+
+export * from './lib/operators/tap';
