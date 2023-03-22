@@ -1,29 +1,11 @@
-export class Tap<T extends any> {
+export function snycTap<T extends any>(arg: T, callback: (arg: T) => any): T {
+  callback(arg);
 
-  public constructor(private callback: (...args: any[]) => any) {
-  }
+  return arg;
+}
 
-  public pass(arg: T): T {
-    this.callback(arg);
+export async function asnycTap<T extends any>(arg: T, callback: (arg: T) => Promise<any>): Promise<T> {
+  await callback(arg);
 
-    return arg;
-  }
-
-  public passArray(...args: T[]): T[] {
-    this.callback(...args);
-
-    return args;
-  }
-
-  public async passAsync(arg: T): Promise<T> {
-    await this.callback(arg);
-
-    return arg;
-  }
-
-  public async passAsyncArray(...args: T[]): Promise<T[]> {
-    await this.callback(...args);
-
-    return args;
-  }
+  return arg;
 }
