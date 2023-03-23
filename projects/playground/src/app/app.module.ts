@@ -16,7 +16,6 @@ import {
 } from '@valcome/ng-social-login';
 import { HttpClient, HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToggleButtonModule } from '../../../ng-elements/toggle/src/toggle-button.module';
 import { GenericFormsModule } from '../../../ng-elements/form/src/generic-forms.module';
 import { ErrorMessagesComponent } from './error/error-messages.component';
 import { FilePickerModule } from '../../../ng-elements/file-picker/src/file-picker.module';
@@ -24,6 +23,8 @@ import { ImageResizeModule } from '../../../ng-image-resize/src/lib/image-resize
 import { ICEHOCKEY_API_CONFIG } from '../../../ts-hockeydata-api/src/lib/tokens';
 import { HockeyDataApiModule } from '../../../ts-hockeydata-api/src/lib/hockeydata-api.module';
 import { GtagModule } from '../../../ng-google-gtag/src/lib/gtag.module';
+import { ToggleButtonModule } from '../../../ng-elements/toggle/src/components/toggle-button/toggle-button.module';
+import { SwitchControlModule } from '../../../ng-elements/toggle/src/components/switch-control/switch-control.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { GtagModule } from '../../../ng-google-gtag/src/lib/gtag.module';
     ImageGalleryModule,
     SocialLoginModule,
     ToggleButtonModule,
+    SwitchControlModule,
     HttpClientModule,
     HttpClientJsonpModule,
     FilePickerModule,

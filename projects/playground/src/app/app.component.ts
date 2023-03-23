@@ -92,6 +92,8 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   ];
 
   public priceRange: [number, number] = [0, 0];
+  public switchCondition = false;
+  public isSwitchLoading = false;
 
   public FormErrorType = FormErrorType;
 
@@ -191,7 +193,12 @@ export class AppComponent extends BaseFormComponent implements OnInit {
     }
   }
 
-  //
+  public simulateSwitchLoading(): void {
+    this.isSwitchLoading = true;
+
+    setTimeout(() => this.isSwitchLoading = false, 2_000);
+  }
+
   // public async getGameReport(): Promise<HockeyDataGameReport> {
   //   return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
   // }

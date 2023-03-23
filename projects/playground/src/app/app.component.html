@@ -1,10 +1,17 @@
-<button (click)="grantConsent()">
-  Grant Consent
-</button>
+<div class="m-3">
+  <val-switch-control [(condition)]="switchCondition"
+                      (conditionChange)="simulateSwitchLoading()"
+                      [isLoading]="isSwitchLoading">
+  </val-switch-control>
+</div>
 
-<button (click)="denyConsent()">
-  Deny Consent
-</button>
+<!--<button (click)="grantConsent()">-->
+<!--  Grant Consent-->
+<!--</button>-->
+
+<!--<button (click)="denyConsent()">-->
+<!--  Deny Consent-->
+<!--</button>-->
 
 <!--<hockeydata-game-score [gameReport]="gameReport"-->
 <!--                       [homeLogo]="homeLogo"-->
