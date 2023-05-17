@@ -157,7 +157,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   private initForm(): void {
     this.form = this.fb.group({
       firstName: ['', this.fbOptions([Validators.required], 'blur')],
-      country: [null, this.fbOptions([Validators.required], 'blur')],
+      country: ['AT', this.fbOptions([Validators.required], 'blur')],
     });
     // this.form = this.fb.group({
     //   eMail: ['', this.fbOptions([Validators.required])],
