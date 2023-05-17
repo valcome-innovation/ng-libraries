@@ -39,4 +39,8 @@ export class GenericSelectComponent extends BaseGenericFieldComponent {
 
   @Input()
   public displayDefaultOption = false;
+
+  public get selectedValue(): any {
+    return this.form.get(this.formName);
+  }
 }

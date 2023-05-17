@@ -17,6 +17,13 @@
         {{placeholder}}
       </option>
 
+      <!-- Display placeholder if value is set, but no options are loaded yet-->
+      <option *ngIf="isLoading && options.length === 0 && selectedValue"
+              [value]="selectedValue"
+              class="default-option">
+        {{placeholder}}
+      </option>
+
       <option *ngFor="let item of options"
               [value]="item.value"
               [disabled]="item.disabled">
