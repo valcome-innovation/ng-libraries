@@ -15,6 +15,9 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    preprocessors: {
+      '**/*.ts': ['coverage']
+    },
     coverageReporter: {
       dir: require('path').join(__dirname, '../../coverage/ng-elements'),
       reporters: [{type: 'lcov', subdir: 'lcov'}],
