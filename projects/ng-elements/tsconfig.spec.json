@@ -11,6 +11,7 @@
     "test.ts"
   ],
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    "node_modules/tslib/modules/index.d.ts"
   ]
 }
