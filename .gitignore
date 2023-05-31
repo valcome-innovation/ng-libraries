@@ -2,7 +2,6 @@
 
 # compiled output
 /dist
-/coverage
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -73,7 +72,7 @@ testem.log
 projects/ng-social-login/typings/
 
 # coverage
-coverage/
+coverage/**/lcov/lcov-report/*
 
 # e2e
 e2e/*.js
