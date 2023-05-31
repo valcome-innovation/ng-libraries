@@ -17,6 +17,9 @@ export class SwitchControlComponent {
   @Output()
   public conditionChange = new EventEmitter<boolean>();
 
+  @Input()
+  public label = '';
+
   public toggleSwitch(): void {
     if (!this.isLoading) {
       this.condition = !this.condition;

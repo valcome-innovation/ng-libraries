@@ -1,55 +1,67 @@
 .switch-wrapper {
-  --switch-padding: 3px;
-  --switch-height: 20px;
-  --switch-width: 40px;
-  --switch-knob-size: calc(var(--switch-height) - var(--switch-padding) * 2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 
-  position: relative;
-  height: var(--switch-height);
-  width: var(--switch-width);
+  .switch-label {
+    margin-left: 5px;
+  }
 
-  .switch-control {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    top: 0;
+  .switch-control-wrapper {
+    --switch-padding: 3px;
+    --switch-height: 20px;
+    --switch-width: 40px;
+    --switch-knob-size: calc(var(--switch-height) - var(--switch-padding) * 2);
 
-    background-color: #D9D9D9;
-    border-radius: 10px;
-    cursor: pointer;
-    opacity: 1;
+    position: relative;
+    height: var(--switch-height);
+    width: var(--switch-width);
 
-    transition: background-color .5s ease-out,
+    .switch-control {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      top: 0;
+
+      background-color: #D9D9D9;
+      border-radius: 10px;
+      opacity: 1;
+
+      transition: background-color .5s ease-out,
       opacity .25s ease-out;
 
-    .switch-knob {
-      box-sizing: border-box;
-      position: absolute;
-      left: var(--switch-padding);
-      top: var(--switch-padding);
-      bottom: var(--switch-padding);
-
-      width: var(--switch-knob-size);
-      height: var(--switch-knob-size);
-
-      background-color: white;
-      border-radius: 10px;
-
-      transition: left .5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    &.active {
-      background-color: #1ca0ff;
-
       .switch-knob {
-        left: calc(var(--switch-width) - var(--switch-knob-size) - var(--switch-padding));
+        box-sizing: border-box;
+        position: absolute;
+        left: var(--switch-padding);
+        top: var(--switch-padding);
+        bottom: var(--switch-padding);
+
+        width: var(--switch-knob-size);
+        height: var(--switch-knob-size);
+
+        background-color: white;
+        border-radius: 10px;
+
+        transition: left .5s cubic-bezier(0.22, 1, 0.36, 1);
       }
     }
+  }
 
-    &.loading {
+  &.active .switch-control {
+    background-color: #1ca0ff;
+
+    .switch-knob {
+      left: calc(var(--switch-width) - var(--switch-knob-size) - var(--switch-padding));
+    }
+  }
+
+  &.loading {
+    cursor: default;
+
+    .switch-control {
       opacity: .5;
-      cursor: default;
 
       .switch-knob {
         width: var(--switch-knob-size);
