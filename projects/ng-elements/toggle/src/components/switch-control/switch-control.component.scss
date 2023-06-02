@@ -5,6 +5,7 @@
 
   .switch-label {
     margin-left: 5px;
+    user-select: none;
   }
 
   .switch-control-wrapper {
@@ -16,6 +17,7 @@
     position: relative;
     height: var(--switch-height);
     width: var(--switch-width);
+    flex-shrink: 0;
 
     .switch-control {
       position: absolute;
