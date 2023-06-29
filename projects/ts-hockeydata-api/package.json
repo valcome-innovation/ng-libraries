@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-hockeydata-api"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ts-hockeydata-api"
   },
   "author": "Valcome Analytics",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-hockeydata-api#tshockeydataapi",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ts-hockeydata-api#tshockeydataapi",
   "peerDependencies": {
     "@valcome/ts-core": "^1.0.11"
   },

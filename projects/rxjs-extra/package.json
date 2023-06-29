@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/rxjs-extra"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/rxjs-extra"
   },
   "author": "Valcome Analytics",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/rxjs-extra#tscore",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/rxjs-extra#tscore",
   "peerDependencies": {
     "@valcome/ng-core": "^1.0.0",
     "rxjs": "^6.6.7"

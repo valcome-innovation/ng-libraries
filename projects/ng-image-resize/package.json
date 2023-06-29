@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-image-resize"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-image-resize"
   },
   "author": "Valcome Analytics",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-image-resize",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-image-resize",
   "peerDependencies": {
     "@angular/common": "~12.2.16",
     "rxjs": "^6.6.7",

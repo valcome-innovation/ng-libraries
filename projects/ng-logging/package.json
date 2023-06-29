@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-logging"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-logging"
   },
   "author": "Valcome Analytics",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-logging#nglogging",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-logging#nglogging",
   "peerDependencies": {
     "@angular/common": "~12.2.16",
     "@angular/core": "~12.2.16",

@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/valcome-analytics/ng-libraries"
+    "url": "https://github.com/valcome-innovation/ng-libraries"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
   "dependencies": {
     "tslib": "^2.0.0"

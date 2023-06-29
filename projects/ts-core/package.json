@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-core"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ts-core"
   },
   "author": "Valcome Analytics",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ts-core#tscore",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ts-core#tscore",
   "dependencies": {
     "tslib": "^2.0.0"
   }

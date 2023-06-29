@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-google-gtag"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-google-gtag"
   },
   "author": "Valcome Analytics",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-google-gtag#nggooglegtag",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-google-gtag#nggooglegtag",
   "peerDependencies": {
     "@angular/common": "~13.2.6",
     "@angular/core": "~13.2.6"

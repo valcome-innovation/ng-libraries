@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-storage"
+    "url": "git+https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-storage"
   },
   "author": "Valcome Analytics",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/valcome-analytics/ng-libraries/issues"
+    "url": "https://github.com/valcome-innovation/ng-libraries/issues"
   },
-  "homepage": "https://github.com/valcome-analytics/ng-libraries/tree/master/projects/ng-storage#ngscreens",
+  "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-storage#ngscreens",
   "peerDependencies": {
     "@angular/core": "~12.2.16"
   },
