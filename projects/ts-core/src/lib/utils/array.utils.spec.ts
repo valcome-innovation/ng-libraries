@@ -93,7 +93,7 @@ describe('ArrayUtils', () => {
 
   it('should convert to ID Map', () => {
     const idArray = ArrayUtils.range(0, 10_000).map(num => ({
-      id: `${num}`
+      id: num
     }));
 
     const map = ArrayUtils.toIdMap(idArray);
