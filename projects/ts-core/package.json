@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ts-core",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "scripts": {
     "xpreversion": "ng test ts-core --watch=false",
     "version": "ng build ts-core --prod",
