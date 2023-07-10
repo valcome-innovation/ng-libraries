@@ -82,6 +82,16 @@ export class ArrayUtils {
       && first.every(a => second.includes(a));
   }
 
+  public static toIdMap<T extends { id: string }>(array: T[]): Map<string, T> {
+    const result = new Map<string, T>();
+
+    for (const item of array) {
+      result.set(item.id, item);
+    }
+
+    return result;
+  }
+
   // https://stackoverflow.com/a/1053865/12237560
   public static mode<T extends string | number>(array: T[]): T | null {
     if (array.length === 0) {
