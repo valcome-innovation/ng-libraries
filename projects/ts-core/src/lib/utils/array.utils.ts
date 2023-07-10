@@ -1,3 +1,5 @@
+export type IdMap<T> = { [id: string]: T, [id: number]: T };
+
 export class ArrayUtils {
 
   public static prepend<T>(value: T, array: T[]): T[] {
@@ -82,11 +84,11 @@ export class ArrayUtils {
       && first.every(a => second.includes(a));
   }
 
-  public static toIdMap<T extends { id: string | number }>(array: T[]): Map<string | number, T> {
-    const result = new Map<string | number, T>();
+  public static toIdMap<T extends { id: string | number }>(array: T[]): IdMap<T> {
+    const result: IdMap<T> = {};
 
     for (const item of array) {
-      result.set(item.id, item);
+      result[item.id] = item;
     }
 
     return result;
