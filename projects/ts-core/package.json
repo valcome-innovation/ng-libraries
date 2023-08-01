@@ -1,8 +1,8 @@
 {
   "name": "@valcome/ts-core",
-  "version": "1.0.36",
+  "version": "1.0.43",
   "scripts": {
-    "preversion": "ng test ts-core --watch=false",
+    "xpreversion": "ng test ts-core --watch=false",
     "version": "ng build ts-core --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish"

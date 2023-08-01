@@ -90,4 +90,24 @@ describe('ArrayUtils', () => {
     expect(ArrayUtils.mode([1, 2, 2, 3, 1, 1])).toBe(1);
     expect(ArrayUtils.mode(['b', 'c', 'a', 'c'])).toBe('c');
   });
+
+  it('should convert to ID Map with number', () => {
+    const idArray = ArrayUtils.range(0, 10_000).map(num => ({ id: num }));
+
+    const map = ArrayUtils.toIdMap(idArray);
+
+    idArray.forEach(item => {
+      expect(map[item.id]).toEqual(item);
+    });
+  });
+
+  it('should convert to ID Map with strings', () => {
+    const idArray = ArrayUtils.range(0, 10_000).map(num => ({ id: `${num}` }));
+
+    const map = ArrayUtils.toIdMap(idArray);
+
+    idArray.forEach(item => {
+      expect(map[item.id]).toEqual(item);
+    });
+  });
 });
