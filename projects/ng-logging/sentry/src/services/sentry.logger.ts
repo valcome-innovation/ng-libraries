@@ -1,4 +1,4 @@
-import * as Sentry from '@sentry/angular';
+import * as Sentry from '@sentry/angular-ivy';
 import { Injectable } from '@angular/core';
 import { ExtraLoggingData, Logger } from '@valcome/ng-logging';
 
