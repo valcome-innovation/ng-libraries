@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-hockeydata-widgets#tshockeydatawidgets",
   "peerDependencies": {
-    "@angular/common": "~12.2.16",
-    "@angular/core": "~12.2.16",
-    "@valcome/ng-styles": "^1.0.12",
+    "@angular/common": "~13.4.0",
+    "@angular/core": "~13.4.0",
+    "@valcome/ng-styles": "^1.0.17",
     "@valcome/ts-hockeydata-api": "^1.0.6"
   },
   "dependencies": {

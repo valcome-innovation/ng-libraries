@@ -32,18 +32,6 @@
               "**/lib/model/**"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-core/tsconfig.lib.json",
-              "projects/ng-core/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -72,18 +60,6 @@
             "codeCoverage": true,
             "tsConfig": "projects/ng-animations/tsconfig.spec.json",
             "karmaConfig": "projects/ng-animations/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-animations/tsconfig.lib.json",
-              "projects/ng-animations/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -115,18 +91,6 @@
             "karmaConfig": "projects/ng-elements/karma.conf.js",
             "codeCoverageExclude": [
               "**/file-picker/**"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-elements/tsconfig.lib.json",
-              "projects/ng-elements/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
             ]
           }
         }
@@ -161,18 +125,6 @@
               "**/lib/model/**"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-google-gtag/tsconfig.lib.json",
-              "projects/ng-google-gtag/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -205,18 +157,6 @@
               "**/lib/model/**"
             ]
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-logging/tsconfig.lib.json",
-              "projects/ng-logging/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -245,18 +185,6 @@
             "codeCoverage": true,
             "tsConfig": "projects/ng-screens/tsconfig.spec.json",
             "karmaConfig": "projects/ng-screens/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-screens/tsconfig.lib.json",
-              "projects/ng-screens/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -287,18 +215,6 @@
             "tsConfig": "projects/ng-storage/tsconfig.spec.json",
             "karmaConfig": "projects/ng-storage/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-storage/tsconfig.lib.json",
-              "projects/ng-storage/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -327,18 +243,6 @@
             "codeCoverage": true,
             "tsConfig": "projects/ng-social-login/tsconfig.spec.json",
             "karmaConfig": "projects/ng-social-login/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-social-login/tsconfig.lib.json",
-              "projects/ng-social-login/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -442,19 +346,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/playground/tsconfig.app.json",
-              "projects/playground/tsconfig.spec.json",
-              "projects/playground/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -494,18 +385,6 @@
             "tsConfig": "projects/ts-core/tsconfig.spec.json",
             "karmaConfig": "projects/ts-core/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ts-core/tsconfig.lib.json",
-              "projects/ts-core/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -533,18 +412,6 @@
             "main": "projects/rxjs-extra/src/test.ts",
             "tsConfig": "projects/rxjs-extra/tsconfig.spec.json",
             "karmaConfig": "projects/rxjs-extra/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/rxjs-extra/tsconfig.lib.json",
-              "projects/rxjs-extra/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -574,18 +441,6 @@
             "tsConfig": "projects/ts-hockeydata-api/tsconfig.spec.json",
             "karmaConfig": "projects/ts-hockeydata-api/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ts-hockeydata-api/tsconfig.lib.json",
-              "projects/ts-hockeydata-api/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -614,18 +469,6 @@
             "tsConfig": "projects/ng-hockeydata-widgets/tsconfig.spec.json",
             "karmaConfig": "projects/ng-hockeydata-widgets/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-hockeydata-widgets/tsconfig.lib.json",
-              "projects/ng-hockeydata-widgets/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -653,18 +496,6 @@
             "main": "projects/ng-image-resize/src/test.ts",
             "tsConfig": "projects/ng-image-resize/tsconfig.spec.json",
             "karmaConfig": "projects/ng-image-resize/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-image-resize/tsconfig.lib.json",
-              "projects/ng-image-resize/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }

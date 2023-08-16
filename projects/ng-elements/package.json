@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-elements#ngelements",
   "peerDependencies": {
-    "@angular/common": "~12.2.16",
-    "@angular/core": "~12.2.16",
-    "@valcome/ng-animations": "^1.2.2",
-    "@valcome/ng-core": "^1.2.0",
-    "@valcome/ts-core": "^1.0.0",
+    "@angular/common": "~13.4.0",
+    "@angular/core": "~13.4.0",
+    "@valcome/ng-animations": "^1.2.12",
+    "@valcome/ng-core": "^1.3.33",
+    "@valcome/ts-core": "^1.0.43",
     "drift-zoom": "^1.4.0",
     "notyf": "^3.7.0"
   },

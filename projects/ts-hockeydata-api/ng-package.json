@@ -2,10 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ts-hockeydata-api",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "@valcome/ts-core": "@valcome/ts-core",
-      "ts-core": "@valcome/ts-core"
-    }
+    "entryFile": "src/public-api.ts"
   }
 }

@@ -2,13 +2,6 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/ng-screens",
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "ng-core": "@valcome/ng-core",
-      "ts-core": "@valcome/ts-core",
-      "ngx-device-detector": "ngx-device-detector",
-      "screenfull": "screenfull",
-      "ios-inner-height": "ios-inner-height"
-    }
+    "entryFile": "src/public-api.ts"
   }
 }

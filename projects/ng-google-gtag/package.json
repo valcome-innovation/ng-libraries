@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-google-gtag#nggooglegtag",
   "peerDependencies": {
-    "@angular/common": "~13.2.6",
-    "@angular/core": "~13.2.6"
+    "@angular/common": "~13.4.0",
+    "@angular/core": "~13.4.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

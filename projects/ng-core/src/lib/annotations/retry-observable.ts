@@ -16,21 +16,21 @@ export function RetryObservable(count: number, delay: number = 0, exclude: Error
   return (target: any, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) => {
     const request = descriptor.value as ObservableRequest;
 
-    descriptor.value = function (...args: any[]): ReturnType<ObservableRequest> {
-      const payload: RetryPayload = { self: this, request, delay }
+    descriptor.value = function(...args: any[]): ReturnType<ObservableRequest> {
+      const payload: RetryPayload = { self: this, request, delay };
 
       return retryRequest(payload, exclude, count, ...args);
     };
 
     return descriptor;
-  }
+  };
 }
 
 function retryRequest(payload: RetryPayload, exclude: ErrorType[], attemptsLeft: number, ...args: any[]): ReturnType<ObservableRequest> {
   const { self, request, delay } = payload;
 
   if (attemptsLeft === 1) {
-    return request.apply(self, args)
+    return request.apply(self, args);
   } else {
     return request.apply(self, args) // either resolve observable, or recursive retry in error case
       .pipe(catchError(async e => {
