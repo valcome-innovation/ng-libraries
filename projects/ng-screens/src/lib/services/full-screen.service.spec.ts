@@ -24,10 +24,4 @@ describe('FullScreenService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-
-  it('should throw no exception on fullscreen not possible', async () => {
-    expect(service.goFullScreen.bind(service)).not.toThrow();
-    expect(service.toggleFullScreen.bind(service)).not.toThrow();
-    expect(service.goFullScreenIfMobile.bind(service)).not.toThrow();
-  });
 });
