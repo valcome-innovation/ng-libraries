@@ -5,7 +5,8 @@
     "preversion": "ng test rxjs-extra --watch=false",
     "version": "ng build rxjs-extra --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/rxjs-extra && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/rxjs-extra && npm publish",
+    "publish:minor": "npm version minor && cd ../../dist/rxjs-extra && npm publish"
   },
   "repository": {
     "type": "git",

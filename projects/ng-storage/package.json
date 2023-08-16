@@ -6,7 +6,8 @@
     "preversion": "ng test ng-storage --watch=false",
     "version": "ng build ng-storage --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/ng-storage && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/ng-storage && npm publish",
+    "publish:minor": "npm version minor && cd ../../dist/ng-storage && npm publish"
   },
   "repository": {
     "type": "git",

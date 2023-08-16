@@ -5,7 +5,8 @@
     "xpreversion": "ng test ts-core --watch=false",
     "version": "ng build ts-core --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish",
+    "publish:minor": "npm version minor && cd ../../dist/ts-core && npm publish"
   },
   "repository": {
     "type": "git",

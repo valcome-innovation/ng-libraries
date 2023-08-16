@@ -6,7 +6,8 @@
     "preversion": "ng test ng-screens --watch=false",
     "version": "ng build ng-screens --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
-    "publish:patch": "npm version patch && cd ../../dist/ng-screens && npm publish"
+    "publish:patch": "npm version patch && cd ../../dist/ng-screens && npm publish",
+    "publish:minor": "npm version minor && cd ../../dist/ng-screens && npm publish"
   },
   "repository": {
     "type": "git",

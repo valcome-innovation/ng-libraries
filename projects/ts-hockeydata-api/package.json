@@ -6,6 +6,7 @@
     "version": "ng build ts-hockeydata-api --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ts-hockeydata-api && npm publish",
+    "publish:minor": "npm version minor && cd ../../dist/ts-hockeydata-api && npm publish",
     "publish:major": "npm version major && cd ../../dist/ts-hockeydata-api && npm publish"
   },
   "repository": {

@@ -6,6 +6,7 @@
     "version": "ng build ng-social-login --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && npm run publish",
+    "publish:minor": "npm version minor && npm run publish",
     "publish": "cd ../../dist/ng-social-login && npm publish"
   },
   "repository": {

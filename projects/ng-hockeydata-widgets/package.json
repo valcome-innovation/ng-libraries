@@ -6,6 +6,7 @@
     "version": "ng build ng-hockeydata-widgets --prod",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-hockeydata-widgets && npm publish",
+    "publish:minor": "npm version minor && cd ../../dist/ng-hockeydata-widgets && npm publish",
     "publish:major": "npm version major && cd ../../dist/ng-hockeydata-widgets && npm publish"
   },
   "repository": {
