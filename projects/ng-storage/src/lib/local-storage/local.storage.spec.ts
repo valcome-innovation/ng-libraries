@@ -1,7 +1,6 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { LocalMemoryStorage } from './local-memory.storage';
 import { LocalNativeStorage } from './local-native.storage';
-import { LocalStorage } from './local.storage';
 
 describe('LocalStorage', () => {
 
