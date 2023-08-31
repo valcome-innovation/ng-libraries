@@ -1,6 +1,6 @@
 {
   "name": "@valcome/rxjs-extra",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "preversion": "ng test rxjs-extra --watch=false",
     "version": "ng build rxjs-extra --configuration production",
