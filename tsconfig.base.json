@@ -25,7 +25,7 @@
     ],
     "paths": {
       "@valcome/ts-core": [
-        "dist/ts-core/public-api"
+        "dist/ts-core/esm/index"
       ],
       "@valcome/ng-core": [
         "dist/ng-core"
@@ -49,7 +49,7 @@
         "projects/ng-social-login/src/public-api.ts"
       ],
       "@valcome/ts-hockeydata-api": [
-        "dist/ts-hockeydata-api/public-api"
+        "dist/ts-hockeydata-api"
       ],
       "@valcome/image-resize": [
         "dist/image-resize"
