@@ -11,7 +11,8 @@
     "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish",
     "publish:minor": "npm version minor && cd ../../dist/ts-core && npm publish"
   },
-  "main": "./esm/index.js",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
   "types": "./types/index.d.ts",
   "exports": {
     "import": "./esm/index.js",
