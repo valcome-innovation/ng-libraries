@@ -1,13 +1,15 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
-    "declarationMap": true,
+    "outDir": "../../dist/rxjs-extra",
+    "declarationDir": "../../dist/rxjs-extra/types",
+    "declarationMap": false,
     "target": "es2020",
     "declaration": true,
     "inlineSources": true,
-    "types": [],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "dom",
       "es2018"

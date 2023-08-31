@@ -49,7 +49,7 @@
         "projects/ng-social-login/src/public-api.ts"
       ],
       "@valcome/ts-hockeydata-api": [
-        "dist/ts-hockeydata-api"
+        "dist/ts-hockeydata-api/public-api"
       ],
       "@valcome/image-resize": [
         "dist/image-resize"

@@ -360,34 +360,6 @@
         }
       }
     },
-    "rxjs-extra": {
-      "projectType": "library",
-      "root": "projects/rxjs-extra",
-      "sourceRoot": "projects/rxjs-extra/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/rxjs-extra/tsconfig.lib.json",
-            "project": "projects/rxjs-extra/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/rxjs-extra/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/rxjs-extra/src/test.ts",
-            "tsConfig": "projects/rxjs-extra/tsconfig.spec.json",
-            "karmaConfig": "projects/rxjs-extra/karma.conf.js"
-          }
-        }
-      }
-    },
     "ts-hockeydata-api": {
       "projectType": "library",
       "root": "projects/ts-hockeydata-api",
