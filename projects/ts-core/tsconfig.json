@@ -3,6 +3,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/ts-core",
+    "declarationDir": "../../dist/ts-core/types",
     "declarationMap": false,
     "target": "es2020",
     "declaration": true,
