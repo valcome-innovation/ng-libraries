@@ -1,10 +1,10 @@
 {
   "name": "@valcome/rxjs-extra",
-  "version": "0.4.0",
+  "version": "0.3.0",
   "scripts": {
     "test": "jest",
     "build": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json",
-    "postbuild": "cp ./package.json ../../dist/ts-core/",
+    "postbuild": "cp ./package.json ../../dist/rxjs-extra/",
     "xpreversion": "npm run test",
     "version": "npm run build",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
