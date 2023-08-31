@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-storage",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A collection of handy services regarding screen orientation, screen size and fullscreen mode.",
   "scripts": {
     "preversion": "ng test ng-storage --watch=false",
