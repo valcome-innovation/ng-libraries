@@ -1,9 +1,10 @@
 {
   "name": "@valcome/ts-core",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "test": "jest",
     "build": "tsc",
+    "postbuild": "cp ./package.json ../../dist/ts-core/",
     "xpreversion": "npm run test",
     "version": "npm run build",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
