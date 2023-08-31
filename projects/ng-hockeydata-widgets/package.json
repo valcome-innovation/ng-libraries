@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "scripts": {
     "preversion": "ng test ng-hockeydata-widgets --watch=false --code-coverage=true",
-    "version": "ng build ng-hockeydata-widgets --prod",
+    "version": "ng build ng-hockeydata-widgets --configuration production",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-hockeydata-widgets && npm publish",
     "publish:minor": "npm version minor && cd ../../dist/ng-hockeydata-widgets && npm publish",

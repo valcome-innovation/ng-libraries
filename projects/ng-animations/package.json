@@ -3,7 +3,7 @@
   "version": "1.3.0",
   "description": "Angular animations",
   "scripts": {
-    "version": "ng build ng-animations --prod",
+    "version": "ng build ng-animations --configuration production",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-animations && npm publish,",
     "publish:minor": "npm version minor && cd ../../dist/ng-animations && npm publish"

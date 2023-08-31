@@ -4,7 +4,7 @@
   "description": "A collection of handy services regarding screen orientation, screen size and fullscreen mode.",
   "scripts": {
     "preversion": "ng test ng-storage --watch=false",
-    "version": "ng build ng-storage --prod",
+    "version": "ng build ng-storage --configuration production",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ng-storage && npm publish",
     "publish:minor": "npm version minor && cd ../../dist/ng-storage && npm publish"
