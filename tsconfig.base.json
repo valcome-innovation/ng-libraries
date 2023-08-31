@@ -25,7 +25,7 @@
     ],
     "paths": {
       "@valcome/ts-core": [
-        "dist/ts-core"
+        "dist/ts-core/public-api"
       ],
       "@valcome/ng-core": [
         "dist/ng-core"
