@@ -28,7 +28,7 @@ export class JsUtils {
    */
   public static immuteTyped<T>(object: T | undefined, type: new() => T): T | undefined {
     if (typeof object === 'object' && object !== null) {
-      return Object.assign(new type, { ...object });
+      return Object.assign(new type(), { ...object });
     } else {
       return object;
     }
@@ -144,7 +144,7 @@ export class JsUtils {
       const seen = new WeakSet();
 
       return (key: string, value: any) => {
-        if (typeof value === "object" && value !== null) {
+        if (typeof value === 'object' && value !== null) {
           if (seen.has(value)) {
             return;
           }

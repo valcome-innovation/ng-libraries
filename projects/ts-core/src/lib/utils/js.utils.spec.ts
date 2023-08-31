@@ -1,5 +1,6 @@
 import { JsUtils } from './js.utils';
-import { fakeAsync, tick } from '@angular/core/testing';
+
+jest.useFakeTimers();
 
 class Basic {
   public value: number;
@@ -15,16 +16,21 @@ class Basic {
 
 describe('JsUtils', () => {
 
-  it('should wait', fakeAsync(() => {
+  it('should wait', async () => {
     let resolved = false;
-    JsUtils.wait(1000).then(() => resolved = true);
+
+    JsUtils.wait(1000)
+      .then(() => resolved = true);
 
     expect(resolved).toBe(false);
-    tick(500);
+    jest.advanceTimersByTime(500);
+
     expect(resolved).toBe(false);
-    tick(500);
+    jest.advanceTimersByTime(500);
+    await Promise.resolve();
+
     expect(resolved).toBe(true);
-  }));
+  });
 
   it('should return instantiated object', () => {
     let result = JsUtils.getInstantiatedObject<Basic>(undefined!, Basic);
@@ -45,7 +51,7 @@ describe('JsUtils', () => {
       }
     };
 
-    spyOn(printer, 'print');
+    jest.spyOn(printer, 'print');
     JsUtils.callAfterStackResolved(() => printer.print());
 
     expect(printer.print).toHaveBeenCalledTimes(0);
@@ -122,12 +128,12 @@ describe('JsUtils', () => {
     expect(result).toBeInstanceOf(Basic);
     expect(result.value).toEqual(1);
     expect(result.text).toEqual('some text');
-    expect((<any>result)['array']).toBeUndefined();
+    expect((result as any).array).toBeUndefined();
   });
 
   it('should immute object', () => {
-    let object: any = { value: 20 }
-    let copy: any = JsUtils.immute(object);
+    const object: any = { value: 20 };
+    const copy: any = JsUtils.immute(object);
 
     object.value = 10;
 
@@ -135,8 +141,8 @@ describe('JsUtils', () => {
   });
 
   it('should immute object with type', () => {
-    let object: Basic = new Basic(20);
-    let copy = JsUtils.immuteTyped<Basic>(object, Basic);
+    const object: Basic = new Basic(20);
+    const copy = JsUtils.immuteTyped<Basic>(object, Basic);
 
     object.value = 10;
 
@@ -145,13 +151,13 @@ describe('JsUtils', () => {
   });
 
   it('should immute false', () => {
-    let copy = JsUtils.immute(false);
+    const copy = JsUtils.immute(false);
 
     expect(copy).toBe(false);
   });
 
   it('should immute true', () => {
-    let copy = JsUtils.immute(true);
+    const copy = JsUtils.immute(true);
 
     expect(copy).toBe(true);
   });
@@ -164,7 +170,7 @@ describe('JsUtils', () => {
         prop2: undefined,
         prop3: null,
       }
-    })
+    });
 
     expect(result.test).toEqual(undefined);
     expect(result.yeah.prop1).toEqual('2');

@@ -2,8 +2,10 @@
   "name": "@valcome/ts-core",
   "version": "1.1.0",
   "scripts": {
-    "xpreversion": "ng test ts-core --watch=false",
-    "version": "ng build ts-core --configuration production",
+    "test": "jest",
+    "build": "tsc",
+    "xpreversion": "npm run test",
+    "version": "npm run build",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish",
     "publish:minor": "npm version minor && cd ../../dist/ts-core && npm publish"
@@ -20,5 +22,11 @@
   "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ts-core#tscore",
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.4",
+    "jest": "^29.6.4",
+    "ts-jest": "^29.1.1",
+    "typescript": "~4.6.4"
   }
 }

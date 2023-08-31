@@ -360,34 +360,6 @@
         }
       }
     },
-    "ts-core": {
-      "projectType": "library",
-      "root": "projects/ts-core",
-      "sourceRoot": "projects/ts-core/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/ts-core/tsconfig.lib.json",
-            "project": "projects/ts-core/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ts-core/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ts-core/src/test.ts",
-            "tsConfig": "projects/ts-core/tsconfig.spec.json",
-            "karmaConfig": "projects/ts-core/karma.conf.js"
-          }
-        }
-      }
-    },
     "rxjs-extra": {
       "projectType": "library",
       "root": "projects/rxjs-extra",
