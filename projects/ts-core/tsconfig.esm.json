@@ -1,0 +1,9 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "es2020",
+    "outDir": "../../dist/ts-core/esm",
+  }
+}

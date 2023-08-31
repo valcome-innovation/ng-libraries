@@ -3,13 +3,18 @@
   "version": "1.3.3",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json",
     "postbuild": "cp ./package.json ../../dist/ts-core/",
     "xpreversion": "npm run test",
     "version": "npm run build",
     "postversion": "git add . && git commit -m \"Upgrade npm version\" && git push ",
     "publish:patch": "npm version patch && cd ../../dist/ts-core && npm publish",
     "publish:minor": "npm version minor && cd ../../dist/ts-core && npm publish"
+  },
+  "exports": {
+    "import": "./esm/index.js",
+    "require": "./cjs/index.js",
+    "default": "./esm/index.js"
   },
   "repository": {
     "type": "git",
