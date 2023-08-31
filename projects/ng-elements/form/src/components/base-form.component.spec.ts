@@ -1,5 +1,5 @@
 import { BaseFormComponent } from './base-form.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 describe('BaseFormComponent', () => {
 
@@ -7,8 +7,8 @@ describe('BaseFormComponent', () => {
 
   beforeEach(() => {
     component = new BaseFormComponent();
-    component.form = new FormGroup({
-      field: new FormControl('')
+    component.form = new UntypedFormGroup({
+      field: new UntypedFormControl('')
     });
   });
 

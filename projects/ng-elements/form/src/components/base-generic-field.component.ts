@@ -1,6 +1,6 @@
 import { ContentChildren, Directive, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { FormErrorMessageDirective } from '../directives/form-error-message/form-error-message.directive';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { BaseBehaviorComponent } from '@valcome/ng-core';
 import { FormHelper } from '../helpers/form.helper';
 
@@ -11,7 +11,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   public errorMessages!: QueryList<FormErrorMessageDirective>;
 
   @Input()
-  public form!: FormGroup;
+  public form!: UntypedFormGroup;
 
   @Input()
   public formName!: string;
@@ -33,7 +33,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   public currentValue: any;
   public hasFocus = false;
 
-  public formControl!: FormControl;
+  public formControl!: UntypedFormControl;
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue && this.formControl) {
@@ -47,7 +47,7 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   }
 
   public ngOnInit(): void {
-    this.formControl = this.form.get(this.formName) as FormControl;
+    this.formControl = this.form.get(this.formName) as UntypedFormControl;
     this.id = this.generateId(this.formControl, this.formName);
     this.currentValue = this.formControl.value;
 

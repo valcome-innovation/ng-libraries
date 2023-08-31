@@ -1,5 +1,5 @@
 import { BaseBehaviorComponent } from '@valcome/ng-core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { FormErrorType } from '../model/form-error-type';
 import { InputAutofill } from '../model/input-autofill';
 import { Directive, Input } from '@angular/core';
@@ -8,7 +8,7 @@ import { Directive, Input } from '@angular/core';
 export class BaseFormComponent extends BaseBehaviorComponent {
 
   @Input()
-  public form!: FormGroup;
+  public form!: UntypedFormGroup;
 
   @Input()
   public isLoading = false;

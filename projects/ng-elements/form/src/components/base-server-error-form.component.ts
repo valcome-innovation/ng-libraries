@@ -1,5 +1,5 @@
 import { Directive, Input, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { BaseFormComponent } from './base-form.component';
 import { FormErrorType } from '../model/form-error-type';
 
@@ -22,7 +22,7 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError>
     this.listenOnFormChanges(this.form);
   }
 
-  private listenOnFormChanges(formGroup: FormGroup): void {
+  private listenOnFormChanges(formGroup: UntypedFormGroup): void {
     this.addSub(formGroup.valueChanges.subscribe(() => {
       this.clearAllServerErrors(formGroup);
     }));
@@ -40,23 +40,23 @@ export class BaseServerErrorFormComponent<T, E extends FormServerError>
     return errors && !errors.isFirstChange();
   }
 
-  protected addServerErrors(formGroup: FormGroup, errors: E[]): void {
+  protected addServerErrors(formGroup: UntypedFormGroup, errors: E[]): void {
     this.clearAllServerErrors(formGroup);
 
     for (const error of errors) {
       if (error.field) {
-        const field: FormControl = formGroup.get(error.field) as FormControl;
+        const field: UntypedFormControl = formGroup.get(error.field) as UntypedFormControl;
         field?.setErrors({ server: true }, { emitEvent: true });
       }
     }
   }
 
-  private clearAllServerErrors(formGroup: FormGroup): void {
+  private clearAllServerErrors(formGroup: UntypedFormGroup): void {
     Object.keys(formGroup.controls)
       .forEach(key => this.clearErrorsFromFormControl(formGroup, key));
   }
 
-  private clearErrorsFromFormControl(formGroup: FormGroup, controlKey: string): void {
+  private clearErrorsFromFormControl(formGroup: UntypedFormGroup, controlKey: string): void {
     const control = formGroup.controls[controlKey];
     if (this.hasServerError(control)) {
       control.setErrors(null);

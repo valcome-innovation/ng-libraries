@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControlOptions, UntypedFormBuilder, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
 import { Image } from '../../../ng-elements/image-gallery/src/image';
 import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
@@ -97,7 +97,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
 
   public FormErrorType = FormErrorType;
 
-  public form!: FormGroup;
+  public form!: UntypedFormGroup;
   public isSubmitted = false;
 
   public countries: DisplayValue<string>[] = [
@@ -112,7 +112,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
     new DisplayValue('Wieselburger', 2)
   ];
 
-  public constructor(private fb: FormBuilder,
+  public constructor(private fb: UntypedFormBuilder,
                      private imageResizeService: ImageResizeService,
                      private hockeyData: HockeyDataIceHockeyService,
                      private gtagService: GtagService) {

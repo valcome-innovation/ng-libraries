@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { GenericTextAreaComponent } from './generic-text-area.component';
 import { GenericFormsModule } from '../../generic-forms.module';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 
 describe('GenericTextAreaComponent', () => {
 
   let fixture: ComponentFixture<GenericTextAreaComponent>;
   let component: GenericTextAreaComponent;
 
-  let fb: FormBuilder;
+  let fb: UntypedFormBuilder;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -17,7 +17,7 @@ describe('GenericTextAreaComponent', () => {
       ]
     }).compileComponents();
 
-    fb = TestBed.inject(FormBuilder);
+    fb = TestBed.inject(UntypedFormBuilder);
 
     fixture = TestBed.createComponent(GenericTextAreaComponent);
     component = fixture.componentInstance;

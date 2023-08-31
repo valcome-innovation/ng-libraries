@@ -1,7 +1,7 @@
 import { BaseGenericFieldComponent } from './base-generic-field.component';
 import { Subject } from 'rxjs';
 import { FormErrorType } from '../model/form-error-type';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import createSpy = jasmine.createSpy;
 
 describe('BaseGenericFieldComponent', () => {
@@ -68,12 +68,12 @@ describe('BaseGenericFieldComponent', () => {
   });
 
   it('should generate valid id with parent form', () => {
-    let form: FormGroup = new FormGroup({
-      shipping: new FormGroup({
-        firstName: new FormControl('')
+    let form: UntypedFormGroup = new UntypedFormGroup({
+      shipping: new UntypedFormGroup({
+        firstName: new UntypedFormControl('')
       })
     })
-    component.form = form.get('shipping') as FormGroup;
+    component.form = form.get('shipping') as UntypedFormGroup;
     component.formName = 'firstName';
 
     component.ngOnInit();

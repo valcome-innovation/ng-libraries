@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { FormHelper } from './form.helper';
 
 describe('FormHelper', () => {
@@ -18,9 +18,9 @@ describe('FormHelper', () => {
     expect(name).toEqual('');
   });
 
-  function getTestForm(): FormGroup {
-    return new FormGroup({
-      address: new FormControl('')
+  function getTestForm(): UntypedFormGroup {
+    return new UntypedFormGroup({
+      address: new UntypedFormControl('')
     });
   }
 });
