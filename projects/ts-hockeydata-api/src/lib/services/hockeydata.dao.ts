@@ -52,6 +52,7 @@ export abstract class HockeyDataDAO {
   public getDivisionInfo(seasonId: number,
                          leagueId: number,
                          params: ApiParams = {}): Observable<HdApiResponse<'data', HdDivisionResponse>> {
+    params.id = seasonId;
     params.seasonId = seasonId;
     params.leagueId = leagueId;
 
