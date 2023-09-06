@@ -8,15 +8,29 @@ import { HockeyDataScheduleMapper } from '../../mapper/hockeydata-schedule.mappe
 import { HockeyDataIceHockeyService } from './contracts/hockey-data-ice-hockey.service';
 
 @Injectable()
-export class HockeyDataIceHockeyServiceImpl extends HockeyDataService implements HockeyDataIceHockeyService {
+export class HockeyDataIceHockeyServiceImpl
+  extends HockeyDataService
+  implements HockeyDataIceHockeyService {
 
-  public static readonly constructorParams = [HockeyDataIceHockeyDAO, HockeyDataGameReportMapper, HockeyDataTeamStandingMapper, HockeyDataKnockoutStageMapper, HockeyDataScheduleMapper] as const;
+  public static readonly constructorParams = [
+    HockeyDataIceHockeyDAO,
+    HockeyDataGameReportMapper,
+    HockeyDataTeamStandingMapper,
+    HockeyDataKnockoutStageMapper,
+    HockeyDataScheduleMapper
+  ] as const;
 
   public constructor(protected hockeyDataIceHockeyDAO: HockeyDataIceHockeyDAO,
                      protected gameReportMapper: HockeyDataGameReportMapper,
                      protected teamStandingMapper: HockeyDataTeamStandingMapper,
                      protected knockoutStageMapper: HockeyDataKnockoutStageMapper,
                      protected scheduleMapper: HockeyDataScheduleMapper) {
-    super(hockeyDataIceHockeyDAO, gameReportMapper, teamStandingMapper, knockoutStageMapper, scheduleMapper);
+    super(
+      hockeyDataIceHockeyDAO,
+      gameReportMapper,
+      teamStandingMapper,
+      knockoutStageMapper,
+      scheduleMapper
+    );
   }
 }

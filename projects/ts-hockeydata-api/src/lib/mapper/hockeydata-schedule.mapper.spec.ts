@@ -33,6 +33,5 @@ describe('HockeyDataScheduleMapper', () => {
 
     expect(result).toBeInstanceOf(HockeyDataSchedule);
     result.games.forEach(g => expect(g).toBeInstanceOf(HockeyDataScheduledGame));
-    console.log(result.games[0]);
   });
 });

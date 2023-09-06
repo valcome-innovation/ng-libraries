@@ -4,25 +4,104 @@ export interface HockeyDataApiConfig {
   displayPointsPerGame: boolean;
 }
 
-export type HockeyDataSport = 'icehockey' | 'americanfootball';
-export type HockeyDataLeague = 'ebel' | 'afboe';
-export type HockeyDataApiCall = 'GetGameReport' | 'Standings' | 'Schedule' | 'KnockoutStage';
+export type HdSport = 'icehockey' | 'americanfootball';
+export type HdLeagueSlug = 'ebel' | 'afboe';
+
+export type HockeyDataApiCall = 'GetGameReport'
+  | 'GetSports'
+  | 'GetLeagues'
+  | 'GetSeasons'
+  | 'GetDivisionInfo'
+  | 'Standings'
+  | 'Schedule'
+  | 'KnockoutStage';
+
 export type ApiParams = Record<string, string | number | boolean>;
 
-export const sports: Record<HockeyDataLeague, HockeyDataSport> = {
+export const sports: Record<HdLeagueSlug, HdSport> = {
   ebel: 'icehockey',
   afboe: 'americanfootball'
 };
 
 export type HockeyDataLabel = 'LIVE' | 'FINISHED';
 
-export interface IHockeyDataDate {
-  formattedShort: string;
-  formattedLong: string;
-  timestamp: number;
-  value: string;
-  diffToNow?: number;
+interface HdApiCommonResponse {
+  statusId: number;
+  statusMsg: string;
+  calcTime?: number;
+  lastUpdate?: HdDate;
+  servedByServer?: string;
 }
+
+export type HdApiResponse<K extends 'data' | 'rows', T> = HdApiCommonResponse
+  & { [key in K]: T };
+
+export interface HdKeyValue<K extends string> {
+  key: K;
+  name: string;
+}
+
+export type IHockeyDataSchedule = HdApiResponse<'rows', IHockeyDataScheduledGame[]>;
+export type IHockeyDataGameReport = HdApiResponse<'data', IHockeyDataGameReportData>;
+export type IHockeyDataStandings = HdApiResponse<'data', { rows: IHockeyDataTeamStanding[] }>;
+export type IHockeyDataKnockOutStage = HdApiResponse<'data', IHockeyDataKnockOutStageData>;
+
+export type HdLeague = {
+  leagueCode: unknown,
+  leagueId: number,
+  leagueName: string,
+};
+
+export type HdSeason = {
+  seasonId: number,
+  seasonName: string,
+};
+
+export type HdDate = {
+  formattedShort: string,
+  formattedLong: string,
+  timestamp: number,
+  value: string,
+  diffToNow?: number,
+};
+
+export type HdDivisionResponse = {
+  divisionInfo: HdDivisionInfo;
+  divisions: HdDivisions[];
+  teams: HdTeams[];
+};
+
+export type HdDivisionInfo = {
+  id: number;
+  divisionName: string;
+  divisionType: number;
+  durationFrom: HdDate;
+  durationUntil: HdDate;
+  minRound: number;
+  maxRound: number;
+  currentRound: number;
+  teams: number[];
+  isCalculated: boolean;
+  permalinks: string[];
+};
+
+export type HdDivisions = {
+  id: number;
+  divisionName: string;
+  divisionType: number;
+  teams: number[];
+  isCalculated: boolean;
+  permalinks: string[];
+};
+
+export type HdTeams = {
+  id: number;
+  shortname: string;
+  longname: string;
+  clubCode: null | string;
+  teamCode: null | string;
+  leagueCode: null | string;
+};
 
 export interface IHockeyDataLocation {
   longname: string;
@@ -43,12 +122,11 @@ export interface IHockeyDataPeriodStats {
   awayShotsOnGoal: number;
 }
 
-
 export interface IHockeyDataBaseGameData {
   id: string;
   divisionId: number;
   divisionLongname: string;
-  scheduledDate: IHockeyDataDate;
+  scheduledDate: HdDate;
   scheduledTime: string;
   isOvertime: number;
   isShootOut: number;
@@ -99,29 +177,6 @@ export interface IHockeyDataGameReportData {
   gameSituations: any[];
 }
 
-export interface IHockeyDataApiResponse {
-  statusId: number;
-  statusMsg: string;
-  data: any | any[];
-  calcTime?: number;
-  lastUpdate: IHockeyDataDate;
-  servedByServer?: string;
-}
-
-export interface IHockeyDataSchedule extends IHockeyDataApiResponse {
-  rows: IHockeyDataScheduledGame[]
-}
-
-export interface IHockeyDataGameReport extends IHockeyDataApiResponse {
-  data: IHockeyDataGameReportData;
-}
-
-export interface IHockeyDataStandings extends IHockeyDataApiResponse {
-  data: {
-    rows: IHockeyDataTeamStanding[]
-  };
-}
-
 export interface IHockeyDataTeamStanding {
   id: number;
   tableRank: number;
@@ -144,10 +199,6 @@ export interface IHockeyDataTeamStanding {
   goalsForPerGame: number;
   goalDifferencePerGame: number;
   gamesPlayedPercentage: number;
-}
-
-export interface IHockeyDataKnockOutStage extends IHockeyDataApiResponse {
-  data: IHockeyDataKnockOutStageData;
 }
 
 export interface IHockeyDataKnockOutStageData {
