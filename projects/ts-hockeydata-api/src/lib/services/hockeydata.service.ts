@@ -26,14 +26,14 @@ export abstract class HockeyDataService {
   }
 
   public getLeagues(sport: HdSport,
-                    params: ApiParams = {}): Observable<HdLeague> {
+                    params: ApiParams = {}): Observable<HdLeague[]> {
     return this.dao.getLeagues(sport, params)
       .pipe(map(res => res.data));
   }
 
   public getSeasons(sport: HdSport,
                     leagueId: number,
-                    params: ApiParams = {}): Observable<HdSeason> {
+                    params: ApiParams = {}): Observable<HdSeason[]> {
     return this.dao.getSeasons(sport, leagueId, params)
       .pipe(map(res => res.data));
   }

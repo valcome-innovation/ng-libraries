@@ -10,11 +10,11 @@ export class HockeyDataIceHockeySubstitute
     return of([]);
   }
 
-  public getLeagues(sport: HdSport, params?: ApiParams): Observable<HdLeague | undefined> {
+  public getLeagues(sport: HdSport, params?: ApiParams): Observable<HdLeague[] | undefined> {
     return of(undefined);
   }
 
-  public getSeasons(sport: HdSport, leagueId: number, params?: ApiParams): Observable<HdSeason | undefined> {
+  public getSeasons(sport: HdSport, leagueId: number, params?: ApiParams): Observable<HdSeason[] | undefined> {
     return of(undefined);
   }
 

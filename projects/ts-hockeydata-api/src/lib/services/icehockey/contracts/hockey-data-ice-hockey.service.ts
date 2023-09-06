@@ -10,11 +10,11 @@ export abstract class HockeyDataIceHockeyService {
   public abstract getSports(params?: ApiParams): Observable<HdKeyValue<HdSport>[] | undefined>;
 
   public abstract getLeagues(sport: HdSport,
-                             params?: ApiParams): Observable<HdLeague | undefined>;
+                             params?: ApiParams): Observable<HdLeague[] | undefined>;
 
   public abstract getSeasons(sport: HdSport,
                              leagueId: number,
-                             params?: ApiParams): Observable<HdSeason | undefined>;
+                             params?: ApiParams): Observable<HdSeason[] | undefined>;
 
   public abstract getDivisionInfo(seasonId: number,
                                   leagueId: number,

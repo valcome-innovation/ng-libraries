@@ -67,8 +67,8 @@ export type HdDate = {
 
 export type HdDivisionResponse = {
   divisionInfo: HdDivisionInfo;
-  divisions: HdDivisions[];
-  teams: HdTeams[];
+  divisions: HdDivision[];
+  teams: HdTeam[];
 };
 
 export type HdDivisionInfo = {
@@ -85,7 +85,7 @@ export type HdDivisionInfo = {
   permalinks: string[];
 };
 
-export type HdDivisions = {
+export type HdDivision = {
   id: number;
   divisionName: string;
   divisionType: number;
@@ -94,7 +94,7 @@ export type HdDivisions = {
   permalinks: string[];
 };
 
-export type HdTeams = {
+export type HdTeam = {
   id: number;
   shortname: string;
   longname: string;

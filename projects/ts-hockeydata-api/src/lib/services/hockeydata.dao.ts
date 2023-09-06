@@ -34,7 +34,7 @@ export abstract class HockeyDataDAO {
   }
 
   public getLeagues(sport: HdSport,
-                    params: ApiParams = {}): Observable<HdApiResponse<'data', HdLeague>> {
+                    params: ApiParams = {}): Observable<HdApiResponse<'data', HdLeague[]>> {
     params.sport = sport;
 
     return this.call('GetLeagues', params);
@@ -42,7 +42,7 @@ export abstract class HockeyDataDAO {
 
   public getSeasons(sport: HdSport,
                     leagueId: number,
-                    params: ApiParams = {}): Observable<HdApiResponse<'data', HdSeason>> {
+                    params: ApiParams = {}): Observable<HdApiResponse<'data', HdSeason[]>> {
     params.sport = sport;
     params.leagueId = leagueId;
 
