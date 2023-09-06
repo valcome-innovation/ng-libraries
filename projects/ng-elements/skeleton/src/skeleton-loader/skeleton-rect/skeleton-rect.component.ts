@@ -17,5 +17,8 @@ export class SkeletonRectComponent {
   public heightWithUnit = '100px';
 
   @Input()
+  public borderRadiusWithUnit: string | undefined;
+
+  @Input()
   public theme: 'light' | 'dark' = 'light';
 }

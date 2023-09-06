@@ -16,6 +16,9 @@ export class SkeletonLineComponent implements OnInit {
   @Input()
   public theme: 'light' | 'dark' = 'light';
 
+  @Input()
+  public borderRadiusWithUnit: string | undefined;
+
   public width = '100%';
 
   public ngOnInit(): void {
