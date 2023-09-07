@@ -32,7 +32,7 @@ export class HockeyDataScheduledGameMapper extends BaseMapper<HockeyDataSchedule
       isLive,
       hasEnded,
       teamScores,
-      streams
+      streams.map(s => JSON.parse(s))
     );
   }
 

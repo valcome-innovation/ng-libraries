@@ -92,7 +92,8 @@ export class HockeyDataTestData {
                       'FINISHED'
                     ],
                     youTubeLink: null,
-                    seriesStandings: '0:1'
+                    seriesStandings: '0:1',
+                    streams: ['{"targetUrl":"https://www.puls24.at/eishockey","target":"_blank","label":"PULS 24","imgUrl":"","style":"","html":""}']
                   },
                   {
                     id: 'dffe8f13-b7c4-4e06-8ffe-36f9ecc934c7',
@@ -164,7 +165,8 @@ export class HockeyDataTestData {
                     gameHasEnded: false,
                     labels: [],
                     youTubeLink: null,
-                    seriesStandings: null
+                    seriesStandings: null,
+                    streams: ['{"targetUrl":"https://www.puls24.at/eishockey","target":"_blank","label":"PULS 24","imgUrl":"","style":"","html":""}']
                   },
                   {
                     id: '33eea502-2ac2-410b-96cb-721efc6f024e',

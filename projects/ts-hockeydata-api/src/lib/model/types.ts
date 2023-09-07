@@ -287,5 +287,5 @@ export interface IHockeyDataScheduledGame {
   labels: any[];
   youTubeLink: string | null;
   seriesStandings: any;
-  streams: any[];
+  streams?: string[];
 }

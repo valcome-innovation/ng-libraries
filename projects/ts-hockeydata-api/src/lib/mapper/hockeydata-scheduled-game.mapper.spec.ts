@@ -116,6 +116,7 @@ function getScheduledGame(liveTime: number = 0,
     gameHasEnded,
     labels,
     seriesStandings: null,
-    youTubeLink: null
+    youTubeLink: null,
+    streams: ['{"targetUrl":"https://www.puls24.at/eishockey","target":"_blank","label":"PULS 24","imgUrl":"","style":"","html":""}']
   };
 }
