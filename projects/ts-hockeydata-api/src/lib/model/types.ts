@@ -103,6 +103,15 @@ export type HdTeam = {
   leagueCode: null | string;
 };
 
+export type HdStream = {
+  targetUrl: string,
+  target?: string,
+  label?: string,
+  imgUrl?: string,
+  style?: string,
+  html?: string,
+};
+
 export interface IHockeyDataLocation {
   longname: string;
   shortname: string;
@@ -278,4 +287,5 @@ export interface IHockeyDataScheduledGame {
   labels: any[];
   youTubeLink: string | null;
   seriesStandings: any;
+  streams: any[];
 }

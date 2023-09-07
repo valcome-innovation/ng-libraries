@@ -1,4 +1,5 @@
 import { HockeyDataGameScore } from './hockeydata-game-score';
+import { HdStream } from './types';
 
 export class HockeyDataScheduledGame {
   public gameId: string;
@@ -10,6 +11,7 @@ export class HockeyDataScheduledGame {
   public isLive: boolean;
   public hasEnded: boolean;
   public teamScores: HockeyDataGameScore;
+  public streams: HdStream[];
 
   public constructor(gameId: string,
                      gameName: string,
@@ -19,7 +21,8 @@ export class HockeyDataScheduledGame {
                      isShootOut: boolean,
                      isLive: boolean,
                      hasEnded: boolean,
-                     teamScores: HockeyDataGameScore) {
+                     teamScores: HockeyDataGameScore,
+                     streams: HdStream[] = []) {
     this.gameId = gameId;
     this.gameName = gameName;
     this.gameRound = gameRound;
@@ -29,6 +32,7 @@ export class HockeyDataScheduledGame {
     this.isLive = isLive;
     this.hasEnded = hasEnded;
     this.teamScores = teamScores;
+    this.streams = streams;
   }
 
   public isScheduled(): boolean {

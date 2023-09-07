@@ -20,9 +20,19 @@ export class HockeyDataScheduledGameMapper extends BaseMapper<HockeyDataSchedule
     const hasEnded = this.hasEnded(json);
     const isLive = this.getValidated(json.liveTime) > 0 && !hasEnded;
     const teamScores = this.hockeyDataGameScoreMapper.fromJson(json);
+    const streams = json.streams ?? [];
 
     return new HockeyDataScheduledGame(
-      gameId, gameName, gameRound, date, isOvertime, isShootOut, isLive, hasEnded, teamScores
+      gameId,
+      gameName,
+      gameRound,
+      date,
+      isOvertime,
+      isShootOut,
+      isLive,
+      hasEnded,
+      teamScores,
+      streams
     );
   }
 
