@@ -61,7 +61,7 @@ export class JsUtils {
     }
 
     if (typeof obj === 'object') {
-      for (let key in obj) {
+      for (const key in obj) {
         if (typeof obj[key] === 'object') {
           obj[key] = JsUtils.nullToUndefined(obj[key]);
         } else if (obj[key] === null) {
@@ -155,5 +155,11 @@ export class JsUtils {
     };
 
     return JSON.stringify(object, getCircularReplacer());
+  }
+
+  public static hasProperty<T extends unknown, K extends string>(obj: T, key: K): obj is T & Record<K, unknown> {
+    return obj != null
+      && typeof obj === 'object'
+      && key in (obj as object);
   }
 }

@@ -206,4 +206,15 @@ describe('JsUtils', () => {
 
     expect(actual).toEqual('{"id":"1","b":{"id":"2"}}');
   });
+
+  it('should have property', () => {
+    const a = { id: '1' };
+    (a as any).b = '2';
+
+    if (JsUtils.hasProperty(a, 'b')) {
+      expect(a.b).toEqual('2');
+    } else {
+      fail();
+    }
+  });
 });
