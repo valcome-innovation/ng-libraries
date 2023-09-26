@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ts-core",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "scripts": {
     "test": "jest",
     "build": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json",
