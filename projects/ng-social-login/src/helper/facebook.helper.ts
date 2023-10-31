@@ -7,12 +7,13 @@ export class FacebookHelper {
 
   public constructor(private clientId: string,
                      private clientToken: string,
-                     private http: HttpClient) {
+                     private http: HttpClient,
+                     private apiVersion: string) {
   }
 
   public fetchDeviceCode(): Promise<FacebookDeviceResponse> {
     return this.http.post<FacebookDeviceResponse>(
-      'https://graph.facebook.com/v4.0/device/login', {
+      `https://graph.facebook.com/${this.apiVersion}/device/login`, {
         access_token: `${this.clientId}|${this.clientToken}`,
         scope: 'public_profile'
       }
@@ -21,7 +22,7 @@ export class FacebookHelper {
 
   public fetchAccessCode(deviceCode: string): Promise<FacebookPollResponse> {
     return this.http.post<FacebookPollResponse>(
-      'https://graph.facebook.com/v4.0/device/login_status', {
+      `https://graph.facebook.com/${this.apiVersion}/device/login_status`, {
         access_token: `${this.clientId}|${this.clientToken}`,
         code: deviceCode
       }
@@ -33,8 +34,10 @@ export class FacebookHelper {
     params = params.append('fields', fields);
     params = params.append('access_token', accessToken);
 
-    return this.http.get<FbUser>('https://graph.facebook.com/v4.0/me', { params })
-      .toPromise();
+    return this.http.get<FbUser>(
+      `https://graph.facebook.com/${this.apiVersion}/me`,
+      { params }
+    ).toPromise();
   }
 
   public mapFacebookCodeToDeviceCode(facebookCode: FacebookDeviceResponse): DeviceCodeResponse {

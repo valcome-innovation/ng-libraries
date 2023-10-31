@@ -10,7 +10,7 @@ const defaultInitOptions = {
   scope: 'email,public_profile',
   locale: 'en_US',
   fields: 'name,email,picture,first_name,last_name',
-  version: 'v14.0',
+  version: 'v18.0',
 };
 
 declare let FB: FacebookStatic;
@@ -24,7 +24,7 @@ export class FacebookLoginProvider implements LoginProvider {
                      clientToken: string,
                      http: HttpClient,
                      private initOptions: typeof defaultInitOptions = defaultInitOptions) {
-    this.facebookHelper = new FacebookHelper(clientId, clientToken, http);
+    this.facebookHelper = new FacebookHelper(clientId, clientToken, http, initOptions.version);
   }
 
   public async initialize(defaultCookieConsent: CookieConsent): Promise<void> {
