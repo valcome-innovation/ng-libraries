@@ -24,8 +24,6 @@ export class BaseFormComponent extends BaseBehaviorComponent {
   }
 
   public submit(submitElement: HTMLElement, event: Event): Promise<any> | boolean {
-    console.log(this.form.value);
-
     this.isSubmitted = true;
     submitElement.focus();
 
