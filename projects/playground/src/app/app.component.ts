@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AbstractControlOptions, UntypedFormBuilder, UntypedFormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { FormErrorType } from 'projects/ng-elements/form/src/model/form-error-type';
 import { Image } from '../../../ng-elements/image-gallery/src/image';
@@ -6,9 +6,7 @@ import { StringUtils } from '../../../ts-core/src/lib/utils/string-utils';
 import { BaseFormComponent } from '../../../ng-elements/form/src/components/base-form.component';
 import { ImageResizeService } from '../../../ng-image-resize/src/lib/image-resize.service';
 import { DisplayValue } from '@valcome/ng-core';
-import {
-  HockeyDataIceHockeyService
-} from '../../../ts-hockeydata-api/src/lib/services/icehockey/contracts/hockey-data-ice-hockey.service';
+import { HockeyDataIceHockeyService } from '../../../ts-hockeydata-api/src/lib/services/icehockey/contracts/hockey-data-ice-hockey.service';
 import { GtagService } from '../../../ng-google-gtag/src/lib/gtag.service';
 
 @Component({
@@ -17,7 +15,15 @@ import { GtagService } from '../../../ng-google-gtag/src/lib/gtag.service';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent extends BaseFormComponent implements OnInit {
+export class AppComponent
+  extends BaseFormComponent
+  implements OnInit {
+
+  @ViewChild('email', { static: true, read: ElementRef })
+  public emailInput!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('password', { static: true, read: ElementRef })
+  public passwordInput!: ElementRef<HTMLInputElement>;
 
   // public logoMap: LogoMap = {
   //   VIC: "https://valcometv-media.s3.eu-central-1.amazonaws.com/images/teams/VIC.png",
@@ -123,9 +129,9 @@ export class AppComponent extends BaseFormComponent implements OnInit {
   public async ngOnInit(): Promise<void> {
     const data = await this.hockeyData.getSchedule(9032);
 
-    setTimeout(() => {
-      this.form.get('firstName')!.enable({ emitEvent: false });
-    }, 0);
+    // setTimeout(() => {
+    //   this.form.get('firstName')!.enable({ emitEvent: false });
+    // }, 0);
 
     const control = this.form.get('country');
 
@@ -154,26 +160,7 @@ export class AppComponent extends BaseFormComponent implements OnInit {
     }, 3_000);
   }
 
-  private initForm(): void {
-    this.form = this.fb.group({
-      firstName: ['', this.fbOptions([Validators.required], 'blur')],
-      country: ['AT', this.fbOptions([Validators.required], 'blur')],
-    });
-    // this.form = this.fb.group({
-    //   eMail: ['', this.fbOptions([Validators.required])],
-    //   firstName: ['', this.fbOptions([Validators.required], 'blur')],
-    //   lastName: ['', this.fbOptions([Validators.required])],
-    //   country: [null, this.fbOptions([Validators.required], 'change')],
-    //   useDifferentBilling: [false, this.fbOptions([Validators.requiredTrue], 'change')],
-    //   beer: [1, this.fbOptions([Validators.required], 'change')]
-    // });
-  }
-
-  private fbOptions(validators: ValidatorFn[], updateOn: 'blur' | 'change' = 'blur'): AbstractControlOptions {
-    return { validators, updateOn };
-  }
-
-  public submit(submit: HTMLInputElement, event: Event): boolean | Promise<any> {
+  public async submit(submit: HTMLInputElement, event: Event): Promise<any> {
     return super.submit(submit, event);
   }
 
@@ -199,18 +186,6 @@ export class AppComponent extends BaseFormComponent implements OnInit {
     setTimeout(() => this.isSwitchLoading = false, 2_000);
   }
 
-  // public async getGameReport(): Promise<HockeyDataGameReport> {
-  //   return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
-  // }
-  //
-  // public async getTeamStandings(divisionId: number): Promise<HockeyDataTeamStanding[]> {
-  //   return await this.hockeyDataIceHockeyService.getStandings(divisionId, true);
-  // }
-  //
-  // public async getKnockOutStage(divisionId: number): Promise<HockeyDataKnockoutStage> {
-  //   return await this.hockeyDataIceHockeyService.getKnockoutStage(divisionId);
-  // }
-
   public pickImage(event: any): void {
     const image = event.target.files[0];
     console.log('input');
@@ -225,5 +200,37 @@ export class AppComponent extends BaseFormComponent implements OnInit {
       console.log('promised');
       console.log(result);
     });
+  }
+
+  private initForm(): void {
+    // this.form = this.fb.group({
+    //   firstName: ['', this.fbOptions([Validators.required], 'blur')],
+    //   country: ['AT', this.fbOptions([Validators.required], 'blur')],
+    // });
+    this.form = this.fb.group({
+      email: ['', this.fbOptions([Validators.required])],
+      password: ['', this.fbOptions([Validators.required])],
+      //   firstName: ['', this.fbOptions([Validators.required], 'blur')],
+      //   lastName: ['', this.fbOptions([Validators.required])],
+      //   country: [null, this.fbOptions([Validators.required], 'change')],
+      //   useDifferentBilling: [false, this.fbOptions([Validators.requiredTrue], 'change')],
+      //   beer: [1, this.fbOptions([Validators.required], 'change')]
+    });
+  }
+
+  // public async getGameReport(): Promise<HockeyDataGameReport> {
+  //   return await this.hockeyDataIceHockeyService.getGameReport('24352fe0-0ca3-4f99-80c0-ee22d55e6a56');
+  // }
+  //
+  // public async getTeamStandings(divisionId: number): Promise<HockeyDataTeamStanding[]> {
+  //   return await this.hockeyDataIceHockeyService.getStandings(divisionId, true);
+  // }
+  //
+  // public async getKnockOutStage(divisionId: number): Promise<HockeyDataKnockoutStage> {
+  //   return await this.hockeyDataIceHockeyService.getKnockoutStage(divisionId);
+  // }
+
+  private fbOptions(validators: ValidatorFn[], updateOn: 'blur' | 'change' = 'blur'): AbstractControlOptions {
+    return { validators, updateOn };
   }
 }

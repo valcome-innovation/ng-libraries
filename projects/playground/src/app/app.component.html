@@ -67,16 +67,16 @@
 <!--                          [useDefaultErrorMessages]="true">-->
 <!--</val-generic-autocomplete>-->
 
-<val-generic-select [formName]="'country'"
-                    [form]="form"
-                    [label]="'Land'"
-                    [placeholder]="'Land wählen'"
-                    [options]="[]"
-                    [isLoading]="true"
-                    [isFormSubmitted]="isSubmitted"
-                    [displayDefaultOption]="true"
-                    [useDefaultErrorMessages]="true">
-</val-generic-select>
+<!--<val-generic-select [formName]="'country'"-->
+<!--                    [form]="form"-->
+<!--                    [label]="'Land'"-->
+<!--                    [placeholder]="'Land wählen'"-->
+<!--                    [options]="[]"-->
+<!--                    [isLoading]="true"-->
+<!--                    [isFormSubmitted]="isSubmitted"-->
+<!--                    [displayDefaultOption]="true"-->
+<!--                    [useDefaultErrorMessages]="true">-->
+<!--</val-generic-select>-->
 
 <!--<val-generic-select [formName]="'country'"-->
 <!--                    [form]="form"-->
@@ -88,74 +88,92 @@
 <!--                    [useDefaultErrorMessages]="true">-->
 <!--</val-generic-select>-->
 
-<!--<form [formGroup]="form" (ngSubmit)="submit(submitInput, $event)" style="width: 300px">-->
-<!--  <val-generic-password [formName]="'firstName'"-->
-<!--                        [form]="form"-->
-<!--                        [isLoading]="false"-->
-<!--                        [label]="'Password'"-->
-<!--                        [placeholder]="'Name wählen'"-->
-<!--                        [isFormSubmitted]="isSubmitted"-->
-<!--                        [markAsRequired]="true"-->
-<!--                        [useDefaultErrorMessages]="false">-->
-<!--  </val-generic-password>-->
+<form [formGroup]="form" (ngSubmit)="submit(submitInput, $event)" style="width: 300px">
+  <val-generic-input #email
+                     [formName]="'email'"
+                     [form]="form"
+                     [isLoading]="false"
+                     [label]="'Email'"
+                     [placeholder]="'Name wählen'"
+                     [isFormSubmitted]="isSubmitted"
+                     [markAsRequired]="true"
+                     [useDefaultErrorMessages]="false"
+                     [enableAutofillListener]="true">
+  </val-generic-input>
 
-<!--  <val-generic-input [formName]="'firstName'"-->
-<!--                     [form]="form"-->
-<!--                     [isLoading]="false"-->
-<!--                     [label]="'Name'"-->
-<!--                     [placeholder]="'Name wählen'"-->
-<!--                     [isFormSubmitted]="isSubmitted"-->
-<!--                     [useDefaultErrorMessages]="false">-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">-->
-<!--      {{ 'requiredMessage' }}-->
-<!--    </div>-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.MAX_LENGTH">-->
-<!--      {{ 'maxLengthMessage' }}-->
-<!--    </div>-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.MIN_LENGTH">-->
-<!--      {{ 'minLengthMessage' }}-->
-<!--    </div>-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.EMAIL">-->
-<!--      {{ 'emailMessage' }}-->
-<!--    </div>-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.MIN">-->
-<!--      {{ 'minMessage' }}-->
-<!--    </div>-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.MAX">-->
-<!--      {{ 'maxMessage' }}-->
-<!--    </div>-->
-<!--  </val-generic-input>-->
+  <val-generic-password #password
+                        [formName]="'password'"
+                        [form]="form"
+                        [isLoading]="false"
+                        [label]="'Password'"
+                        [placeholder]="'Name wählen'"
+                        [isFormSubmitted]="isSubmitted"
+                        [markAsRequired]="true"
+                        [useDefaultErrorMessages]="false"
+                        [enableAutofillListener]="true">
+  </val-generic-password>
 
-<!--  <input type="submit" value="submit" #submitInput>-->
-<!--  {{form.valid}}-->
-<!--</form>-->
+  <!--  <val-generic-input [formName]="'firstName'"-->
+  <!--                     [form]="form"-->
+  <!--                     [isLoading]="false"-->
+  <!--                     [label]="'Name'"-->
+  <!--                     [placeholder]="'Name wählen'"-->
+  <!--                     [isFormSubmitted]="isSubmitted"-->
+  <!--                     [useDefaultErrorMessages]="false">-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">-->
+  <!--      {{ 'requiredMessage' }}-->
+  <!--    </div>-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.MAX_LENGTH">-->
+  <!--      {{ 'maxLengthMessage' }}-->
+  <!--    </div>-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.MIN_LENGTH">-->
+  <!--      {{ 'minLengthMessage' }}-->
+  <!--    </div>-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.EMAIL">-->
+  <!--      {{ 'emailMessage' }}-->
+  <!--    </div>-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.MIN">-->
+  <!--      {{ 'minMessage' }}-->
+  <!--    </div>-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.MAX">-->
+  <!--      {{ 'maxMessage' }}-->
+  <!--    </div>-->
+  <!--  </val-generic-input>-->
 
-<!--<div>{{shippingForm?.get('country')?.hasError('server')}}</div>-->
+  <!--  <input type="submit" value="submit" #submitInput>-->
+  <!--  {{form.valid}}-->
+  <!--</form>-->
 
-<!--<val-generic-checkbox [form]="shippingForm"-->
-<!--                      [label]="'Gleiche Rechnungsadresse'"-->
-<!--                      [formName]="'useDifferentBilling'"-->
-<!--                      [markAsRequired]="true"-->
-<!--                      [isFormSubmitted]="isSubmitted">-->
-<!--    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">-->
-<!--        Field is required-->
-<!--    </div>-->
-<!--</val-generic-checkbox>-->
+  <!--<div>{{shippingForm?.get('country')?.hasError('server')}}</div>-->
 
-<!--<val-generic-radio [formName]="'beer'"-->
-<!--                   [form]="shippingForm"-->
-<!--                   [options]="beers"-->
-<!--                   [isFormSubmitted]="isSubmitted">-->
-<!--</val-generic-radio>-->
+  <!--<val-generic-checkbox [form]="shippingForm"-->
+  <!--                      [label]="'Gleiche Rechnungsadresse'"-->
+  <!--                      [formName]="'useDifferentBilling'"-->
+  <!--                      [markAsRequired]="true"-->
+  <!--                      [isFormSubmitted]="isSubmitted">-->
+  <!--    <div val-input-error-message [errorType]="FormErrorType.REQUIRED">-->
+  <!--        Field is required-->
+  <!--    </div>-->
+  <!--</val-generic-checkbox>-->
 
-<!--<input type="submit" value="submit form" (click)="submit($event)">-->
+  <!--<val-generic-radio [formName]="'beer'"-->
+  <!--                   [form]="shippingForm"-->
+  <!--                   [options]="beers"-->
+  <!--                   [isFormSubmitted]="isSubmitted">-->
+  <!--</val-generic-radio>-->
 
-<!--<button (click)="setError()">sdfasdf</button>-->
+  <input #submitInput
+         type="submit"
+         value="submit form">
 
-<!--<pre>{{this.shippingForm.value | json}}</pre>-->
+  <!--<button (click)="setError()">sdfasdf</button>-->
 
-<!--<div valFilePicker>yeah</div>-->
+  <!--<pre>{{this.shippingForm.value | json}}</pre>-->
 
-<!--<input type="file"-->
-<!--       id="file"-->
-<!--       (change)="pickImage($event)">-->
+  <!--<div valFilePicker>yeah</div>-->
+
+  <!--<input type="file"-->
+  <!--       id="file"-->
+  <!--       (change)="pickImage($event)">-->
+
+</form>

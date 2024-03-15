@@ -1,11 +1,15 @@
-import { ContentChildren, Directive, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
+import { AfterViewInit, ContentChildren, Directive, ElementRef, Input, OnChanges, OnInit, QueryList, SimpleChanges } from '@angular/core';
 import { FormErrorMessageDirective } from '../directives/form-error-message/form-error-message.directive';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { BaseBehaviorComponent } from '@valcome/ng-core';
+import { BaseBehaviorComponent, takeUntilDestroyed } from '@valcome/ng-core';
 import { FormHelper } from '../helpers/form.helper';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Directive()
-export class BaseGenericFieldComponent extends BaseBehaviorComponent implements OnInit, OnChanges {
+export class BaseGenericFieldComponent
+  extends BaseBehaviorComponent
+  implements OnInit, AfterViewInit, OnChanges {
 
   @ContentChildren(FormErrorMessageDirective)
   public errorMessages!: QueryList<FormErrorMessageDirective>;
@@ -28,6 +32,9 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   @Input()
   public isLoading = false;
 
+  @Input()
+  public enableAutofillListener = false;
+
   public id!: string;
   public isValid: boolean = true;
   public currentValue: any;
@@ -35,13 +42,27 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
 
   public formControl!: UntypedFormControl;
 
+  public constructor(private elementRef: ElementRef<HTMLElement>) {
+    super();
+  }
+
+  public ngAfterViewInit(): void {
+    if (this.enableAutofillListener) {
+      this.startAutofillListener();
+    }
+  }
+
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.isFormSubmitted && changes.isFormSubmitted.currentValue && this.formControl) {
+    if (changes.isFormSubmitted
+      && changes.isFormSubmitted.currentValue
+      && this.formControl) {
       this.handleFormValidation();
     }
 
     // if form gets submitted during a load the error should be handled after loading has finished
-    if (changes.isLoading && changes.isLoading.currentValue === false && this.isFormSubmitted) {
+    if (changes.isLoading
+      && changes.isLoading.currentValue === false
+      && this.isFormSubmitted) {
       this.handleFormValidation();
     }
   }
@@ -52,6 +73,19 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
     this.currentValue = this.formControl.value;
 
     this.listenOnValueChanges();
+  }
+
+  public addDefaultErrorMessages(defaultErrorMessages: QueryList<FormErrorMessageDirective>): void {
+    if (this.useDefaultErrorMessages) {
+      this.errorMessages.reset([
+        ...this.errorMessages.toArray(),
+        ...defaultErrorMessages.toArray()
+      ]);
+    }
+  }
+
+  public setFocus(value: boolean) {
+    this.hasFocus = value;
   }
 
   private generateId(control: AbstractControl, name: string): string {
@@ -65,9 +99,9 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
   }
 
   private listenOnValueChanges(): void {
-    this.addSub(this.formControl.statusChanges.subscribe(() => {
-      this.handleFormValidation();
-    }));
+    this.formControl.statusChanges
+      .pipe(takeUntilDestroyed(this))
+      .subscribe(() => this.handleFormValidation());
   }
 
   private handleFormValidation(): void {
@@ -86,16 +120,23 @@ export class BaseGenericFieldComponent extends BaseBehaviorComponent implements 
     });
   }
 
-  public addDefaultErrorMessages(defaultErrorMessages: QueryList<FormErrorMessageDirective>): void {
-    if (this.useDefaultErrorMessages) {
-      this.errorMessages.reset([
-        ...this.errorMessages.toArray(),
-        ...defaultErrorMessages.toArray()
-      ]);
-    }
-  }
+  // https://github.com/angular/angular/issues/30616#issuecomment-905322155
+  private startAutofillListener(): void {
+    const input = this.elementRef.nativeElement
+      .querySelector('input');
 
-  public setFocus(value: boolean) {
-    this.hasFocus = value;
+    if (!input) {
+      return;
+    }
+
+    fromEvent(input, 'change')
+      .pipe(
+        takeUntilDestroyed(this),
+        debounceTime(100)
+      ).subscribe(() => {
+      if (this.formControl && this.formControl.value !== input.value) {
+        this.formControl?.setValue(input.value);
+      }
+    });
   }
 }
