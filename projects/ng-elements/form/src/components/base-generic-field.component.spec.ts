@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { FormErrorType } from '../model/form-error-type';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import createSpy = jasmine.createSpy;
+import { ElementRef } from '@angular/core';
 
 describe('BaseGenericFieldComponent', () => {
 
@@ -16,7 +17,7 @@ describe('BaseGenericFieldComponent', () => {
   };
 
   beforeEach(() => {
-    component = new BaseGenericFieldComponent();
+    component = new BaseGenericFieldComponent({} as ElementRef);
     component.formName = 'field';
     component.form = getMockedFormGroup();
     component.errorMessages = [] as any;
