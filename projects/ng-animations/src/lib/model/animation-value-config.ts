@@ -14,4 +14,4 @@ export const animationValueConfigDefault: AnimationValueConfig<number> = {
   easing: AnimationEasing.LINEAR,
   startValue: 0,
   endValue: 1
-}
+};

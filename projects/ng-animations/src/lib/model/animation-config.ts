@@ -14,4 +14,4 @@ export const animationConfigDefault: AnimationConfig = {
   inDelay: 0,
   outDelay: 0,
   easing: AnimationEasing.LINEAR
-}
+};
