@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { ExtraLoggingData, Logger } from '@valcome/ng-logging';
 
 @Injectable()
-export class SentryLogger implements Logger {
+export class SentryLogger
+  implements Logger {
 
   public info(message: string, extra?: ExtraLoggingData): void {
     Sentry.captureMessage(message, { level: 'info', contexts: { additionalInfo: extra } });

@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/valcome-innovation/ng-libraries/tree/master/projects/ng-logging#nglogging",
   "peerDependencies": {
-    "@angular/common": "~14.3.0",
-    "@angular/core": "~14.3.0",
-    "@sentry/angular-ivy": "^7.61.0"
+    "@angular/common": "~17.3.0",
+    "@angular/core": "~17.3.0",
+    "@sentry/angular-ivy": "^7.109.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

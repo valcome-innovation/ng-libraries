@@ -3,7 +3,8 @@ import { ExtraLoggingData, Logger } from './logger';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class ConsoleLogger implements Logger {
+export class ConsoleLogger
+  implements Logger {
 
   public info(message: string, extra?: ExtraLoggingData): void {
     console.info(message);
