@@ -23,7 +23,7 @@
   "peerDependencies": {
     "@angular/common": "~17.3.0",
     "@angular/core": "~17.3.0",
-    "@sentry/angular-ivy": "^7.109.0"
+    "@sentry/angular-ivy": "^7.112.2"
   },
   "dependencies": {
     "tslib": "^2.0.0"
