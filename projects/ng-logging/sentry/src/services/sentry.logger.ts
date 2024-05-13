@@ -6,36 +6,36 @@ import { captureException, captureMessage } from '@sentry/angular-ivy';
 export class SentryLogger
   implements Logger {
 
-  public info(message: string, extra?: ExtraLoggingData): void {
-    captureMessage(
+  public info(message: string, extra?: ExtraLoggingData): string {
+    return captureMessage(
       message,
       { level: 'info', contexts: { additionalInfo: extra } }
     );
   }
 
-  public log(message: string, extra?: ExtraLoggingData): void {
-    captureMessage(
+  public log(message: string, extra?: ExtraLoggingData): string {
+    return captureMessage(
       message,
       { level: 'log', contexts: { additionalInfo: extra } }
     );
   }
 
-  public warn(message: string, extra?: ExtraLoggingData): void {
-    captureMessage(
+  public warn(message: string, extra?: ExtraLoggingData): string {
+    return captureMessage(
       message,
       { level: 'warning', contexts: { additionalInfo: extra } }
     );
   }
 
-  public error(message: string, extra?: ExtraLoggingData): void {
-    captureMessage(
+  public error(message: string, extra?: ExtraLoggingData): string {
+    return captureMessage(
       message,
       { level: 'error', contexts: { additionalInfo: extra } }
     );
   }
 
-  public exception(exception: any, extra?: ExtraLoggingData): void {
-    captureException(
+  public exception(exception: any, extra?: ExtraLoggingData): string {
+    return captureException(
       exception,
       { level: 'error', contexts: { additionalInfo: extra } }
     );
