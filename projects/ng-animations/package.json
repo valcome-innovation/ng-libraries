@@ -1,6 +1,6 @@
 {
   "name": "@valcome/ng-animations",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Angular animations",
   "scripts": {
     "version": "ng build ng-animations --configuration production",
