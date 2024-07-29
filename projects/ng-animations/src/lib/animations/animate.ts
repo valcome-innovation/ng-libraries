@@ -10,8 +10,8 @@ export function baseAnimate(animationConfig: AnimationValueConfig<Parameters<typ
 
   animationConfig = {
     ...animationValueConfigDefault,
+    ...defaultTransform,
     ...animationConfig,
-    ...defaultTransform
   } as AnimationValueConfig<Parameters<typeof style>[0]> ;
 
   return trigger(key, [
