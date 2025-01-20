@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ExtraLoggingData, Logger } from '@valcome/ng-logging';
-import { captureException, captureMessage } from '@sentry/angular-ivy';
+import { captureException, captureMessage } from '@sentry/angular';
 
 @Injectable()
 export class SentryLogger
